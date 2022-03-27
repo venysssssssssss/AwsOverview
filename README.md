@@ -1,13 +1,56 @@
-# Aws overview
+# Aws overview <!-- omit in toc -->
 
-## Traditionally, how to build infrastructure
+## Contents <!-- omit in toc -->
 
-### How websites work
+- [1. Traditionally, how to build infrastructure](#1-traditionally-how-to-build-infrastructure)
+  - [1.1. How websites work](#11-how-websites-work)
+  - [1.2. What is a server composed of?](#12-what-is-a-server-composed-of)
+  - [1.3. IT Terminology](#13-it-terminology)
+  - [1.4. Problems with traditional IT approach](#14-problems-with-traditional-it-approach)
+- [2. What is Cloud Computing?](#2-what-is-cloud-computing)
+  - [2.1. You’ve been using some Cloud services](#21-youve-been-using-some-cloud-services)
+  - [2.2. The Deployment Models of the Cloud](#22-the-deployment-models-of-the-cloud)
+    - [2.2.1. Private Cloud:](#221-private-cloud)
+    - [2.2.2. Public Cloud:](#222-public-cloud)
+    - [2.2.3. Hybrid Cloud:](#223-hybrid-cloud)
+  - [2.3. The Five Characteristics of Cloud Computing](#23-the-five-characteristics-of-cloud-computing)
+  - [2.4. Six Advantages of Cloud Computing](#24-six-advantages-of-cloud-computing)
+  - [2.5. Problems solved by the Cloud](#25-problems-solved-by-the-cloud)
+  - [2.6. Types of Cloud Computing](#26-types-of-cloud-computing)
+  - [2.7. Example of Cloud Computing Types](#27-example-of-cloud-computing-types)
+  - [2.8. Pricing of the Cloud – Quick Overview](#28-pricing-of-the-cloud--quick-overview)
+  - [2.9. AWS Global Infrastructure](#29-aws-global-infrastructure)
+  - [2.10. AWS Regions](#210-aws-regions)
+  - [2.11. How to choose an AWS Region?](#211-how-to-choose-an-aws-region)
+  - [2.12. AWS Availability Zones](#212-aws-availability-zones)
+  - [2.13. AWS Points of Presence (Edge Locations)](#213-aws-points-of-presence-edge-locations)
+  - [2.14. Tour of the AWS Console](#214-tour-of-the-aws-console)
+  - [2.15. Shared Responsibility Model diagram](#215-shared-responsibility-model-diagram)
+  - [2.16. AWS Acceptable Use Policy](#216-aws-acceptable-use-policy)
+- [3. IAM - Identity and Access Management](#3-iam---identity-and-access-management)
+  - [3.1. IAM: Users & Groups](#31-iam-users--groups)
+  - [3.2. IAM: Permissions](#32-iam-permissions)
+  - [3.3. IAM: Policies Structure](#33-iam-policies-structure)
+  - [3.4. IAM – Password Policy](#34-iam--password-policy)
+  - [3.5. Multi Factor Authentication - MFA](#35-multi-factor-authentication---mfa)
+  - [3.6. MFA devices options in AWS](#36-mfa-devices-options-in-aws)
+  - [3.7. How can users access AWS ?](#37-how-can-users-access-aws-)
+  - [3.8. What’s the AWS CLI?](#38-whats-the-aws-cli)
+  - [3.9. What’s the AWS SDK?](#39-whats-the-aws-sdk)
+  - [3.10. IAM Roles for Services](#310-iam-roles-for-services)
+  - [3.11. IAM Security Tools](#311-iam-security-tools)
+  - [3.12. IAM Guidelines & Best Practices](#312-iam-guidelines--best-practices)
+  - [3.13. Shared Responsibility Model for IAM](#313-shared-responsibility-model-for-iam)
+  - [3.14. IAM Section – Summary](#314-iam-section--summary)
+
+## 1. Traditionally, how to build infrastructure
+
+### 1.1. How websites work
 
 - Clients have IP addresses.
 - Servers have IP addresses.
 
-### What is a server composed of?
+### 1.2. What is a server composed of?
 
 - Compute: CPU.
 - Memory: RAM.
@@ -15,14 +58,14 @@
 - Database: Store data in a structured way.
 - Network: Routers, switch, DNS server.
 
-### IT Terminology
+### 1.3. IT Terminology
 
 - Network: cables, routers and servers connected with each other.
 - Router: A networking device that forwards data packets between computer
   networks. They know where to send your packets on the internet!
 - Switch: Takes a packet and send it to the correct server / client on your network.
 
-### Problems with traditional IT approach
+### 1.4. Problems with traditional IT approach
 
 - Pay for the rent for the data center.
 - Pay for power supply, cooling, maintenance.
@@ -32,7 +75,7 @@
 - How to deal with disasters? (earthquake, power shutdown, fire…).
 - Can we externalize all this? **CLOUD**
 
-## What is Cloud Computing?
+## 2. What is Cloud Computing?
 
 - Cloud computing is the on-demand delivery of compute power, database storage, applications, and other IT resources.
 - Through a cloud services platform with pay-as-you-go pricing.
@@ -41,7 +84,7 @@
 - Simple way to access servers, storage, databases and a set of application services.
 - Amazon Web Services owns and maintains the network-connected hardware required for these application services, while you provision and use what you need via a web application.
 
-### You’ve been using some Cloud services
+### 2.1. You’ve been using some Cloud services
 
 - Gmail
   - E-mail cloud service
@@ -53,26 +96,26 @@
   - Built on AWS
   - Video on Demand
 
-### The Deployment Models of the Cloud
+### 2.2. The Deployment Models of the Cloud
 
-#### Private Cloud:
+#### 2.2.1. Private Cloud:
 
 - Cloud services used by a single organization, not exposed to the public.
 - Complete control.
 - Security for sensitive applications.
 - Meet specific business needs.
 
-#### Public Cloud:
+#### 2.2.2. Public Cloud:
 
 - Cloud resources owned and operated by a thirdparty cloud service provider delivered over the Internet.
 
-#### Hybrid Cloud:
+#### 2.2.3. Hybrid Cloud:
 
 - Keep some servers on premises and extend some capabilities to the Cloud
 - Control over sensitive assets in your private infrastructure
 - Flexibility and costeffectiveness of the public cloud
 
-### The Five Characteristics of Cloud Computing
+### 2.3. The Five Characteristics of Cloud Computing
 
 - On-demand self service:
   - Users can provision resources and use them without human interaction from the service provider
@@ -87,7 +130,7 @@
 - Measured service:
   - Usage is measured, users pay correctly for what they have used
 
-### Six Advantages of Cloud Computing
+### 2.4. Six Advantages of Cloud Computing
 
 - Trade capital expense (CAPEX) for operational expense (OPEX)
   - Pay On-Demand: don’t own hardware
@@ -100,7 +143,7 @@
 - Stop spending money running and maintaining data centers
 - Go global in minutes: leverage the AWS global infrastructure
 
-### Problems solved by the Cloud
+### 2.5. Problems solved by the Cloud
 
 - Flexibility: change resource types when needed
 - Cost-Effectiveness: pay as you go, for what you use
@@ -109,7 +152,7 @@
 - High-availability and fault-tolerance: build across data centers
 - Agility: rapidly develop, test and launch software applications
 
-### Types of Cloud Computing
+### 2.6. Types of Cloud Computing
 
 - Infrastructure as a Service (IaaS)
   - Provide building blocks for cloud IT
@@ -122,7 +165,7 @@
 - Software as a Service (SaaS)
   - Completed product that is run and managed by the service provider
 
-### Example of Cloud Computing Types
+### 2.7. Example of Cloud Computing Types
 
 - Infrastructure as a Service
   - Amazon EC2 (on AWS)
@@ -134,7 +177,7 @@
   - Many AWS services (ex: Rekognition for Machine Learning)
   - Google Apps (Gmail), Dropbox, Zoom
 
-### Pricing of the Cloud – Quick Overview
+### 2.8. Pricing of the Cloud – Quick Overview
 
 - AWS has 3 pricing fundamentals, following the pay-as-you-go pricing
   model
@@ -146,7 +189,7 @@
     - Data transfer IN is free
   - Solves the expensive issue of traditional IT
 
-### AWS Global Infrastructure
+### 2.9. AWS Global Infrastructure
 
 - AWS Regions
 - AWS Availability Zones
@@ -154,21 +197,21 @@
 - AWS Edge Locations / Points of Presence
 - https://infrastructure.aws/
 
-### AWS Regions
+### 2.10. AWS Regions
 
 - AWS has Regions all around the world
 - Names can be us-east-1, eu-west-3…
 - A region is a cluster of data centers
 - Most AWS services are region-scoped
 
-### How to choose an AWS Region?
+### 2.11. How to choose an AWS Region?
 
 - **Compliance** with data governance and legal requirements: data never leaves a region without your explicit permission
 - **Proximity** to customers: reduced latency
 - **Available** services within a Region: new services and new features aren’t available in every Region
 - **Pricing**: pricing varies region to region and is transparent in the service pricing page
 
-### AWS Availability Zones
+### 2.12. AWS Availability Zones
 
 - Each region has many availability zones (usually 3, min is 2, max is 6). Example:
   - ap-southeast-2a
@@ -178,12 +221,12 @@
 - They’re separate from each other, so that they’re isolated from disasters
 - They’re connected with high bandwidth, ultra-low latency networking
 
-### AWS Points of Presence (Edge Locations)
+### 2.13. AWS Points of Presence (Edge Locations)
 
 - Amazon has 216 Points of Presence (205 Edge Locations & 11 Regional Caches) in 84 cities across 42 countries
 - Content is delivered to end users with lower latency
 
-### Tour of the AWS Console
+### 2.14. Tour of the AWS Console
 
 - AWS has Global Services:
   - Identity and Access Management (IAM)
@@ -197,13 +240,13 @@
   - Rekognition (Software as a Service)
 - Region Table: https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services
 
-### Shared Responsibility Model diagram
+### 2.15. Shared Responsibility Model diagram
 
 - AWS = RESPONSIBILITY FOR THE SECURITY OF THE CLOUD
 - CUSTOMER = RESPONSIBILITY FOR THE SECURITY IN THE CLOUD
 - https://aws.amazon.com/compliance/shared-responsibility-model/
 
-### AWS Acceptable Use Policy
+### 2.16. AWS Acceptable Use Policy
 
 - https://aws.amazon.com/aup/
 - No Illegal, Harmful, or Offensive Use or Content
@@ -211,9 +254,9 @@
 - No Network Abuse
 - No E-Mail or Other Message Abuse
 
-## IAM - Identity and Access Management
+## 3. IAM - Identity and Access Management
 
-### IAM: Users & Groups
+### 3.1. IAM: Users & Groups
 
 - IAM = Identity and Access Management, **Global service**.
 - **Root account** created by default, shouldn’t be used or shared.
@@ -221,22 +264,148 @@
 - **Groups** only contain users, not other groups.
 - Users don’t have to belong to a group, and user can belong to multiple groups.
 
-### IAM: Permissions
+### 3.2. IAM: Permissions
 
 - **Users or Groups** can be assigned JSON documents called policies.
 - These policies define the **permissions** of the users.
 - In AWS you apply the **least privilege** principle: don’t give more permissions than a user needs.
 
-### IAM: Policies Structure
+### 3.3. IAM: Policies Structure
 
-- Consists of
-  - **Version**: policy language version, always include "YYYY-MM-DD"
-  - **Id**: an identifier for the policy (optional)
-  - **Statement**: one or more individual statements (required)
-- Statements consists of
-  - Sid: an identifier for the statement (optional)
-  - Effect: whether the statement allows or denies access (Allow, Deny)
-  - Principal: account/user/role to which this policy applied to
-  - Action: list of actions this policy allows or denies
-  - Resource: list of resources to which the actions applied to
-  - Condition: conditions for when this policy is in effect (optional)
+- Consists of:
+  - **Version**: policy language version, always include "YYYY-MM-DD".
+  - **Id**: an identifier for the policy (optional).
+  - **Statement**: one or more individual statements (required).
+- Statements consists of:
+  - **Sid**: an identifier for the statement (optional).
+  - **Effect**: whether the statement allows or denies access (Allow, Deny).
+  - **Principal**: account/user/role to which this policy applied to.
+  - **Action**: list of actions this policy allows or denies.
+  - **Resource**: list of resources to which the actions applied to.
+  - **Condition**: conditions for when this policy is in effect (optional).
+
+### 3.4. IAM – Password Policy
+
+- Strong passwords = higher security for your account.
+- In AWS, you can setup a password policy:
+  - Set a minimum password length.
+  - Require specific character types:
+    - Including uppercase letters.
+    - Lowercase letters.
+    - Numbers.
+    - Non-alphanumeric characters.
+- Allow all IAM users to change their own passwords.
+- Require users to change their password after some time (password expiration).
+- Prevent password re-use.
+
+### 3.5. Multi Factor Authentication - MFA
+
+- Users have access to your account and can possibly change configurations or delete resources in your AWS account
+- **You want to protect your Root Accounts and IAM users**
+- MFA = password you know + security device you own
+- Main benefit of MFA:
+  - If a password is stolen or hacked, the account is not compromised
+
+### 3.6. MFA devices options in AWS
+
+- Virtual MFA device:
+  - Google AuthenLcator (phone only).
+  - Authy (multi-device).
+  - Support for multiple tokens on a single device.
+- Universal 2nd Factor (U2F) Security Key:
+  - YubiKey by Yubico (3rd party)
+    - Support for multiple tokens on a single device. Support for multiple root and IAM users using a single security key
+- Hardware Key Fob MFA Device:
+  - Provided by Gemalto (3rd party)
+- Hardware Key Fob MFA Device for AWS GovCloud (US):
+  - Provided by SurePassID (3rd party)
+
+### 3.7. How can users access AWS ?
+
+- To access AWS, you have three options:
+  - AWS Management Console (protected by password + MFA).
+  - AWS Command Line Interface (CLI): protected by access keys.
+  - AWS Software Developer Kit (SDK) - for code: protected by access keys.
+- Access Keys are generated through the AWS Console.
+- Users manage their own access keys.
+- Access Keys are secret, just like a password. Don’t share them.
+- Access Key ID ~= username.
+- Secret Access Key ~= password.
+- Example (Fake) Access Keys.
+  - Access key ID: AKIASK4E37PV4983d6C.
+  - Secret Access Key: AZPN3zojWozWCndIjhB0Unh8239a1bzbzO5fqqkZq.
+  - **Remember: don’t share your access keys.**
+
+### 3.8. What’s the AWS CLI?
+
+- A tool that enables you to interact with AWS services using commands in your command-line shell
+- Direct access to the public APIs of AWS services
+- You can develop scripts to manage your resources
+- It’s open-source https://github.com/aws/aws-cli
+- Alternative to using AWS Management Console
+
+### 3.9. What’s the AWS SDK?
+
+- AWS Software Development Kit (AWS SDK)
+- Language-specific APIs (set of libraries)
+- Enables you to access and manage AWS services programmatically
+- Embedded within your application
+- Supports:
+  - SDKs (JavaScript, Python, PHP, .NET, Ruby, Java, Go, Node.js, C++, C#)
+  - Mobile SDKs (Android, iOS, …)
+  - IoT Device SDKs (Embedded C, Arduino, …)
+- Example: AWS CLI is built on AWS SDK for Python
+
+### 3.10. IAM Roles for Services
+
+- Some AWS service will need to perform actions on your behalf.
+- To do so, we will assign permissions to AWS services with IAM Roles.
+- Common roles:
+  - EC2 Instance Roles.
+  - Lambda Function Roles.
+  - Roles for CloudFormation.
+
+### 3.11. IAM Security Tools
+
+- IAM Credentials Report (account-level)
+  - A report that lists all your account's users and the status of their various credentials
+- IAM Access Advisor (user-level)
+  - Access advisor shows the service permissions granted to a user and when those services were last accessed.
+  - You can use this information to revise your policies.
+
+### 3.12. IAM Guidelines & Best Practices
+
+- Don’t use the root account except for AWS account setup
+- One physical user = One AWS user
+- **Assign users to groups** and assign permissions to groups
+- Create a **strong password policy**
+- Use and enforce the use of **Multi Factor Authentication (MFA)**
+- Create and use **Roles** for giving permissions to AWS services
+- Use Access Keys for Programmatic Access (CLI / SDK)
+- Audit permissions of your account with the IAM Credentials Report
+- **Never share IAM users & Access Keys**
+
+### 3.13. Shared Responsibility Model for IAM
+
+- AWS:
+  - Infrastructure (global network security)
+  - Configuration and vulnerability analysis
+  - Compliance validation
+- You (Customer):
+  - Users, Groups, Roles, Policies management and monitoring
+  - Enable MFA on all accounts
+  - Rotate all your keys often
+  - Use IAM tools to apply appropriate permissions
+  - Analyze access patterns & review permissions
+
+### 3.14. IAM Section – Summary
+
+- **Users**: mapped to a physical user, has a password for AWS Console
+- **Groups**: contains users only
+- **Policies**: JSON document that outlines permissions for users or groups
+- **Roles**: for EC2 instances or AWS services
+- **Security**: MFA + Password Policy
+- **AWS CLI**: manage your AWS services using the command-line
+- **AWS SDK**: manage your AWS services using a programming language
+- **Access Keys**: access AWS using the CLI or SDK
+- **Audit**: IAM Credential Reports & IAM Access Advisor
