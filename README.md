@@ -1,5 +1,71 @@
 # Aws overview <!-- omit in toc -->
-
+- [1. Traditionally, how to build infrastructure](#1-traditionally-how-to-build-infrastructure)
+  - [1.1. How websites work](#11-how-websites-work)
+  - [1.2. What is a server composed of?](#12-what-is-a-server-composed-of)
+  - [1.3. IT Terminology](#13-it-terminology)
+  - [1.4. Problems with traditional IT approach](#14-problems-with-traditional-it-approach)
+- [2. What is Cloud Computing?](#2-what-is-cloud-computing)
+  - [2.1. You’ve been using some Cloud services](#21-youve-been-using-some-cloud-services)
+  - [2.2. The Deployment Models of the Cloud](#22-the-deployment-models-of-the-cloud)
+    - [2.2.1. Private Cloud:](#221-private-cloud)
+    - [2.2.2. Public Cloud:](#222-public-cloud)
+    - [2.2.3. Hybrid Cloud:](#223-hybrid-cloud)
+  - [2.3. The Five Characteristics of Cloud Computing](#23-the-five-characteristics-of-cloud-computing)
+  - [2.4. Six Advantages of Cloud Computing](#24-six-advantages-of-cloud-computing)
+  - [2.5. Problems solved by the Cloud](#25-problems-solved-by-the-cloud)
+  - [2.6. Types of Cloud Computing](#26-types-of-cloud-computing)
+  - [2.7. Example of Cloud Computing Types](#27-example-of-cloud-computing-types)
+  - [2.8. Pricing of the Cloud – Quick Overview](#28-pricing-of-the-cloud--quick-overview)
+  - [2.9. AWS Global Infrastructure](#29-aws-global-infrastructure)
+  - [2.10. AWS Regions](#210-aws-regions)
+  - [2.11. How to choose an AWS Region?](#211-how-to-choose-an-aws-region)
+  - [2.12. AWS Availability Zones](#212-aws-availability-zones)
+  - [2.13. AWS Points of Presence (Edge Locations)](#213-aws-points-of-presence-edge-locations)
+  - [2.14. Tour of the AWS Console](#214-tour-of-the-aws-console)
+  - [2.15. Shared Responsibility Model diagram](#215-shared-responsibility-model-diagram)
+  - [2.16. AWS Acceptable Use Policy](#216-aws-acceptable-use-policy)
+- [3. IAM - Identity and Access Management](#3-iam---identity-and-access-management)
+  - [3.1. IAM: Users & Groups](#31-iam-users--groups)
+  - [3.2. IAM: Permissions](#32-iam-permissions)
+  - [3.3. IAM: Policies Structure](#33-iam-policies-structure)
+  - [3.4. IAM – Password Policy](#34-iam--password-policy)
+  - [3.5. Multi Factor Authentication - MFA](#35-multi-factor-authentication---mfa)
+  - [3.6. MFA devices options in AWS](#36-mfa-devices-options-in-aws)
+  - [3.7. How can users access AWS ?](#37-how-can-users-access-aws-)
+  - [3.8. What’s the AWS CLI?](#38-whats-the-aws-cli)
+  - [3.9. What’s the AWS SDK?](#39-whats-the-aws-sdk)
+  - [3.10. IAM Roles for Services](#310-iam-roles-for-services)
+  - [3.11. IAM Security Tools](#311-iam-security-tools)
+  - [3.12. IAM Guidelines & Best Practices](#312-iam-guidelines--best-practices)
+  - [3.13. Shared Responsibility Model for IAM](#313-shared-responsibility-model-for-iam)
+  - [3.14. IAM Section – Summary](#314-iam-section--summary)
+- [4. EC2 - Elastic Compute Cloud](#4-ec2---elastic-compute-cloud)
+  - [4.1. Amazon EC2](#41-amazon-ec2)
+  - [4.2. EC2 sizing & configuration options](#42-ec2-sizing--configuration-options)
+  - [4.3. EC2 User Data](#43-ec2-user-data)
+  - [4.4. EC2 Instance Types - Overview](#44-ec2-instance-types---overview)
+  - [4.5. EC2 Instance Types](#45-ec2-instance-types)
+    - [4.5.1. General Purpose](#451-general-purpose)
+    - [4.5.2. Compute Optimized](#452-compute-optimized)
+    - [4.5.3. Memory Optimized](#453-memory-optimized)
+    - [4.5.4. Storage Optimized](#454-storage-optimized)
+  - [4.6. EC2 Instance Types: example](#46-ec2-instance-types-example)
+  - [4.7. Introduction to Security Groups](#47-introduction-to-security-groups)
+  - [4.8. Security Groups Deeper Dive](#48-security-groups-deeper-dive)
+  - [4.9. Security Groups Good to know](#49-security-groups-good-to-know)
+  - [4.10. Classic Ports to know](#410-classic-ports-to-know)
+  - [4.11. How to SSH into your EC2 Instance](#411-how-to-ssh-into-your-ec2-instance)
+  - [4.12. EC2 Instance Connect](#412-ec2-instance-connect)
+  - [4.13. EC2 Instances Purchasing Options](#413-ec2-instances-purchasing-options)
+    - [4.13.1. EC2 On Demand](#4131-ec2-on-demand)
+    - [4.13.2. EC2 Reserved Instances](#4132-ec2-reserved-instances)
+    - [4.13.3. EC2 Spot Instances](#4133-ec2-spot-instances)
+    - [4.13.4. EC2 Dedicated Hosts](#4134-ec2-dedicated-hosts)
+    - [4.13.5. EC2 Dedicated Instances](#4135-ec2-dedicated-instances)
+  - [4.14. Which purchasing option is right for me? (correlation with Hotel)](#414-which-purchasing-option-is-right-for-me-correlation-with-hotel)
+  - [4.15. Shared Responsibility Model for EC2](#415-shared-responsibility-model-for-ec2)
+  - [4.16. EC2 Section – Summary](#416-ec2-section--summary)
+- [5. EC2 Instance Storage](#5-ec2-instance-storage)
 ## Contents <!-- omit in toc -->
 
 - [1. Traditionally, how to build infrastructure](#1-traditionally-how-to-build-infrastructure)
@@ -52,7 +118,23 @@
     - [4.5.2. Compute Optimized](#452-compute-optimized)
     - [4.5.3. Memory Optimized](#453-memory-optimized)
     - [4.5.4. Storage Optimized](#454-storage-optimized)
-  - [EC2 Instance Types: example](#ec2-instance-types-example)
+  - [4.6. EC2 Instance Types: example](#46-ec2-instance-types-example)
+  - [4.7. Introduction to Security Groups](#47-introduction-to-security-groups)
+  - [4.8. Security Groups Deeper Dive](#48-security-groups-deeper-dive)
+  - [4.9. Security Groups Good to know](#49-security-groups-good-to-know)
+  - [4.10. Classic Ports to know](#410-classic-ports-to-know)
+  - [4.11. How to SSH into your EC2 Instance](#411-how-to-ssh-into-your-ec2-instance)
+  - [4.12. EC2 Instance Connect](#412-ec2-instance-connect)
+  - [4.13. EC2 Instances Purchasing Options](#413-ec2-instances-purchasing-options)
+    - [4.13.1. EC2 On Demand](#4131-ec2-on-demand)
+    - [4.13.2. EC2 Reserved Instances](#4132-ec2-reserved-instances)
+    - [4.13.3. EC2 Spot Instances](#4133-ec2-spot-instances)
+    - [4.13.4. EC2 Dedicated Hosts](#4134-ec2-dedicated-hosts)
+    - [4.13.5. EC2 Dedicated Instances](#4135-ec2-dedicated-instances)
+  - [4.14. Which purchasing option is right for me? (correlation with Hotel)](#414-which-purchasing-option-is-right-for-me-correlation-with-hotel)
+  - [4.15. Shared Responsibility Model for EC2](#415-shared-responsibility-model-for-ec2)
+  - [4.16. EC2 Section – Summary](#416-ec2-section--summary)
+- [5. EC2 Instance Storage](#5-ec2-instance-storage)
 
 ## 1. Traditionally, how to build infrastructure
 
@@ -508,7 +590,7 @@
 - Data warehousing applications
 - Distributed file systems
 
-### EC2 Instance Types: example
+### 4.6. EC2 Instance Types: example
 
 | Instance    | vCPU | Mem (GiB) | Storage          | Network performance | EBS Banwidth () |
 | ----------- | ---- | --------- | ---------------- | ------------------- | --------------- |
@@ -519,3 +601,151 @@
 | m5.8xlarge  | 32   | 128       | EBS-Only         | 10 Gbps             | 6,800           |
 
 - t2.micro is part of the AWS free tier (up to 750 hours per month)
+
+### 4.7. Introduction to Security Groups
+
+- Security Groups are the fundamental of network security in AWS
+- They control how traffic is allowed into or out of our EC2 Instances.
+- Security groups only contain **allow** rules
+- Security groups rules can reference by IP or by security group
+
+### 4.8. Security Groups Deeper Dive
+
+- Security groups are acting as a “firewall” on EC2 instances
+- They regulate:
+  - Access to Ports
+  - Authorised IP ranges IPv4 and IPv6
+  - Control of inbound network (from other to the instance)
+  - Control of outbound network (from the instance to other)
+
+### 4.9. Security Groups Good to know
+
+- Can be attached to multiple instances
+- Locked down to a region / VPC combination
+- Does live “outside” the EC2 – if traffic is blocked the EC2 instance won’t see it
+- It's good to maintain one separate security group for SSH access
+- If your application is not accessible (time out), then it's a security group issue
+- If your application gives a “connection refused“ error, then it’s an application error or it’s not launched
+- All inbound traffic is **blocked** by default
+- All outbound traffic is **authorised** by default
+
+### 4.10. Classic Ports to know
+
+- 22 = SSH (Secure Shell) - log into a Linux instance
+- 21 = FTP (File Transfer Protocol) – upload files into a file share
+- 22 = SFTP (Secure File Transfer Protocol) – upload files using SSH
+- 80 = HTTP – access unsecured websites
+- 443 = HTTPS – access secured websites
+- 3389 = RDP (Remote Desktop Protocol) – log into a Windows instance
+
+### 4.11. How to SSH into your EC2 Instance
+
+- Windows
+- We’ll learn how to SSH into your EC2 instance using Windows
+- Configure pem file
+  ![Permission Propertie Aws PemFile](/Images/PermissionPropertieAwsPemFile.png)
+- Command
+  - ssh -i D:\MY_PENFILE.pem ec2-user@PUBLIC_IP
+
+### 4.12. EC2 Instance Connect
+
+- Connect to your EC2 instance within your browser
+- No need to use your key file that was downloaded
+- The "magic" is that a temporary key is uploaded onto EC2 by AWS
+- **Works only out-of-the-box with Amazon Linux 2**
+- Need to make sure the port 22 is still opened!
+
+### 4.13. EC2 Instances Purchasing Options
+
+- On-Demand Instances: short workload, predictable pricing
+- Reserved: (MINIMUM 1 year)
+  - Reserved Instances: long workloads
+  - Convertible Reserved Instances: long workloads with flexible instances
+  - Scheduled Reserved Instances: example – every Thursday between 3 and 6 pm
+- Spot Instances: short workloads, cheap, can lose instances (less reliable)
+- Dedicated Hosts: book an entire physical server, control instance placement
+- Dedicated Instances: no other customers will share your hardware
+
+#### 4.13.1. EC2 On Demand
+
+- Pay for what you use:
+  - Linux or Windows - billing per second, after the first minute
+  - All other operating systems - billing per hour
+- Has the highest cost but no upfront payment
+- No long-term commitment
+- Recommended for **short-term** and **un-interrupted workloads**, where you can't predict how the application will behave
+
+#### 4.13.2. EC2 Reserved Instances
+
+- Up to 72% discount compared to On-demand
+- Reservation period: 1 year = + discount | 3 years = +++ discount
+- Purchasing options: no upfront | partial upfront = + | All upfront = ++ discount
+- Reserve a specific instance type
+- Recommended for steady-state usage applications (think database)
+- Convertible Reserved Instance
+  - Can change the EC2 instance type
+  - Up to 45% discount
+- Scheduled Reserved Instances
+  - Launch within time window you reserve
+  - When you require a fraction of day / week / month
+  - Commitment for 1 year only
+
+#### 4.13.3. EC2 Spot Instances
+
+- Can get a discount of up to 90% compared to On-demand
+- Instances that you can “lose” at any point of time if your max price is less than the
+  current spot price
+- The MOST cost-efficient instances in AWS
+- Useful for workloads that are resilient to failure
+  - Batch jobs
+  - Data analysis
+  - Image processing
+  - Any distributed workloads
+  - Workloads with a flexible start and end time
+- Not suitable for critical jobs or databases
+
+#### 4.13.4. EC2 Dedicated Hosts
+
+- An Amazon EC2 Dedicated Host is a physical server with EC2 instance capacity fully dedicated to your use. Dedicated Hosts can help you address compliance requirements and reduce costs by allowing you to use your existing server-bound software licenses.
+- Allocated for your account for a 3-year period reservation
+- More expensive
+- Useful for software that have complicated licensing model (BYOL – Bring Your Own License)
+- Or for companies that have strong regulatory or compliance needs
+
+#### 4.13.5. EC2 Dedicated Instances
+
+- Instances running on hardware that’s dedicated to you
+- May share hardware with other instances in same account
+- No control over instance placement (can move hardware after Stop / Start)
+
+### 4.14. Which purchasing option is right for me? (correlation with Hotel)
+
+- On demand: coming and staying in resort whenever we like, we pay the full price
+- Reserved: like planning ahead and if we plan to stay for a long time, we may get a good discount.
+- Spot instances: the hotel allows people to bid for the empty rooms and the highest bidder keeps the rooms. You can get kicked out at any time
+- Dedicated Hosts: We book an entire building of the resort
+
+### 4.15. Shared Responsibility Model for EC2
+
+- AWS:
+  - Infrastructure (global network security)
+  - Isolation on physical hosts
+  - Replacing faulty hardware
+  - Compliance validation
+- You:
+  - Security Groups rules
+  - Operating-system patches and updates
+  - Software and utilities installed on the EC2 instance
+  - IAM Roles assigned to EC2 & IAM user access management
+  - Data security on your instance
+
+### 4.16. EC2 Section – Summary
+
+- EC2 Instance: AMI (OS) + Instance Size (CPU + RAM) + Storage + security groups + EC2 User Data
+- Security Groups: Firewall attached to the EC2 instance
+- EC2 User Data: Script launched at the first start of an instance
+- SSH: start a terminal into our EC2 Instances (port 22)
+- EC2 Instance Role: link to IAM roles
+- Purchasing Options: On-Demand, Spot, Reserved (Standard + Convertible + Scheduled), Dedicated Host, Dedicated Instance
+
+## 5. EC2 Instance Storage
