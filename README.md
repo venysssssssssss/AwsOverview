@@ -8,7 +8,7 @@
   - [1.3. IT Terminology](#13-it-terminology)
   - [1.4. Problems with traditional IT approach](#14-problems-with-traditional-it-approach)
 - [2. What is Cloud Computing?](#2-what-is-cloud-computing)
-  - [2.1. You’ve been using some Cloud services](#21-youve-been-using-some-cloud-services)
+  - [2.1. You've been using some Cloud services](#21-youve-been-using-some-cloud-services)
   - [2.2. The Deployment Models of the Cloud](#22-the-deployment-models-of-the-cloud)
     - [2.2.1. Private Cloud:](#221-private-cloud)
     - [2.2.2. Public Cloud:](#222-public-cloud)
@@ -35,8 +35,8 @@
   - [3.5. Multi Factor Authentication - MFA](#35-multi-factor-authentication---mfa)
   - [3.6. MFA devices options in AWS](#36-mfa-devices-options-in-aws)
   - [3.7. How can users access AWS ?](#37-how-can-users-access-aws-)
-  - [3.8. What’s the AWS CLI?](#38-whats-the-aws-cli)
-  - [3.9. What’s the AWS SDK?](#39-whats-the-aws-sdk)
+  - [3.8. What's the AWS CLI?](#38-whats-the-aws-cli)
+  - [3.9. What's the AWS SDK?](#39-whats-the-aws-sdk)
   - [3.10. IAM Roles for Services](#310-iam-roles-for-services)
   - [3.11. IAM Security Tools](#311-iam-security-tools)
   - [3.12. IAM Guidelines & Best Practices](#312-iam-guidelines--best-practices)
@@ -69,6 +69,22 @@
   - [4.15. Shared Responsibility Model for EC2](#415-shared-responsibility-model-for-ec2)
   - [4.16. EC2 Section – Summary](#416-ec2-section--summary)
 - [5. EC2 Instance Storage](#5-ec2-instance-storage)
+  - [5.1. What's an EBS Volume?](#51-whats-an-ebs-volume)
+  - [5.2. EBS Volume](#52-ebs-volume)
+  - [5.3. EBS – Delete on Termination attribute](#53-ebs--delete-on-termination-attribute)
+  - [5.4. EBS Snapshots](#54-ebs-snapshots)
+  - [5.5. AMI Overview](#55-ami-overview)
+  - [5.6. AMI Process (from an EC2 instance)](#56-ami-process-from-an-ec2-instance)
+  - [5.7. EC2 Image Builder](#57-ec2-image-builder)
+  - [5.8. EC2 Instance Store](#58-ec2-instance-store)
+  - [5.9. EFS – Elastic File System](#59-efs--elastic-file-system)
+  - [5.10. EFS Infrequent Access (EFS-IA)](#510-efs-infrequent-access-efs-ia)
+  - [5.11. Shared Responsibility Model for EC2 Storage](#511-shared-responsibility-model-for-ec2-storage)
+  - [5.12. Amazon FSx – Overview](#512-amazon-fsx--overview)
+    - [5.12.1. Amazon FSx for Windows File Server](#5121-amazon-fsx-for-windows-file-server)
+    - [5.12.2. Amazon FSx for Lustre](#5122-amazon-fsx-for-lustre)
+  - [5.13. EC2 Instance Storage Summary](#513-ec2-instance-storage-summary)
+- [6. Elastic Load Balancing & Auto Scaling Groups Section](#6-elastic-load-balancing--auto-scaling-groups-section)
 
 ## 1. Traditionally, how to build infrastructure
 
@@ -111,7 +127,7 @@
 - Simple way to access servers, storage, databases and a set of application services.
 - Amazon Web Services owns and maintains the network-connected hardware required for these application services, while you provision and use what you need via a web application.
 
-### 2.1. You’ve been using some Cloud services
+### 2.1. You've been using some Cloud services
 
 - Gmail
   - E-mail cloud service
@@ -160,7 +176,7 @@
 ### 2.4. Six Advantages of Cloud Computing
 
 - Trade capital expense (CAPEX) for operational expense (OPEX)
-  - Pay On-Demand: don’t own hardware
+  - Pay On-Demand: don't own hardware
   - Reduced Total Cost of Ownership (TCO) & Operational Expense (OPEX)
 - Benefit from massive economies of scale
   - Prices are reduced as AWS is more efficient due to large scale
@@ -235,7 +251,7 @@
 
 - **Compliance** with data governance and legal requirements: data never leaves a region without your explicit permission
 - **Proximity** to customers: reduced latency
-- **Available** services within a Region: new services and new features aren’t available in every Region
+- **Available** services within a Region: new services and new features aren't available in every Region
 - **Pricing**: pricing varies region to region and is transparent in the service pricing page
 
 ### 2.12. AWS Availability Zones
@@ -245,8 +261,8 @@
   - ap-southeast-2b
   - ap-southeast-2c
 - Each availability zone (AZ) is one or more discrete data centers with redundant power, networking, and connectivity
-- They’re separate from each other, so that they’re isolated from disasters
-- They’re connected with high bandwidth, ultra-low latency networking
+- They're separate from each other, so that they're isolated from disasters
+- They're connected with high bandwidth, ultra-low latency networking
 
 ### 2.13. AWS Points of Presence (Edge Locations)
 
@@ -286,16 +302,16 @@
 ### 3.1. IAM: Users & Groups
 
 - IAM = Identity and Access Management, **Global service**.
-- **Root account** created by default, shouldn’t be used or shared.
+- **Root account** created by default, shouldn't be used or shared.
 - **Users** are people within your organization, and can be grouped.
 - **Groups** only contain users, not other groups.
-- Users don’t have to belong to a group, and user can belong to multiple groups.
+- Users don't have to belong to a group, and user can belong to multiple groups.
 
 ### 3.2. IAM: Permissions
 
 - **Users or Groups** can be assigned JSON documents called policies.
 - These policies define the **permissions** of the users.
-- In AWS you apply the **least privilege** principle: don’t give more permissions than a user needs.
+- In AWS you apply the **least privilege** principle: don't give more permissions than a user needs.
 
 ### 3.3. IAM: Policies Structure
 
@@ -355,23 +371,23 @@
   - AWS Software Developer Kit (SDK) - for code: protected by access keys.
 - Access Keys are generated through the AWS Console.
 - Users manage their own access keys.
-- Access Keys are secret, just like a password. Don’t share them.
+- Access Keys are secret, just like a password. Don't share them.
 - Access Key ID ~= username.
 - Secret Access Key ~= password.
 - Example (Fake) Access Keys.
   - Access key ID: AKIASK4E37PV4983d6C.
   - Secret Access Key: AZPN3zojWozWCndIjhB0Unh8239a1bzbzO5fqqkZq.
-  - **Remember: don’t share your access keys.**
+  - **Remember: don't share your access keys.**
 
-### 3.8. What’s the AWS CLI?
+### 3.8. What's the AWS CLI?
 
 - A tool that enables you to interact with AWS services using commands in your command-line shell
 - Direct access to the public APIs of AWS services
 - You can develop scripts to manage your resources
-- It’s open-source https://github.com/aws/aws-cli
+- It's open-source https://github.com/aws/aws-cli
 - Alternative to using AWS Management Console
 
-### 3.9. What’s the AWS SDK?
+### 3.9. What's the AWS SDK?
 
 - AWS Software Development Kit (AWS SDK)
 - Language-specific APIs (set of libraries)
@@ -402,7 +418,7 @@
 
 ### 3.12. IAM Guidelines & Best Practices
 
-- Don’t use the root account except for AWS account setup
+- Don't use the root account except for AWS account setup
 - One physical user = One AWS user
 - **Assign users to groups** and assign permissions to groups
 - Create a **strong password policy**
@@ -441,7 +457,7 @@
 
 ### 4.1. Amazon EC2
 
-- EC2 is one of the most popular of AWS’ offering.
+- EC2 is one of the most popular of AWS' offering.
 - EC2 = Elastic Compute Cloud = Infrastructure as a Service.
 - It mainly consists in the capability of:
   - Renting virtual machines (EC2).
@@ -545,7 +561,7 @@
 
 ### 4.8. Security Groups Deeper Dive
 
-- Security groups are acting as a “firewall” on EC2 instances
+- Security groups are acting as a "firewall" on EC2 instances
 - They regulate:
   - Access to Ports
   - Authorised IP ranges IPv4 and IPv6
@@ -556,10 +572,10 @@
 
 - Can be attached to multiple instances
 - Locked down to a region / VPC combination
-- Does live “outside” the EC2 – if traffic is blocked the EC2 instance won’t see it
+- Does live "outside" the EC2 – if traffic is blocked the EC2 instance won't see it
 - It's good to maintain one separate security group for SSH access
 - If your application is not accessible (time out), then it's a security group issue
-- If your application gives a “connection refused“ error, then it’s an application error or it’s not launched
+- If your application gives a "connection refused" error, then it's an application error or it's not launched
 - All inbound traffic is **blocked** by default
 - All outbound traffic is **authorised** by default
 
@@ -575,7 +591,7 @@
 ### 4.11. How to SSH into your EC2 Instance
 
 - Windows
-- We’ll learn how to SSH into your EC2 instance using Windows
+- We'll learn how to SSH into your EC2 instance using Windows
 - Configure pem file
   ![Permission Propertie Aws PemFile](/Images/PermissionPropertieAwsPemFile.png)
 - Command
@@ -627,7 +643,7 @@
 #### 4.13.3. EC2 Spot Instances
 
 - Can get a discount of up to 90% compared to On-demand
-- Instances that you can “lose” at any point of time if your max price is less than the
+- Instances that you can "lose" at any point of time if your max price is less than the
   current spot price
 - The MOST cost-efficient instances in AWS
 - Useful for workloads that are resilient to failure
@@ -648,7 +664,7 @@
 
 #### 4.13.5. EC2 Dedicated Instances
 
-- Instances running on hardware that’s dedicated to you
+- Instances running on hardware that's dedicated to you
 - May share hardware with other instances in same account
 - No control over instance placement (can move hardware after Stop / Start)
 
@@ -670,16 +686,163 @@
   - Security Groups rules
   - Operating-system patches and updates
   - Software and utilities installed on the EC2 instance
-  - IAM Roles assigned to EC2 & IAM user access management
+  - IAM Roles assigned to EC2ASDASD\_\_& IAM user access management
   - Data security on your instance
 
 ### 4.16. EC2 Section – Summary
 
-- EC2 Instance: AMI (OS) + Instance Size (CPU + RAM) + Storage + security groups + EC2 User Data
-- Security Groups: Firewall attached to the EC2 instance
-- EC2 User Data: Script launched at the first start of an instance
-- SSH: start a terminal into our EC2 Instances (port 22)
-- EC2 Instance Role: link to IAM roles
-- Purchasing Options: On-Demand, Spot, Reserved (Standard + Convertible + Scheduled), Dedicated Host, Dedicated Instance
+- EC2 Instance: AMI (OS) + Instance Size (CPU + RAM) + Storage + security groups + EC2 User Data.
+- Security Groups: Firewall attached to the EC2 instance.
+- EC2 User Data: Script launched at the first start of an instance.
+- SSH: start a terminal into our EC2 Instances (port 22).
+- EC2 Instance Role: link to IAM roles.
+- Purchasing Options: On-Demand, Spot, Reserved (Standard + Convertible + Scheduled), Dedicated Host, Dedicated Instance.
 
 ## 5. EC2 Instance Storage
+
+### 5.1. What's an EBS Volume?
+
+- An **EBS (Elastic Block Store) Volume** is a **network drive** you can attach to your instances while they run.
+- It allows your instances to persist data, even after their termination.
+- **They can only be mounted to one instance at a time (at the CCP level)**.
+- They are bound to a specific **availability zone (AZ)**.
+- Analogy: Think of them as a "network USB stick".
+
+### 5.2. EBS Volume
+
+- It's a network drive (i.e. not a physical drive).
+  - It uses the network to communicate the instance, which means there might be a bit of latency.
+  - It can be detached from an EC2 instance and attached to another one quickly.
+- It's locked to an Availability Zone (AZ).
+  - An EBS Volume in us-east-1a cannot be attached to us-east-1b.
+  - To move a volume across, you first need to **snapshot** it.
+- Have a provisioned capacity (size in GBs, and IOPS).
+  - You get billed for all the provisioned capacity.
+  - You can increase the capacity of the drive over time.
+
+### 5.3. EBS – Delete on Termination attribute
+
+- Controls the EBS behaviour when an EC2 instance terminates
+  - By default, the root EBS volume is deleted (attribute enabled)
+  - By default, any other attached EBS volume is not deleted (attribute disabled)
+- This can be controlled by the AWS console / AWS CLI
+- **Use case: preserve root volume when instance is terminated**
+
+### 5.4. EBS Snapshots
+
+- Make a backup (snapshot) of your EBS volume at a point in time.
+- Not necessary to detach volume to do snapshot, **but recommended**.
+- Can copy snapshots across AZ or Region.
+
+### 5.5. AMI Overview
+
+- AMI = Amazon Machine Image.
+- AMI are a **customization** of an EC2 instance.
+  - You add your own software, configuration, operating system, monitoring...
+  - Faster boot / configuration time because all your software is pre-packaged
+- AMI are built for a **specific region** (and can be copied across regions).
+- You can launch EC2 instances from:
+  - A Public AMI: AWS provided
+  - Your own AMI: you make and maintain them yourself
+  - An AWS Marketplace AMI: an AMI someone else made (and potentially sells)
+
+### 5.6. AMI Process (from an EC2 instance)
+
+- Start an EC2 instance and customize it.
+- Stop the instance (for data integrity).
+- Build an AMI – this will also create EBS snapshots.
+- Launch instances from other AMIs.
+
+### 5.7. EC2 Image Builder
+
+- Used to automate the creation of Virtual Machines or container images.
+- => Automate the creation, maintain, validate and test **EC2 AMIs**.
+- Can be run on a schedule (weekly, whenever packages are updated, etc...).
+- Free service (only pay for the underlying resources).
+- Steps:
+  1. EC2 Image Builder
+     1. Create
+  2. Builder EC2 Instance
+     1. Create
+  3. New AMI
+  4. Test EC2 Instance
+
+### 5.8. EC2 Instance Store
+
+- EBS volumes are **network drives** with good but "limited" performance.
+- **If you need a high-performance hardware disk, use EC2 Instance Store**.
+- Better I/O performance.
+- EC2 Instance Store lose their storage if they're stopped (ephemeral).
+- Good for buffer / cache / scratch data / temporary content.
+- Risk of data loss if hardware fails.
+- Backups and Replication are your responsibility.
+
+### 5.9. EFS – Elastic File System
+
+- Managed NFS (network file system) that **can be mounted on 100s of EC2**.
+- EFS works with **Linux** EC2 instances in **multi-AZ**.
+- Highly available, scalable, expensive (3x gp2), pay per use, no capacity planning.
+
+### 5.10. EFS Infrequent Access (EFS-IA)
+
+- **Storage class** that is cost-optimized for files not accessed every day.
+- Up to 92% lower cost compared to EFS Standard.
+- EFS will automatically move your files to EFS-IA based on the last time they were accessed.
+- Enable EFS-IA with a Lifecycle Policy.
+- Example: move files that are not accessed for 60 days to EFS-IA.
+- Transparent to the applications accessing EFS.
+
+### 5.11. Shared Responsibility Model for EC2 Storage
+
+- AWS
+  - Infrastructure.
+  - Replication for data for EBS volumes & EFS drives.
+  - Replacing faulty hardware.
+  - Ensuring their employees cannot access your data.
+- You
+  - Setting up backup / snapshot procedures.
+  - Setting up data encryption.
+  - Responsibility of any data on the drives.
+  - Understanding the risk of using EC2 Instance Store.
+
+### 5.12. Amazon FSx – Overview
+
+- Launch 3rd party high-performance file systems on AWS.
+- Fully managed service.
+- Products:
+  - FSx for Lustre
+  - FSx for Windows File Server
+  - FSx for NetApp ONTAP
+
+#### 5.12.1. Amazon FSx for Windows File Server
+
+- A fully managed, highly reliable, and scalable Windows native shared file system.
+- Built on Windows File Server.
+- Supports SMB protocol & Windows NTFS.
+- Integrated with Microsoft Active Directory.
+- Can be accessed from AWS or your on-premise infrastructure.
+
+#### 5.12.2. Amazon FSx for Lustre
+
+- A fully managed, high-performance, scalable file storage for **High Performance Computing (HPC)**.
+- The name Lustre is derived from "Linux" and "cluster".
+- Machine Learning, Analytics, Video Processing, Financial Modeling, ...
+- Scales up to 100s GB/s, millions of IOPS, sub-ms latencies.
+
+### 5.13. EC2 Instance Storage Summary
+
+- EBS volumes:
+  - Network drives attached to one EC2 instance at a time
+  - Mapped to an Availability Zones
+  - Can use EBS Snapshots for backups / transferring EBS volumes across AZ
+- AMI: create ready-to-use EC2 instances with our customizations
+- EC2 Image Builder: automatically build, test and distribute AMIs
+- EC2 Instance Store:
+  - High performance hardware disk attached to our EC2 instance
+  - Lost if our instance is stopped / terminated
+- EFS: network file system, can be attached to 100s of instances in a region
+- EFS-IA: cost-optimized storage class for infrequent accessed files
+- FSx for Windows: Network File System for Windows servers
+- FSx for Lustre: High Performance Computing Linux file system
+
+## 6. Elastic Load Balancing & Auto Scaling Groups Section
