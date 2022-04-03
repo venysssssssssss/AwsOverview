@@ -41,7 +41,7 @@
   - [3.11. IAM Security Tools](#311-iam-security-tools)
   - [3.12. IAM Guidelines & Best Practices](#312-iam-guidelines--best-practices)
   - [3.13. Shared Responsibility Model for IAM](#313-shared-responsibility-model-for-iam)
-  - [3.14. IAM Section – Summary](#314-iam-section--summary)
+  - [3.14. IAM – Summary](#314-iam--summary)
 - [4. EC2 - Elastic Compute Cloud](#4-ec2---elastic-compute-cloud)
   - [4.1. Amazon EC2](#41-amazon-ec2)
   - [4.2. EC2 sizing & configuration options](#42-ec2-sizing--configuration-options)
@@ -67,7 +67,7 @@
     - [4.13.5. EC2 Dedicated Instances](#4135-ec2-dedicated-instances)
   - [4.14. Which purchasing option is right for me? (correlation with Hotel)](#414-which-purchasing-option-is-right-for-me-correlation-with-hotel)
   - [4.15. Shared Responsibility Model for EC2](#415-shared-responsibility-model-for-ec2)
-  - [4.16. EC2 Section – Summary](#416-ec2-section--summary)
+  - [4.16. EC2 – Summary](#416-ec2--summary)
 - [5. EC2 Instance Storage](#5-ec2-instance-storage)
   - [5.1. What's an EBS Volume?](#51-whats-an-ebs-volume)
   - [5.2. EBS Volume](#52-ebs-volume)
@@ -84,7 +84,7 @@
     - [5.12.1. Amazon FSx for Windows File Server](#5121-amazon-fsx-for-windows-file-server)
     - [5.12.2. Amazon FSx for Lustre](#5122-amazon-fsx-for-lustre)
   - [5.13. EC2 Instance Storage Summary](#513-ec2-instance-storage-summary)
-- [6. Elastic Load Balancing & Auto Scaling Groups Section](#6-elastic-load-balancing--auto-scaling-groups-section)
+- [6. Elastic Load Balancing & Auto Scaling Groups](#6-elastic-load-balancing--auto-scaling-groups)
   - [6.1. Scalability & High Availability](#61-scalability--high-availability)
     - [6.1.1. Vertical Scalability](#611-vertical-scalability)
     - [6.1.2. Horizontal Scalability](#612-horizontal-scalability)
@@ -94,10 +94,47 @@
   - [6.5. What is load balancing?](#65-what-is-load-balancing)
   - [6.6. Why use a load balancer?](#66-why-use-a-load-balancer)
   - [6.7. Why use an Elastic Load Balancer (ELB)?](#67-why-use-an-elastic-load-balancer-elb)
-  - [6.8. What’s an Auto Scaling Group?](#68-whats-an-auto-scaling-group)
+  - [6.8. What's an Auto Scaling Group?](#68-whats-an-auto-scaling-group)
   - [6.9. Auto Scaling Groups – Scaling Strategies](#69-auto-scaling-groups--scaling-strategies)
   - [6.10. ELB & ASG – Summary](#610-elb--asg--summary)
-- [7. Amazon S3 Section](#7-amazon-s3-section)
+- [7. Amazon S3](#7-amazon-s3)
+- [8. Introduction](#8-introduction)
+- [9. S3 Use cases](#9-s3-use-cases)
+- [10. Amazon S3 Overview](#10-amazon-s3-overview)
+  - [10.1. Buckets](#101-buckets)
+  - [10.2. Objects](#102-objects)
+- [11. S3 Security](#11-s3-security)
+  - [11.1. S3 Bucket Policies](#111-s3-bucket-policies)
+  - [11.2. Bucket settings for Block Public Access](#112-bucket-settings-for-block-public-access)
+  - [11.3. S3 Websites](#113-s3-websites)
+  - [11.4. Amazon S3 - Versioning](#114-amazon-s3---versioning)
+  - [11.5. S3 Access Logs](#115-s3-access-logs)
+  - [11.6. S3 Replication (CRR & SRR)](#116-s3-replication-crr--srr)
+  - [11.7. S3 Storage Classes](#117-s3-storage-classes)
+  - [11.8. S3 Durability and Availability](#118-s3-durability-and-availability)
+  - [11.9. S3 Standard – General Purposes](#119-s3-standard--general-purposes)
+  - [11.10. S3 Standard – Infrequent Access (IA)](#1110-s3-standard--infrequent-access-ia)
+  - [11.11. S3 Intelligent-Tiering](#1111-s3-intelligent-tiering)
+  - [11.12. S3 One Zone - Infrequent Access (IA)](#1112-s3-one-zone---infrequent-access-ia)
+  - [11.13. Amazon Glacier & Glacier Deep Archive](#1113-amazon-glacier--glacier-deep-archive)
+  - [11.14. S3 Storage Classes Comparison](#1114-s3-storage-classes-comparison)
+  - [11.15. Moving between storage classes](#1115-moving-between-storage-classes)
+  - [11.16. S3 Object Lock & Glacier Vault Lock](#1116-s3-object-lock--glacier-vault-lock)
+  - [11.17. S3 Encryption](#1117-s3-encryption)
+  - [11.18. Shared Responsibility Model for S3](#1118-shared-responsibility-model-for-s3)
+  - [11.19. AWS Snow Family](#1119-aws-snow-family)
+  - [11.20. Data Migrations with AWS Snow Family](#1120-data-migrations-with-aws-snow-family)
+  - [11.21. Snowball Edge (for data transfers)](#1121-snowball-edge-for-data-transfers)
+  - [11.22. AWS Snowcone](#1122-aws-snowcone)
+  - [11.23. AWS Snowmobile](#1123-aws-snowmobile)
+  - [11.24. Snow Family – Usage Process](#1124-snow-family--usage-process)
+  - [11.25. What is Edge Computing?](#1125-what-is-edge-computing)
+  - [11.26. Snow Family – Edge Computing](#1126-snow-family--edge-computing)
+  - [11.27. AWS OpsHub](#1127-aws-opshub)
+  - [11.28. Hybrid Cloud for Storage](#1128-hybrid-cloud-for-storage)
+  - [11.29. AWS Storage Gateway](#1129-aws-storage-gateway)
+  - [11.30. Amazon S3 – Summary](#1130-amazon-s3--summary)
+- [12. Databases Section](#12-databases-section)
 
 ## 1. Traditionally, how to build infrastructure
 
@@ -454,7 +491,7 @@
   - Use IAM tools to apply appropriate permissions
   - Analyze access patterns & review permissions
 
-### 3.14. IAM Section – Summary
+### 3.14. IAM – Summary
 
 - **Users**: mapped to a physical user, has a password for AWS Console
 - **Groups**: contains users only
@@ -702,7 +739,7 @@
   - IAM Roles assigned to EC2ASDASD\_\_& IAM user access management
   - Data security on your instance
 
-### 4.16. EC2 Section – Summary
+### 4.16. EC2 – Summary
 
 - EC2 Instance: AMI (OS) + Instance Size (CPU + RAM) + Storage + security groups + EC2 User Data.
 - Security Groups: Firewall attached to the EC2 instance.
@@ -858,7 +895,7 @@
 - FSx for Windows: Network File System for Windows servers
 - FSx for Lustre: High Performance Computing Linux file system
 
-## 6. Elastic Load Balancing & Auto Scaling Groups Section
+## 6. Elastic Load Balancing & Auto Scaling Groups
 
 ### 6.1. Scalability & High Availability
 
@@ -870,18 +907,18 @@
 
 #### 6.1.1. Vertical Scalability
 
-- Let’s deep dive into the distinction, using a call center as an example.
+- Let's deep dive into the distinction, using a call center as an example.
 - Vertical Scalability means increasing the size of the instance.
 - For example, your application runs on a t2.micro.
 - Scaling that application vertically means running it on a t2.large.
 - Vertical scalability is very common for non distributed systems, such as a database.
-- There’s usually a limit to how much you can vertically scale (hardware limit).
+- There's usually a limit to how much you can vertically scale (hardware limit).
 
 #### 6.1.2. Horizontal Scalability
 
 - Horizontal Scalability means increasing the number of instances / systems for your application.
 - Horizontal scaling implies distributed systems. - This is very common for web applications / modern applications.
-- It’s easy to horizontally scale thanks the cloud offerings such as Amazon EC2.
+- It's easy to horizontally scale thanks the cloud offerings such as Amazon EC2.
 
 ### 6.2. High Availability
 
@@ -904,7 +941,7 @@
 ### 6.4. Scalability vs Elasticity (vs Agility)
 
 - Scalability: ability to accommodate a larger load by making the hardware stronger (scale up), or by adding nodes (scale out).
-- Elasticity: once a system is scalable, elasticity means that there will be some “auto-scaling” so that the system can scale based on the load. This is “cloud-friendly”: pay-per-use, match demand, optimize costs.
+- Elasticity: once a system is scalable, elasticity means that there will be some "auto-scaling" so that the system can scale based on the load. This is "cloud-friendly": pay-per-use, match demand, optimize costs.
 - Agility: (not related to scalability - distractor) new IT resources are only a click away, which means that you reduce the time to make those resources available to your developers from weeks to just minutes.
 
 ### 6.5. What is load balancing?
@@ -933,7 +970,7 @@
   - Network Load Balancer (ultra-high performance, allows for TCP) – Layer 4
   - Classic Load Balancer (slowly retiring) – Layer 4 & 7
 
-### 6.8. What’s an Auto Scaling Group?
+### 6.8. What's an Auto Scaling Group?
 
 - In real-life, the load on your websites and application can change
 - In the cloud, you can create and get rid of servers very quickly
@@ -974,4 +1011,417 @@
   - Scale EC2 instances based on the demand on your system, replace unhealthy
   - Integrated with the ELB
 
-## 7. Amazon S3 Section
+## 7. Amazon S3
+
+## 8. Introduction
+
+- Amazon S3 is one of the main building blocks of AWS
+- It's advertised as "infinitely scaling" storage
+- Many websites use Amazon S3 as a backbone
+- Many AWS services use Amazon S3 as an integration as well
+- We'll have a step-by-step approach to S3
+
+## 9. S3 Use cases
+
+- Backup and storage
+- Disaster Recovery
+- Archive
+- Hybrid Cloud storage
+- Application hosting
+- Media hosting
+- Data lakes & big data analytics
+- Software delivery
+- Static website
+
+## 10. Amazon S3 Overview
+
+### 10.1. Buckets
+
+- Amazon S3 allows people to store objects (files) in "buckets" (directories)
+- Buckets must have a globally unique name (across all regions all accounts)
+- Buckets are defined at the region level
+- S3 looks like a global service but buckets are created in a region
+- Naming convention
+
+  - No uppercase
+  - No underscore
+  - 3-63 characters long
+  - Not an IP
+  - Must start with lowercase letter or number
+
+### 10.2. Objects
+
+- Objects (files) have a Key
+- The **key** is the **FULL** path:
+  - s3://my-bucket/my_file.txt
+  - s3://my-bucket/my_folder1/another_folder/my_file.txt
+- The key is composed of prefix + object name
+  - s3://my-bucket/my_folder1/another_folder/my_file.txt
+- There's no concept of "directories" within buckets (although the UI will trick you to think otherwise)
+- Just keys with very long names that contain slashes ("/")
+- Object values are the content of the body:
+  - Max Object Size is 5TB (5000GB)
+  - If uploading more than 5GB, must use "multi-part upload"
+- **Metadata** (list of text key / value pairs – system or user metadata)
+- **Tags** (Unicode key / value pair – up to 10) – useful for security / lifecycle
+- Version ID (if versioning is enabled)
+
+## 11. S3 Security
+
+- User based
+  - IAM policies - which API calls should be allowed for a specific user from IAM console
+- Resource Based
+  - Bucket Policies - bucket wide rules from the S3 console - allows cross account
+  - Object Access Control List (ACL) – finer grain
+  - Bucket Access Control List (ACL) – less common
+- Note: an IAM principal can access an S3 object if
+  - The user IAM permissions allow it OR the resource policy ALLOWS it
+  - AND there's no explicit DENY
+- Encryption: encrypt objects in Amazon S3 using encryption keys
+
+### 11.1. S3 Bucket Policies
+
+- JSON based policies
+  - Resources: buckets and objects
+  - Actions: Set of API to Allow or Deny
+  - Effect: Allow / Deny
+  - Principal: The account or user to apply the policy to
+- Use S3 bucket for policy to:
+  - Grant public access to the bucket
+  - Force objects to be encrypted at upload
+  - Grant access to another account (Cross Account)
+
+```
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1648843736704",
+    "Statement": [
+        {
+            "Sid": "Stmt1648843733338",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::test-bucket-jefte-goes/*"
+        }
+    ]
+}
+```
+
+### 11.2. Bucket settings for Block Public Access
+
+![Settings for Block Public Access](/Images/EditBlockPublicAccess.PNG)
+
+- These settings were created to prevent company data leaks
+- If you know your bucket should never be public, leave these on
+- Can be set at the account level
+
+### 11.3. S3 Websites
+
+- S3 can host static websites and have them accessible on the www
+- The website URL will be:
+  - <bucket-name>.s3-website-<AWS-region>.amazonaws.com
+    - OR
+  - <bucket-name>.s3-website.<AWS-region>.amazonaws.com
+- If you get a 403 (Forbidden) error, make sure the bucket policy allows public reads!
+
+### 11.4. Amazon S3 - Versioning
+
+- You can version your files in Amazon S3
+- It is enabled at the **bucket level**
+- Same key overwrite will increment the "version": 1, 2, 3...
+- It is best practice to version your buckets
+  - Protect against unintended deletes (ability to restore a version)
+  - Easy roll back to previous version
+- Notes:
+  - Any file that is not versioned prior to enabling versioning will have version "null"
+  - Suspending versioning does not delete the previous versions
+
+### 11.5. S3 Access Logs
+
+- For audit purpose, you may want to log all access to S3 buckets
+- Any request made to S3, from any account, authorized or denied, will be logged into another S3 bucket
+- That data can be analyzed using data analysis tools…
+- Very helpful to come down to the root cause of an issue, or audit usage, view suspicious patterns, etc...
+
+### 11.6. S3 Replication (CRR & SRR)
+
+- Must enable versioning in source and destination
+- Cross Region Replication (CRR)
+- Same Region Replication (SRR)
+- Buckets can be in different accounts
+- Copying is asynchronous
+- Must give proper IAM permissions to S3
+- CRR - Use cases: compliance, lower latency access, replication across accounts
+- SRR – Use cases: log aggregation, live replication between production and test accounts
+
+### 11.7. S3 Storage Classes
+
+- Amazon S3 Standard - General Purpose
+- Amazon S3 Standard-Infrequent Access (IA)
+- Amazon S3 One Zone-Infrequent Access
+- Amazon S3 Intelligent Tiering
+- Amazon Glacier
+- Amazon Glacier Deep Archive
+- Amazon S3 Reduced Redundancy Storage (deprecated - omitted)
+
+### 11.8. S3 Durability and Availability
+
+- Durability:
+  - High durability (99.999999999%, 11 9's) of objects across multiple AZ
+  - If you store 10,000,000 objects with Amazon S3, you can on average expect to incur a loss of a single object once every 10,000 years
+  - Same for all storage classes
+- Availability:
+  - Measures how readily available a service is
+  - S3 standard has 99.99% availability, which means it will not be available 53 minutes a year
+  - Varies depending on storage class
+
+### 11.9. S3 Standard – General Purposes
+
+- 99.99% Availability
+- Used for frequently accessed data
+- Low latency and high throughput
+- Sustain 2 concurrent facility failures
+- Use Cases: Big Data analytics, mobile & gaming applications, content distribution...
+
+### 11.10. S3 Standard – Infrequent Access (IA)
+
+- Suitable for data that is less frequently accessed, but requires rapid access when needed
+- 99.9% Availability
+- Lower cost compared to Amazon S3 Standard, but retrieval fee
+- Sustain 2 concurrent facility failures
+- Use Cases: As a data store for disaster recovery, backups...
+
+### 11.11. S3 Intelligent-Tiering
+
+- 99.9% Availability
+- Same low latency and high throughput performance of S3 Standard
+- Cost-optimized by automatically moving objects between two access
+  tiers based on changing access patterns:
+  - Frequent access
+  - Infrequent access
+- Resilient against events that impact an entire Availability Zone
+
+### 11.12. S3 One Zone - Infrequent Access (IA)
+
+- Same as IA but data is stored in a single AZ
+- 99.5% Availability
+- Low latency and high throughput performance
+- Lower cost compared to S3-IA (by 20%)
+- Use Cases: Storing secondary backup copies of on-premise data, or storing data you can recreate
+
+### 11.13. Amazon Glacier & Glacier Deep Archive
+
+- Low cost object storage (in GB/month) meant for archiving / backup
+- Data is retained for the longer term (years)
+- Various retrieval options of time + fees for retrieval:
+- Amazon Glacier – cheap:
+  - Expedited (1 to 5 minutes)
+  - Standard (3 to 5 hours)
+  - Bulk (5 to 12 hours)
+- Amazon Glacier Deep Archive – cheapest:
+
+  - Standard (12 hours)
+  - Bulk (48 hours)
+
+### 11.14. S3 Storage Classes Comparison
+
+|                                    |      S3 Standard       | S3 Intelligent-Tiering\* |     S3 Standard-IA     |    S3 One Zone-IA†     | S3 Glacier Instant Retrieval | S3 Glacier Flexible Retrieval | S3 Glacier Deep Archive |
+| :--------------------------------: | :--------------------: | :----------------------: | :--------------------: | :--------------------: | :--------------------------: | :---------------------------: | :---------------------: |
+|      Designed for durability       | 99.999999999% (11 9’s) |  99.999999999% (11 9’s)  | 99.999999999% (11 9’s) | 99.999999999% (11 9’s) |    99.999999999% (11 9’s)    |    99.999999999% (11 9’s)     | 99.999999999% (11 9’s)  |
+|     Designed for availability      |         99.99%         |          99.9%           |         99.9%          |         99.5%          |            99.9%             |            99.99%             |         99.99%          |
+|          Availability SLA          |         99.9%          |           99%            |          99%           |          99%           |             99%              |             99.%              |          99.9%          |
+|         Availability Zones         |           ≥3           |            ≥3            |           ≥3           |           1            |              ≥3              |              ≥3               |           ≥3            |
+| Minimum capacity charge per object |          N/A           |           N/A            |         128 KB         |         128 KB         |            128 KB            |             40 KB             |          40 KB          |
+|  Minimum storage duration charge   |          N/A           |           N/A            |        30 days         |        30 days         |           90 days            |            90 days            |        180 days         |
+|          Retrieval charge          |          N/A           |           N/A            |    per GB retrieved    |    per GB retrieved    |       per GB retrieved       |       per GB retrieved        |    per GB retrieved     |
+|         First byte latency         |      milliseconds      |       milliseconds       |      milliseconds      |      milliseconds      |         milliseconds         |       minutes or hours        |          hours          |
+|            Storage type            |         Object         |          Object          |         Object         |         Object         |            Object            |            Object             |         Object          |
+|       Lifecycle transitions        |          Yes           |           Yes            |          Yes           |          Yes           |             Yes              |              Yes              |           Yes           |
+
+### 11.15. Moving between storage classes
+
+- You can transition objects between storage classes
+- For infrequently accessed object, move them to STANDARD_IA
+- For archive objects you don't need in real-time, GLACIER or DEEP_ARCHIVE
+- Moving objects can be automated using a **lifecycle configuration**
+
+### 11.16. S3 Object Lock & Glacier Vault Lock
+
+- S3 Object Lock
+  - Adopt a WORM (Write Once Read Many) model
+  - Block an object version deletion for a specified amount of time
+- Glacier Vault Lock
+  - Adopt a WORM (Write Once Read Many) model
+  - Lock the policy for future edits (can no longer be changed)
+  - Helpful for compliance and data retention
+
+### 11.17. S3 Encryption
+
+- Types:
+  - No Encryption
+  - Server-Side Encryption
+  - Client-Side Encryption
+
+### 11.18. Shared Responsibility Model for S3
+
+- Aws:
+  - Infrastructure (global security, durability, availability, sustain concurrent loss of data in two facilities)
+  - Configuration and vulnerability analysis
+  - Compliance validation
+- You:
+  - S3 Versioning
+  - S3 Bucket Policies
+  - S3 Replication Setup
+  - Logging and Monitoring
+  - S3 Storage Classes
+  - Data encryption at rest and in transit
+
+### 11.19. AWS Snow Family
+
+- Highly-secure, portable devices to collect and process data at the edge, and migrate data into and out of AWS
+  - Data migration:
+    - Snowcon
+    - Snowball Edge
+    - Snowmobile
+  - Edge computing:
+    - Snowcone
+    - Snowball Edge
+
+### 11.20. Data Migrations with AWS Snow Family
+
+- Challenges:
+
+  - Limited connectivity
+  - Limited bandwidth
+  - High network cost
+  - Shared bandwidth (can't maximize the line)
+  - Connection stability
+
+- Time to Transfer:
+
+|        | 100 Mbps | 1Gbps    | 10Gbps   |
+| ------ | -------- | -------- | -------- |
+| 10 TB  | 12 days  | 30 hours | 3 hours  |
+| 100 TB | 124 days | 12 days  | 30 hours |
+| 1 PB   | 3 years  | 124 days | 12 days  |
+
+- AWS Snow Family: offline devices to perform data migrations
+
+  - If it takes more than a week to transfer over the network, use Snowball devices!
+
+### 11.21. Snowball Edge (for data transfers)
+
+- Physical data transport solution: move TBs or PBs of data in or out of AWS
+- Alternative to moving data over the network (and paying network fees)
+- Pay per data transfer job
+- Provide block storage and Amazon S3-compatible object storage
+- Snowball Edge Storage Optimized
+  - 80 TB of HDD capacity for block volume and S3 compatible object storage
+- Snowball Edge Compute Optimized
+  - 42 TB of HDD capacity for block volume and S3 compatible object storage
+- Use cases: large data cloud migrations, DC decommission, disaster recovery
+
+### 11.22. AWS Snowcone
+
+- Small, portable computing, anywhere, rugged & secure, withstands harsh environments
+- Light (4.5 pounds, 2.1 kg)
+- Device used for edge computing, storage, and data transfer
+- 8 TBs of usable storage
+- Use Snowcone where Snowball does not fit (space-constrained environment)
+- Must provide your own battery / cables
+- Can be sent back to AWS offline, or connect it to internet and use AWS DataSync to send data
+
+### 11.23. AWS Snowmobile
+
+- Transfer exabytes of data (1 EB = 1,000 PB = 1,000,000 TBs)
+- Each Snowmobile has 100 PB of capacity (use multiple in parallel)
+- High security: temperature controlled, GPS, 24/7 video surveillance
+- Better than Snowball if you transfer more than 10 PB
+
+### 11.24. Snow Family – Usage Process
+
+1. Request Snowball devices from the AWS console for delivery
+2. Install the snowball client / AWS OpsHub on your servers
+3. Connect the snowball to your servers and copy files using the client
+4. Ship back the device when you're done (goes to the right AWS facility)
+5. Data will be loaded into an S3 bucket
+6. Snowball is completely wiped
+
+### 11.25. What is Edge Computing?
+
+- Process data while it's being created on an edge location
+  - A truck on the road, a ship on the sea, a mining station underground...
+- These locations may have
+  - Limited / no internet access
+  - Limited / no easy access to computing power
+- We setup a Snowball Edge / Snowcone device to do edge computing
+- Use cases of Edge Computing:
+  - Preprocess data
+  - Machine learning at the edge
+  - Transcoding media streams
+- Eventually (if need be) we can ship back the device to AWS (for transferring data for example)
+
+### 11.26. Snow Family – Edge Computing
+
+- Snowcone (smaller)
+  - 2 CPUs, 4 GB of memory, wired or wireless access
+  - USB-C power using a cord or the optional battery
+- Snowball Edge – Compute Optimized
+  - 52 vCPUs, 208 GiB of RAM
+  - Optional GPU (useful for video processing or machine learning)
+  - 42 TB usable storage
+- Snowball Edge – Storage Optimized
+  - Up to 40 vCPUs, 80 GiB of RAM
+  - Object storage clustering available
+- All: Can run EC2 Instances & AWS Lambda functions (using AWS IoT Greengrass)
+- Long-term deployment options: 1 and 3 years discounted pricing
+
+### 11.27. AWS OpsHub
+
+- Historically, to use Snow Family devices, you needed a CLI (Command Line Interface tool)
+- Today, you can use AWS OpsHub (a software you install on your computer / laptop) to manage your Snow Family Device
+  - Unlocking and configuring single or clustered devices
+  - Transferring files
+  - Launching and managing instances running on Snow Family Devices
+- Monitor device metrics (storage capacity, active instances on your device)
+- Launch compatible AWS services on your devices (ex: Amazon EC2 instances, AWS DataSync, Network File System (NFS))
+
+### 11.28. Hybrid Cloud for Storage
+
+- AWS is pushing for "hybrid cloud"
+  - Part of your infrastructure is on-premises
+  - Part of your infrastructure is on the cloud
+- This can be due to
+  - Long cloud migrations
+  - Security requirements
+  - Compliance requirements
+  - IT strategy
+- S3 is a proprietary storage technology (unlike EFS / NFS), so how do you expose the S3 data on-premise?
+- AWS Storage Gateway!
+
+### 11.29. AWS Storage Gateway
+
+- Bridge between on-premise data and cloud data in S3
+- Hybrid storage service to allow on- premises to seamlessly use the AWS Cloud
+- Use cases: disaster recovery, backup & restore, tiered storage
+- Types of Storage Gateway:
+  - File Gateway
+  - Volume Gateway
+  - Tape Gateway
+
+### 11.30. Amazon S3 – Summary
+
+- Buckets vs Objects: global unique name, tied to a region
+- S3 security: IAM policy, S3 Bucket Policy (public access), S3 Encryption
+- S3 Websites: host a static website on Amazon S3
+- S3 Versioning: multiple versions for files, prevent accidental deletes
+- S3 Access Logs: log requests made within your S3 bucket
+- S3 Replication: same-region or cross-region, must enable versioning
+- S3 Storage Classes: Standard, IA, 1Z-IA, Intelligent, Glacier, Glacier Deep Archive
+- S3 Lifecycle Rules: transition objects between classes
+- S3 Glacier Vault Lock / S3 Object Lock: WORM (Write Once Read Many)
+- Snow Family: import data onto S3 through a physical device, edge computing
+- OpsHub: desktop application to manage Snow Family devices
+- Storage Gateway: hybrid solution to extend on-premises storage to S3
+
+## 12. Databases Section
