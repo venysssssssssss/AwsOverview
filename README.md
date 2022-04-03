@@ -124,17 +124,68 @@
   - [11.18. Shared Responsibility Model for S3](#1118-shared-responsibility-model-for-s3)
   - [11.19. AWS Snow Family](#1119-aws-snow-family)
   - [11.20. Data Migrations with AWS Snow Family](#1120-data-migrations-with-aws-snow-family)
-  - [11.21. Snowball Edge (for data transfers)](#1121-snowball-edge-for-data-transfers)
-  - [11.22. AWS Snowcone](#1122-aws-snowcone)
-  - [11.23. AWS Snowmobile](#1123-aws-snowmobile)
-  - [11.24. Snow Family – Usage Process](#1124-snow-family--usage-process)
-  - [11.25. What is Edge Computing?](#1125-what-is-edge-computing)
-  - [11.26. Snow Family – Edge Computing](#1126-snow-family--edge-computing)
-  - [11.27. AWS OpsHub](#1127-aws-opshub)
-  - [11.28. Hybrid Cloud for Storage](#1128-hybrid-cloud-for-storage)
-  - [11.29. AWS Storage Gateway](#1129-aws-storage-gateway)
-  - [11.30. Amazon S3 – Summary](#1130-amazon-s3--summary)
-- [12. Databases Section](#12-databases-section)
+    - [11.20.1. AWS Snowcone](#11201-aws-snowcone)
+    - [11.20.2. Snowball Edge (for data transfers)](#11202-snowball-edge-for-data-transfers)
+    - [11.20.3. AWS Snowmobile](#11203-aws-snowmobile)
+  - [11.21. Snow Family – Usage Process](#1121-snow-family--usage-process)
+  - [11.22. What is Edge Computing?](#1122-what-is-edge-computing)
+  - [11.23. Snow Family – Edge Computing](#1123-snow-family--edge-computing)
+  - [11.24. AWS OpsHub](#1124-aws-opshub)
+  - [11.25. Hybrid Cloud for Storage](#1125-hybrid-cloud-for-storage)
+  - [11.26. AWS Storage Gateway](#1126-aws-storage-gateway)
+  - [11.27. Amazon S3 – Summary](#1127-amazon-s3--summary)
+- [12. Databases](#12-databases)
+  - [12.1. Introduction](#121-introduction)
+  - [12.2. Relational Databases](#122-relational-databases)
+  - [12.3. NoSQL Databases](#123-nosql-databases)
+  - [12.4. NoSQL data example: JSON](#124-nosql-data-example-json)
+  - [12.5. Databases & Shared Responsibility on AWS](#125-databases--shared-responsibility-on-aws)
+  - [12.6. AWS RDS Overview](#126-aws-rds-overview)
+  - [12.7. Advantage over using RDS versus deploying DB on EC2](#127-advantage-over-using-rds-versus-deploying-db-on-ec2)
+  - [12.8. Amazon Aurora](#128-amazon-aurora)
+  - [12.9. RDS Deployments: Read Replicas, Multi-AZ, Multi-Region](#129-rds-deployments-read-replicas-multi-az-multi-region)
+    - [12.9.1. Read Replicas](#1291-read-replicas)
+    - [12.9.2. Multi-AZ](#1292-multi-az)
+    - [12.9.3. Multi-Region](#1293-multi-region)
+    - [Resume](#resume)
+  - [12.10. Amazon ElastiCache Overview](#1210-amazon-elasticache-overview)
+  - [12.11. DynamoDB](#1211-dynamodb)
+    - [12.11.1. DynamoDB Accelerator - DAX](#12111-dynamodb-accelerator---dax)
+    - [12.11.2. DynamoDB – Global Tables](#12112-dynamodb--global-tables)
+  - [12.12. Redshift Overview](#1212-redshift-overview)
+  - [12.13. Amazon EMR](#1213-amazon-emr)
+  - [12.14. Amazon Athena](#1214-amazon-athena)
+  - [12.15. Amazon QuickSight](#1215-amazon-quicksight)
+  - [12.16. DocumentDB](#1216-documentdb)
+  - [12.17. Amazon Neptune](#1217-amazon-neptune)
+  - [12.18. Amazon QLDB](#1218-amazon-qldb)
+  - [12.19. Amazon Managed Blockchain](#1219-amazon-managed-blockchain)
+  - [12.20. AWS Glue](#1220-aws-glue)
+  - [12.21. DMS – Database Migration Service](#1221-dms--database-migration-service)
+  - [12.22. Databases & Analytics Summary in AWS](#1222-databases--analytics-summary-in-aws)
+- [ECS](#ecs)
+- [13. AWS related Abbreviations & Acronyms](#13-aws-related-abbreviations--acronyms)
+  - [13.1. A](#131-a)
+  - [13.2. B](#132-b)
+  - [13.3. C](#133-c)
+  - [13.4. D](#134-d)
+  - [13.5. E](#135-e)
+  - [13.6. F](#136-f)
+  - [13.7. H](#137-h)
+  - [13.8. I](#138-i)
+  - [13.9. J](#139-j)
+  - [13.10. K](#1310-k)
+  - [13.11. L](#1311-l)
+  - [13.12. M](#1312-m)
+  - [13.13. N](#1313-n)
+  - [13.14. O](#1314-o)
+  - [13.15. P](#1315-p)
+  - [13.16. Q](#1316-q)
+  - [13.17. R](#1317-r)
+  - [13.18. S](#1318-s)
+  - [13.19. T](#1319-t)
+  - [13.20. V](#1320-v)
+  - [13.21. W](#1321-w)
 
 ## 1. Traditionally, how to build infrastructure
 
@@ -165,7 +216,7 @@
 - Adding and replacing hardware takes time.
 - Scaling is limited.
 - Hire 24/7 team to monitor the infrastructure.
-- How to deal with disasters? (earthquake, power shutdown, fire…).
+- How to deal with disasters? (earthquake, power shutdown, fire...).
 - Can we externalize all this? **CLOUD**
 
 ## 2. What is Cloud Computing?
@@ -200,13 +251,13 @@
 
 #### 2.2.2. Public Cloud:
 
-- Cloud resources owned and operated by a thirdparty cloud service provider delivered over the Internet.
+- Cloud resources owned and operated by a third-party cloud service provider delivered over the Internet.
 
 #### 2.2.3. Hybrid Cloud:
 
 - Keep some servers on premises and extend some capabilities to the Cloud
 - Control over sensitive assets in your private infrastructure
-- Flexibility and costeffectiveness of the public cloud
+- Flexibility and cost-effectiveness of the public cloud
 
 ### 2.3. The Five Characteristics of Cloud Computing
 
@@ -293,7 +344,7 @@
 ### 2.10. AWS Regions
 
 - AWS has Regions all around the world
-- Names can be us-east-1, eu-west-3…
+- Names can be us-east-1, eu-west-3...
 - A region is a cluster of data centers
 - Most AWS services are region-scoped
 
@@ -303,6 +354,7 @@
 - **Proximity** to customers: reduced latency
 - **Available** services within a Region: new services and new features aren't available in every Region
 - **Pricing**: pricing varies region to region and is transparent in the service pricing page
+- **Capacity is unlimited in the cloud, you do not need to worry about it. The 4 points of considerations when choosing an AWS Region are: compliance with data governance and legal requirements, proximity to customers, available services and features within a Region, and pricing.**
 
 ### 2.12. AWS Availability Zones
 
@@ -445,8 +497,8 @@
 - Embedded within your application
 - Supports:
   - SDKs (JavaScript, Python, PHP, .NET, Ruby, Java, Go, Node.js, C++, C#)
-  - Mobile SDKs (Android, iOS, …)
-  - IoT Device SDKs (Embedded C, Arduino, …)
+  - Mobile SDKs (Android, iOS, ...)
+  - IoT Device SDKs (Embedded C, Arduino, ...)
 - Example: AWS CLI is built on AWS SDK for Python
 
 ### 3.10. IAM Roles for Services
@@ -940,9 +992,9 @@
 
 ### 6.4. Scalability vs Elasticity (vs Agility)
 
-- Scalability: ability to accommodate a larger load by making the hardware stronger (scale up), or by adding nodes (scale out).
-- Elasticity: once a system is scalable, elasticity means that there will be some "auto-scaling" so that the system can scale based on the load. This is "cloud-friendly": pay-per-use, match demand, optimize costs.
-- Agility: (not related to scalability - distractor) new IT resources are only a click away, which means that you reduce the time to make those resources available to your developers from weeks to just minutes.
+- **Scalability:** ability to accommodate a larger load by making the hardware stronger (scale up), or by adding nodes (scale out).
+- **Elasticity:** once a system is scalable, elasticity means that there will be some "auto-scaling" so that the system can scale based on the load. This is "cloud-friendly": pay-per-use, match demand, optimize costs.
+- **Agility:** (not related to scalability - distractor) new IT resources are only a click away, which means that you reduce the time to make those resources available to your developers from weeks to just minutes.
 
 ### 6.5. What is load balancing?
 
@@ -1042,7 +1094,6 @@
 - Buckets are defined at the region level
 - S3 looks like a global service but buckets are created in a region
 - Naming convention
-
   - No uppercase
   - No underscore
   - 3-63 characters long
@@ -1140,7 +1191,7 @@
 
 - For audit purpose, you may want to log all access to S3 buckets
 - Any request made to S3, from any account, authorized or denied, will be logged into another S3 bucket
-- That data can be analyzed using data analysis tools…
+- That data can be analyzed using data analysis tools...
 - Very helpful to come down to the root cause of an issue, or audit usage, view suspicious patterns, etc...
 
 ### 11.6. S3 Replication (CRR & SRR)
@@ -1190,6 +1241,7 @@
 - Lower cost compared to Amazon S3 Standard, but retrieval fee
 - Sustain 2 concurrent facility failures
 - Use Cases: As a data store for disaster recovery, backups...
+- **Amazon S3 Standard-Infrequent Access allow you to store infrequently accessed data, with rapid access when needed, has a high durability, and is stored in several Availability Zones to avoid data loss in case of a disaster. It can be used to store data for disaster recovery, backups, etc.**
 
 ### 11.11. S3 Intelligent-Tiering
 
@@ -1219,7 +1271,6 @@
   - Standard (3 to 5 hours)
   - Bulk (5 to 12 hours)
 - Amazon Glacier Deep Archive – cheapest:
-
   - Standard (12 hours)
   - Bulk (48 hours)
 
@@ -1227,7 +1278,7 @@
 
 |                                    |      S3 Standard       | S3 Intelligent-Tiering\* |     S3 Standard-IA     |    S3 One Zone-IA†     | S3 Glacier Instant Retrieval | S3 Glacier Flexible Retrieval | S3 Glacier Deep Archive |
 | :--------------------------------: | :--------------------: | :----------------------: | :--------------------: | :--------------------: | :--------------------------: | :---------------------------: | :---------------------: |
-|      Designed for durability       | 99.999999999% (11 9’s) |  99.999999999% (11 9’s)  | 99.999999999% (11 9’s) | 99.999999999% (11 9’s) |    99.999999999% (11 9’s)    |    99.999999999% (11 9’s)     | 99.999999999% (11 9’s)  |
+|      Designed for durability       | 99.999999999% (11 9's) |  99.999999999% (11 9's)  | 99.999999999% (11 9's) | 99.999999999% (11 9's) |    99.999999999% (11 9's)    |    99.999999999% (11 9's)     | 99.999999999% (11 9's)  |
 |     Designed for availability      |         99.99%         |          99.9%           |         99.9%          |         99.5%          |            99.9%             |            99.99%             |         99.99%          |
 |          Availability SLA          |         99.9%          |           99%            |          99%           |          99%           |             99%              |             99.%              |          99.9%          |
 |         Availability Zones         |           ≥3           |            ≥3            |           ≥3           |           1            |              ≥3              |              ≥3               |           ≥3            |
@@ -1309,7 +1360,17 @@
 
   - If it takes more than a week to transfer over the network, use Snowball devices!
 
-### 11.21. Snowball Edge (for data transfers)
+#### 11.20.1. AWS Snowcone
+
+- Small, portable computing, anywhere, rugged & secure, withstands harsh environments
+- Light (4.5 pounds, 2.1 kg)
+- Device used for edge computing, storage, and data transfer
+- 8 TBs of usable storage
+- Use Snowcone where Snowball does not fit (space-constrained environment)
+- Must provide your own battery / cables
+- Can be sent back to AWS offline, or connect it to internet and use AWS DataSync to send data
+
+#### 11.20.2. Snowball Edge (for data transfers)
 
 - Physical data transport solution: move TBs or PBs of data in or out of AWS
 - Alternative to moving data over the network (and paying network fees)
@@ -1320,25 +1381,16 @@
 - Snowball Edge Compute Optimized
   - 42 TB of HDD capacity for block volume and S3 compatible object storage
 - Use cases: large data cloud migrations, DC decommission, disaster recovery
+- **Snowball Edge is best-suited to move petabytes of data and offers computing capabilities. Be careful, it's recommended to use a fleet of Snowballs to move less than 10PBs of data. Over this quantity, it's better-suited to use Snowmobile.**
 
-### 11.22. AWS Snowcone
-
-- Small, portable computing, anywhere, rugged & secure, withstands harsh environments
-- Light (4.5 pounds, 2.1 kg)
-- Device used for edge computing, storage, and data transfer
-- 8 TBs of usable storage
-- Use Snowcone where Snowball does not fit (space-constrained environment)
-- Must provide your own battery / cables
-- Can be sent back to AWS offline, or connect it to internet and use AWS DataSync to send data
-
-### 11.23. AWS Snowmobile
+#### 11.20.3. AWS Snowmobile
 
 - Transfer exabytes of data (1 EB = 1,000 PB = 1,000,000 TBs)
 - Each Snowmobile has 100 PB of capacity (use multiple in parallel)
 - High security: temperature controlled, GPS, 24/7 video surveillance
 - Better than Snowball if you transfer more than 10 PB
 
-### 11.24. Snow Family – Usage Process
+### 11.21. Snow Family – Usage Process
 
 1. Request Snowball devices from the AWS console for delivery
 2. Install the snowball client / AWS OpsHub on your servers
@@ -1347,7 +1399,7 @@
 5. Data will be loaded into an S3 bucket
 6. Snowball is completely wiped
 
-### 11.25. What is Edge Computing?
+### 11.22. What is Edge Computing?
 
 - Process data while it's being created on an edge location
   - A truck on the road, a ship on the sea, a mining station underground...
@@ -1361,7 +1413,7 @@
   - Transcoding media streams
 - Eventually (if need be) we can ship back the device to AWS (for transferring data for example)
 
-### 11.26. Snow Family – Edge Computing
+### 11.23. Snow Family – Edge Computing
 
 - Snowcone (smaller)
   - 2 CPUs, 4 GB of memory, wired or wireless access
@@ -1376,7 +1428,7 @@
 - All: Can run EC2 Instances & AWS Lambda functions (using AWS IoT Greengrass)
 - Long-term deployment options: 1 and 3 years discounted pricing
 
-### 11.27. AWS OpsHub
+### 11.24. AWS OpsHub
 
 - Historically, to use Snow Family devices, you needed a CLI (Command Line Interface tool)
 - Today, you can use AWS OpsHub (a software you install on your computer / laptop) to manage your Snow Family Device
@@ -1386,7 +1438,7 @@
 - Monitor device metrics (storage capacity, active instances on your device)
 - Launch compatible AWS services on your devices (ex: Amazon EC2 instances, AWS DataSync, Network File System (NFS))
 
-### 11.28. Hybrid Cloud for Storage
+### 11.25. Hybrid Cloud for Storage
 
 - AWS is pushing for "hybrid cloud"
   - Part of your infrastructure is on-premises
@@ -1399,7 +1451,7 @@
 - S3 is a proprietary storage technology (unlike EFS / NFS), so how do you expose the S3 data on-premise?
 - AWS Storage Gateway!
 
-### 11.29. AWS Storage Gateway
+### 11.26. AWS Storage Gateway
 
 - Bridge between on-premise data and cloud data in S3
 - Hybrid storage service to allow on- premises to seamlessly use the AWS Cloud
@@ -1409,7 +1461,7 @@
   - Volume Gateway
   - Tape Gateway
 
-### 11.30. Amazon S3 – Summary
+### 11.27. Amazon S3 – Summary
 
 - Buckets vs Objects: global unique name, tied to a region
 - S3 security: IAM policy, S3 Bucket Policy (public access), S3 Encryption
@@ -1424,4 +1476,480 @@
 - OpsHub: desktop application to manage Snow Family devices
 - Storage Gateway: hybrid solution to extend on-premises storage to S3
 
-## 12. Databases Section
+## 12. Databases
+
+### 12.1. Introduction
+
+- Storing data on disk (EFS, EBS, EC2 Instance Store, S3) can have its limits
+- Sometimes, you want to store data in a database...
+- You can **structure** the data
+- You build **indexes** to efficiently **query / search** through the data
+- You define **relationships** between your **datasets**
+- Databases are **optimized for a purpose** and come with different features, shapes and constraints
+
+### 12.2. Relational Databases
+
+- Looks just like Excel spreadsheets, with links between them!
+- Can use the SQL language to perform queries / lookups
+
+### 12.3. NoSQL Databases
+
+- NoSQL = non-SQL = non relational databases
+- NoSQL databases are purpose built for specific data models and have flexible schemas for building modern applications.
+- Benefits:
+  - Flexibility: easy to evolve data model
+  - Scalability: designed to scale-out by using distributed clusters
+  - High-performance: optimized for a specific data model
+  - Highly functional: types optimized for the data model
+- Examples: Key-value, document, graph, in-memory, search databases
+
+### 12.4. NoSQL data example: JSON
+
+- JSON = JavaScript Object Notation.
+- JSON is a common form of data that fits into a NoSQL model.
+- Data can be nested.
+- Fields can change over time.
+- Support for new types: arrays, etc...
+
+```
+{
+   "name":"John",
+   "age":30,
+   "cars":[
+      "Ford",
+      "BMW",
+      "Fiat"
+   ],
+   "address":{
+      "type":"house",
+      "number":23,
+      "street":"Dream Road"
+   }
+}
+```
+
+### 12.5. Databases & Shared Responsibility on AWS
+
+- AWS offers use to **manage** different databases.
+- **Databases** & Shared Responsibility on AWS include:
+  - Quick Provisioning, High Availability, Vertical and Horizontal Scaling.
+  - Automated Backup & Restore, Operations, Upgrades.
+  - Operating System Patching is handled by AWS.
+  - Monitoring, alerting.
+- Note: many databases technologies could be run on EC2, but you must handle yourself the resiliency, backup, patching, high availability, fault tolerance, scaling...
+
+### 12.6. AWS RDS Overview
+
+- **Amazon Relational Database Service (Amazon RDS) is a SQL managed service that makes it easy to set up, operate, and scale a relational database in the cloud. It is suited for OLTP workloads.**
+- RDS stands for Relational Database Service.
+- It's a managed DB service for DB use SQL as a query language.
+- It allows you to create databases in the cloud that are managed by AWS:
+  - Postgres
+  - MySQL
+  - MariaDB
+  - Oracle
+  - Microsoft SQL Server
+  - Aurora (AWS Proprietary database)
+
+### 12.7. Advantage over using RDS versus deploying DB on EC2
+
+- RDS is a managed service:
+  - Automated provisioning, OS patching.
+  - Continuous backups and restore to specific timestamp (Point in Time Restore)!
+  - Monitoring dashboards.
+  - Read replicas for improved read performance.
+  - Multi AZ setup for DR (Disaster Recovery).
+  - Maintenance windows for upgrades.
+  - Scaling capability (vertical and horizontal).
+  - Storage backed by EBS (gp2 or io1).
+- BUT you can't SSH into your instances.
+
+### 12.8. Amazon Aurora
+
+- **Amazon Aurora is a MySQL and PostgreSQL-compatible relational database built for the cloud, that combines the performance and availability of traditional enterprise databases with the simplicity and cost-effectiveness of open source databases. It is a proprietary technology from AWS.**
+- Aurora is a proprietary technology from AWS (not open sourced).
+- **PostgreSQL and MySQL** are both supported as Aurora DB.
+- Aurora is "AWS cloud optimized" and claims 5x performance improvement over MySQL on RDS, over 3x the performance of Postgres on RDS.
+- Aurora storage automatically grows in increments of 10GB, up to 64 TB.
+- Aurora costs more than RDS (20% more) – but is more efficient.
+- Not in the free tier.
+
+### 12.9. RDS Deployments: Read Replicas, Multi-AZ, Multi-Region
+
+#### 12.9.1. Read Replicas
+
+- Scale the read workload of your DB
+- Can create up to 5 Read Replicas
+- Data is only written to the main DB
+
+#### 12.9.2. Multi-AZ
+
+- Failover in case of AZ outage (high availability)
+- Data is only read/written to the main database
+- Can only have 1 other AZ as failover
+
+#### 12.9.3. Multi-Region
+
+- Multi-Region (Read Replicas)
+- Disaster recovery in case of region issue
+- Local performance for global reads
+- Replication cost
+
+#### Resume
+
+- **RDS Multi-AZ deployments main purpose is high availability, and RDS Read replicas main purpose is scalability. Moreover, Multi-Region deployments’ main purpose is disaster recovery and local performance.**
+
+### 12.10. Amazon ElastiCache Overview
+
+- **Amazon ElastiCache is a web service that makes it easy to deploy and run Memcached or Redis protocol-compliant server nodes in the cloud. ElastiCache caches are in-memory databases with high performance, low latency. They help reduce load off databases for read intensive workloads.**
+- The same way RDS is to get managed Relational Databases...
+- ElastiCache is to get managed Redis or Memcached.
+- Helps **reduce load off databases for read intensive workloads**.
+- AWS takes care of OS maintenance / patching, optimizations, setup, configuration, monitoring, failure recovery and backups.
+
+### 12.11. DynamoDB
+
+- **DynamoDB is a fast and flexible non-relational database service for any scale. It can scale with no downtime, it can process millions of requests per second, and is fast and consistent in performance.**
+- Fully Managed Highly available with replication across 3 AZ.
+- **NoSQL database - not a relational database.**
+- Scales to massive workloads, distributed **"serverless**" database.
+- Millions of requests per seconds, trillions of row, 100s of TB of storage.
+- Fast and consistent in performance.
+- **Single-digit millisecond latency – low latency retrieval.**
+- Integrated with IAM for security, authorization and administration.
+- Low cost and auto scaling capabilities.
+
+#### 12.11.1. DynamoDB Accelerator - DAX
+
+- **Amazon DynamoDB Accelerator (DAX) is a fully managed, highly available, in-memory cache for Amazon DynamoDB that delivers up to a 10 times performance improvement—from milliseconds to microseconds—even at millions of requests per second.**
+- Fully Managed **in-memory** cache for DynamoDB.
+- **10x performance improvement** – single- digit millisecond latency to microseconds latency – when accessing your DynamoDB tables.
+- Secure, highly scalable & highly available.
+- Difference with ElastiCache at the CCP level: DAX is only used for and is integrated with DynamoDB, while ElastiCache can be used for other databases.
+
+#### 12.11.2. DynamoDB – Global Tables
+
+- Make a DynamoDB table accessible with low latency in multiple-regions.
+- Active-Active replication (read/write to any AWS Region).
+
+### 12.12. Redshift Overview
+
+- **Amazon Redshift is a fully managed, petabyte-scale data warehouse service in the cloud.**
+- Redshift is based on PostgreSQL, but it's not used for OLTP.
+- **It's OLAP – online analytical processing (analytics and data warehousing).**
+- Load data once every hour, not every second.
+- 10x better performance than other data warehouses, scale to PBs of data.
+- **Columnar** storage of data (instead of row based).
+- Massively Parallel Query Execution (MPP), highly available.
+- Pay as you go based on the instances provisioned.
+- Has a SQL interface for performing the queries.
+- BI tools such as AWS Quicksight or Tableau integrate with it.
+- **Manage their data warehouse.**
+
+### 12.13. Amazon EMR
+
+- EMR stands for "Elastic MapReduce"
+- **Amazon EMR is a web service that enables businesses, researchers, data analysts, and developers to easily and cost-effectively process vast amounts of data. EMR helps creating Hadoop clusters (Big Data) to analyze and process vast amount of data.**
+- The clusters can be made of hundreds of EC2 instances
+- Also supports Apache Spark, HBase, Presto, Flink...
+- EMR takes care of all the provisioning and configuration
+- Auto-scaling and integrated with Spot instances
+- Use cases: data processing, machine learning, web indexing, big data...
+
+### 12.14. Amazon Athena
+
+- **Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL. Athena is serverless, so there is no infrastructure to manage, and you pay only for the queries that you run.**
+- Serverless query service to analyze data stored in Amazon S3.
+- Uses standard SQL language to query the files.
+- Supports CSV, JSON, ORC, Avro, and Parquet (built on Presto).
+- Pricing: $9.00 per TB of data scanned (2022).
+- Use compressed or columnar data for cost-savings (less scan).
+- Use cases: Business intelligence / analytics / reporting, analyze & query VPC Flow Logs, ELB Logs, CloudTrail trails, etc...
+- Exam Tip: analyze data in S3 using serverless SQL, use Athena.
+
+### 12.15. Amazon QuickSight
+
+- **Amazon QuickSight is a fast, cloud-powered business intelligence (BI) service that makes it easy for you to deliver insights to everyone in your organization. You can create and publish interactive dashboards.**
+- Serverless machine learning-powered business intelligence service to create interactive dashboards.
+- Fast, automatically scalable, embeddable, with per-session pricing.
+- Use cases:
+  - Business analytics
+  - Building visualizations
+  - Perform ad-hoc analysis
+  - Get business insights using data
+- Integrated with RDS, Aurora, Athena, Redshift, S3...
+
+### 12.16. DocumentDB
+
+- **Amazon DocumentDB (with MongoDB compatibility) is a fast, calable, highly available, and fully managed document database service that supports MongoDB workloads.**
+- Aurora is an "AWS-implementation" of PostgreSQL / MySQL...
+- **DocumentDB is the same for MongoDB (which is a NoSQL database).**
+- MongoDB is used to store, query, and index JSON data.
+- Similar "deployment concepts" as Aurora.
+- Fully Managed, highly available with replication across 3 AZ.
+- Aurora storage automatically grows in increments of 10GB, up to 64 TB.
+- Automatically scales to workloads with millions of requests per seconds.
+
+### 12.17. Amazon Neptune
+
+- **Amazon Neptune is a fast, reliable, fully-managed graph database service that makes it easy to build and run applications that work with highly connected datasets. It can be used for knowledge graphs, fraud detection, recommendations engines, social networking, etc.**
+- Fully managed graph database.
+- A popular graph dataset would be a social network.
+  - Users have friends
+  - Posts have comments
+  - Comments have likes from users
+  - Users share and like posts...
+- Highly available across 3 AZ, with up to 15 read replicas.
+- Build and run applications working with highly connected datasets – optimized for these complex and hard queries.
+- Can store up to billions of relations and query the graph with milliseconds latency.
+- Highly available with replications across multiple AZs.
+
+### 12.18. Amazon QLDB
+
+- QLDB stands for "Quantum Ledger Database".
+- **Amazon QLDB is a fully managed ledger database that provides a transparent, immutable, and cryptographically verifiable transaction log owned by a central trusted authority. Amazon QLDB tracks each and every application data change and maintains a complete and verifiable history of changes over time.**
+- A ledger is a book recording financial transactions.
+- Fully Managed, Serverless, High available, Replication across 3 AZ.
+- Used to review history of all the changes made to your application data over time.
+- Immutable system: no entry can be removed or modified, cryptographically verifiable.
+- 2-3x better performance than common ledger blockchain frameworks, manipulate data using SQL.
+- Difference with Amazon Managed Blockchain: no decentralization component, in accordance with financial regulation rules.
+
+### 12.19. Amazon Managed Blockchain
+
+- Amazon Managed Blockchain is a fully managed service that makes it easy to create and manage scalable blockchain networks using the popular open source frameworks Hyperledger Fabric and Ethereum. It allows multiple parties to execute transactions without the need of a trusted, central authority.
+- Blockchain makes it possible to build applications where multiple parties can execute transactions without the need for a trusted, central authority.
+- Amazon Managed Blockchain is a managed service to:
+  - Join public blockchain networks
+  - Or create your own scalable private network
+- Compatible with the frameworks Hyperledger Fabric & Ethereum
+
+### 12.20. AWS Glue
+
+- **AWS Glue is a fully managed extract, transform, and load (ETL) service that makes it easy for customers to prepare and load their data for analytics.**
+- Managed extract, transform, and load (ETL) service.
+- Useful to prepare and transform data for analytics.
+- Fully serverless service.
+- Glue Data Catalog: catalog of datasets.
+  - **The AWS Glue Data Catalog is a central repository to store structural and operational metadata for all your data assets. For a given data set, you can store its table definition, physical location, add business relevant attributes, as well as track how this data has changed over time.**
+  - Can be used by Athena, Redshift, EMR.
+
+### 12.21. DMS – Database Migration Service
+
+- **AWS Database Migration Service helps you migrate databases to AWS quickly and securely. The source database remains fully operational during the migration, minimizing downtime to applications that rely on the database.**
+- Quickly and securely migrate databases to AWS, resilient, self healing
+- The source database remains available during the migration
+- Supports:
+  - Homogeneous migrations: ex Oracle to Oracle
+  - Heterogeneous migrations: ex Microsoft SQL Server to Aurora
+
+### 12.22. Databases & Analytics Summary in AWS
+
+- Relational Databases - OLTP: RDS & Aurora (SQL).
+- Differences between Multi-AZ, Read Replicas, Multi-Region.
+- In-memory Database: ElastiCache.
+- Key/Value Database: DynamoDB (serverless) & DAX (cache for DynamoDB).
+- Warehouse - OLAP: Redshift (SQL).
+- Hadoop Cluster: EMR.
+- Athena: query data on Amazon S3 (serverless & SQL).
+- QuickSight: dashboards on your data (serverless).
+- DocumentDB: "Aurora for MongoDB" (JSON – NoSQL database).
+- Amazon QLDB: Financial Transactions Ledger (immutable journal, cryptographically verifiable).
+- Amazon Managed Blockchain: managed Hyperledger Fabric & Ethereum blockchains.
+- Glue: Managed ETL (Extract Transform Load) and Data Catalog service.
+- Database Migration: DMS.
+- Neptune: Graph database.
+
+## ECS
+
+## 13. AWS related Abbreviations & Acronyms
+
+### 13.1. A
+
+- AWS Amazon Web Services
+- Amazon ES Amazon Elasticsearch Service
+- AMI Amazon Machine Image
+- API Application Programming Interface
+- AI Artificial Intelligence
+- ACL Access Control List
+- ALB Application Load Balancer
+- ARN Amazon Resource Name
+- AZ Availability Zone
+- ACM AWS Certificate Management
+- ASG Auto Scaling Group
+- AES Advanced Encryption System
+- ADFS Active Directory Federation Service
+- AVX Advanced Vector Extensions
+
+### 13.2. B
+
+- BYOL Bring Your Own License
+
+### 13.3. C
+
+- CDN Content Delivery Network
+- CRC Cyclic Redundancy Check
+- CLI Command Line Interface
+- CIDR Classless Inter-Domain Routing
+- CORS Cross Origin Resource Sharing
+- CRR Cross Region Replication
+- CI/CD Continuous Integration/Continuous Deployment
+
+### 13.4. D
+
+- DMS Database Migration Service
+- DNS Domain Name System
+- DDoS Distributed Denial of Service
+- DoS Denial of Service
+- DaaS Desktop as-a-Service
+
+### 13.5. E
+
+- EC2 Elastic Compute Cloud
+- ECS EC2 Container Service
+- ECR Elastic Container Registry
+- EFS Elastic File System
+- EI Elastic Inference
+- ENA Elastic Network Adapter
+- EKS Elastic Kubernetes Service
+- EBS Elastic Block Store
+- EMR Elastic MapReduce
+- ELB Elastic Load Balancing
+- EFA Elastic Fabric Adapter
+- EIP Elastic IP
+- EDA Electronic Design Automation
+- ENI Elastic Network Interface
+- ECU EC2 Compute Unit
+
+### 13.6. F
+
+- FIFO First In First Out
+- FaaS Function as-a-Service
+
+### 13.7. H
+
+- HPC High-Performance Compute
+- HVM Hardware Virtual Machine
+- HTTP Hypertext Transfer Protocol
+- HTTPS HTTP Secure
+- HDK Hardware Development Kit
+
+### 13.8. I
+
+- IAM Identity & Access Management
+- iOT Internet Of Things
+- S3 IA S3 Infrequent Access
+- iSCSI Internet Small Computer Storage Interface
+- IOPS Input/Output Operation Per Second
+- IGW Internet Gateway
+- ICMP Internet Control Message Protocol
+- IP Internet Protocol
+- IPSec Internet Protocol Security
+- IaaS Infrastructure-as-a-Service
+
+### 13.9. J
+
+- JSON JavaScript Object Notation
+
+### 13.10. K
+
+- KMS Key Management Service
+- KVM Kernel-based Virtual Machine
+
+### 13.11. L
+
+- LB Load Balancer
+- LCU Load Balancer Capacity Unit
+
+### 13.12. M
+
+- MFA Multi-Factor Authentication
+- MSTSC Microsoft Terminal Service Client
+- MPP Massive Parallel Processing
+- MITM Man in the Middle Attack
+- MPLS Multi Protocol Label Switching
+
+### 13.13. N
+
+- NFS Network File System
+- NS Name Server
+- NAT Network Address Translation
+- NVMe Non-Volatile Memory Express
+
+### 13.14. O
+
+- OLTP Online Transaction Processing
+- OLAP Online Analytics Processing
+- OCI Open Container Initiative
+
+### 13.15. P
+
+- PCI DSS Payment Card Industry Data Security Standard
+- PVM Para Virtual Machine
+- PV ParaVirtual
+- PaaS Platform as a Service
+
+### 13.16. Q
+
+- QLDB Quantum Ledger Database
+
+### 13.17. R
+
+- RAIDRedundant Array of Independent Disk
+- RDS Relational Database Service
+- RRS Reduced Redundancy Storage
+- RI Reserved Instance
+- RAM Random-access Memory
+- RIE Runtime Interface Emulator
+
+### 13.18. S
+
+- SSEServer Side Encryption
+- S3 Simple Storage Service
+- S3 RTC S3 Replication Time Control
+- SRR Same Region Replication
+- SMS Server Migration Service
+- SWF Simple Workflow Service
+- SES Simple Email Service
+- SNS Simple Notification Service
+- SQS Simple Queue Service
+- SES Simple Email Service
+- SLA Service Level Agreement
+- SSL Secure Socket Layer
+- SOA Start of Authority
+- SDK Software Development Kit
+- SSH Secure Shell
+- SAR Serverless Application Repository
+- SRD Scalable Reliable Datagrams
+- SSO Single Sign-On
+- SAML Security Assertion Markup Language
+- SaaS Software-as-a-Service
+- SaaS Security-as-a-Service
+- SCP Service Control Policies
+- SCA Storage Class Analysis
+- STS Security Token Service
+- SNI Server Name Indication
+
+### 13.19. T
+
+- TTL Time To Live
+- TLS Transport Layer Security
+- TPM Trusted Platform Module
+- TME Total Memory Encryption
+- TPM Technical Program Manager
+- TPS Transaction Per Second
+- TCP Transmission Control Protocol
+
+### 13.20. V
+
+- VPC Virtual Private Cloud
+- VM Virtual Machine
+- VTL Virtual Tape Library
+- VPN Virtual Private Network
+- VLAN Virtual Local Area Network
+- VDI Virtual Desktop Infrastructure
+- VPG Virtual Private Gateway
+
+### 13.21. W
+
+- WAFWeb Application Firewall
