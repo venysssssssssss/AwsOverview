@@ -18,7 +18,7 @@
   - [2.5. Problems solved by the Cloud](#25-problems-solved-by-the-cloud)
   - [2.6. Types of Cloud Computing](#26-types-of-cloud-computing)
   - [2.7. Example of Cloud Computing Types](#27-example-of-cloud-computing-types)
-  - [2.8. Pricing of the Cloud – Quick Overview](#28-pricing-of-the-cloud--quick-overview)
+  - [2.8. Pricing of the Cloud - Quick Overview](#28-pricing-of-the-cloud---quick-overview)
   - [2.9. AWS Global Infrastructure](#29-aws-global-infrastructure)
   - [2.10. AWS Regions](#210-aws-regions)
   - [2.11. How to choose an AWS Region?](#211-how-to-choose-an-aws-region)
@@ -31,7 +31,7 @@
   - [3.1. IAM: Users & Groups](#31-iam-users--groups)
   - [3.2. IAM: Permissions](#32-iam-permissions)
   - [3.3. IAM: Policies Structure](#33-iam-policies-structure)
-  - [3.4. IAM – Password Policy](#34-iam--password-policy)
+  - [3.4. IAM - Password Policy](#34-iam---password-policy)
   - [3.5. Multi Factor Authentication - MFA](#35-multi-factor-authentication---mfa)
   - [3.6. MFA devices options in AWS](#36-mfa-devices-options-in-aws)
   - [3.7. How can users access AWS ?](#37-how-can-users-access-aws-)
@@ -41,7 +41,7 @@
   - [3.11. IAM Security Tools](#311-iam-security-tools)
   - [3.12. IAM Guidelines & Best Practices](#312-iam-guidelines--best-practices)
   - [3.13. Shared Responsibility Model for IAM](#313-shared-responsibility-model-for-iam)
-  - [3.14. IAM – Summary](#314-iam--summary)
+  - [3.14. IAM - Summary](#314-iam---summary)
 - [4. EC2 - Elastic Compute Cloud](#4-ec2---elastic-compute-cloud)
   - [4.1. Amazon EC2](#41-amazon-ec2)
   - [4.2. EC2 sizing & configuration options](#42-ec2-sizing--configuration-options)
@@ -67,20 +67,20 @@
     - [4.13.5. EC2 Dedicated Instances](#4135-ec2-dedicated-instances)
   - [4.14. Which purchasing option is right for me? (correlation with Hotel)](#414-which-purchasing-option-is-right-for-me-correlation-with-hotel)
   - [4.15. Shared Responsibility Model for EC2](#415-shared-responsibility-model-for-ec2)
-  - [4.16. EC2 – Summary](#416-ec2--summary)
+  - [4.16. EC2 - Summary](#416-ec2---summary)
 - [5. EC2 Instance Storage](#5-ec2-instance-storage)
   - [5.1. What's an EBS Volume?](#51-whats-an-ebs-volume)
   - [5.2. EBS Volume](#52-ebs-volume)
-  - [5.3. EBS – Delete on Termination attribute](#53-ebs--delete-on-termination-attribute)
+  - [5.3. EBS - Delete on Termination attribute](#53-ebs---delete-on-termination-attribute)
   - [5.4. EBS Snapshots](#54-ebs-snapshots)
   - [5.5. AMI Overview](#55-ami-overview)
   - [5.6. AMI Process (from an EC2 instance)](#56-ami-process-from-an-ec2-instance)
   - [5.7. EC2 Image Builder](#57-ec2-image-builder)
   - [5.8. EC2 Instance Store](#58-ec2-instance-store)
-  - [5.9. EFS – Elastic File System](#59-efs--elastic-file-system)
+  - [5.9. EFS - Elastic File System](#59-efs---elastic-file-system)
   - [5.10. EFS Infrequent Access (EFS-IA)](#510-efs-infrequent-access-efs-ia)
   - [5.11. Shared Responsibility Model for EC2 Storage](#511-shared-responsibility-model-for-ec2-storage)
-  - [5.12. Amazon FSx – Overview](#512-amazon-fsx--overview)
+  - [5.12. Amazon FSx - Overview](#512-amazon-fsx---overview)
     - [5.12.1. Amazon FSx for Windows File Server](#5121-amazon-fsx-for-windows-file-server)
     - [5.12.2. Amazon FSx for Lustre](#5122-amazon-fsx-for-lustre)
   - [5.13. EC2 Instance Storage Summary](#513-ec2-instance-storage-summary)
@@ -95,8 +95,8 @@
   - [6.6. Why use a load balancer?](#66-why-use-a-load-balancer)
   - [6.7. Why use an Elastic Load Balancer (ELB)?](#67-why-use-an-elastic-load-balancer-elb)
   - [6.8. What's an Auto Scaling Group?](#68-whats-an-auto-scaling-group)
-  - [6.9. Auto Scaling Groups – Scaling Strategies](#69-auto-scaling-groups--scaling-strategies)
-  - [6.10. ELB & ASG – Summary](#610-elb--asg--summary)
+  - [6.9. Auto Scaling Groups - Scaling Strategies](#69-auto-scaling-groups---scaling-strategies)
+  - [6.10. ELB & ASG - Summary](#610-elb--asg---summary)
 - [7. Amazon S3](#7-amazon-s3)
 - [8. Introduction](#8-introduction)
 - [9. S3 Use cases](#9-s3-use-cases)
@@ -112,8 +112,8 @@
   - [11.6. S3 Replication (CRR & SRR)](#116-s3-replication-crr--srr)
   - [11.7. S3 Storage Classes](#117-s3-storage-classes)
   - [11.8. S3 Durability and Availability](#118-s3-durability-and-availability)
-  - [11.9. S3 Standard – General Purposes](#119-s3-standard--general-purposes)
-  - [11.10. S3 Standard – Infrequent Access (IA)](#1110-s3-standard--infrequent-access-ia)
+  - [11.9. S3 Standard - General Purposes](#119-s3-standard---general-purposes)
+  - [11.10. S3 Standard - Infrequent Access (IA)](#1110-s3-standard---infrequent-access-ia)
   - [11.11. S3 Intelligent-Tiering](#1111-s3-intelligent-tiering)
   - [11.12. S3 One Zone - Infrequent Access (IA)](#1112-s3-one-zone---infrequent-access-ia)
   - [11.13. Amazon Glacier & Glacier Deep Archive](#1113-amazon-glacier--glacier-deep-archive)
@@ -127,13 +127,13 @@
     - [11.20.1. AWS Snowcone](#11201-aws-snowcone)
     - [11.20.2. Snowball Edge (for data transfers)](#11202-snowball-edge-for-data-transfers)
     - [11.20.3. AWS Snowmobile](#11203-aws-snowmobile)
-  - [11.21. Snow Family – Usage Process](#1121-snow-family--usage-process)
+  - [11.21. Snow Family - Usage Process](#1121-snow-family---usage-process)
   - [11.22. What is Edge Computing?](#1122-what-is-edge-computing)
-  - [11.23. Snow Family – Edge Computing](#1123-snow-family--edge-computing)
+  - [11.23. Snow Family - Edge Computing](#1123-snow-family---edge-computing)
   - [11.24. AWS OpsHub](#1124-aws-opshub)
   - [11.25. Hybrid Cloud for Storage](#1125-hybrid-cloud-for-storage)
   - [11.26. AWS Storage Gateway](#1126-aws-storage-gateway)
-  - [11.27. Amazon S3 – Summary](#1127-amazon-s3--summary)
+  - [11.27. Amazon S3 - Summary](#1127-amazon-s3---summary)
 - [12. Databases](#12-databases)
   - [12.1. Introduction](#121-introduction)
   - [12.2. Relational Databases](#122-relational-databases)
@@ -147,11 +147,11 @@
     - [12.9.1. Read Replicas](#1291-read-replicas)
     - [12.9.2. Multi-AZ](#1292-multi-az)
     - [12.9.3. Multi-Region](#1293-multi-region)
-    - [Resume](#resume)
+    - [12.9.4. Resume](#1294-resume)
   - [12.10. Amazon ElastiCache Overview](#1210-amazon-elasticache-overview)
   - [12.11. DynamoDB](#1211-dynamodb)
     - [12.11.1. DynamoDB Accelerator - DAX](#12111-dynamodb-accelerator---dax)
-    - [12.11.2. DynamoDB – Global Tables](#12112-dynamodb--global-tables)
+    - [12.11.2. DynamoDB - Global Tables](#12112-dynamodb---global-tables)
   - [12.12. Redshift Overview](#1212-redshift-overview)
   - [12.13. Amazon EMR](#1213-amazon-emr)
   - [12.14. Amazon Athena](#1214-amazon-athena)
@@ -161,31 +161,45 @@
   - [12.18. Amazon QLDB](#1218-amazon-qldb)
   - [12.19. Amazon Managed Blockchain](#1219-amazon-managed-blockchain)
   - [12.20. AWS Glue](#1220-aws-glue)
-  - [12.21. DMS – Database Migration Service](#1221-dms--database-migration-service)
+  - [12.21. DMS - Database Migration Service](#1221-dms---database-migration-service)
   - [12.22. Databases & Analytics Summary in AWS](#1222-databases--analytics-summary-in-aws)
-- [ECS](#ecs)
-- [13. AWS related Abbreviations & Acronyms](#13-aws-related-abbreviations--acronyms)
-  - [13.1. A](#131-a)
-  - [13.2. B](#132-b)
-  - [13.3. C](#133-c)
-  - [13.4. D](#134-d)
-  - [13.5. E](#135-e)
-  - [13.6. F](#136-f)
-  - [13.7. H](#137-h)
-  - [13.8. I](#138-i)
-  - [13.9. J](#139-j)
-  - [13.10. K](#1310-k)
-  - [13.11. L](#1311-l)
-  - [13.12. M](#1312-m)
-  - [13.13. N](#1313-n)
-  - [13.14. O](#1314-o)
-  - [13.15. P](#1315-p)
-  - [13.16. Q](#1316-q)
-  - [13.17. R](#1317-r)
-  - [13.18. S](#1318-s)
-  - [13.19. T](#1319-t)
-  - [13.20. V](#1320-v)
-  - [13.21. W](#1321-w)
+- [13. Other Compute Services: ECS, Lambda, Batch, Lightsail](#13-other-compute-services-ecs-lambda-batch-lightsail)
+  - [13.1. ECS](#131-ecs)
+  - [13.2. Fargate](#132-fargate)
+  - [13.3. ECR](#133-ecr)
+  - [13.4. What's serverless?](#134-whats-serverless)
+  - [13.5. Why AWS Lambda?](#135-why-aws-lambda)
+    - [13.5.1. Benefits of AWS Lambda](#1351-benefits-of-aws-lambda)
+    - [13.5.2. AWS Lambda language support](#1352-aws-lambda-language-support)
+    - [13.5.3. AWS Lambda Pricing: example](#1353-aws-lambda-pricing-example)
+  - [13.6. Amazon API Gateway](#136-amazon-api-gateway)
+  - [13.7. AWS Batch](#137-aws-batch)
+  - [13.8. Batch vs Lambda](#138-batch-vs-lambda)
+  - [13.9. Amazon Lightsail](#139-amazon-lightsail)
+  - [13.10. Other Compute - Summary](#1310-other-compute---summary)
+  - [13.11. Lambda Summary](#1311-lambda-summary)
+- [14. AWS related Abbreviations & Acronyms](#14-aws-related-abbreviations--acronyms)
+  - [14.1. A](#141-a)
+  - [14.2. B](#142-b)
+  - [14.3. C](#143-c)
+  - [14.4. D](#144-d)
+  - [14.5. E](#145-e)
+  - [14.6. F](#146-f)
+  - [14.7. H](#147-h)
+  - [14.8. I](#148-i)
+  - [14.9. J](#149-j)
+  - [14.10. K](#1410-k)
+  - [14.11. L](#1411-l)
+  - [14.12. M](#1412-m)
+  - [14.13. N](#1413-n)
+  - [14.14. O](#1414-o)
+  - [14.15. P](#1415-p)
+  - [14.16. Q](#1416-q)
+  - [14.17. R](#1417-r)
+  - [14.18. S](#1418-s)
+  - [14.19. T](#1419-t)
+  - [14.20. V](#1420-v)
+  - [14.21. W](#1421-w)
 
 ## 1. Traditionally, how to build infrastructure
 
@@ -321,7 +335,7 @@
   - Many AWS services (ex: Rekognition for Machine Learning)
   - Google Apps (Gmail), Dropbox, Zoom
 
-### 2.8. Pricing of the Cloud – Quick Overview
+### 2.8. Pricing of the Cloud - Quick Overview
 
 - AWS has 3 pricing fundamentals, following the pay-as-you-go pricing
   model
@@ -429,7 +443,7 @@
   - **Resource**: list of resources to which the actions applied to.
   - **Condition**: conditions for when this policy is in effect (optional).
 
-### 3.4. IAM – Password Policy
+### 3.4. IAM - Password Policy
 
 - Strong passwords = higher security for your account.
 - In AWS, you can setup a password policy:
@@ -543,7 +557,7 @@
   - Use IAM tools to apply appropriate permissions
   - Analyze access patterns & review permissions
 
-### 3.14. IAM – Summary
+### 3.14. IAM - Summary
 
 - **Users**: mapped to a physical user, has a password for AWS Console
 - **Groups**: contains users only
@@ -674,7 +688,7 @@
 
 - Can be attached to multiple instances
 - Locked down to a region / VPC combination
-- Does live "outside" the EC2 – if traffic is blocked the EC2 instance won't see it
+- Does live "outside" the EC2 - if traffic is blocked the EC2 instance won't see it
 - It's good to maintain one separate security group for SSH access
 - If your application is not accessible (time out), then it's a security group issue
 - If your application gives a "connection refused" error, then it's an application error or it's not launched
@@ -684,11 +698,11 @@
 ### 4.10. Classic Ports to know
 
 - 22 = SSH (Secure Shell) - log into a Linux instance
-- 21 = FTP (File Transfer Protocol) – upload files into a file share
-- 22 = SFTP (Secure File Transfer Protocol) – upload files using SSH
-- 80 = HTTP – access unsecured websites
-- 443 = HTTPS – access secured websites
-- 3389 = RDP (Remote Desktop Protocol) – log into a Windows instance
+- 21 = FTP (File Transfer Protocol) - upload files into a file share
+- 22 = SFTP (Secure File Transfer Protocol) - upload files using SSH
+- 80 = HTTP - access unsecured websites
+- 443 = HTTPS - access secured websites
+- 3389 = RDP (Remote Desktop Protocol) - log into a Windows instance
 
 ### 4.11. How to SSH into your EC2 Instance
 
@@ -713,7 +727,7 @@
 - Reserved: (MINIMUM 1 year)
   - Reserved Instances: long workloads
   - Convertible Reserved Instances: long workloads with flexible instances
-  - Scheduled Reserved Instances: example – every Thursday between 3 and 6 pm
+  - Scheduled Reserved Instances: example - every Thursday between 3 and 6 pm
 - Spot Instances: short workloads, cheap, can lose instances (less reliable)
 - Dedicated Hosts: book an entire physical server, control instance placement
 - Dedicated Instances: no other customers will share your hardware
@@ -761,7 +775,7 @@
 - An Amazon EC2 Dedicated Host is a physical server with EC2 instance capacity fully dedicated to your use. Dedicated Hosts can help you address compliance requirements and reduce costs by allowing you to use your existing server-bound software licenses.
 - Allocated for your account for a 3-year period reservation
 - More expensive
-- Useful for software that have complicated licensing model (BYOL – Bring Your Own License)
+- Useful for software that have complicated licensing model (BYOL - Bring Your Own License)
 - Or for companies that have strong regulatory or compliance needs
 
 #### 4.13.5. EC2 Dedicated Instances
@@ -791,7 +805,7 @@
   - IAM Roles assigned to EC2ASDASD\_\_& IAM user access management
   - Data security on your instance
 
-### 4.16. EC2 – Summary
+### 4.16. EC2 - Summary
 
 - EC2 Instance: AMI (OS) + Instance Size (CPU + RAM) + Storage + security groups + EC2 User Data.
 - Security Groups: Firewall attached to the EC2 instance.
@@ -822,7 +836,7 @@
   - You get billed for all the provisioned capacity.
   - You can increase the capacity of the drive over time.
 
-### 5.3. EBS – Delete on Termination attribute
+### 5.3. EBS - Delete on Termination attribute
 
 - Controls the EBS behaviour when an EC2 instance terminates
   - By default, the root EBS volume is deleted (attribute enabled)
@@ -852,7 +866,7 @@
 
 - Start an EC2 instance and customize it.
 - Stop the instance (for data integrity).
-- Build an AMI – this will also create EBS snapshots.
+- Build an AMI - this will also create EBS snapshots.
 - Launch instances from other AMIs.
 
 ### 5.7. EC2 Image Builder
@@ -879,7 +893,7 @@
 - Risk of data loss if hardware fails.
 - Backups and Replication are your responsibility.
 
-### 5.9. EFS – Elastic File System
+### 5.9. EFS - Elastic File System
 
 - Managed NFS (network file system) that **can be mounted on 100s of EC2**.
 - EFS works with **Linux** EC2 instances in **multi-AZ**.
@@ -907,7 +921,7 @@
   - Responsibility of any data on the drives.
   - Understanding the risk of using EC2 Instance Store.
 
-### 5.12. Amazon FSx – Overview
+### 5.12. Amazon FSx - Overview
 
 - Launch 3rd party high-performance file systems on AWS.
 - Fully managed service.
@@ -982,7 +996,7 @@
 
 - Vertical Scaling: Increase instance size (= scale up / down).
   - From: t2.nano - 0.5G of RAM, 1 vCPU
-  - To: u-12tb1.metal – 12.3 TB of RAM, 448 vCPUs
+  - To: u-12tb1.metal - 12.3 TB of RAM, 448 vCPUs
 - Horizontal Scaling: Increase number of instances (= scale out / in).
   - Auto Scaling Group
   - Load Balancer
@@ -1018,9 +1032,9 @@
 - It costs less to setup your own load balancer but it will be a lot more
   effort on your end (maintenance, integrations)
 - 3 kinds of load balancers offered by AWS:
-  - Application Load Balancer (HTTP / HTTPS only) – Layer 7
-  - Network Load Balancer (ultra-high performance, allows for TCP) – Layer 4
-  - Classic Load Balancer (slowly retiring) – Layer 4 & 7
+  - Application Load Balancer (HTTP / HTTPS only) - Layer 7
+  - Network Load Balancer (ultra-high performance, allows for TCP) - Layer 4
+  - Classic Load Balancer (slowly retiring) - Layer 4 & 7
 
 ### 6.8. What's an Auto Scaling Group?
 
@@ -1034,7 +1048,7 @@
   - Replace unhealthy instances
 - Cost Savings: only run at an optimal capacity (principle of the cloud)
 
-### 6.9. Auto Scaling Groups – Scaling Strategies
+### 6.9. Auto Scaling Groups - Scaling Strategies
 
 - Manual Scaling: Update the size of an ASG manually
 - Dynamic Scaling: Respond to changing demand
@@ -1051,13 +1065,13 @@
   - Automatically provisions the right number of EC2 instances in advance.
   - Useful when your load has predictable time-based patterns.
 
-### 6.10. ELB & ASG – Summary
+### 6.10. ELB & ASG - Summary
 
 - High Availability vs Scalability (vertical and horizontal) vs Elasticity vs Agility in the Cloud.
 - Elastic Load Balancers (ELB):
   - Distribute traffic across backend EC2 instances, can be Multi-AZ
   - Supports health checks
-  - 3 types: Application LB (HTTP – L7), Network LB (TCP – L4), Classic LB (old)
+  - 3 types: Application LB (HTTP - L7), Network LB (TCP - L4), Classic LB (old)
 - Auto Scaling Groups (ASG):
   - Implement Elasticity for your application, across multiple AZ
   - Scale EC2 instances based on the demand on your system, replace unhealthy
@@ -1113,8 +1127,8 @@
 - Object values are the content of the body:
   - Max Object Size is 5TB (5000GB)
   - If uploading more than 5GB, must use "multi-part upload"
-- **Metadata** (list of text key / value pairs – system or user metadata)
-- **Tags** (Unicode key / value pair – up to 10) – useful for security / lifecycle
+- **Metadata** (list of text key / value pairs - system or user metadata)
+- **Tags** (Unicode key / value pair - up to 10) - useful for security / lifecycle
 - Version ID (if versioning is enabled)
 
 ## 11. S3 Security
@@ -1123,8 +1137,8 @@
   - IAM policies - which API calls should be allowed for a specific user from IAM console
 - Resource Based
   - Bucket Policies - bucket wide rules from the S3 console - allows cross account
-  - Object Access Control List (ACL) – finer grain
-  - Bucket Access Control List (ACL) – less common
+  - Object Access Control List (ACL) - finer grain
+  - Bucket Access Control List (ACL) - less common
 - Note: an IAM principal can access an S3 object if
   - The user IAM permissions allow it OR the resource policy ALLOWS it
   - AND there's no explicit DENY
@@ -1203,7 +1217,7 @@
 - Copying is asynchronous
 - Must give proper IAM permissions to S3
 - CRR - Use cases: compliance, lower latency access, replication across accounts
-- SRR – Use cases: log aggregation, live replication between production and test accounts
+- SRR - Use cases: log aggregation, live replication between production and test accounts
 
 ### 11.7. S3 Storage Classes
 
@@ -1226,7 +1240,7 @@
   - S3 standard has 99.99% availability, which means it will not be available 53 minutes a year
   - Varies depending on storage class
 
-### 11.9. S3 Standard – General Purposes
+### 11.9. S3 Standard - General Purposes
 
 - 99.99% Availability
 - Used for frequently accessed data
@@ -1234,7 +1248,7 @@
 - Sustain 2 concurrent facility failures
 - Use Cases: Big Data analytics, mobile & gaming applications, content distribution...
 
-### 11.10. S3 Standard – Infrequent Access (IA)
+### 11.10. S3 Standard - Infrequent Access (IA)
 
 - Suitable for data that is less frequently accessed, but requires rapid access when needed
 - 99.9% Availability
@@ -1266,11 +1280,11 @@
 - Low cost object storage (in GB/month) meant for archiving / backup
 - Data is retained for the longer term (years)
 - Various retrieval options of time + fees for retrieval:
-- Amazon Glacier – cheap:
+- Amazon Glacier - cheap:
   - Expedited (1 to 5 minutes)
   - Standard (3 to 5 hours)
   - Bulk (5 to 12 hours)
-- Amazon Glacier Deep Archive – cheapest:
+- Amazon Glacier Deep Archive - cheapest:
   - Standard (12 hours)
   - Bulk (48 hours)
 
@@ -1390,7 +1404,7 @@
 - High security: temperature controlled, GPS, 24/7 video surveillance
 - Better than Snowball if you transfer more than 10 PB
 
-### 11.21. Snow Family – Usage Process
+### 11.21. Snow Family - Usage Process
 
 1. Request Snowball devices from the AWS console for delivery
 2. Install the snowball client / AWS OpsHub on your servers
@@ -1413,16 +1427,16 @@
   - Transcoding media streams
 - Eventually (if need be) we can ship back the device to AWS (for transferring data for example)
 
-### 11.23. Snow Family – Edge Computing
+### 11.23. Snow Family - Edge Computing
 
 - Snowcone (smaller)
   - 2 CPUs, 4 GB of memory, wired or wireless access
   - USB-C power using a cord or the optional battery
-- Snowball Edge – Compute Optimized
+- Snowball Edge - Compute Optimized
   - 52 vCPUs, 208 GiB of RAM
   - Optional GPU (useful for video processing or machine learning)
   - 42 TB usable storage
-- Snowball Edge – Storage Optimized
+- Snowball Edge - Storage Optimized
   - Up to 40 vCPUs, 80 GiB of RAM
   - Object storage clustering available
 - All: Can run EC2 Instances & AWS Lambda functions (using AWS IoT Greengrass)
@@ -1461,7 +1475,7 @@
   - Volume Gateway
   - Tape Gateway
 
-### 11.27. Amazon S3 – Summary
+### 11.27. Amazon S3 - Summary
 
 - Buckets vs Objects: global unique name, tied to a region
 - S3 security: IAM policy, S3 Bucket Policy (public access), S3 Encryption
@@ -1571,7 +1585,7 @@
 - **PostgreSQL and MySQL** are both supported as Aurora DB.
 - Aurora is "AWS cloud optimized" and claims 5x performance improvement over MySQL on RDS, over 3x the performance of Postgres on RDS.
 - Aurora storage automatically grows in increments of 10GB, up to 64 TB.
-- Aurora costs more than RDS (20% more) – but is more efficient.
+- Aurora costs more than RDS (20% more) - but is more efficient.
 - Not in the free tier.
 
 ### 12.9. RDS Deployments: Read Replicas, Multi-AZ, Multi-Region
@@ -1595,9 +1609,9 @@
 - Local performance for global reads
 - Replication cost
 
-#### Resume
+#### 12.9.4. Resume
 
-- **RDS Multi-AZ deployments main purpose is high availability, and RDS Read replicas main purpose is scalability. Moreover, Multi-Region deployments’ main purpose is disaster recovery and local performance.**
+- **RDS Multi-AZ deployments main purpose is high availability, and RDS Read replicas main purpose is scalability. Moreover, Multi-Region deployments' main purpose is disaster recovery and local performance.**
 
 ### 12.10. Amazon ElastiCache Overview
 
@@ -1615,7 +1629,7 @@
 - Scales to massive workloads, distributed **"serverless**" database.
 - Millions of requests per seconds, trillions of row, 100s of TB of storage.
 - Fast and consistent in performance.
-- **Single-digit millisecond latency – low latency retrieval.**
+- **Single-digit millisecond latency - low latency retrieval.**
 - Integrated with IAM for security, authorization and administration.
 - Low cost and auto scaling capabilities.
 
@@ -1623,11 +1637,11 @@
 
 - **Amazon DynamoDB Accelerator (DAX) is a fully managed, highly available, in-memory cache for Amazon DynamoDB that delivers up to a 10 times performance improvement—from milliseconds to microseconds—even at millions of requests per second.**
 - Fully Managed **in-memory** cache for DynamoDB.
-- **10x performance improvement** – single- digit millisecond latency to microseconds latency – when accessing your DynamoDB tables.
+- **10x performance improvement** - single- digit millisecond latency to microseconds latency - when accessing your DynamoDB tables.
 - Secure, highly scalable & highly available.
 - Difference with ElastiCache at the CCP level: DAX is only used for and is integrated with DynamoDB, while ElastiCache can be used for other databases.
 
-#### 12.11.2. DynamoDB – Global Tables
+#### 12.11.2. DynamoDB - Global Tables
 
 - Make a DynamoDB table accessible with low latency in multiple-regions.
 - Active-Active replication (read/write to any AWS Region).
@@ -1636,7 +1650,7 @@
 
 - **Amazon Redshift is a fully managed, petabyte-scale data warehouse service in the cloud.**
 - Redshift is based on PostgreSQL, but it's not used for OLTP.
-- **It's OLAP – online analytical processing (analytics and data warehousing).**
+- **It's OLAP - online analytical processing (analytics and data warehousing).**
 - Load data once every hour, not every second.
 - 10x better performance than other data warehouses, scale to PBs of data.
 - **Columnar** storage of data (instead of row based).
@@ -1700,7 +1714,7 @@
   - Comments have likes from users
   - Users share and like posts...
 - Highly available across 3 AZ, with up to 15 read replicas.
-- Build and run applications working with highly connected datasets – optimized for these complex and hard queries.
+- Build and run applications working with highly connected datasets - optimized for these complex and hard queries.
 - Can store up to billions of relations and query the graph with milliseconds latency.
 - Highly available with replications across multiple AZs.
 
@@ -1734,7 +1748,7 @@
   - **The AWS Glue Data Catalog is a central repository to store structural and operational metadata for all your data assets. For a given data set, you can store its table definition, physical location, add business relevant attributes, as well as track how this data has changed over time.**
   - Can be used by Athena, Redshift, EMR.
 
-### 12.21. DMS – Database Migration Service
+### 12.21. DMS - Database Migration Service
 
 - **AWS Database Migration Service helps you migrate databases to AWS quickly and securely. The source database remains fully operational during the migration, minimizing downtime to applications that rely on the database.**
 - Quickly and securely migrate databases to AWS, resilient, self healing
@@ -1753,18 +1767,173 @@
 - Hadoop Cluster: EMR.
 - Athena: query data on Amazon S3 (serverless & SQL).
 - QuickSight: dashboards on your data (serverless).
-- DocumentDB: "Aurora for MongoDB" (JSON – NoSQL database).
+- DocumentDB: "Aurora for MongoDB" (JSON - NoSQL database).
 - Amazon QLDB: Financial Transactions Ledger (immutable journal, cryptographically verifiable).
 - Amazon Managed Blockchain: managed Hyperledger Fabric & Ethereum blockchains.
 - Glue: Managed ETL (Extract Transform Load) and Data Catalog service.
 - Database Migration: DMS.
 - Neptune: Graph database.
 
-## ECS
+## 13. Other Compute Services: ECS, Lambda, Batch, Lightsail
 
-## 13. AWS related Abbreviations & Acronyms
+### 13.1. ECS
 
-### 13.1. A
+- ECS = Elastic Container Service.
+- Launch Docker containers on AWS.
+- **You must provision & maintain the infrastructure (the EC2 instances)**.
+- AWS takes care of starting / stopping containers.
+- Has integrations with the Application Load Balancer.
+
+### 13.2. Fargate
+
+- Launch Docker containers on AWS.
+- **You do not provision the infrastructure (no EC2 instances to manage)**.
+- Serverless offering.
+- AWS just runs containers for you based on the CPU / RAM you need.
+
+### 13.3. ECR
+
+- Elastic Container Registry.
+- Private Docker Registry on AWS.
+- This is where you store your Docker images so they can be run by ECS or Fargate.
+
+### 13.4. What's serverless?
+
+- Serverless is a new paradigm in which the developers don't have to manage servers anymore.
+- They just deploy code / functions.
+- Initially... Serverless == FaaS (Function as a Service)
+- Serverless was pioneered by AWS Lambda but now also includes anything that's managed: "databases, messaging, storage, etc."
+- Serverless does not mean there are no servers... it means you just don't manage / provision / see them
+- Serverless:
+  - Amazon S3
+  - DynamoDB
+  - Fargate
+  - Lambda
+
+### 13.5. Why AWS Lambda?
+
+- Amazon EC2:
+  - Virtual Servers in the Cloud.
+  - Limited by RAM and CPU.
+  - Continuously running.
+  - Scaling means intervention to add / remove servers.
+- Amazon Lambda:
+  - Virtual functions - no servers to manage!
+  - Limited by time - short executions.
+  - Run on-demand.
+  - Scaling is automated!
+
+#### 13.5.1. Benefits of AWS Lambda
+
+- Easy Pricing:
+  - Pay per request and compute time.
+  - Free tier of 1,000,000 AWS Lambda requests and 400,000 GBs of compute time.
+- Integrated with the whole AWS suite of services.
+- **Event-Driven**: functions get invoked by AWS when needed.
+- Integrated with many programming languages.
+- Easy monitoring through AWS CloudWatch.
+- Easy to get more resources per functions (up to 10GB of RAM!).
+- Increasing RAM will also improve CPU and network!
+
+#### 13.5.2. AWS Lambda language support
+
+- Node.js (JavaScript)
+- Python
+- Java (Java 8 compatible)
+- C# (.NET Core)
+- Golang
+- C# / Powershell
+- Ruby
+- Custom Runtime API (community supported, example Rust)
+- Lambda Container Image
+  - The container image must implement the Lambda Runtime API
+  - ECS / Fargate is preferred for running arbitrary Docker images
+
+#### 13.5.3. AWS Lambda Pricing: example
+
+- You can find overall pricing information here: https://aws.amazon.com/lambda/pricing/
+- Pay per **calls**:
+  - First 1,000,000 requests are free.
+  - $0.20 per 1 million requests thereafter ($0.0000002 per request).
+- Pay per **duration**: (in increment of 1 ms)
+  - 400,000 GB-seconds of compute time per month for FREE.
+  - == 400,000 seconds if function is 1GB RAM.
+  - == 3,200,000 seconds if function is 128 MB RAM.
+  - After that $1.00 for 600,000 GB-seconds.
+- It is usually **very cheap** to run AWS Lambda so it's **very popular**.
+
+### 13.6. Amazon API Gateway
+
+- Example: building a serverless API.
+- Fully managed service for developers to easily create, publish, maintain, monitor, and secure APIs.
+- Serverless and scalable.
+- Supports RESTful APIs and WebSocket APIs.
+- Support for security, user authentication, API throttling, API keys, monitoring...
+
+### 13.7. AWS Batch
+
+- **Fully managed** batch processing at **any scale**.
+- Efficiently run 100,000s of computing batch jobs on AWS.
+- A "batch" job is a job with a start and an end (opposed to continuous).
+- Batch will dynamically launch **EC2 instances** or **Spot Instances**.
+- AWS Batch provisions the right amount of compute / memory.
+- You submit or schedule batch jobs and AWS Batch does the rest!
+- Batch jobs are defined as **Docker images** and **run on ECS**.
+- Helpful for cost optimizations and focusing less on the infrastructure.
+
+### 13.8. Batch vs Lambda
+
+- Lambda:
+  - Time limit.
+  - Limited runtimes.
+  - Limited temporary disk space.
+  - Serverless.
+- Batch:
+  - No time limit.
+  - Any runtime as long as it's packaged as a Docker image.
+  - Rely on EBS / instance store for disk space.
+  - Relies on EC2 (can be managed by AWS).
+
+### 13.9. Amazon Lightsail
+
+- Virtual servers, storage, databases, and networking.
+- Low & predictable pricing.
+- Simpler alternative to using EC2, RDS, ELB, EBS, Route 53...
+- Great for people with little cloud experience!
+- Can setup notifications and monitoring of your Lightsail resources.
+- Use cases:
+  - Simple web applications (has templates for LAMP, Nginx, MEAN, Node.js...).
+  - Websites (templates for WordPress, Magento, Plesk, Joomla).
+  - Dev / Test environment.
+- Has high availability but no auto-scaling, limited AWS integrations.
+
+### 13.10. Other Compute - Summary
+
+- Docker: container technology to run applications.
+- ECS: run Docker containers on EC2 instances.
+- Fargate:
+  - Run Docker containers without provisioning the infrastructure.
+  - Serverless offering (no EC2 instances).
+- ECR: Private Docker Images Repository.
+- Batch: run batch jobs on AWS across managed EC2 instances.
+- Lightsail: predictable & low pricing for simple application & DB stacks.
+
+### 13.11. Lambda Summary
+
+- Lambda is Serverless, Function as a Service, seamless scaling, reactive.
+- Lambda Billing:
+  - By the time run x by the RAM provisioned.
+  - By the number of invocations.
+- Language Support: many programming languages except (arbitrary) Docker.
+- Invocation time: up to 15 minutes.
+- Use cases:
+  - Create Thumbnails for images uploaded onto S3.
+  - Run a Serverless cron job.
+- API Gateway: expose Lambda functions as HTTP API.
+
+## 14. AWS related Abbreviations & Acronyms
+
+### 14.1. A
 
 - AWS Amazon Web Services
 - Amazon ES Amazon Elasticsearch Service
@@ -1781,11 +1950,11 @@
 - ADFS Active Directory Federation Service
 - AVX Advanced Vector Extensions
 
-### 13.2. B
+### 14.2. B
 
 - BYOL Bring Your Own License
 
-### 13.3. C
+### 14.3. C
 
 - CDN Content Delivery Network
 - CRC Cyclic Redundancy Check
@@ -1795,7 +1964,7 @@
 - CRR Cross Region Replication
 - CI/CD Continuous Integration/Continuous Deployment
 
-### 13.4. D
+### 14.4. D
 
 - DMS Database Migration Service
 - DNS Domain Name System
@@ -1803,7 +1972,7 @@
 - DoS Denial of Service
 - DaaS Desktop as-a-Service
 
-### 13.5. E
+### 14.5. E
 
 - EC2 Elastic Compute Cloud
 - ECS EC2 Container Service
@@ -1821,12 +1990,12 @@
 - ENI Elastic Network Interface
 - ECU EC2 Compute Unit
 
-### 13.6. F
+### 14.6. F
 
 - FIFO First In First Out
 - FaaS Function as-a-Service
 
-### 13.7. H
+### 14.7. H
 
 - HPC High-Performance Compute
 - HVM Hardware Virtual Machine
@@ -1834,7 +2003,7 @@
 - HTTPS HTTP Secure
 - HDK Hardware Development Kit
 
-### 13.8. I
+### 14.8. I
 
 - IAM Identity & Access Management
 - iOT Internet Of Things
@@ -1847,21 +2016,21 @@
 - IPSec Internet Protocol Security
 - IaaS Infrastructure-as-a-Service
 
-### 13.9. J
+### 14.9. J
 
 - JSON JavaScript Object Notation
 
-### 13.10. K
+### 14.10. K
 
 - KMS Key Management Service
 - KVM Kernel-based Virtual Machine
 
-### 13.11. L
+### 14.11. L
 
 - LB Load Balancer
 - LCU Load Balancer Capacity Unit
 
-### 13.12. M
+### 14.12. M
 
 - MFA Multi-Factor Authentication
 - MSTSC Microsoft Terminal Service Client
@@ -1869,31 +2038,31 @@
 - MITM Man in the Middle Attack
 - MPLS Multi Protocol Label Switching
 
-### 13.13. N
+### 14.13. N
 
 - NFS Network File System
 - NS Name Server
 - NAT Network Address Translation
 - NVMe Non-Volatile Memory Express
 
-### 13.14. O
+### 14.14. O
 
 - OLTP Online Transaction Processing
 - OLAP Online Analytics Processing
 - OCI Open Container Initiative
 
-### 13.15. P
+### 14.15. P
 
 - PCI DSS Payment Card Industry Data Security Standard
 - PVM Para Virtual Machine
 - PV ParaVirtual
 - PaaS Platform as a Service
 
-### 13.16. Q
+### 14.16. Q
 
 - QLDB Quantum Ledger Database
 
-### 13.17. R
+### 14.17. R
 
 - RAIDRedundant Array of Independent Disk
 - RDS Relational Database Service
@@ -1902,7 +2071,7 @@
 - RAM Random-access Memory
 - RIE Runtime Interface Emulator
 
-### 13.18. S
+### 14.18. S
 
 - SSEServer Side Encryption
 - S3 Simple Storage Service
@@ -1930,7 +2099,7 @@
 - STS Security Token Service
 - SNI Server Name Indication
 
-### 13.19. T
+### 14.19. T
 
 - TTL Time To Live
 - TLS Transport Layer Security
@@ -1940,7 +2109,7 @@
 - TPS Transaction Per Second
 - TCP Transmission Control Protocol
 
-### 13.20. V
+### 14.20. V
 
 - VPC Virtual Private Cloud
 - VM Virtual Machine
@@ -1950,6 +2119,6 @@
 - VDI Virtual Desktop Infrastructure
 - VPG Virtual Private Gateway
 
-### 13.21. W
+### 14.21. W
 
 - WAFWeb Application Firewall
