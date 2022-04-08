@@ -178,28 +178,50 @@
   - [13.9. Amazon Lightsail](#139-amazon-lightsail)
   - [13.10. Other Compute - Summary](#1310-other-compute---summary)
   - [13.11. Lambda Summary](#1311-lambda-summary)
-- [14. AWS related Abbreviations & Acronyms](#14-aws-related-abbreviations--acronyms)
-  - [14.1. A](#141-a)
-  - [14.2. B](#142-b)
-  - [14.3. C](#143-c)
-  - [14.4. D](#144-d)
-  - [14.5. E](#145-e)
-  - [14.6. F](#146-f)
-  - [14.7. H](#147-h)
-  - [14.8. I](#148-i)
-  - [14.9. J](#149-j)
-  - [14.10. K](#1410-k)
-  - [14.11. L](#1411-l)
-  - [14.12. M](#1412-m)
-  - [14.13. N](#1413-n)
-  - [14.14. O](#1414-o)
-  - [14.15. P](#1415-p)
-  - [14.16. Q](#1416-q)
-  - [14.17. R](#1417-r)
-  - [14.18. S](#1418-s)
-  - [14.19. T](#1419-t)
-  - [14.20. V](#1420-v)
-  - [14.21. W](#1421-w)
+- [14. Deploying and Managing Infrastructure at Scale](#14-deploying-and-managing-infrastructure-at-scale)
+  - [14.1. What is CloudFormation?](#141-what-is-cloudformation)
+    - [14.1.1. Benefits of AWS CloudFormation](#1411-benefits-of-aws-cloudformation)
+    - [14.1.2. CloudFormation Stack Designer](#1412-cloudformation-stack-designer)
+  - [14.2. AWS Cloud Development Kit (CDK)](#142-aws-cloud-development-kit-cdk)
+  - [14.3. Developer problems on AWS](#143-developer-problems-on-aws)
+  - [14.4. AWS Elastic Beanstalk Overview](#144-aws-elastic-beanstalk-overview)
+  - [14.5. Elastic Beanstalk](#145-elastic-beanstalk)
+    - [14.5.1. Health Monitoring](#1451-health-monitoring)
+  - [14.6. AWS CodeDeploy](#146-aws-codedeploy)
+  - [14.7. AWS CodeCommit](#147-aws-codecommit)
+  - [14.8. AWS CodeBuild](#148-aws-codebuild)
+  - [14.9. AWS CodePipeline](#149-aws-codepipeline)
+  - [14.10. AWS CodeArtifact](#1410-aws-codeartifact)
+  - [14.11. AWS CodeStar](#1411-aws-codestar)
+  - [14.12. AWS Cloud9](#1412-aws-cloud9)
+  - [14.13. AWS Systems Manager (SSM)](#1413-aws-systems-manager-ssm)
+    - [14.13.1. How Systems Manager works?](#14131-how-systems-manager-works)
+    - [14.13.2. Systems Manager – SSM Session Manager](#14132-systems-manager--ssm-session-manager)
+  - [14.14. AWS OpsWorks](#1414-aws-opsworks)
+  - [14.15. Deployment - Summary](#1415-deployment---summary)
+- [15. AWS related Abbreviations & Acronyms](#15-aws-related-abbreviations--acronyms)
+  - [15.1. A](#151-a)
+  - [15.2. B](#152-b)
+  - [15.3. C](#153-c)
+  - [15.4. D](#154-d)
+  - [15.5. E](#155-e)
+  - [15.6. F](#156-f)
+  - [15.7. H](#157-h)
+  - [15.8. I](#158-i)
+  - [15.9. J](#159-j)
+  - [15.10. K](#1510-k)
+  - [15.11. L](#1511-l)
+  - [15.12. M](#1512-m)
+  - [15.13. N](#1513-n)
+  - [15.14. O](#1514-o)
+  - [15.15. P](#1515-p)
+  - [15.16. Q](#1516-q)
+  - [15.17. R](#1517-r)
+  - [15.18. S](#1518-s)
+  - [15.19. T](#1519-t)
+  - [15.20. V](#1520-v)
+  - [15.21. W](#1521-w)
+- [16. Commands](#16-commands)
 
 ## 1. Traditionally, how to build infrastructure
 
@@ -1896,6 +1918,7 @@
 
 ### 13.9. Amazon Lightsail
 
+- **Amazon Lightsail is designed to be the easiest way to launch and manage a virtual private server with AWS. Lightsail plans include everything you need to jumpstart your project – a virtual machine, SSD- based storage, data transfer, DNS management, and a static IP address – for a low, predictable price. It can be used to create a simple web application, a website or a dev/test environment.**
 - Virtual servers, storage, databases, and networking.
 - Low & predictable pricing.
 - Simpler alternative to using EC2, RDS, ELB, EBS, Route 53...
@@ -1931,9 +1954,234 @@
   - Run a Serverless cron job.
 - API Gateway: expose Lambda functions as HTTP API.
 
-## 14. AWS related Abbreviations & Acronyms
+## 14. Deploying and Managing Infrastructure at Scale
 
-### 14.1. A
+### 14.1. What is CloudFormation?
+
+- CloudFormation is a declarative way of outlining your AWS Infrastructure, for any resources (most of them are supported).
+- For example, within a CloudFormation template, you say:
+  - I want a security group.
+  - I want two EC2 instances using this security group.
+  - I want an S3 bucket.
+  - I want a load balancer (ELB) in front of these machines.
+- Then CloudFormation creates those for you, in the right order, with the exact configuration that you specify.
+
+#### 14.1.1. Benefits of AWS CloudFormation
+
+**- CloudFormation are free of use, but you do pay for the resources created.**
+- Infrastructure as code
+  - No resources are manually created, which is excellent for control.
+  - Changes to the infrastructure are reviewed through code.
+- Cost
+  - Each resources within the stack is tagged with an identifier so you can easily see how much a stack costs you.
+  - You can estimate the costs of your resources using the CloudFormation template.
+  - Savings strategy: In Dev, you could automation deletion of templates at 5 PM and recreated at 8 AM, safely.
+- Productivity
+  - Ability to destroy and re-create an infrastructure on the cloud on the fly.
+  - Automated generation of Diagram for your templates!
+  - Declarative programming (no need to figure out ordering and orchestration).
+- Don't re-invent the wheel
+  - Leverage existing templates on the web!
+  - Leverage the documentation.
+- Supports (almost) all AWS resources:
+  - Everything we'll see in this course is supported.
+  - You can use "custom resources" for resources that are not supported.
+
+#### 14.1.2. CloudFormation Stack Designer
+
+- **AWS CloudFormation templates are JSON or YAML-formatted text files. They are declarations of the AWS resources that make up a stack.**
+- Example: WordPress CloudFormation Stack.
+- We can see all the resources.
+- We can see the relations between the components.
+
+### 14.2. AWS Cloud Development Kit (CDK)
+
+- **The AWS Cloud Development Kit (AWS CDK) is an open source software development framework to define your cloud application resources using familiar programming languages.**
+  - JavaScript/TypeScript, Python, Java, and .NET.
+- The code is "compiled" into a CloudFormation template (JSON/YAML).
+- You can therefore deploy infrastructure and application runtime code together.
+  - Great for Lambda functions.
+  - Great for Docker containers in ECS / EKS.
+
+### 14.3. Developer problems on AWS
+
+- Managing infrastructure.
+- Deploying Code.
+- Configuring all the databases, load balancers, etc.
+- Scaling concerns.
+- Most web apps have the same architecture (ALB + ASG).
+- All the developers want is for their code to run!
+- Possibly, consistently across different applications and environments.
+
+### 14.4. AWS Elastic Beanstalk Overview
+
+- **Elastic Beanstalk is a Platform as a Service (PaaS). You only manage data and applications. AWS Elastic Beanstalk makes it even easier for developers to quickly deploy and manage applications in the AWS Cloud.**
+- Elastic Beanstalk is a developer centric view of deploying an application on AWS.
+- It uses all the component's we've seen before: EC2, ASG, ELB, RDS, etc...
+- But it's all in one view that's easy to make sense of!
+- We still have full control over the configuration.
+- Beanstalk = Platform as a Service (PaaS).
+- **Elastic Beanstalk are free of use, but you do pay for the resources created..**
+
+### 14.5. Elastic Beanstalk
+
+- Managed service
+  - Instance configuration / OS is handled by Beanstalk.
+  - Deployment strategy is configurable but performed by Elastic Beanstalk.
+  - Capacity provisioning.
+  - Load balancing & auto-scaling.
+  - Application health-monitoring & responsiveness.
+- Just the application code is the responsibility of the developer.
+- Three architecture models:
+  - Single Instance deployment: good for dev.
+  - LB + ASG: great for production or pre-production web applications.
+  - ASG only: great for non-web apps in production (workers, etc..).
+- Support for many platforms:
+  - Go
+  - Java SE
+  - Java with Tomcat
+  - .NET on Windows Server with IIS
+  - Node.js
+  - PHP
+  - Python
+  - Ruby
+  - Packer Builder
+- Single Container Docker.
+- Multi-Container Docker.
+- Preconfigured Docker.
+
+#### 14.5.1. Health Monitoring
+
+- Health agent pushes metrics to CloudWatch.
+- Checks for app health, publishes health events.
+
+### 14.6. AWS CodeDeploy
+
+- **AWS CodeDeploy is a service that automates code deployments to any instance, including Amazon EC2 instances and instances running on-premises.**
+- We want to deploy our application automatically.
+- Hybrid service.
+- Servers / Instances must be provisioned and configured ahead of time with the CodeDeploy Agent.
+
+### 14.7. AWS CodeCommit
+
+- **AWS CodeCommit is a secure, highly scalable, managed source control service that makes it easier for teams to collaborate on code. It also provides software version control.**
+- Before pushing the application code to servers, it needs to be stored somewhere.
+- Developers usually store code in a repository, using the Git technology.
+- A famous public offering is GitHub, AWS competing product is CodeCommit.
+- CodeCommit:
+  - Source-control service that hosts Git-based repositories.
+  - Makes it easy to collaborate with others on code.
+  - The code changes are automatically versioned.
+- Benefits:
+  - Fully managed.
+  - Scalable & highly available.
+  - Private, Secured, Integrated with AWS.
+
+### 14.8. AWS CodeBuild
+
+- **AWS CodeBuild is a fully managed continuous integration service that compiles source code, runs tests, and produces software packages that are ready to deploy. With CodeBuild, you don’t need to provision, manage, and scale your own build servers, it is serverless.**
+- Code building service in the cloud (name is obvious)
+- Compiles source code, run tests, and produces packages that are ready to be deployed (by CodeDeploy for example)
+- Benefits:
+  - Fully managed, serverless.
+  - Continuously scalable & highly available.
+  - Secure.
+  - Pay-as-you-go pricing – only pay for the build time.
+
+### 14.9. AWS CodePipeline
+
+- Orchestrate the different steps to have the code automatically pushed to production.
+  - Code => Build => Test => Provision => Deploy.
+  - Basis for CI/CD (Continuous Integration & Continuous Delivery).
+- Benefits:
+  - Fully managed, compatible with CodeCommit, CodeBuild, CodeDeploy, Elastic Beanstalk, CloudFormation, GitHub, 3rd-party services (GitHub...) & custom plugins...
+- Fast delivery & rapid updates.
+
+### 14.10. AWS CodeArtifact
+
+- **AWS CodeArtifact is a fully managed artifact repository (also called code dependencies) service that makes it easy for organizations of any size to securely store, publish, and share software packages used in their software development process.**
+- Software packages depend on each other to be built (also called code dependencies), and new ones are created.
+- Storing and retrieving these dependencies is called artifact management.
+- Traditionally you need to setup your own artifact management system.
+- CodeArtifact is a secure, scalable, and cost-effective artifact management for software development.
+- Works with common dependency management tools such as Maven, Gradle, npm, yarn, twine, pip, and NuGet.
+- Developers and CodeBuild can then retrieve dependencies straight from CodeArtifact.
+
+### 14.11. AWS CodeStar
+
+- **CodeStar is used to quickly develop, build, and deploy applications on AWS. Elastic Beanstalk can be used to monitor and to check the health of an environment.**
+- Unified UI to easily manage software development activities in one place.
+- "Quick way" to get started to correctly set-up CodeCommit, CodePipeline, CodeBuild, CodeDeploy, Elastic Beanstalk, EC2, etc...
+- Can edit the code "in-the-cloud" using AWS Cloud9.
+
+### 14.12. AWS Cloud9
+
+- AWS Cloud9 is a cloud IDE (Integrated Development Environment) for writing, running and debugging code.
+- "Classic" IDE (like IntelliJ, Visual Studio Code...) are downloaded on a computer before being used.
+- A cloud IDE can be used within a web browser, meaning you can work on your projects from your office, home, or anywhere with internet with no setup necessary.
+- AWS Cloud9 also allows for code collaboration in real-time (pair programming).
+
+### 14.13. AWS Systems Manager (SSM)
+
+- **AWS Systems Manager gives you visibility and control of your infrastructure on AWS. It is used for patching systems at scale.**
+- Helps you manage your EC2 and On-Premises systems at scale.
+- Another Hybrid AWS service.
+- Get operational insights about the state of your infrastructure.
+- Suite of 10+ products.
+- Most important features are:
+  - Patching automation for enhanced compliance.
+  - Run commands across an entire fleet of servers.
+  - Store parameter configuration with the SSM Parameter Store.
+- Works for both Windows and Linux OS.
+
+#### 14.13.1. How Systems Manager works?
+
+- We need to install the SSM agent onto the systems we control.
+- Installed by default on Amazon Linux AMI & some Ubuntu AMI.
+- If an instance can't be controlled with SSM, it's probably an issue with the SSM agent!
+- Thanks to the SSM agent, we can run commands, patch & configure our servers.
+
+#### 14.13.2. Systems Manager – SSM Session Manager
+
+- Allows you to start a secure shell on your EC2 and on-premises servers.
+- No SSH access, bastion hosts, or SSH keys needed.
+- No port 22 needed (better security).
+- Supports Linux, macOS, and Windows.
+- Send session log data to S3 or CloudWatch Logs.
+
+### 14.14. AWS OpsWorks
+
+- Chef & Puppet help you perform server configuration automatically, or repetitive actions.
+- They work great with EC2 & On-Premises VM.
+- AWS OpsWorks = Managed Chef & Puppet.
+- It's an alternative to AWS SSM.
+- Only provision standard AWS resources:
+  - EC2 Instances, Databases, Load Balancers, EBS volumes...
+- In the exam: Chef or Puppet needed => AWS OpsWorks.
+
+### 14.15. Deployment - Summary
+
+- CloudFormation: (AWS only):
+  - Infrastructure as Code, works with almost all of AWS resources.
+  - Repeat across Regions & Accounts.
+- Beanstalk: (AWS only):
+  - Platform as a Service (PaaS), limited to certain programming languages or Docker.
+  - Deploy code consistently with a known architecture: ex, ALB + EC2 + RDS.
+- CodeDeploy (hybrid): deploy & upgrade any application onto servers.
+- Systems Manager (hybrid): patch, configure and run commands at scale.
+- OpsWorks (hybrid): managed Chef and Puppet in AWS.
+- CodeCommit: Store code in private git repository (version controlled).
+- CodeBuild: Build & test code in AWS.
+- CodeDeploy: Deploy code onto servers.
+- CodePipeline: Orchestration of pipeline (from code to build to deploy).
+- CodeArtifact: Store software packages / dependencies on AWS.
+- CodeStar: Unified view for allowing developers to do CICD and code.
+- Cloud9: Cloud IDE (Integrated Development Environment) with collab.
+- AWS CDK: Define your cloud infrastructure using a programming language.
+
+## 15. AWS related Abbreviations & Acronyms
+
+### 15.1. A
 
 - AWS Amazon Web Services
 - Amazon ES Amazon Elasticsearch Service
@@ -1950,11 +2198,11 @@
 - ADFS Active Directory Federation Service
 - AVX Advanced Vector Extensions
 
-### 14.2. B
+### 15.2. B
 
 - BYOL Bring Your Own License
 
-### 14.3. C
+### 15.3. C
 
 - CDN Content Delivery Network
 - CRC Cyclic Redundancy Check
@@ -1964,7 +2212,7 @@
 - CRR Cross Region Replication
 - CI/CD Continuous Integration/Continuous Deployment
 
-### 14.4. D
+### 15.4. D
 
 - DMS Database Migration Service
 - DNS Domain Name System
@@ -1972,7 +2220,7 @@
 - DoS Denial of Service
 - DaaS Desktop as-a-Service
 
-### 14.5. E
+### 15.5. E
 
 - EC2 Elastic Compute Cloud
 - ECS EC2 Container Service
@@ -1990,12 +2238,12 @@
 - ENI Elastic Network Interface
 - ECU EC2 Compute Unit
 
-### 14.6. F
+### 15.6. F
 
 - FIFO First In First Out
 - FaaS Function as-a-Service
 
-### 14.7. H
+### 15.7. H
 
 - HPC High-Performance Compute
 - HVM Hardware Virtual Machine
@@ -2003,7 +2251,7 @@
 - HTTPS HTTP Secure
 - HDK Hardware Development Kit
 
-### 14.8. I
+### 15.8. I
 
 - IAM Identity & Access Management
 - iOT Internet Of Things
@@ -2016,21 +2264,21 @@
 - IPSec Internet Protocol Security
 - IaaS Infrastructure-as-a-Service
 
-### 14.9. J
+### 15.9. J
 
 - JSON JavaScript Object Notation
 
-### 14.10. K
+### 15.10. K
 
 - KMS Key Management Service
 - KVM Kernel-based Virtual Machine
 
-### 14.11. L
+### 15.11. L
 
 - LB Load Balancer
 - LCU Load Balancer Capacity Unit
 
-### 14.12. M
+### 15.12. M
 
 - MFA Multi-Factor Authentication
 - MSTSC Microsoft Terminal Service Client
@@ -2038,31 +2286,31 @@
 - MITM Man in the Middle Attack
 - MPLS Multi Protocol Label Switching
 
-### 14.13. N
+### 15.13. N
 
 - NFS Network File System
 - NS Name Server
 - NAT Network Address Translation
 - NVMe Non-Volatile Memory Express
 
-### 14.14. O
+### 15.14. O
 
 - OLTP Online Transaction Processing
 - OLAP Online Analytics Processing
 - OCI Open Container Initiative
 
-### 14.15. P
+### 15.15. P
 
 - PCI DSS Payment Card Industry Data Security Standard
 - PVM Para Virtual Machine
 - PV ParaVirtual
 - PaaS Platform as a Service
 
-### 14.16. Q
+### 15.16. Q
 
 - QLDB Quantum Ledger Database
 
-### 14.17. R
+### 15.17. R
 
 - RAIDRedundant Array of Independent Disk
 - RDS Relational Database Service
@@ -2071,7 +2319,7 @@
 - RAM Random-access Memory
 - RIE Runtime Interface Emulator
 
-### 14.18. S
+### 15.18. S
 
 - SSEServer Side Encryption
 - S3 Simple Storage Service
@@ -2099,7 +2347,7 @@
 - STS Security Token Service
 - SNI Server Name Indication
 
-### 14.19. T
+### 15.19. T
 
 - TTL Time To Live
 - TLS Transport Layer Security
@@ -2109,7 +2357,7 @@
 - TPS Transaction Per Second
 - TCP Transmission Control Protocol
 
-### 14.20. V
+### 15.20. V
 
 - VPC Virtual Private Cloud
 - VM Virtual Machine
@@ -2119,6 +2367,13 @@
 - VDI Virtual Desktop Infrastructure
 - VPG Virtual Private Gateway
 
-### 14.21. W
+### 15.21. W
 
 - WAFWeb Application Firewall
+
+## 16. Commands
+
+- List of AWS Regions
+  - aws ec2 describe-regions
+- Find AWS availability zones using AWS CLI
+  - aws ec2 describe-availability-zones --region `region`
