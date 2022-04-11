@@ -196,32 +196,50 @@
   - [14.12. AWS Cloud9](#1412-aws-cloud9)
   - [14.13. AWS Systems Manager (SSM)](#1413-aws-systems-manager-ssm)
     - [14.13.1. How Systems Manager works?](#14131-how-systems-manager-works)
-    - [14.13.2. Systems Manager – SSM Session Manager](#14132-systems-manager--ssm-session-manager)
+    - [14.13.2. Systems Manager - SSM Session Manager](#14132-systems-manager---ssm-session-manager)
   - [14.14. AWS OpsWorks](#1414-aws-opsworks)
   - [14.15. Deployment - Summary](#1415-deployment---summary)
-- [15. AWS related Abbreviations & Acronyms](#15-aws-related-abbreviations--acronyms)
-  - [15.1. A](#151-a)
-  - [15.2. B](#152-b)
-  - [15.3. C](#153-c)
-  - [15.4. D](#154-d)
-  - [15.5. E](#155-e)
-  - [15.6. F](#156-f)
-  - [15.7. H](#157-h)
-  - [15.8. I](#158-i)
-  - [15.9. J](#159-j)
-  - [15.10. K](#1510-k)
-  - [15.11. L](#1511-l)
-  - [15.12. M](#1512-m)
-  - [15.13. N](#1513-n)
-  - [15.14. O](#1514-o)
-  - [15.15. P](#1515-p)
-  - [15.16. Q](#1516-q)
-  - [15.17. R](#1517-r)
-  - [15.18. S](#1518-s)
-  - [15.19. T](#1519-t)
-  - [15.20. V](#1520-v)
-  - [15.21. W](#1521-w)
-- [16. Commands](#16-commands)
+- [15. Global Infrastructure](#15-global-infrastructure)
+  - [15.1. Why make a global application?](#151-why-make-a-global-application)
+  - [15.2. Global AWS Infrastructure](#152-global-aws-infrastructure)
+  - [15.3. Global Applications in AWS](#153-global-applications-in-aws)
+  - [15.4. Amazon Route 53 Overview](#154-amazon-route-53-overview)
+    - [Route 53 policies](#route-53-policies)
+  - [15.5. AWS CloudFront](#155-aws-cloudfront)
+  - [15.6. CloudFront - Origins](#156-cloudfront---origins)
+  - [15.7. CloudFront vs S3 Cross Region Replication](#157-cloudfront-vs-s3-cross-region-replication)
+  - [15.8. S3 Transfer Acceleration](#158-s3-transfer-acceleration)
+  - [15.9. AWS Global Accelerator](#159-aws-global-accelerator)
+  - [15.10. AWS Global Accelerator vs CloudFront](#1510-aws-global-accelerator-vs-cloudfront)
+  - [15.11. AWS Outposts](#1511-aws-outposts)
+  - [15.12. AWS WaveLength](#1512-aws-wavelength)
+  - [15.13. AWS Local Zones](#1513-aws-local-zones)
+  - [15.14. Global Applications Architecture](#1514-global-applications-architecture)
+  - [15.15. Global Applications in AWS - Summary](#1515-global-applications-in-aws---summary)
+  - [15.16. Global Applications in AWS - Summary](#1516-global-applications-in-aws---summary)
+- [16. AWS related Abbreviations & Acronyms](#16-aws-related-abbreviations--acronyms)
+  - [16.1. A](#161-a)
+  - [16.2. B](#162-b)
+  - [16.3. C](#163-c)
+  - [16.4. D](#164-d)
+  - [16.5. E](#165-e)
+  - [16.6. F](#166-f)
+  - [16.7. H](#167-h)
+  - [16.8. I](#168-i)
+  - [16.9. J](#169-j)
+  - [16.10. K](#1610-k)
+  - [16.11. L](#1611-l)
+  - [16.12. M](#1612-m)
+  - [16.13. N](#1613-n)
+  - [16.14. O](#1614-o)
+  - [16.15. P](#1615-p)
+  - [16.16. Q](#1616-q)
+  - [16.17. R](#1617-r)
+  - [16.18. S](#1618-s)
+  - [16.19. T](#1619-t)
+  - [16.20. V](#1620-v)
+  - [16.21. W](#1621-w)
+- [17. Commands](#17-commands)
 
 ## 1. Traditionally, how to build infrastructure
 
@@ -1701,7 +1719,7 @@
 - Pricing: $9.00 per TB of data scanned (2022).
 - Use compressed or columnar data for cost-savings (less scan).
 - Use cases: Business intelligence / analytics / reporting, analyze & query VPC Flow Logs, ELB Logs, CloudTrail trails, etc...
-- Exam Tip: analyze data in S3 using serverless SQL, use Athena.
+- Tip: analyze data in S3 using serverless SQL, use Athena.
 
 ### 12.15. Amazon QuickSight
 
@@ -1918,7 +1936,7 @@
 
 ### 13.9. Amazon Lightsail
 
-- **Amazon Lightsail is designed to be the easiest way to launch and manage a virtual private server with AWS. Lightsail plans include everything you need to jumpstart your project – a virtual machine, SSD- based storage, data transfer, DNS management, and a static IP address – for a low, predictable price. It can be used to create a simple web application, a website or a dev/test environment.**
+- **Amazon Lightsail is designed to be the easiest way to launch and manage a virtual private server with AWS. Lightsail plans include everything you need to jumpstart your project - a virtual machine, SSD- based storage, data transfer, DNS management, and a static IP address - for a low, predictable price. It can be used to create a simple web application, a website or a dev/test environment.**
 - Virtual servers, storage, databases, and networking.
 - Low & predictable pricing.
 - Simpler alternative to using EC2, RDS, ELB, EBS, Route 53...
@@ -1969,6 +1987,7 @@
 #### 14.1.1. Benefits of AWS CloudFormation
 
 **- CloudFormation are free of use, but you do pay for the resources created.**
+
 - Infrastructure as code
   - No resources are manually created, which is excellent for control.
   - Changes to the infrastructure are reviewed through code.
@@ -2079,14 +2098,14 @@
 
 ### 14.8. AWS CodeBuild
 
-- **AWS CodeBuild is a fully managed continuous integration service that compiles source code, runs tests, and produces software packages that are ready to deploy. With CodeBuild, you don’t need to provision, manage, and scale your own build servers, it is serverless.**
+- **AWS CodeBuild is a fully managed continuous integration service that compiles source code, runs tests, and produces software packages that are ready to deploy. With CodeBuild, you don't need to provision, manage, and scale your own build servers, it is serverless.**
 - Code building service in the cloud (name is obvious)
 - Compiles source code, run tests, and produces packages that are ready to be deployed (by CodeDeploy for example)
 - Benefits:
   - Fully managed, serverless.
   - Continuously scalable & highly available.
   - Secure.
-  - Pay-as-you-go pricing – only pay for the build time.
+  - Pay-as-you-go pricing - only pay for the build time.
 
 ### 14.9. AWS CodePipeline
 
@@ -2141,7 +2160,7 @@
 - If an instance can't be controlled with SSM, it's probably an issue with the SSM agent!
 - Thanks to the SSM agent, we can run commands, patch & configure our servers.
 
-#### 14.13.2. Systems Manager – SSM Session Manager
+#### 14.13.2. Systems Manager - SSM Session Manager
 
 - Allows you to start a secure shell on your EC2 and on-premises servers.
 - No SSH access, bastion hosts, or SSH keys needed.
@@ -2157,7 +2176,7 @@
 - It's an alternative to AWS SSM.
 - Only provision standard AWS resources:
   - EC2 Instances, Databases, Load Balancers, EBS volumes...
-- In the exam: Chef or Puppet needed => AWS OpsWorks.
+- Tip: Chef or Puppet needed => AWS OpsWorks.
 
 ### 14.15. Deployment - Summary
 
@@ -2179,9 +2198,194 @@
 - Cloud9: Cloud IDE (Integrated Development Environment) with collab.
 - AWS CDK: Define your cloud infrastructure using a programming language.
 
-## 15. AWS related Abbreviations & Acronyms
+## 15. Global Infrastructure
 
-### 15.1. A
+### 15.1. Why make a global application?
+
+- A **global application** is an application deployed in **multiple geographies**.
+- On AWS: this could be **Regions** and / or **Edge Locations**.
+- Decreased Latency:
+  - Latency is the time it takes for a network packet to reach a server.
+  - It takes time for a packet from Asia to reach the US.
+  - Deploy your applications closer to your users to decrease latency, better experience.
+- Disaster Recovery (DR):
+  - If an AWS region goes down (earthquake, storms, power shutdown, politics)...
+  - You can fail-over to another region and have your application still working.
+  - A DR plan is important to increase the availability of your application.
+- Attack protection: distributed global infrastructure is harder to attack
+
+### 15.2. Global AWS Infrastructure
+
+- **Regions:** For deploying applications and infrastructure
+- **Availability Zones:** Made of multiple data centers
+- **Edge Locations (Points of Presence):** for content delivery as close as possible to users
+
+### 15.3. Global Applications in AWS
+
+- **Global DNS: Route 53**
+  - Great to route users to the closest deployment with least latency
+  - Great for disaster recovery strategies
+- **Global Content Delivery Network (CDN): CloudFront**
+  - Replicate part of your application to AWS Edge Locations - decrease latency
+  - Cache common requests - improved user experience and decreased latency
+- **S3 Transfer Acceleration**
+  - Accelerate global uploads & downloads into Amazon S3
+- **AWS Global Accelerator:**
+  - Improve global application availability and performance using the AWS global network
+
+### 15.4. Amazon Route 53 Overview
+
+- **Route 53 features are (non exhaustive list): Domain Registration, DNS, Health Checks, Routing Policy**
+- Route53 is a Managed DNS (Domain Name System)
+- DNS is a collection of rules and records which helps clients understand how to reach a server through URLs.
+- In AWS, the most common records are:
+  - www.google.com => 12.34.56.78 == A record (IPv4)
+  - www.google.com => 2001:0db8:85a3:0000:0000:8a2e:0370:7334 == AAAA IPv6
+  - search.google.com => www.google.com == CNAME: hostname to hostname
+  - example.com => AWS resource == Alias (ex: ELB, CloudFront, S3, RDS, etc...)
+
+#### Route 53 policies
+
+- **Weighted Routing Policy is used to route traffic to multiple resources in proportions that you specify.**
+
+### 15.5. AWS CloudFront
+
+- **CloudFront uses Edge Location to cache content, and therefore bring more of your content closer to your viewers to improve read performance.**
+- **You can use AWS WAF web access control lists (web ACLs) to help minimize the effects of a distributed denial of service (DDoS) attack. For additional protection against DDoS attacks, AWS also provides AWS Shield Standard and AWS Shield Advanced.**
+- Content Delivery Network (CDN)
+- Improves read performance, content is cached at the edge
+- Improves users experience
+- 216 Point of Presence globally (edge locations)
+- DDoS protection (because worldwide), integration with Shield, AWS Web Application Firewall
+
+### 15.6. CloudFront - Origins
+
+- S3 bucket
+  - For distributing files and caching them at the edge
+  - Enhanced security with CloudFront Origin Access Identity (OAI)
+  - CloudFront can be used as an ingress (to upload files to S3)
+- Custom Origin (HTTP)
+  - Application Load Balancer
+  - EC2 instance
+  - S3 website (must first enable the bucket as a static S3 website)
+  - Any HTTP backend you want
+
+### 15.7. CloudFront vs S3 Cross Region Replication
+
+- CloudFront:
+  - Global Edge network.
+  - Files are cached for a TTL (maybe a day).
+  - Great for static content that must be available everywhere.
+- S3 Cross Region Replication:
+  - Must be setup for each region you want replication to happen.
+  - Files are updated in near real-time.
+  - Read only.
+  - Great for dynamic content that needs to be available at low-latency in few regions.
+
+### 15.8. S3 Transfer Acceleration
+
+- **Amazon S3 Transfer Acceleration enables fast, easy, and secure transfers of files over long distances between your client and an S3 bucket. Transfer Acceleration takes advantage of Amazon CloudFront’s globally distributed edge locations. As the data arrives at an edge location, data is routed to Amazon S3 over an optimized network path.**
+- Increase transfer speed by transferring file to an AWS edge location which will forward the data to the S3 bucket in the target region.
+
+### 15.9. AWS Global Accelerator
+
+- Improve global application availability and performance using the AWS global network.
+- Leverage the AWS internal network to optimize the route to your application (60% improvement).
+- 2 Anycast IP are created for your application and traffic is sent through Edge Locations.
+- The Edge locations send the traffic to your application.
+
+### 15.10. AWS Global Accelerator vs CloudFront
+
+- They both use the AWS global network and its edge locations around the world.
+- Both services integrate with AWS Shield for DDoS protection.
+- CloudFront - Content Delivery Network:
+  - Improves performance for your cacheable content (such as images and videos).
+  - Content is served at the edge.
+- Global Accelerator:
+  - No caching, proxying packets at the edge to applications running in one or more AWS Regions.
+  - Improves performance for a wide range of applications over TCP or UDP.
+  - Good for HTTP use cases that require static IP addresses.
+  - Good for HTTP use cases that required deterministic, fast regional failover.
+
+### 15.11. AWS Outposts
+
+- Hybrid Cloud: businesses that keep an on-premises infrastructure alongside a cloud infrastructure.
+- Therefore, two ways of dealing with IT systems:
+  - One for the AWS cloud (using the AWS console, CLI, and AWS APIs).
+  - One for their on-premises infrastructure.
+- AWS Outposts are "server racks" that offers the same AWS infrastructure, services, APIs & tools to build your own applications on-premises just as in the cloud.
+- AWS will setup and manage "Outposts Racks" within your on-premises infrastructure and you can start leveraging AWS services on-premises.
+- You are responsible for the Outposts Rack physical security.
+- Benefits:
+  - Low-latency access to on-premises systems
+  - Local data processing
+  - Data residency
+  - Easier migration from on-premises to the cloud
+  - Fully managed service
+- Some services that work on Outposts:
+  - Amazon EC2
+  - Amazon EBS
+  - Amazon S3
+  - Amazon EKS
+  - Amazon ECS
+  - Amazon RDS
+  - Amazon EMR
+
+### 15.12. AWS WaveLength
+
+- **AWS Wavelength is an AWS Infrastructure offering optimized for mobile edge computing applications. Wavelength combines the high bandwidth and ultra-low latency of 5G networks with AWS compute and storage services to enable developers to innovate and build a whole new class of applications.**
+- WaveLength Zones are infrastructure deployments embedded within the telecommunications providers datacenters at the edge of the 5G networks.
+- Brings AWS services to the edge of the 5G networks.
+- Example: EC2, EBS, VPC...
+- Ultra-low latency applications through 5G networks.
+- Traffic doesn't leave the Communication Service Provider's (CSP) network.
+- High-bandwidth and secure connection to the parent AWS Region.
+- No additional charges or service agreements.
+- Use cases: Smart Cities, ML-assisted diagnostics, Connected Vehicles, Interactive Live Video Streams, AR/VR, Real-time Gaming, ...
+
+### 15.13. AWS Local Zones
+
+- Places AWS compute, storage, database, and other selected AWS services closer to end users to run latency-sensitive applications
+- Extend your VPC to more locations - "Extension of an AWS Region"
+- Compatible with EC2, RDS, ECS, EBS, ElastiCache, Direct Connect ...
+- Example:
+  - AWS Region: N. Virginia (us-east-1)
+  - AWS Local Zones: Boston, Chicago, Dallas, Houston, Miami, ...
+
+### 15.14. Global Applications Architecture
+
+- Single Region, Single AZ
+- Single Region, Multi AZ
+- Multi Region, Active-Passive
+- Multi Region, Active-Active
+
+### 15.15. Global Applications in AWS - Summary
+
+- Global DNS: Route 53
+  - Great to route users to the closest deployment with least latency
+  - Great for disaster recovery strategies
+- Global Content Delivery Network (CDN): CloudFront
+  - Replicate part of your application to AWS Edge Locations - decrease latency
+  - Cache common requests - improved user experience and decreased latency
+- S3 Transfer Acceleration
+  - Accelerate global uploads & downloads into Amazon S3
+- AWS Global Accelerator
+  - Improve global application availability and performance using the AWS global network
+
+### 15.16. Global Applications in AWS - Summary
+
+- AWS Outposts
+  - Deploy Outposts Racks in your own Data Centers to extend AWS services
+- AWS WaveLength
+  - Brings AWS services to the edge of the 5G networks
+  - Ultra-low latency applications
+- AWS Local Zones
+  - Bring AWS resources (compute, database, storage, ...) closer to your users
+  - Good for latency-sensitive applications
+
+## 16. AWS related Abbreviations & Acronyms
+
+### 16.1. A
 
 - AWS Amazon Web Services
 - Amazon ES Amazon Elasticsearch Service
@@ -2198,11 +2402,11 @@
 - ADFS Active Directory Federation Service
 - AVX Advanced Vector Extensions
 
-### 15.2. B
+### 16.2. B
 
 - BYOL Bring Your Own License
 
-### 15.3. C
+### 16.3. C
 
 - CDN Content Delivery Network
 - CRC Cyclic Redundancy Check
@@ -2212,7 +2416,7 @@
 - CRR Cross Region Replication
 - CI/CD Continuous Integration/Continuous Deployment
 
-### 15.4. D
+### 16.4. D
 
 - DMS Database Migration Service
 - DNS Domain Name System
@@ -2220,7 +2424,7 @@
 - DoS Denial of Service
 - DaaS Desktop as-a-Service
 
-### 15.5. E
+### 16.5. E
 
 - EC2 Elastic Compute Cloud
 - ECS EC2 Container Service
@@ -2238,12 +2442,12 @@
 - ENI Elastic Network Interface
 - ECU EC2 Compute Unit
 
-### 15.6. F
+### 16.6. F
 
 - FIFO First In First Out
 - FaaS Function as-a-Service
 
-### 15.7. H
+### 16.7. H
 
 - HPC High-Performance Compute
 - HVM Hardware Virtual Machine
@@ -2251,7 +2455,7 @@
 - HTTPS HTTP Secure
 - HDK Hardware Development Kit
 
-### 15.8. I
+### 16.8. I
 
 - IAM Identity & Access Management
 - iOT Internet Of Things
@@ -2264,21 +2468,21 @@
 - IPSec Internet Protocol Security
 - IaaS Infrastructure-as-a-Service
 
-### 15.9. J
+### 16.9. J
 
 - JSON JavaScript Object Notation
 
-### 15.10. K
+### 16.10. K
 
 - KMS Key Management Service
 - KVM Kernel-based Virtual Machine
 
-### 15.11. L
+### 16.11. L
 
 - LB Load Balancer
 - LCU Load Balancer Capacity Unit
 
-### 15.12. M
+### 16.12. M
 
 - MFA Multi-Factor Authentication
 - MSTSC Microsoft Terminal Service Client
@@ -2286,31 +2490,31 @@
 - MITM Man in the Middle Attack
 - MPLS Multi Protocol Label Switching
 
-### 15.13. N
+### 16.13. N
 
 - NFS Network File System
 - NS Name Server
 - NAT Network Address Translation
 - NVMe Non-Volatile Memory Express
 
-### 15.14. O
+### 16.14. O
 
 - OLTP Online Transaction Processing
 - OLAP Online Analytics Processing
 - OCI Open Container Initiative
 
-### 15.15. P
+### 16.15. P
 
 - PCI DSS Payment Card Industry Data Security Standard
 - PVM Para Virtual Machine
 - PV ParaVirtual
 - PaaS Platform as a Service
 
-### 15.16. Q
+### 16.16. Q
 
 - QLDB Quantum Ledger Database
 
-### 15.17. R
+### 16.17. R
 
 - RAIDRedundant Array of Independent Disk
 - RDS Relational Database Service
@@ -2319,7 +2523,7 @@
 - RAM Random-access Memory
 - RIE Runtime Interface Emulator
 
-### 15.18. S
+### 16.18. S
 
 - SSEServer Side Encryption
 - S3 Simple Storage Service
@@ -2347,7 +2551,7 @@
 - STS Security Token Service
 - SNI Server Name Indication
 
-### 15.19. T
+### 16.19. T
 
 - TTL Time To Live
 - TLS Transport Layer Security
@@ -2357,7 +2561,7 @@
 - TPS Transaction Per Second
 - TCP Transmission Control Protocol
 
-### 15.20. V
+### 16.20. V
 
 - VPC Virtual Private Cloud
 - VM Virtual Machine
@@ -2367,11 +2571,11 @@
 - VDI Virtual Desktop Infrastructure
 - VPG Virtual Private Gateway
 
-### 15.21. W
+### 16.21. W
 
 - WAFWeb Application Firewall
 
-## 16. Commands
+## 17. Commands
 
 - List of AWS Regions
   - aws ec2 describe-regions
