@@ -204,7 +204,7 @@
   - [15.2. Global AWS Infrastructure](#152-global-aws-infrastructure)
   - [15.3. Global Applications in AWS](#153-global-applications-in-aws)
   - [15.4. Amazon Route 53 Overview](#154-amazon-route-53-overview)
-    - [Route 53 policies](#route-53-policies)
+    - [15.4.1. Route 53 policies](#1541-route-53-policies)
   - [15.5. AWS CloudFront](#155-aws-cloudfront)
   - [15.6. CloudFront - Origins](#156-cloudfront---origins)
   - [15.7. CloudFront vs S3 Cross Region Replication](#157-cloudfront-vs-s3-cross-region-replication)
@@ -217,29 +217,35 @@
   - [15.14. Global Applications Architecture](#1514-global-applications-architecture)
   - [15.15. Global Applications in AWS - Summary](#1515-global-applications-in-aws---summary)
   - [15.16. Global Applications in AWS - Summary](#1516-global-applications-in-aws---summary)
-- [16. AWS related Abbreviations & Acronyms](#16-aws-related-abbreviations--acronyms)
-  - [16.1. A](#161-a)
-  - [16.2. B](#162-b)
-  - [16.3. C](#163-c)
-  - [16.4. D](#164-d)
-  - [16.5. E](#165-e)
-  - [16.6. F](#166-f)
-  - [16.7. H](#167-h)
-  - [16.8. I](#168-i)
-  - [16.9. J](#169-j)
-  - [16.10. K](#1610-k)
-  - [16.11. L](#1611-l)
-  - [16.12. M](#1612-m)
-  - [16.13. N](#1613-n)
-  - [16.14. O](#1614-o)
-  - [16.15. P](#1615-p)
-  - [16.16. Q](#1616-q)
-  - [16.17. R](#1617-r)
-  - [16.18. S](#1618-s)
-  - [16.19. T](#1619-t)
-  - [16.20. V](#1620-v)
-  - [16.21. W](#1621-w)
-- [17. Commands](#17-commands)
+- [16. Cloud Integration](#16-cloud-integration)
+  - [16.1. Amazon SQS - Standard Queue](#161-amazon-sqs---standard-queue)
+  - [16.2. Amazon Kinesis](#162-amazon-kinesis)
+  - [16.3. Amazon SNS](#163-amazon-sns)
+  - [16.4. Amazon MQ](#164-amazon-mq)
+  - [16.5. Integration - Summary](#165-integration---summary)
+- [17. AWS related Abbreviations & Acronyms](#17-aws-related-abbreviations--acronyms)
+  - [17.1. A](#171-a)
+  - [17.2. B](#172-b)
+  - [17.3. C](#173-c)
+  - [17.4. D](#174-d)
+  - [17.5. E](#175-e)
+  - [17.6. F](#176-f)
+  - [17.7. H](#177-h)
+  - [17.8. I](#178-i)
+  - [17.9. J](#179-j)
+  - [17.10. K](#1710-k)
+  - [17.11. L](#1711-l)
+  - [17.12. M](#1712-m)
+  - [17.13. N](#1713-n)
+  - [17.14. O](#1714-o)
+  - [17.15. P](#1715-p)
+  - [17.16. Q](#1716-q)
+  - [17.17. R](#1717-r)
+  - [17.18. S](#1718-s)
+  - [17.19. T](#1719-t)
+  - [17.20. V](#1720-v)
+  - [17.21. W](#1721-w)
+- [18. Commands](#18-commands)
 
 ## 1. Traditionally, how to build infrastructure
 
@@ -1517,45 +1523,45 @@
 
 ### 11.27. Amazon S3 - Summary
 
-- Buckets vs Objects: global unique name, tied to a region
-- S3 security: IAM policy, S3 Bucket Policy (public access), S3 Encryption
-- S3 Websites: host a static website on Amazon S3
-- S3 Versioning: multiple versions for files, prevent accidental deletes
-- S3 Access Logs: log requests made within your S3 bucket
-- S3 Replication: same-region or cross-region, must enable versioning
-- S3 Storage Classes: Standard, IA, 1Z-IA, Intelligent, Glacier, Glacier Deep Archive
-- S3 Lifecycle Rules: transition objects between classes
-- S3 Glacier Vault Lock / S3 Object Lock: WORM (Write Once Read Many)
-- Snow Family: import data onto S3 through a physical device, edge computing
-- OpsHub: desktop application to manage Snow Family devices
-- Storage Gateway: hybrid solution to extend on-premises storage to S3
+- Buckets vs Objects: global unique name, tied to a region.
+- S3 security: IAM policy, S3 Bucket Policy (public access), S3 Encryption.
+- S3 Websites: host a static website on Amazon S3.
+- S3 Versioning: multiple versions for files, prevent accidental deletes.
+- S3 Access Logs: log requests made within your S3 bucket.
+- S3 Replication: same-region or cross-region, must enable versioning.
+- S3 Storage Classes: Standard, IA, 1Z-IA, Intelligent, Glacier, Glacier Deep Archive.
+- S3 Lifecycle Rules: transition objects between classes.
+- S3 Glacier Vault Lock / S3 Object Lock: WORM (Write Once Read Many).
+- Snow Family: import data onto S3 through a physical device, edge computing.
+- OpsHub: desktop application to manage Snow Family devices.
+- Storage Gateway: hybrid solution to extend on-premises storage to S3.
 
 ## 12. Databases
 
 ### 12.1. Introduction
 
-- Storing data on disk (EFS, EBS, EC2 Instance Store, S3) can have its limits
+- Storing data on disk (EFS, EBS, EC2 Instance Store, S3) can have its limits.
 - Sometimes, you want to store data in a database...
-- You can **structure** the data
-- You build **indexes** to efficiently **query / search** through the data
-- You define **relationships** between your **datasets**
-- Databases are **optimized for a purpose** and come with different features, shapes and constraints
+- You can **structure** the data.
+- You build **indexes** to efficiently **query / search** through the data.
+- You define **relationships** between your **datasets**.
+- Databases are **optimized for a purpose** and come with different features, shapes and constraints.
 
 ### 12.2. Relational Databases
 
 - Looks just like Excel spreadsheets, with links between them!
-- Can use the SQL language to perform queries / lookups
+- Can use the SQL language to perform queries / lookups.
 
 ### 12.3. NoSQL Databases
 
 - NoSQL = non-SQL = non relational databases
 - NoSQL databases are purpose built for specific data models and have flexible schemas for building modern applications.
 - Benefits:
-  - Flexibility: easy to evolve data model
-  - Scalability: designed to scale-out by using distributed clusters
-  - High-performance: optimized for a specific data model
-  - Highly functional: types optimized for the data model
-- Examples: Key-value, document, graph, in-memory, search databases
+  - Flexibility: easy to evolve data model.
+  - Scalability: designed to scale-out by using distributed clusters.
+  - High-performance: optimized for a specific data model.
+  - Highly functional: types optimized for the data model.
+- Examples: Key-value, document, graph, in-memory, search databases.
 
 ### 12.4. NoSQL data example: JSON
 
@@ -2244,7 +2250,7 @@
   - search.google.com => www.google.com == CNAME: hostname to hostname
   - example.com => AWS resource == Alias (ex: ELB, CloudFront, S3, RDS, etc...)
 
-#### Route 53 policies
+#### 15.4.1. Route 53 policies
 
 - **Weighted Routing Policy is used to route traffic to multiple resources in proportions that you specify.**
 
@@ -2284,7 +2290,7 @@
 
 ### 15.8. S3 Transfer Acceleration
 
-- **Amazon S3 Transfer Acceleration enables fast, easy, and secure transfers of files over long distances between your client and an S3 bucket. Transfer Acceleration takes advantage of Amazon CloudFront’s globally distributed edge locations. As the data arrives at an edge location, data is routed to Amazon S3 over an optimized network path.**
+- **Amazon S3 Transfer Acceleration enables fast, easy, and secure transfers of files over long distances between your client and an S3 bucket. Transfer Acceleration takes advantage of Amazon CloudFront's globally distributed edge locations. As the data arrives at an edge location, data is routed to Amazon S3 over an optimized network path.**
 - Increase transfer speed by transferring file to an AWS edge location which will forward the data to the S3 bucket in the target region.
 
 ### 15.9. AWS Global Accelerator
@@ -2383,9 +2389,80 @@
   - Bring AWS resources (compute, database, storage, ...) closer to your users
   - Good for latency-sensitive applications
 
-## 16. AWS related Abbreviations & Acronyms
+## 16. Cloud Integration
 
-### 16.1. A
+- When we start deploying multiple applications, they will inevitably need to communicate with one another.
+- There are two patterns of application communication:
+  1. Synchronous communications (application to application).
+  2. Asynchronous / Event based (application to queue to application).
+- Synchronous between applications can be problematic if there are sudden spikes of traffic.
+- What if you need to suddenly encode 1000 videos but usually it's 10?
+- In that case, it's better to decouple your applications:
+  - using SQS: queue model.
+  - using SNS: pub/sub model.
+  - using Kinesis: real-time data streaming model.
+- These services can scale independently from our application!
+
+### 16.1. Amazon SQS - Standard Queue
+
+- Oldest AWS offering (over 10 years old).
+- Fully managed service (~serverless), use to decouple applications.
+- Scales from 1 message per second to 10,000s per second.
+- Default retention of messages: 4 days, maximum of 14 days.
+- No limit to how many messages can be in the queue.
+- Messages are deleted after they're read by consumers.
+- Low latency (<10 ms on publish and receive).
+- Consumers share the work to read messages & scale horizontally.
+
+### 16.2. Amazon Kinesis
+
+- **Amazon Kinesis makes it easy to collect, process, and analyze real-time, streaming data so you can get timely insights and react quickly to new information. Kinesis offers four services: Data Firehose, Data Analytics, Data Streams, Video Streams.**
+- For the exam: Kinesis = real-time big data streaming.
+- Managed service to collect, process, and analyze real-time streaming data at any scale.
+- Kinesis Data Streams: low latency streaming to ingest data at scale from hundreds of thousands of sources.
+- Kinesis Data Firehose: load streams into S3, Redshift, ElasticSearch, etc...
+- Kinesis Data Analytics: perform real-time analytics on streams using SQL.
+- Kinesis Video Streams: monitor real-time video streams for analytics or ML.
+
+### 16.3. Amazon SNS
+
+- **Is a highly available, durable, secure, fully managed pub/sub messaging service that enables you to decouple microservices, distributed systems, and serverless applications. It uses a push-based system.**
+- **Amazon Simple Queue Service (SQS) is a fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications. It uses a pull-based system.**
+- The "event publishers" only sends message to one SNS topic.
+- As many "event subscribers" as we want to listen to the SNS topic notifications.
+- Each subscriber to the topic will get all the messages.
+- Up to 12,500,000 subscriptions per topic, 100,000 topics limit.
+
+### 16.4. Amazon MQ
+
+- **Amazon MQ is a managed message broker service for Apache ActiveMQ and RabbitMQ that makes it easy to set up and operate message brokers in the cloud.**
+- SQS, SNS are "cloud-native" services, and they're using proprietary protocols from AWS.
+- Traditional applications running from on-premise may use open protocols such as: MQTT, AMQP, STOMP, Openwire, WSS.
+- When migrating to the cloud, instead of re-engineering the application to use SQS and SNS, we can use Amazon MQ.
+- Amazon MQ = managed Apache ActiveMQ.
+- Amazon MQ doesn't "scale" as much as SQS / SNS.
+- Amazon MQ runs on a dedicated machine (not serverless).
+- Amazon MQ has both queue feature (SQS) and topic features (SNS).
+
+### 16.5. Integration - Summary
+
+- SQS:
+  - Queue service in AWS.
+  - Multiple Producers, messages are kept up to 14 days.
+  - Multiple Consumers share the read and delete messages when done.
+  - Used to decouple applications in AWS.
+- SNS:
+  - Notification service in AWS.
+  - Subscribers: Email, Lambda, SQS, HTTP, Mobile...
+  - Multiple Subscribers, send all messages to all of them.
+  - No message retention.
+- Kinesis: real-time data streaming, persistence and analysis.
+- Amazon MQ: managed Apache MQ in the cloud (MQTT, AMQP protocols).
+- **When using SQS or SNS, you apply the "decouple your applications" principle. This means that IT systems should be designed in a way that reduces interdependencies—a change or a failure in one component should not cascade to other components.**
+
+## 17. AWS related Abbreviations & Acronyms
+
+### 17.1. A
 
 - AWS Amazon Web Services
 - Amazon ES Amazon Elasticsearch Service
@@ -2402,11 +2479,11 @@
 - ADFS Active Directory Federation Service
 - AVX Advanced Vector Extensions
 
-### 16.2. B
+### 17.2. B
 
 - BYOL Bring Your Own License
 
-### 16.3. C
+### 17.3. C
 
 - CDN Content Delivery Network
 - CRC Cyclic Redundancy Check
@@ -2416,7 +2493,7 @@
 - CRR Cross Region Replication
 - CI/CD Continuous Integration/Continuous Deployment
 
-### 16.4. D
+### 17.4. D
 
 - DMS Database Migration Service
 - DNS Domain Name System
@@ -2424,7 +2501,7 @@
 - DoS Denial of Service
 - DaaS Desktop as-a-Service
 
-### 16.5. E
+### 17.5. E
 
 - EC2 Elastic Compute Cloud
 - ECS EC2 Container Service
@@ -2442,12 +2519,12 @@
 - ENI Elastic Network Interface
 - ECU EC2 Compute Unit
 
-### 16.6. F
+### 17.6. F
 
 - FIFO First In First Out
 - FaaS Function as-a-Service
 
-### 16.7. H
+### 17.7. H
 
 - HPC High-Performance Compute
 - HVM Hardware Virtual Machine
@@ -2455,7 +2532,7 @@
 - HTTPS HTTP Secure
 - HDK Hardware Development Kit
 
-### 16.8. I
+### 17.8. I
 
 - IAM Identity & Access Management
 - iOT Internet Of Things
@@ -2468,21 +2545,21 @@
 - IPSec Internet Protocol Security
 - IaaS Infrastructure-as-a-Service
 
-### 16.9. J
+### 17.9. J
 
 - JSON JavaScript Object Notation
 
-### 16.10. K
+### 17.10. K
 
 - KMS Key Management Service
 - KVM Kernel-based Virtual Machine
 
-### 16.11. L
+### 17.11. L
 
 - LB Load Balancer
 - LCU Load Balancer Capacity Unit
 
-### 16.12. M
+### 17.12. M
 
 - MFA Multi-Factor Authentication
 - MSTSC Microsoft Terminal Service Client
@@ -2490,31 +2567,31 @@
 - MITM Man in the Middle Attack
 - MPLS Multi Protocol Label Switching
 
-### 16.13. N
+### 17.13. N
 
 - NFS Network File System
 - NS Name Server
 - NAT Network Address Translation
 - NVMe Non-Volatile Memory Express
 
-### 16.14. O
+### 17.14. O
 
 - OLTP Online Transaction Processing
 - OLAP Online Analytics Processing
 - OCI Open Container Initiative
 
-### 16.15. P
+### 17.15. P
 
 - PCI DSS Payment Card Industry Data Security Standard
 - PVM Para Virtual Machine
 - PV ParaVirtual
 - PaaS Platform as a Service
 
-### 16.16. Q
+### 17.16. Q
 
 - QLDB Quantum Ledger Database
 
-### 16.17. R
+### 17.17. R
 
 - RAIDRedundant Array of Independent Disk
 - RDS Relational Database Service
@@ -2523,7 +2600,7 @@
 - RAM Random-access Memory
 - RIE Runtime Interface Emulator
 
-### 16.18. S
+### 17.18. S
 
 - SSEServer Side Encryption
 - S3 Simple Storage Service
@@ -2551,7 +2628,7 @@
 - STS Security Token Service
 - SNI Server Name Indication
 
-### 16.19. T
+### 17.19. T
 
 - TTL Time To Live
 - TLS Transport Layer Security
@@ -2561,7 +2638,7 @@
 - TPS Transaction Per Second
 - TCP Transmission Control Protocol
 
-### 16.20. V
+### 17.20. V
 
 - VPC Virtual Private Cloud
 - VM Virtual Machine
@@ -2571,11 +2648,11 @@
 - VDI Virtual Desktop Infrastructure
 - VPG Virtual Private Gateway
 
-### 16.21. W
+### 17.21. W
 
 - WAFWeb Application Firewall
 
-## 17. Commands
+## 18. Commands
 
 - List of AWS Regions
   - aws ec2 describe-regions
