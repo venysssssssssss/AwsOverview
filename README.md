@@ -223,29 +223,50 @@
   - [16.3. Amazon SNS](#163-amazon-sns)
   - [16.4. Amazon MQ](#164-amazon-mq)
   - [16.5. Integration - Summary](#165-integration---summary)
-- [17. AWS related Abbreviations & Acronyms](#17-aws-related-abbreviations--acronyms)
-  - [17.1. A](#171-a)
-  - [17.2. B](#172-b)
-  - [17.3. C](#173-c)
-  - [17.4. D](#174-d)
-  - [17.5. E](#175-e)
-  - [17.6. F](#176-f)
-  - [17.7. H](#177-h)
-  - [17.8. I](#178-i)
-  - [17.9. J](#179-j)
-  - [17.10. K](#1710-k)
-  - [17.11. L](#1711-l)
-  - [17.12. M](#1712-m)
-  - [17.13. N](#1713-n)
-  - [17.14. O](#1714-o)
-  - [17.15. P](#1715-p)
-  - [17.16. Q](#1716-q)
-  - [17.17. R](#1717-r)
-  - [17.18. S](#1718-s)
-  - [17.19. T](#1719-t)
-  - [17.20. V](#1720-v)
-  - [17.21. W](#1721-w)
-- [18. Commands](#18-commands)
+- [17. VPC](#17-vpc)
+  - [17.1. VPC - Crash Course](#171-vpc---crash-course)
+  - [17.2. VPC & Subnets Primer](#172-vpc--subnets-primer)
+  - [17.3. Internet Gateway & NAT Gateways](#173-internet-gateway--nat-gateways)
+  - [17.4. Network ACL & Security Groups](#174-network-acl--security-groups)
+  - [17.5. Network ACLs vs Security Groups](#175-network-acls-vs-security-groups)
+  - [17.6. VPC Flow Logs](#176-vpc-flow-logs)
+  - [17.7. VPC Peering](#177-vpc-peering)
+  - [17.8. VPC Endpoints](#178-vpc-endpoints)
+  - [17.9. Site to Site VPN & Direct Connect](#179-site-to-site-vpn--direct-connect)
+  - [17.10. Site-to-Site VPN](#1710-site-to-site-vpn)
+  - [17.11. Transit Gateway](#1711-transit-gateway)
+  - [17.12. VPC Closing Comments](#1712-vpc-closing-comments)
+- [18. Advanced Identity](#18-advanced-identity)
+  - [18.1. AWS STS (SecurityToken Service)](#181-aws-sts-securitytoken-service)
+  - [18.2. Amazon Cognito](#182-amazon-cognito)
+  - [18.3. What is Microsoft Active Directory (AD)?](#183-what-is-microsoft-active-directory-ad)
+    - [18.3.1. AWS Directory Services](#1831-aws-directory-services)
+  - [18.4. AWS Organizations](#184-aws-organizations)
+  - [18.5. AWS Single Sign-On (SSO)](#185-aws-single-sign-on-sso)
+  - [18.6. Advanced Identity - Summary](#186-advanced-identity---summary)
+- [19. AWS related Abbreviations & Acronyms](#19-aws-related-abbreviations--acronyms)
+  - [19.1. A](#191-a)
+  - [19.2. B](#192-b)
+  - [19.3. C](#193-c)
+  - [19.4. D](#194-d)
+  - [19.5. E](#195-e)
+  - [19.6. F](#196-f)
+  - [19.7. H](#197-h)
+  - [19.8. I](#198-i)
+  - [19.9. J](#199-j)
+  - [19.10. K](#1910-k)
+  - [19.11. L](#1911-l)
+  - [19.12. M](#1912-m)
+  - [19.13. N](#1913-n)
+  - [19.14. O](#1914-o)
+  - [19.15. P](#1915-p)
+  - [19.16. Q](#1916-q)
+  - [19.17. R](#1917-r)
+  - [19.18. S](#1918-s)
+  - [19.19. T](#1919-t)
+  - [19.20. V](#1920-v)
+  - [19.21. W](#1921-w)
+- [20. Commands](#20-commands)
 
 ## 1. Traditionally, how to build infrastructure
 
@@ -1336,7 +1357,7 @@
 
 ### 11.14. S3 Storage Classes Comparison
 
-|                                    |      S3 Standard       | S3 Intelligent-Tiering\* |     S3 Standard-IA     |    S3 One Zone-IA†     | S3 Glacier Instant Retrieval | S3 Glacier Flexible Retrieval | S3 Glacier Deep Archive |
+|                                    |      S3 Standard       | S3 Intelligent-Tiering   |     S3 Standard-IA     |    S3 One Zone-IA†     | S3 Glacier Instant Retrieval | S3 Glacier Flexible Retrieval | S3 Glacier Deep Archive |
 | :--------------------------------: | :--------------------: | :----------------------: | :--------------------: | :--------------------: | :--------------------------: | :---------------------------: | :---------------------: |
 |      Designed for durability       | 99.999999999% (11 9's) |  99.999999999% (11 9's)  | 99.999999999% (11 9's) | 99.999999999% (11 9's) |    99.999999999% (11 9's)    |    99.999999999% (11 9's)     | 99.999999999% (11 9's)  |
 |     Designed for availability      |         99.99%         |          99.9%           |         99.9%          |         99.5%          |            99.9%             |            99.99%             |         99.99%          |
@@ -2417,7 +2438,7 @@
 ### 16.2. Amazon Kinesis
 
 - **Amazon Kinesis makes it easy to collect, process, and analyze real-time, streaming data so you can get timely insights and react quickly to new information. Kinesis offers four services: Data Firehose, Data Analytics, Data Streams, Video Streams.**
-- For the exam: Kinesis = real-time big data streaming.
+- Kinesis = real-time big data streaming.
 - Managed service to collect, process, and analyze real-time streaming data at any scale.
 - Kinesis Data Streams: low latency streaming to ingest data at scale from hundreds of thousands of sources.
 - Kinesis Data Firehose: load streams into S3, Redshift, ElasticSearch, etc...
@@ -2460,9 +2481,191 @@
 - Amazon MQ: managed Apache MQ in the cloud (MQTT, AMQP protocols).
 - **When using SQS or SNS, you apply the "decouple your applications" principle. This means that IT systems should be designed in a way that reduces interdependencies—a change or a failure in one component should not cascade to other components.**
 
-## 17. AWS related Abbreviations & Acronyms
+## 17. VPC
 
-### 17.1. A
+### 17.1. VPC - Crash Course
+
+- At the AWS Certified Cloud Practitioner Level, you should know about:
+  - VPC, Subnets, Internet Gateways & NAT Gateways.
+  - Security Groups, Network ACL (NACL), VPC Flow Logs.
+  - VPC Peering, VPC Endpoints.
+  - Site to Site VPN & Direct Connect.
+  - Transit Gateway.
+- We'll have a look at the “default VPC” (created by default by AWS for you).
+
+### 17.2. VPC & Subnets Primer
+
+- **A virtual private cloud (VPC) is a virtual network dedicated to your AWS account. It is logically isolated from other virtual networks in the AWS Cloud. You can launch your AWS resources, such as Amazon EC2 instances, into your VPC.**
+- **VPC - Virtual Private Cloud:** private network to deploy your resources (regional resource).
+- **Subnets** allow you to partition your network inside your VPC (Availability Zone resource).
+- A **public subnet** is a subnet that is accessible from the internet.
+- A **private subnet** is a subnet that is not accessible from the internet.
+- To define access to the internet and between subnets, we use Route Tables.
+
+### 17.3. Internet Gateway & NAT Gateways
+
+- **NAT Gateways allow your instances in your private subnets to access the Internet while remaining private, and are managed by AWS.**
+- **Internet Gateways** helps our VPC instances connect with the internet.
+- Public Subnets have a route to the internet gateway.
+- **NAT Gateways** (AWS-managed)
+- **NAT Instances** (self-managed) allow your instances in your **Private Subnets** to access the internet while remaining private.
+  - **NAT Instances allow your instances in your private subnets to access the Internet while remaining private, but are managed by you.**
+
+### 17.4. Network ACL & Security Groups
+
+- **A network access control list (NACL) is an optional layer of security for your VPC that acts as a firewall for controlling traffic in and out of one or more subnets. They have both ALLOW and DENY rules.**
+  - **NACL (Network ACL):**
+    - A firewall which controls traffic from and to subnet.
+    - Can have ALLOW and DENY rules.
+    - Are attached at the **Subnet** level.
+    - Rules only include IP addresses.
+- **Security Groups:**
+  - A firewall that controls traffic to and from **an ENI / an EC2 Instance**.
+  - Can have only ALLOW rules.
+  - Rules include IP addresses and other security groups.
+
+### 17.5. Network ACLs vs Security Groups
+
+| Security group                                                                                                                                               | Network ACL                                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Operates at the instance level                                                                                                                               | Operates at the subnet level                                                                                                                                                           |
+| Supports allow rules only                                                                                                                                    | Supports allow rules and deny rules                                                                                                                                                    |
+| Is stateful: Return traffic is automatically allowed, regardless of any rules                                                                                | Is stateless: Return traffic must be explicitly allowed by rules                                                                                                                       |
+| We evaluate all rules before deciding whether to allow traffic                                                                                               | We process rules in order, starting with the lowest numbered rule, when deciding whether to allow traffic                                                                              |
+| Applies to an instance only if someone specifies the security group when launching the instance, or associates the security group with the instance later on | Automatically applies to all instances in the subnets that it's associated with (therefore, it provides an additional layer of defense if the security group rules are too permissive) |
+
+- https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Security.html
+
+### 17.6. VPC Flow Logs
+
+- Capture information about IP traffic going into your interfaces:
+  - **VPC Flow** Logs
+  - **Subnet** Flow Logs
+  - **Elastic Network Interface** Flow Logs
+- Helps to monitor & troubleshoot connectivity issues. Example:
+  - Subnets to internet
+  - Subnets to subnets
+  - Internet to subnets
+- Captures network information from AWS managed interfaces too: Elastic Load Balancers, ElastiCache, RDS, Aurora, etc...
+- VPC Flow logs data can go to S3 / CloudWatch Logs
+
+### 17.7. VPC Peering
+
+- Connect two VPC, privately using AWS' network
+- Make them behave as if they were in the same network
+- Must not have overlapping CIDR (IP address range)
+- VPC Peering connection is not transitive (must be established for each VPC that need to communicate with one another)
+
+### 17.8. VPC Endpoints
+
+- Endpoints allow you to connect to AWS Services **using a private network** instead of the public www network
+- This gives you enhanced security and lower latency to access AWS services
+- VPC Endpoint **Gateway**: S3 & DynamoDB
+- VPC Endpoint **Interface**: the rest
+
+### 17.9. Site to Site VPN & Direct Connect
+
+- **Site to Site VPN:**
+  - Connect an on-premises VPN to AWS
+  - The connection is automatically encrypted
+  - Goes over the public internet
+- **AWS Direct Connect is a cloud service solution that makes it easy to establish a dedicated private network connection from your premises to AWS.**
+  - **Direct Connect (DX):**
+    - Establish a physical connection between on-premises and AWS
+    - The connection is private, secure and fast
+    - Goes over a private network
+    - Takes at least a month to establish
+
+### 17.10. Site-to-Site VPN
+
+- On-premises: must use a **Customer Gateway** (CGW)
+- AWS: must use a **Virtual Private Gateway** (VGW)
+
+### 17.11. Transit Gateway
+
+- **Transit Gateway connects thousands of VPC and on-premises networks together in a single gateway.**
+- For having transitive peering between thousands of VPC and on-premises, hub-and-spoke (star) connection
+- One single Gateway to provide this functionality
+- Works with Direct Connect Gateway, VPN connections
+
+### 17.12. VPC Closing Comments
+
+- VPC: Virtual Private Cloud
+- Subnets:Tied to an AZ, network partition of the VPC
+- Internet Gateway: at the VPC level, provide Internet Access
+- NAT Gateway / Instances: give internet access to private subnets
+- NACL: Stateless, subnet rules for inbound and outbound
+- Security Groups: Stateful, operate at the EC2 instance level or ENI
+- VPC Peering: Connect two VPC with non overlapping IP ranges, nontransitive
+- VPC Endpoints: Provide private access to AWS Services within VPC
+- VPC Flow Logs: network traffic logs
+- Site to Site VPN: VPN over public internet between on-premises DC and AWS
+- Direct Connect: direct private connection to AWS
+- Transit Gateway: Connect thousands of VPC and on-premises networks together
+
+## 18. Advanced Identity
+
+### 18.1. AWS STS (SecurityToken Service)
+
+- **AWS Security Token Service (AWS STS) is a web service that enables you to request temporary, limited-privilege credentials for AWS Identity and Access Management (IAM) users or for users that you authenticate (federated users).**
+- Enables you to create temporary, limited- privileges credentials to access your AWS resources.
+- Short-term credentials: you configure expiration period.
+- Use cases:
+  - Identity federation: manage user identities in external systems, and provide them with STS tokens to access AWS resources.
+  - IAM Roles for cross/same account access.
+  - IAM Roles for Amazon EC2: provide temporary credentials for EC2 instances to access AWS resources.
+
+### 18.2. Amazon Cognito
+
+- **Amazon Cognito lets you add user sign-up, sign-in, and access control to your web and mobile apps quickly and easily.**
+- Identity for your Web and Mobile applications users (potentially millions).
+- Instead of creating them an IAM user, you create a user in Cognito.
+
+### 18.3. What is Microsoft Active Directory (AD)?
+
+- Found on any Windows Server with AD Domain Services.
+- Database of objects: User Accounts, Computers, Printers, File Shares, Security Groups.
+- Centralized security management, create account, assign permissions.
+
+#### 18.3.1. AWS Directory Services
+
+- **AWS Directory Service makes it easy for you to setup and run directories in the AWS cloud, or connect your AWS resources with an existing on-premises Microsoft Active Directory.**
+- **AWS Managed Microsoft AD:**
+  - Create your own AD in AWS, manage users locally, supports MFA.
+  - Establish “trust” connections with your on- premise AD.
+- **AD Connector:**
+  - Directory Gateway (proxy) to redirect to on- premise AD, supports MFA.
+  - Users are managed on the on-premise AD.
+- **Simple AD:**
+  - AD-compatible managed directory on AWS.
+  - Cannot be joined with on-premise AD.
+
+### 18.4. AWS Organizations
+
+- Organizations helps you to centrally manage billing; control access, compliance, and security; and share resources across your AWS accounts.
+
+### 18.5. AWS Single Sign-On (SSO)
+
+- Centrally manage Single Sign-On to access multiple accounts and 3rd-party business applications.
+- Integrated with AWS Organizations.
+- Supports SAML 2.0 markup.
+- Integration with on-premise Active Directory.
+
+### 18.6. Advanced Identity - Summary
+
+- IAM:
+  - Identity and Access Management inside your AWS account.
+  - For users that you trust and belong to your company.
+  - **IAM Roles are sets of permissions making AWS service requests, which will be used by AWS services, but they do not provide temporary security credentials.**
+- Organizations: manage multiple AWS accounts.
+- Security Token Service (STS): temporary, limited-privileges credentials to access AWS resources.
+- Cognito: create a database of users for your mobile & web applications.
+- Directory Services: integrate Microsoft Active Directory in AWS.
+- Single Sign-On (SSO): one login for multiple AWS accounts & applications.
+
+## 19. AWS related Abbreviations & Acronyms
+
+### 19.1. A
 
 - AWS Amazon Web Services
 - Amazon ES Amazon Elasticsearch Service
@@ -2479,11 +2682,11 @@
 - ADFS Active Directory Federation Service
 - AVX Advanced Vector Extensions
 
-### 17.2. B
+### 19.2. B
 
 - BYOL Bring Your Own License
 
-### 17.3. C
+### 19.3. C
 
 - CDN Content Delivery Network
 - CRC Cyclic Redundancy Check
@@ -2493,7 +2696,7 @@
 - CRR Cross Region Replication
 - CI/CD Continuous Integration/Continuous Deployment
 
-### 17.4. D
+### 19.4. D
 
 - DMS Database Migration Service
 - DNS Domain Name System
@@ -2501,7 +2704,7 @@
 - DoS Denial of Service
 - DaaS Desktop as-a-Service
 
-### 17.5. E
+### 19.5. E
 
 - EC2 Elastic Compute Cloud
 - ECS EC2 Container Service
@@ -2519,12 +2722,12 @@
 - ENI Elastic Network Interface
 - ECU EC2 Compute Unit
 
-### 17.6. F
+### 19.6. F
 
 - FIFO First In First Out
 - FaaS Function as-a-Service
 
-### 17.7. H
+### 19.7. H
 
 - HPC High-Performance Compute
 - HVM Hardware Virtual Machine
@@ -2532,7 +2735,7 @@
 - HTTPS HTTP Secure
 - HDK Hardware Development Kit
 
-### 17.8. I
+### 19.8. I
 
 - IAM Identity & Access Management
 - iOT Internet Of Things
@@ -2545,21 +2748,21 @@
 - IPSec Internet Protocol Security
 - IaaS Infrastructure-as-a-Service
 
-### 17.9. J
+### 19.9. J
 
 - JSON JavaScript Object Notation
 
-### 17.10. K
+### 19.10. K
 
 - KMS Key Management Service
 - KVM Kernel-based Virtual Machine
 
-### 17.11. L
+### 19.11. L
 
 - LB Load Balancer
 - LCU Load Balancer Capacity Unit
 
-### 17.12. M
+### 19.12. M
 
 - MFA Multi-Factor Authentication
 - MSTSC Microsoft Terminal Service Client
@@ -2567,31 +2770,32 @@
 - MITM Man in the Middle Attack
 - MPLS Multi Protocol Label Switching
 
-### 17.13. N
+### 19.13. N
 
+- NACL Network Access Control List
 - NFS Network File System
 - NS Name Server
 - NAT Network Address Translation
 - NVMe Non-Volatile Memory Express
 
-### 17.14. O
+### 19.14. O
 
 - OLTP Online Transaction Processing
 - OLAP Online Analytics Processing
 - OCI Open Container Initiative
 
-### 17.15. P
+### 19.15. P
 
 - PCI DSS Payment Card Industry Data Security Standard
 - PVM Para Virtual Machine
 - PV ParaVirtual
 - PaaS Platform as a Service
 
-### 17.16. Q
+### 19.16. Q
 
 - QLDB Quantum Ledger Database
 
-### 17.17. R
+### 19.17. R
 
 - RAIDRedundant Array of Independent Disk
 - RDS Relational Database Service
@@ -2600,7 +2804,7 @@
 - RAM Random-access Memory
 - RIE Runtime Interface Emulator
 
-### 17.18. S
+### 19.18. S
 
 - SSEServer Side Encryption
 - S3 Simple Storage Service
@@ -2628,7 +2832,7 @@
 - STS Security Token Service
 - SNI Server Name Indication
 
-### 17.19. T
+### 19.19. T
 
 - TTL Time To Live
 - TLS Transport Layer Security
@@ -2638,7 +2842,7 @@
 - TPS Transaction Per Second
 - TCP Transmission Control Protocol
 
-### 17.20. V
+### 19.20. V
 
 - VPC Virtual Private Cloud
 - VM Virtual Machine
@@ -2648,11 +2852,11 @@
 - VDI Virtual Desktop Infrastructure
 - VPG Virtual Private Gateway
 
-### 17.21. W
+### 19.21. W
 
 - WAFWeb Application Firewall
 
-## 18. Commands
+## 20. Commands
 
 - List of AWS Regions
   - aws ec2 describe-regions
