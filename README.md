@@ -236,50 +236,62 @@
   - [17.10. Site-to-Site VPN](#1710-site-to-site-vpn)
   - [17.11. Transit Gateway](#1711-transit-gateway)
   - [17.12. VPC Closing Comments](#1712-vpc-closing-comments)
-- [18. Advanced Identity](#18-advanced-identity)
-  - [18.1. AWS STS (SecurityToken Service)](#181-aws-sts-securitytoken-service)
-  - [18.2. Amazon Cognito](#182-amazon-cognito)
-  - [18.3. What is Microsoft Active Directory (AD)?](#183-what-is-microsoft-active-directory-ad)
-    - [18.3.1. AWS Directory Services](#1831-aws-directory-services)
-  - [18.4. AWS Organizations](#184-aws-organizations)
-  - [18.5. AWS Single Sign-On (SSO)](#185-aws-single-sign-on-sso)
-  - [18.6. Advanced Identity - Summary](#186-advanced-identity---summary)
-- [19. Other AWS Services](#19-other-aws-services)
-  - [19.1. Amazon WorkSpaces](#191-amazon-workspaces)
-  - [19.2. Amazon AppStream 2.0](#192-amazon-appstream-20)
-    - [19.2.1. Amazon AppStream 2.0 vs WorkSpaces](#1921-amazon-appstream-20-vs-workspaces)
-  - [19.3. Amazon Sumerian](#193-amazon-sumerian)
-  - [19.4. AWS IoT Core](#194-aws-iot-core)
-  - [19.5. Amazon Elastic Transcoder](#195-amazon-elastic-transcoder)
-  - [19.6. AWS Device Farm](#196-aws-device-farm)
-  - [19.7. AWS Backup](#197-aws-backup)
-    - [19.7.1. Disaster Recovery Strategies](#1971-disaster-recovery-strategies)
-  - [19.8. AWS Elastic Disaster Recovery (DRS)](#198-aws-elastic-disaster-recovery-drs)
-  - [19.9. AWS DataSync](#199-aws-datasync)
-  - [19.10. AWS Fault Injection Simulator (FIS)](#1910-aws-fault-injection-simulator-fis)
-- [20. AWS related Abbreviations & Acronyms](#20-aws-related-abbreviations--acronyms)
-  - [20.1. A](#201-a)
-  - [20.2. B](#202-b)
-  - [20.3. C](#203-c)
-  - [20.4. D](#204-d)
-  - [20.5. E](#205-e)
-  - [20.6. F](#206-f)
-  - [20.7. H](#207-h)
-  - [20.8. I](#208-i)
-  - [20.9. J](#209-j)
-  - [20.10. K](#2010-k)
-  - [20.11. L](#2011-l)
-  - [20.12. M](#2012-m)
-  - [20.13. N](#2013-n)
-  - [20.14. O](#2014-o)
-  - [20.15. P](#2015-p)
-  - [20.16. Q](#2016-q)
-  - [20.17. R](#2017-r)
-  - [20.18. S](#2018-s)
-  - [20.19. T](#2019-t)
-  - [20.20. V](#2020-v)
-  - [20.21. W](#2021-w)
-- [21. Commands](#21-commands)
+- [18. Machine Learning](#18-machine-learning)
+  - [18.1. Amazon Rekognition](#181-amazon-rekognition)
+  - [18.2. Amazon Transcribe](#182-amazon-transcribe)
+  - [18.3. Amazon Polly](#183-amazon-polly)
+  - [18.4. Amazon Translate](#184-amazon-translate)
+  - [18.5. Amazon Lex & Connect](#185-amazon-lex--connect)
+  - [18.6. Amazon Comprehend](#186-amazon-comprehend)
+  - [18.7. Amazon SageMaker](#187-amazon-sagemaker)
+  - [18.8. Amazon Forecast](#188-amazon-forecast)
+  - [18.9. Amazon Kendra](#189-amazon-kendra)
+  - [18.10. Amazon Personalize](#1810-amazon-personalize)
+  - [18.11. AWS Machine Learning - Summary](#1811-aws-machine-learning---summary)
+- [19. Advanced Identity](#19-advanced-identity)
+  - [19.1. AWS STS (SecurityToken Service)](#191-aws-sts-securitytoken-service)
+  - [19.2. Amazon Cognito](#192-amazon-cognito)
+  - [19.3. What is Microsoft Active Directory (AD)?](#193-what-is-microsoft-active-directory-ad)
+    - [19.3.1. AWS Directory Services](#1931-aws-directory-services)
+  - [19.4. AWS Organizations](#194-aws-organizations)
+  - [19.5. AWS Single Sign-On (SSO)](#195-aws-single-sign-on-sso)
+  - [19.6. Advanced Identity - Summary](#196-advanced-identity---summary)
+- [20. Other AWS Services](#20-other-aws-services)
+  - [20.1. Amazon WorkSpaces](#201-amazon-workspaces)
+  - [20.2. Amazon AppStream 2.0](#202-amazon-appstream-20)
+    - [20.2.1. Amazon AppStream 2.0 vs WorkSpaces](#2021-amazon-appstream-20-vs-workspaces)
+  - [20.3. Amazon Sumerian](#203-amazon-sumerian)
+  - [20.4. AWS IoT Core](#204-aws-iot-core)
+  - [20.5. Amazon Elastic Transcoder](#205-amazon-elastic-transcoder)
+  - [20.6. AWS Device Farm](#206-aws-device-farm)
+  - [20.7. AWS Backup](#207-aws-backup)
+    - [20.7.1. Disaster Recovery Strategies](#2071-disaster-recovery-strategies)
+  - [20.8. AWS Elastic Disaster Recovery (DRS)](#208-aws-elastic-disaster-recovery-drs)
+  - [20.9. AWS DataSync](#209-aws-datasync)
+  - [20.10. AWS Fault Injection Simulator (FIS)](#2010-aws-fault-injection-simulator-fis)
+- [21. AWS related Abbreviations & Acronyms](#21-aws-related-abbreviations--acronyms)
+  - [21.1. A](#211-a)
+  - [21.2. B](#212-b)
+  - [21.3. C](#213-c)
+  - [21.4. D](#214-d)
+  - [21.5. E](#215-e)
+  - [21.6. F](#216-f)
+  - [21.7. H](#217-h)
+  - [21.8. I](#218-i)
+  - [21.9. J](#219-j)
+  - [21.10. K](#2110-k)
+  - [21.11. L](#2111-l)
+  - [21.12. M](#2112-m)
+  - [21.13. N](#2113-n)
+  - [21.14. O](#2114-o)
+  - [21.15. P](#2115-p)
+  - [21.16. Q](#2116-q)
+  - [21.17. R](#2117-r)
+  - [21.18. S](#2118-s)
+  - [21.19. T](#2119-t)
+  - [21.20. V](#2120-v)
+  - [21.21. W](#2121-w)
+- [22. Commands](#22-commands)
 
 ## 1. Traditionally, how to build infrastructure
 
@@ -2616,9 +2628,124 @@
 - Direct Connect: direct private connection to AWS
 - Transit Gateway: Connect thousands of VPC and on-premises networks together
 
-## 18. Advanced Identity
+## 18. Machine Learning
 
-### 18.1. AWS STS (SecurityToken Service)
+### 18.1. Amazon Rekognition
+
+- **Amazon Rekognition makes it easy to add image and video analysis to your applications using proven, highly scalable, deep learning technology that requires no machine learning expertise to use.**
+- Find objects, people, text, scenes in images and videos using ML.
+- Facial analysis and facial search to do user verification, people counting.
+- Create a database of "familiar faces" or compare against celebrities.
+- Use cases:
+  - Labeling.
+  - Content Moderation.
+  - Text Detection.
+  - Face Detection and Analysis (gender, age range, emotions...).
+  - Face Search and Verification.
+  - Celebrity Recognition.
+  - Pathing (ex: for sports game analysis).
+
+### 18.2. Amazon Transcribe
+
+- **Amazon Transcribe is an AWS service that makes it easy for customers to convert speech-to-text.**
+- Automatically convert speech to text.
+- Uses a deep learning process called automatic speech recognition (ASR) to convert speech to text quickly and accurately.
+- Use cases:
+  - Transcribe customer service calls.
+  - Automate closed captioning and subtitling.
+  - Generate metadata for media assets to create a fully searchable archive.
+
+### 18.3. Amazon Polly
+
+- **Amazon Polly is a service that turns text into lifelike speech.**
+- Turn text into lifelike speech using deep learning
+- Allowing you to create applications that talk
+
+### 18.4. Amazon Translate
+
+- **Amazon Translate is a neural machine translation service that delivers fast, high-quality, and affordable language translation.**
+- Natural and accurate **language translation**.
+- Amazon Translate allows you to **localize content** - such as websites and applications - for **international users**, and to easily translate large volumes of text efficiently.
+
+### 18.5. Amazon Lex & Connect
+
+- **Amazon Lex is a service for building conversational interfaces into any application using voice and text. Lex provides the advanced deep learning functionalities of automatic speech recognition (ASR) for converting speech to text, and natural language understanding (NLU) to recognize the intent of the text, to enable you to build applications with highly engaging user experiences and lifelike conversational interactions.**
+- **Amazon Lex:** (same technology that powers Alexa).
+  - Automatic Speech Recognition (ASR) to convert speech to text.
+  - Natural Language Understanding to recognize the intent of text, callers.
+  - Helps build chatbots, call center bots.
+- **Amazon Connect is a self-service, cloud-based contact center service that makes it easy for any business to deliver better customer service at lower cost. It does not provide speech-to-text conversion or natural language understanding.**
+- **Amazon Connect:**
+  - Receive calls, create contact flows, cloud-based virtual contact center.
+  - Can integrate with other CRM systems or AWS.
+  - No upfront payments, 80% cheaper than traditional contact center solutions.
+
+### 18.6. Amazon Comprehend
+
+- **Amazon Comprehend is a natural language processing (NLP) service that uses machine learning to find meaning and insights in text.**
+- For **Natural Language Processing - NLP**.
+- Fully managed and serverless service.
+- Uses machine learning to find insights and relationships in text:
+  - Language of the text.
+  - Extracts key phrases, places, people, brands, or events.
+  - Understands how positive or negative the text is.
+  - Analyzes text using tokenization and parts of speech.
+  - Automatically organizes a collection of text files by topic.
+- Sample use cases:
+  - Analyze customer interactions (emails) to find what leads to a positive or negative experience.
+  - Create and groups articles by topics that Comprehend will uncover.
+
+### 18.7. Amazon SageMaker
+
+- **Amazon SageMaker is a fully managed service that provides every developer and data scientist with the ability to build, train, and deploy machine learning (ML) models quickly. SageMaker removes the heavy lifting from each step of the machine learning process to make it easier to develop high quality models.**
+- Fully managed service for developers / data scientists to build ML models.
+- Typically, difficult to do all the processes in one place + provision servers.
+- Machine learning process (simplified): predicting your exam score.
+
+### 18.8. Amazon Forecast
+
+- Fully managed service that uses ML to deliver highly accurate forecasts.
+- Example: predict the future sales of a raincoat.
+- 50% more accurate than looking at the data itself.
+- Reduce forecasting time from months to hours.
+- Use cases: Product Demand Planning, Financial Planning, Resource Planning, ...
+
+### 18.9. Amazon Kendra
+- **Amazon Kendra is a highly accurate and easy to use enterprise search service that’s powered by machine learning.**
+- Fully managed **document search service** powered by Machine Learning.
+- Extract answers from within a document (text, pdf, HTML, PowerPoint, MS Word, FAQs...).
+- Natural language search capabilities.
+- Learn from user interactions/feedback to promote preferred results **(Incremental Learning)**.
+- Ability to manually fine-tune search results (importance of data, freshness, custom, ...).
+
+### 18.10. Amazon Personalize
+
+- **Amazon Personalize is a machine learning service that makes it easy for developers to create individualized recommendations for customers using their applications.**
+- Fully managed ML-service to build apps with real-time personalized recommendations.
+- Example: personalized product recommendations/re-ranking, customized direct marketing
+  - Example: User bought gardening tools, provide recommendations on the next one to buy
+- Same technology used by Amazon.com
+- Integrates into existing websites, applications, SMS, email marketing systems, ...
+- Implement in days, not months (you don’t need to build, train, and deploy ML solutions)
+- Use cases: retail stores, media and entertainment...
+
+### 18.11. AWS Machine Learning - Summary
+
+- Rekognition: face detection, labeling, celebrity recognition.
+- Transcribe: audio to text (ex: subtitles).
+- Polly: text to audio.
+- Translate: translations.
+- Lex: build conversational bots - chatbots.
+- Connect: cloud contact center.
+- Comprehend: natural language processing.
+- SageMaker: machine learning for every developer and data scientist.
+- Forecast: build highly accurate forecasts.
+- Kendra: ML-powered search engine.
+- Personalize: real-time personalized recommendations.
+
+## 19. Advanced Identity
+
+### 19.1. AWS STS (SecurityToken Service)
 
 - **AWS Security Token Service (AWS STS) is a web service that enables you to request temporary, limited-privilege credentials for AWS Identity and Access Management (IAM) users or for users that you authenticate (federated users).**
 - Enables you to create temporary, limited- privileges credentials to access your AWS resources.
@@ -2628,19 +2755,19 @@
   - IAM Roles for cross/same account access.
   - IAM Roles for Amazon EC2: provide temporary credentials for EC2 instances to access AWS resources.
 
-### 18.2. Amazon Cognito
+### 19.2. Amazon Cognito
 
 - **Amazon Cognito lets you add user sign-up, sign-in, and access control to your web and mobile apps quickly and easily.**
 - Identity for your Web and Mobile applications users (potentially millions).
 - Instead of creating them an IAM user, you create a user in Cognito.
 
-### 18.3. What is Microsoft Active Directory (AD)?
+### 19.3. What is Microsoft Active Directory (AD)?
 
 - Found on any Windows Server with AD Domain Services.
 - Database of objects: User Accounts, Computers, Printers, File Shares, Security Groups.
 - Centralized security management, create account, assign permissions.
 
-#### 18.3.1. AWS Directory Services
+#### 19.3.1. AWS Directory Services
 
 - **AWS Directory Service makes it easy for you to setup and run directories in the AWS cloud, or connect your AWS resources with an existing on-premises Microsoft Active Directory.**
 - **AWS Managed Microsoft AD:**
@@ -2653,18 +2780,18 @@
   - AD-compatible managed directory on AWS.
   - Cannot be joined with on-premise AD.
 
-### 18.4. AWS Organizations
+### 19.4. AWS Organizations
 
 - Organizations helps you to centrally manage billing; control access, compliance, and security; and share resources across your AWS accounts.
 
-### 18.5. AWS Single Sign-On (SSO)
+### 19.5. AWS Single Sign-On (SSO)
 
 - Centrally manage Single Sign-On to access multiple accounts and 3rd-party business applications.
 - Integrated with AWS Organizations.
 - Supports SAML 2.0 markup.
 - Integration with on-premise Active Directory.
 
-### 18.6. Advanced Identity - Summary
+### 19.6. Advanced Identity - Summary
 
 - IAM:
   - Identity and Access Management inside your AWS account.
@@ -2676,9 +2803,9 @@
 - Directory Services: integrate Microsoft Active Directory in AWS.
 - Single Sign-On (SSO): one login for multiple AWS accounts & applications.
 
-## 19. Other AWS Services
+## 20. Other AWS Services
 
-### 19.1. Amazon WorkSpaces
+### 20.1. Amazon WorkSpaces
 
 - **Amazon WorkSpaces is a fully managed, secure cloud desktop service. You can use Amazon WorkSpaces to provision either Windows or Linux desktops in just a few minutes and quickly scale to provide thousands of desktops to workers across the globe.**
 - Managed Desktop as a Service (DaaS) solution to easily provision Windows or Linux desktops.
@@ -2687,14 +2814,14 @@
 - Secured data - integrates with KMS.
 - Pay-as-you-go service with monthly or hourly rates.
 
-### 19.2. Amazon AppStream 2.0
+### 20.2. Amazon AppStream 2.0
 
 - **Amazon AppStream 2.0 is a fully managed non-persistent application and desktop streaming service that provides users instant access to their desktop applications from anywhere.**
 - Desktop Application Streaming Service.
 - Deliver to any computer, without acquiring, provisioning infrastructure.
 - The application is delivered from within a web browser.
 
-#### 19.2.1. Amazon AppStream 2.0 vs WorkSpaces
+#### 20.2.1. Amazon AppStream 2.0 vs WorkSpaces
 
 - **Workspaces:**
   - Fully managed VDI and desktop available.
@@ -2705,7 +2832,7 @@
   - Works with any device (that has a web browser).
   - Allow to configure an instance type per application type (CPU, RAM, GPU).
 
-### 19.3. Amazon Sumerian
+### 20.3. Amazon Sumerian
 
 - **Amazon Sumerian is a managed service that lets you create and run 3D, Augmented Reality (AR) and Virtual Reality (VR) applications. You can build immersive and interactive scenes that run on AR and VR, mobile devices, and your web browser.**
 - Create and run virtual reality (VR), augmented reality (AR), and 3D applications.
@@ -2713,7 +2840,7 @@
 - Ready-to-use templates and assets - no programming or 3D expertise required.
 - Accessible via a web-browser URLs or on popular hardware for AR/VR.
 
-### 19.4. AWS IoT Core
+### 20.4. AWS IoT Core
 
 - **AWS IoT Core, is serverless and lets you connect billions of devices to the AWS Cloud, lets you securely connect IoT devices to the AWS Cloud and other devices without the need to provision or manage servers.**
 - IoT stands for "Internet of Things" - the network of internet-connected devices that are able to collect and transfer data.
@@ -2723,7 +2850,7 @@
 - Integrates with a lot of AWS services (Lambda, S3, SageMaker, etc.).
 - Build IoT applications that gather, process, analyze, and act on data.
 
-### 19.5. Amazon Elastic Transcoder
+### 20.5. Amazon Elastic Transcoder
 
 - **Amazon Elastic Transcoder is media transcoding in the cloud. It is used to convert media files from their source format into versions that will play back on devices like smartphones, tablets, and PCs.**
 - Elastic Transcoder is used to convert media files stored in S3 into media files in the formats required by consumer playback devices (phones etc..)
@@ -2733,14 +2860,14 @@
   - Cost effective - duration-based pricing model.
   - Fully managed & secure, pay for what you use.
 
-### 19.6. AWS Device Farm
+### 20.6. AWS Device Farm
 
 - **AWS Device Farm is an application testing service that lets you improve the quality of your web and mobile apps by testing them across an extensive range of desktop browsers and real mobile devices; without having to provision and manage any testing infrastructure.**
 - Fully-managed service that tests your web and mobile apps against desktop browsers, real mobile devices, and tablets.
 - Run tests concurrently on multiple devices (speed up execution).
 - Ability to configure device settings (GPS, language, Wi-Fi, Bluetooth, ...).
 
-### 19.7. AWS Backup
+### 20.7. AWS Backup
 
 - **AWS Backup is a centralized backup service that makes it easy and cost-effective for you to backup your application data across AWS services in the AWS Cloud. CloudEndure Disaster Recovery minimizes downtime and data loss by providing fast, reliable recovery into AWS of your physical, virtual, and cloud-based servers.**
 - Fully-managed service to centrally manage and automate backups across AWS services.
@@ -2750,28 +2877,28 @@
 - Cross-Region Backup.
 - Cross-Account Backup (using AWS Organizations).
 
-#### 19.7.1. Disaster Recovery Strategies
+#### 20.7.1. Disaster Recovery Strategies
 
 - Backup and Restore (Cheapest)
 - Pilot Light
 - Multi-Site / Hot-Site
 - Warm Standby
 
-### 19.8. AWS Elastic Disaster Recovery (DRS)
+### 20.8. AWS Elastic Disaster Recovery (DRS)
 
 - Used to be named "CloudEndure Disaster Recovery"
 - Quickly and easily recover your physical, virtual, and cloud-based servers into AWS
 - Example: protect your most critical databases (including Oracle, MySQL, and SQL Server), enterprise apps (SAP), protect your data from ransomware attacks, ...
 - Continuous block-level replication for your servers
 
-### 19.9. AWS DataSync
+### 20.9. AWS DataSync
 
 - Move large amount of data from on-premises to AWS
 - Can synchronize to: Amazon S3 (any storage classes - including Glacier), Amazon EFS, Amazon FSx for Windows
 - Replication tasks can be scheduled hourly, daily, weekly
 - The replication tasks are **incremental** after the first full load
 
-### 19.10. AWS Fault Injection Simulator (FIS)
+### 20.10. AWS Fault Injection Simulator (FIS)
 
 - A fully managed service for running fault injection experiments on AWS workloads
 - Based on **Chaos Engineering** - stressing an application by creating disruptive events (e.g., sudden increase in CPU or memory), observing how the system responds, and implementing improvements
@@ -2779,9 +2906,9 @@
 - Supports the following AWS services: EC2, ECS, EKS, RDS...
 - Use pre-built templates that generate the desired disruptions
 
-## 20. AWS related Abbreviations & Acronyms
+## 21. AWS related Abbreviations & Acronyms
 
-### 20.1. A
+### 21.1. A
 
 - AWS Amazon Web Services
 - Amazon ES Amazon Elasticsearch Service
@@ -2798,11 +2925,11 @@
 - ADFS Active Directory Federation Service
 - AVX Advanced Vector Extensions
 
-### 20.2. B
+### 21.2. B
 
 - BYOL Bring Your Own License
 
-### 20.3. C
+### 21.3. C
 
 - CDN Content Delivery Network
 - CRC Cyclic Redundancy Check
@@ -2812,7 +2939,7 @@
 - CRR Cross Region Replication
 - CI/CD Continuous Integration/Continuous Deployment
 
-### 20.4. D
+### 21.4. D
 
 - DMS Database Migration Service
 - DNS Domain Name System
@@ -2820,7 +2947,7 @@
 - DoS Denial of Service
 - DaaS Desktop as-a-Service
 
-### 20.5. E
+### 21.5. E
 
 - EC2 Elastic Compute Cloud
 - ECS EC2 Container Service
@@ -2838,12 +2965,12 @@
 - ENI Elastic Network Interface
 - ECU EC2 Compute Unit
 
-### 20.6. F
+### 21.6. F
 
 - FIFO First In First Out
 - FaaS Function as-a-Service
 
-### 20.7. H
+### 21.7. H
 
 - HPC High-Performance Compute
 - HVM Hardware Virtual Machine
@@ -2851,7 +2978,7 @@
 - HTTPS HTTP Secure
 - HDK Hardware Development Kit
 
-### 20.8. I
+### 21.8. I
 
 - IAM Identity & Access Management
 - iOT Internet Of Things
@@ -2864,21 +2991,21 @@
 - IPSec Internet Protocol Security
 - IaaS Infrastructure-as-a-Service
 
-### 20.9. J
+### 21.9. J
 
 - JSON JavaScript Object Notation
 
-### 20.10. K
+### 21.10. K
 
 - KMS Key Management Service
 - KVM Kernel-based Virtual Machine
 
-### 20.11. L
+### 21.11. L
 
 - LB Load Balancer
 - LCU Load Balancer Capacity Unit
 
-### 20.12. M
+### 21.12. M
 
 - MFA Multi-Factor Authentication
 - MSTSC Microsoft Terminal Service Client
@@ -2886,32 +3013,33 @@
 - MITM Man in the Middle Attack
 - MPLS Multi Protocol Label Switching
 
-### 20.13. N
+### 21.13. N
 
 - NACL Network Access Control List
+- NLP Natural Language Processing
 - NFS Network File System
 - NS Name Server
 - NAT Network Address Translation
 - NVMe Non-Volatile Memory Express
 
-### 20.14. O
+### 21.14. O
 
 - OLTP Online Transaction Processing
 - OLAP Online Analytics Processing
 - OCI Open Container Initiative
 
-### 20.15. P
+### 21.15. P
 
 - PCI DSS Payment Card Industry Data Security Standard
 - PVM Para Virtual Machine
 - PV ParaVirtual
 - PaaS Platform as a Service
 
-### 20.16. Q
+### 21.16. Q
 
 - QLDB Quantum Ledger Database
 
-### 20.17. R
+### 21.17. R
 
 - RAIDRedundant Array of Independent Disk
 - RDS Relational Database Service
@@ -2920,7 +3048,7 @@
 - RAM Random-access Memory
 - RIE Runtime Interface Emulator
 
-### 20.18. S
+### 21.18. S
 
 - SSEServer Side Encryption
 - S3 Simple Storage Service
@@ -2948,7 +3076,7 @@
 - STS Security Token Service
 - SNI Server Name Indication
 
-### 20.19. T
+### 21.19. T
 
 - TTL Time To Live
 - TLS Transport Layer Security
@@ -2958,7 +3086,7 @@
 - TPS Transaction Per Second
 - TCP Transmission Control Protocol
 
-### 20.20. V
+### 21.20. V
 
 - VPC Virtual Private Cloud
 - VM Virtual Machine
@@ -2968,11 +3096,11 @@
 - VDI Virtual Desktop Infrastructure
 - VPG Virtual Private Gateway
 
-### 20.21. W
+### 21.21. W
 
 - WAFWeb Application Firewall
 
-## 21. Commands
+## 22. Commands
 
 - List of AWS Regions
   - aws ec2 describe-regions
