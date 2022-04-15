@@ -244,29 +244,42 @@
   - [18.4. AWS Organizations](#184-aws-organizations)
   - [18.5. AWS Single Sign-On (SSO)](#185-aws-single-sign-on-sso)
   - [18.6. Advanced Identity - Summary](#186-advanced-identity---summary)
-- [19. AWS related Abbreviations & Acronyms](#19-aws-related-abbreviations--acronyms)
-  - [19.1. A](#191-a)
-  - [19.2. B](#192-b)
-  - [19.3. C](#193-c)
-  - [19.4. D](#194-d)
-  - [19.5. E](#195-e)
-  - [19.6. F](#196-f)
-  - [19.7. H](#197-h)
-  - [19.8. I](#198-i)
-  - [19.9. J](#199-j)
-  - [19.10. K](#1910-k)
-  - [19.11. L](#1911-l)
-  - [19.12. M](#1912-m)
-  - [19.13. N](#1913-n)
-  - [19.14. O](#1914-o)
-  - [19.15. P](#1915-p)
-  - [19.16. Q](#1916-q)
-  - [19.17. R](#1917-r)
-  - [19.18. S](#1918-s)
-  - [19.19. T](#1919-t)
-  - [19.20. V](#1920-v)
-  - [19.21. W](#1921-w)
-- [20. Commands](#20-commands)
+- [19. Other AWS Services](#19-other-aws-services)
+  - [19.1. Amazon WorkSpaces](#191-amazon-workspaces)
+  - [19.2. Amazon AppStream 2.0](#192-amazon-appstream-20)
+    - [19.2.1. Amazon AppStream 2.0 vs WorkSpaces](#1921-amazon-appstream-20-vs-workspaces)
+  - [19.3. Amazon Sumerian](#193-amazon-sumerian)
+  - [19.4. AWS IoT Core](#194-aws-iot-core)
+  - [19.5. Amazon Elastic Transcoder](#195-amazon-elastic-transcoder)
+  - [19.6. AWS Device Farm](#196-aws-device-farm)
+  - [19.7. AWS Backup](#197-aws-backup)
+    - [19.7.1. Disaster Recovery Strategies](#1971-disaster-recovery-strategies)
+  - [19.8. AWS Elastic Disaster Recovery (DRS)](#198-aws-elastic-disaster-recovery-drs)
+  - [19.9. AWS DataSync](#199-aws-datasync)
+  - [19.10. AWS Fault Injection Simulator (FIS)](#1910-aws-fault-injection-simulator-fis)
+- [20. AWS related Abbreviations & Acronyms](#20-aws-related-abbreviations--acronyms)
+  - [20.1. A](#201-a)
+  - [20.2. B](#202-b)
+  - [20.3. C](#203-c)
+  - [20.4. D](#204-d)
+  - [20.5. E](#205-e)
+  - [20.6. F](#206-f)
+  - [20.7. H](#207-h)
+  - [20.8. I](#208-i)
+  - [20.9. J](#209-j)
+  - [20.10. K](#2010-k)
+  - [20.11. L](#2011-l)
+  - [20.12. M](#2012-m)
+  - [20.13. N](#2013-n)
+  - [20.14. O](#2014-o)
+  - [20.15. P](#2015-p)
+  - [20.16. Q](#2016-q)
+  - [20.17. R](#2017-r)
+  - [20.18. S](#2018-s)
+  - [20.19. T](#2019-t)
+  - [20.20. V](#2020-v)
+  - [20.21. W](#2021-w)
+- [21. Commands](#21-commands)
 
 ## 1. Traditionally, how to build infrastructure
 
@@ -1357,18 +1370,18 @@
 
 ### 11.14. S3 Storage Classes Comparison
 
-|                                    |      S3 Standard       | S3 Intelligent-Tiering   |     S3 Standard-IA     |    S3 One Zone-IA†     | S3 Glacier Instant Retrieval | S3 Glacier Flexible Retrieval | S3 Glacier Deep Archive |
-| :--------------------------------: | :--------------------: | :----------------------: | :--------------------: | :--------------------: | :--------------------------: | :---------------------------: | :---------------------: |
-|      Designed for durability       | 99.999999999% (11 9's) |  99.999999999% (11 9's)  | 99.999999999% (11 9's) | 99.999999999% (11 9's) |    99.999999999% (11 9's)    |    99.999999999% (11 9's)     | 99.999999999% (11 9's)  |
-|     Designed for availability      |         99.99%         |          99.9%           |         99.9%          |         99.5%          |            99.9%             |            99.99%             |         99.99%          |
-|          Availability SLA          |         99.9%          |           99%            |          99%           |          99%           |             99%              |             99.%              |          99.9%          |
-|         Availability Zones         |           ≥3           |            ≥3            |           ≥3           |           1            |              ≥3              |              ≥3               |           ≥3            |
-| Minimum capacity charge per object |          N/A           |           N/A            |         128 KB         |         128 KB         |            128 KB            |             40 KB             |          40 KB          |
-|  Minimum storage duration charge   |          N/A           |           N/A            |        30 days         |        30 days         |           90 days            |            90 days            |        180 days         |
-|          Retrieval charge          |          N/A           |           N/A            |    per GB retrieved    |    per GB retrieved    |       per GB retrieved       |       per GB retrieved        |    per GB retrieved     |
-|         First byte latency         |      milliseconds      |       milliseconds       |      milliseconds      |      milliseconds      |         milliseconds         |       minutes or hours        |          hours          |
-|            Storage type            |         Object         |          Object          |         Object         |         Object         |            Object            |            Object             |         Object          |
-|       Lifecycle transitions        |          Yes           |           Yes            |          Yes           |          Yes           |             Yes              |              Yes              |           Yes           |
+|                                    |      S3 Standard       | S3 Intelligent-Tiering |     S3 Standard-IA     |    S3 One Zone-IA†     | S3 Glacier Instant Retrieval | S3 Glacier Flexible Retrieval | S3 Glacier Deep Archive |
+| :--------------------------------: | :--------------------: | :--------------------: | :--------------------: | :--------------------: | :--------------------------: | :---------------------------: | :---------------------: |
+|      Designed for durability       | 99.999999999% (11 9's) | 99.999999999% (11 9's) | 99.999999999% (11 9's) | 99.999999999% (11 9's) |    99.999999999% (11 9's)    |    99.999999999% (11 9's)     | 99.999999999% (11 9's)  |
+|     Designed for availability      |         99.99%         |         99.9%          |         99.9%          |         99.5%          |            99.9%             |            99.99%             |         99.99%          |
+|          Availability SLA          |         99.9%          |          99%           |          99%           |          99%           |             99%              |             99.%              |          99.9%          |
+|         Availability Zones         |           ≥3           |           ≥3           |           ≥3           |           1            |              ≥3              |              ≥3               |           ≥3            |
+| Minimum capacity charge per object |          N/A           |          N/A           |         128 KB         |         128 KB         |            128 KB            |             40 KB             |          40 KB          |
+|  Minimum storage duration charge   |          N/A           |          N/A           |        30 days         |        30 days         |           90 days            |            90 days            |        180 days         |
+|          Retrieval charge          |          N/A           |          N/A           |    per GB retrieved    |    per GB retrieved    |       per GB retrieved       |       per GB retrieved        |    per GB retrieved     |
+|         First byte latency         |      milliseconds      |      milliseconds      |      milliseconds      |      milliseconds      |         milliseconds         |       minutes or hours        |          hours          |
+|            Storage type            |         Object         |         Object         |         Object         |         Object         |            Object            |            Object             |         Object          |
+|       Lifecycle transitions        |          Yes           |          Yes           |          Yes           |          Yes           |             Yes              |              Yes              |           Yes           |
 
 ### 11.15. Moving between storage classes
 
@@ -2491,7 +2504,7 @@
   - VPC Peering, VPC Endpoints.
   - Site to Site VPN & Direct Connect.
   - Transit Gateway.
-- We'll have a look at the “default VPC” (created by default by AWS for you).
+- We'll have a look at the "default VPC" (created by default by AWS for you).
 
 ### 17.2. VPC & Subnets Primer
 
@@ -2632,7 +2645,7 @@
 - **AWS Directory Service makes it easy for you to setup and run directories in the AWS cloud, or connect your AWS resources with an existing on-premises Microsoft Active Directory.**
 - **AWS Managed Microsoft AD:**
   - Create your own AD in AWS, manage users locally, supports MFA.
-  - Establish “trust” connections with your on- premise AD.
+  - Establish "trust" connections with your on- premise AD.
 - **AD Connector:**
   - Directory Gateway (proxy) to redirect to on- premise AD, supports MFA.
   - Users are managed on the on-premise AD.
@@ -2663,9 +2676,112 @@
 - Directory Services: integrate Microsoft Active Directory in AWS.
 - Single Sign-On (SSO): one login for multiple AWS accounts & applications.
 
-## 19. AWS related Abbreviations & Acronyms
+## 19. Other AWS Services
 
-### 19.1. A
+### 19.1. Amazon WorkSpaces
+
+- **Amazon WorkSpaces is a fully managed, secure cloud desktop service. You can use Amazon WorkSpaces to provision either Windows or Linux desktops in just a few minutes and quickly scale to provide thousands of desktops to workers across the globe.**
+- Managed Desktop as a Service (DaaS) solution to easily provision Windows or Linux desktops.
+- Great to eliminate management of on-premise VDI (Virtual Desktop Infrastructure).
+- Fast and quickly scalable to thousands of users.
+- Secured data - integrates with KMS.
+- Pay-as-you-go service with monthly or hourly rates.
+
+### 19.2. Amazon AppStream 2.0
+
+- **Amazon AppStream 2.0 is a fully managed non-persistent application and desktop streaming service that provides users instant access to their desktop applications from anywhere.**
+- Desktop Application Streaming Service.
+- Deliver to any computer, without acquiring, provisioning infrastructure.
+- The application is delivered from within a web browser.
+
+#### 19.2.1. Amazon AppStream 2.0 vs WorkSpaces
+
+- **Workspaces:**
+  - Fully managed VDI and desktop available.
+  - The users connect to the VDI and open native or WAM applications.
+  - Workspaces are on-demand or always on.
+- **AppStream 2.0:**
+  - Stream a desktop application to web browsers (no need to connect to a VDI).
+  - Works with any device (that has a web browser).
+  - Allow to configure an instance type per application type (CPU, RAM, GPU).
+
+### 19.3. Amazon Sumerian
+
+- **Amazon Sumerian is a managed service that lets you create and run 3D, Augmented Reality (AR) and Virtual Reality (VR) applications. You can build immersive and interactive scenes that run on AR and VR, mobile devices, and your web browser.**
+- Create and run virtual reality (VR), augmented reality (AR), and 3D applications.
+- Can be used to quickly create 3D models with animations.
+- Ready-to-use templates and assets - no programming or 3D expertise required.
+- Accessible via a web-browser URLs or on popular hardware for AR/VR.
+
+### 19.4. AWS IoT Core
+
+- **AWS IoT Core, is serverless and lets you connect billions of devices to the AWS Cloud, lets you securely connect IoT devices to the AWS Cloud and other devices without the need to provision or manage servers.**
+- IoT stands for "Internet of Things" - the network of internet-connected devices that are able to collect and transfer data.
+- AWS IoT Core allows you to easily connect IoT devices to the AWS Cloud.
+- Serverless, secure & scalable to billions of devices and trillions of messages.
+- Your applications can communicate with your devices even when they aren't connected.
+- Integrates with a lot of AWS services (Lambda, S3, SageMaker, etc.).
+- Build IoT applications that gather, process, analyze, and act on data.
+
+### 19.5. Amazon Elastic Transcoder
+
+- **Amazon Elastic Transcoder is media transcoding in the cloud. It is used to convert media files from their source format into versions that will play back on devices like smartphones, tablets, and PCs.**
+- Elastic Transcoder is used to convert media files stored in S3 into media files in the formats required by consumer playback devices (phones etc..)
+- Benefits:
+  - Easy to use.
+  - Highly scalable - can handle large volumes of media files and large file sizes.
+  - Cost effective - duration-based pricing model.
+  - Fully managed & secure, pay for what you use.
+
+### 19.6. AWS Device Farm
+
+- **AWS Device Farm is an application testing service that lets you improve the quality of your web and mobile apps by testing them across an extensive range of desktop browsers and real mobile devices; without having to provision and manage any testing infrastructure.**
+- Fully-managed service that tests your web and mobile apps against desktop browsers, real mobile devices, and tablets.
+- Run tests concurrently on multiple devices (speed up execution).
+- Ability to configure device settings (GPS, language, Wi-Fi, Bluetooth, ...).
+
+### 19.7. AWS Backup
+
+- **AWS Backup is a centralized backup service that makes it easy and cost-effective for you to backup your application data across AWS services in the AWS Cloud. CloudEndure Disaster Recovery minimizes downtime and data loss by providing fast, reliable recovery into AWS of your physical, virtual, and cloud-based servers.**
+- Fully-managed service to centrally manage and automate backups across AWS services.
+- On-demand and scheduled backups.
+- Supports PITR (Point-in-time Recovery).
+- Retention Periods, Lifecycle Management, Backup Policies, ...
+- Cross-Region Backup.
+- Cross-Account Backup (using AWS Organizations).
+
+#### 19.7.1. Disaster Recovery Strategies
+
+- Backup and Restore (Cheapest)
+- Pilot Light
+- Multi-Site / Hot-Site
+- Warm Standby
+
+### 19.8. AWS Elastic Disaster Recovery (DRS)
+
+- Used to be named "CloudEndure Disaster Recovery"
+- Quickly and easily recover your physical, virtual, and cloud-based servers into AWS
+- Example: protect your most critical databases (including Oracle, MySQL, and SQL Server), enterprise apps (SAP), protect your data from ransomware attacks, ...
+- Continuous block-level replication for your servers
+
+### 19.9. AWS DataSync
+
+- Move large amount of data from on-premises to AWS
+- Can synchronize to: Amazon S3 (any storage classes - including Glacier), Amazon EFS, Amazon FSx for Windows
+- Replication tasks can be scheduled hourly, daily, weekly
+- The replication tasks are **incremental** after the first full load
+
+### 19.10. AWS Fault Injection Simulator (FIS)
+
+- A fully managed service for running fault injection experiments on AWS workloads
+- Based on **Chaos Engineering** - stressing an application by creating disruptive events (e.g., sudden increase in CPU or memory), observing how the system responds, and implementing improvements
+- Helps you uncover hidden bugs and performance bottlenecks
+- Supports the following AWS services: EC2, ECS, EKS, RDS...
+- Use pre-built templates that generate the desired disruptions
+
+## 20. AWS related Abbreviations & Acronyms
+
+### 20.1. A
 
 - AWS Amazon Web Services
 - Amazon ES Amazon Elasticsearch Service
@@ -2682,11 +2798,11 @@
 - ADFS Active Directory Federation Service
 - AVX Advanced Vector Extensions
 
-### 19.2. B
+### 20.2. B
 
 - BYOL Bring Your Own License
 
-### 19.3. C
+### 20.3. C
 
 - CDN Content Delivery Network
 - CRC Cyclic Redundancy Check
@@ -2696,7 +2812,7 @@
 - CRR Cross Region Replication
 - CI/CD Continuous Integration/Continuous Deployment
 
-### 19.4. D
+### 20.4. D
 
 - DMS Database Migration Service
 - DNS Domain Name System
@@ -2704,7 +2820,7 @@
 - DoS Denial of Service
 - DaaS Desktop as-a-Service
 
-### 19.5. E
+### 20.5. E
 
 - EC2 Elastic Compute Cloud
 - ECS EC2 Container Service
@@ -2722,12 +2838,12 @@
 - ENI Elastic Network Interface
 - ECU EC2 Compute Unit
 
-### 19.6. F
+### 20.6. F
 
 - FIFO First In First Out
 - FaaS Function as-a-Service
 
-### 19.7. H
+### 20.7. H
 
 - HPC High-Performance Compute
 - HVM Hardware Virtual Machine
@@ -2735,7 +2851,7 @@
 - HTTPS HTTP Secure
 - HDK Hardware Development Kit
 
-### 19.8. I
+### 20.8. I
 
 - IAM Identity & Access Management
 - iOT Internet Of Things
@@ -2748,21 +2864,21 @@
 - IPSec Internet Protocol Security
 - IaaS Infrastructure-as-a-Service
 
-### 19.9. J
+### 20.9. J
 
 - JSON JavaScript Object Notation
 
-### 19.10. K
+### 20.10. K
 
 - KMS Key Management Service
 - KVM Kernel-based Virtual Machine
 
-### 19.11. L
+### 20.11. L
 
 - LB Load Balancer
 - LCU Load Balancer Capacity Unit
 
-### 19.12. M
+### 20.12. M
 
 - MFA Multi-Factor Authentication
 - MSTSC Microsoft Terminal Service Client
@@ -2770,7 +2886,7 @@
 - MITM Man in the Middle Attack
 - MPLS Multi Protocol Label Switching
 
-### 19.13. N
+### 20.13. N
 
 - NACL Network Access Control List
 - NFS Network File System
@@ -2778,24 +2894,24 @@
 - NAT Network Address Translation
 - NVMe Non-Volatile Memory Express
 
-### 19.14. O
+### 20.14. O
 
 - OLTP Online Transaction Processing
 - OLAP Online Analytics Processing
 - OCI Open Container Initiative
 
-### 19.15. P
+### 20.15. P
 
 - PCI DSS Payment Card Industry Data Security Standard
 - PVM Para Virtual Machine
 - PV ParaVirtual
 - PaaS Platform as a Service
 
-### 19.16. Q
+### 20.16. Q
 
 - QLDB Quantum Ledger Database
 
-### 19.17. R
+### 20.17. R
 
 - RAIDRedundant Array of Independent Disk
 - RDS Relational Database Service
@@ -2804,7 +2920,7 @@
 - RAM Random-access Memory
 - RIE Runtime Interface Emulator
 
-### 19.18. S
+### 20.18. S
 
 - SSEServer Side Encryption
 - S3 Simple Storage Service
@@ -2832,7 +2948,7 @@
 - STS Security Token Service
 - SNI Server Name Indication
 
-### 19.19. T
+### 20.19. T
 
 - TTL Time To Live
 - TLS Transport Layer Security
@@ -2842,7 +2958,7 @@
 - TPS Transaction Per Second
 - TCP Transmission Control Protocol
 
-### 19.20. V
+### 20.20. V
 
 - VPC Virtual Private Cloud
 - VM Virtual Machine
@@ -2852,11 +2968,11 @@
 - VDI Virtual Desktop Infrastructure
 - VPG Virtual Private Gateway
 
-### 19.21. W
+### 20.21. W
 
 - WAFWeb Application Firewall
 
-## 20. Commands
+## 21. Commands
 
 - List of AWS Regions
   - aws ec2 describe-regions
