@@ -98,200 +98,245 @@
   - [6.9. Auto Scaling Groups - Scaling Strategies](#69-auto-scaling-groups---scaling-strategies)
   - [6.10. ELB & ASG - Summary](#610-elb--asg---summary)
 - [7. Amazon S3](#7-amazon-s3)
-- [8. Introduction](#8-introduction)
-- [9. S3 Use cases](#9-s3-use-cases)
-- [10. Amazon S3 Overview](#10-amazon-s3-overview)
-  - [10.1. Buckets](#101-buckets)
-  - [10.2. Objects](#102-objects)
-- [11. S3 Security](#11-s3-security)
-  - [11.1. S3 Bucket Policies](#111-s3-bucket-policies)
-  - [11.2. Bucket settings for Block Public Access](#112-bucket-settings-for-block-public-access)
-  - [11.3. S3 Websites](#113-s3-websites)
-  - [11.4. Amazon S3 - Versioning](#114-amazon-s3---versioning)
-  - [11.5. S3 Access Logs](#115-s3-access-logs)
-  - [11.6. S3 Replication (CRR & SRR)](#116-s3-replication-crr--srr)
-  - [11.7. S3 Storage Classes](#117-s3-storage-classes)
-  - [11.8. S3 Durability and Availability](#118-s3-durability-and-availability)
-  - [11.9. S3 Standard - General Purposes](#119-s3-standard---general-purposes)
-  - [11.10. S3 Standard - Infrequent Access (IA)](#1110-s3-standard---infrequent-access-ia)
-  - [11.11. S3 Intelligent-Tiering](#1111-s3-intelligent-tiering)
-  - [11.12. S3 One Zone - Infrequent Access (IA)](#1112-s3-one-zone---infrequent-access-ia)
-  - [11.13. Amazon Glacier & Glacier Deep Archive](#1113-amazon-glacier--glacier-deep-archive)
-  - [11.14. S3 Storage Classes Comparison](#1114-s3-storage-classes-comparison)
-  - [11.15. Moving between storage classes](#1115-moving-between-storage-classes)
-  - [11.16. S3 Object Lock & Glacier Vault Lock](#1116-s3-object-lock--glacier-vault-lock)
-  - [11.17. S3 Encryption](#1117-s3-encryption)
-  - [11.18. Shared Responsibility Model for S3](#1118-shared-responsibility-model-for-s3)
-  - [11.19. AWS Snow Family](#1119-aws-snow-family)
-  - [11.20. Data Migrations with AWS Snow Family](#1120-data-migrations-with-aws-snow-family)
-    - [11.20.1. AWS Snowcone](#11201-aws-snowcone)
-    - [11.20.2. Snowball Edge (for data transfers)](#11202-snowball-edge-for-data-transfers)
-    - [11.20.3. AWS Snowmobile](#11203-aws-snowmobile)
-  - [11.21. Snow Family - Usage Process](#1121-snow-family---usage-process)
-  - [11.22. What is Edge Computing?](#1122-what-is-edge-computing)
-  - [11.23. Snow Family - Edge Computing](#1123-snow-family---edge-computing)
-  - [11.24. AWS OpsHub](#1124-aws-opshub)
-  - [11.25. Hybrid Cloud for Storage](#1125-hybrid-cloud-for-storage)
-  - [11.26. AWS Storage Gateway](#1126-aws-storage-gateway)
-  - [11.27. Amazon S3 - Summary](#1127-amazon-s3---summary)
-- [12. Databases](#12-databases)
-  - [12.1. Introduction](#121-introduction)
-  - [12.2. Relational Databases](#122-relational-databases)
-  - [12.3. NoSQL Databases](#123-nosql-databases)
-  - [12.4. NoSQL data example: JSON](#124-nosql-data-example-json)
-  - [12.5. Databases & Shared Responsibility on AWS](#125-databases--shared-responsibility-on-aws)
-  - [12.6. AWS RDS Overview](#126-aws-rds-overview)
-  - [12.7. Advantage over using RDS versus deploying DB on EC2](#127-advantage-over-using-rds-versus-deploying-db-on-ec2)
-  - [12.8. Amazon Aurora](#128-amazon-aurora)
-  - [12.9. RDS Deployments: Read Replicas, Multi-AZ, Multi-Region](#129-rds-deployments-read-replicas-multi-az-multi-region)
-    - [12.9.1. Read Replicas](#1291-read-replicas)
-    - [12.9.2. Multi-AZ](#1292-multi-az)
-    - [12.9.3. Multi-Region](#1293-multi-region)
-    - [12.9.4. Resume](#1294-resume)
-  - [12.10. Amazon ElastiCache Overview](#1210-amazon-elasticache-overview)
-  - [12.11. DynamoDB](#1211-dynamodb)
-    - [12.11.1. DynamoDB Accelerator - DAX](#12111-dynamodb-accelerator---dax)
-    - [12.11.2. DynamoDB - Global Tables](#12112-dynamodb---global-tables)
-  - [12.12. Redshift Overview](#1212-redshift-overview)
-  - [12.13. Amazon EMR](#1213-amazon-emr)
-  - [12.14. Amazon Athena](#1214-amazon-athena)
-  - [12.15. Amazon QuickSight](#1215-amazon-quicksight)
-  - [12.16. DocumentDB](#1216-documentdb)
-  - [12.17. Amazon Neptune](#1217-amazon-neptune)
-  - [12.18. Amazon QLDB](#1218-amazon-qldb)
-  - [12.19. Amazon Managed Blockchain](#1219-amazon-managed-blockchain)
-  - [12.20. AWS Glue](#1220-aws-glue)
-  - [12.21. DMS - Database Migration Service](#1221-dms---database-migration-service)
-  - [12.22. Databases & Analytics Summary in AWS](#1222-databases--analytics-summary-in-aws)
-- [13. Other Compute Services: ECS, Lambda, Batch, Lightsail](#13-other-compute-services-ecs-lambda-batch-lightsail)
-  - [13.1. ECS](#131-ecs)
-  - [13.2. Fargate](#132-fargate)
-  - [13.3. ECR](#133-ecr)
-  - [13.4. What's serverless?](#134-whats-serverless)
-  - [13.5. Why AWS Lambda?](#135-why-aws-lambda)
-    - [13.5.1. Benefits of AWS Lambda](#1351-benefits-of-aws-lambda)
-    - [13.5.2. AWS Lambda language support](#1352-aws-lambda-language-support)
-    - [13.5.3. AWS Lambda Pricing: example](#1353-aws-lambda-pricing-example)
-  - [13.6. Amazon API Gateway](#136-amazon-api-gateway)
-  - [13.7. AWS Batch](#137-aws-batch)
-  - [13.8. Batch vs Lambda](#138-batch-vs-lambda)
-  - [13.9. Amazon Lightsail](#139-amazon-lightsail)
-  - [13.10. Other Compute - Summary](#1310-other-compute---summary)
-  - [13.11. Lambda Summary](#1311-lambda-summary)
-- [14. Deploying and Managing Infrastructure at Scale](#14-deploying-and-managing-infrastructure-at-scale)
-  - [14.1. What is CloudFormation?](#141-what-is-cloudformation)
-    - [14.1.1. Benefits of AWS CloudFormation](#1411-benefits-of-aws-cloudformation)
-    - [14.1.2. CloudFormation Stack Designer](#1412-cloudformation-stack-designer)
-  - [14.2. AWS Cloud Development Kit (CDK)](#142-aws-cloud-development-kit-cdk)
-  - [14.3. Developer problems on AWS](#143-developer-problems-on-aws)
-  - [14.4. AWS Elastic Beanstalk Overview](#144-aws-elastic-beanstalk-overview)
-  - [14.5. Elastic Beanstalk](#145-elastic-beanstalk)
-    - [14.5.1. Health Monitoring](#1451-health-monitoring)
-  - [14.6. AWS CodeDeploy](#146-aws-codedeploy)
-  - [14.7. AWS CodeCommit](#147-aws-codecommit)
-  - [14.8. AWS CodeBuild](#148-aws-codebuild)
-  - [14.9. AWS CodePipeline](#149-aws-codepipeline)
-  - [14.10. AWS CodeArtifact](#1410-aws-codeartifact)
-  - [14.11. AWS CodeStar](#1411-aws-codestar)
-  - [14.12. AWS Cloud9](#1412-aws-cloud9)
-  - [14.13. AWS Systems Manager (SSM)](#1413-aws-systems-manager-ssm)
-    - [14.13.1. How Systems Manager works?](#14131-how-systems-manager-works)
-    - [14.13.2. Systems Manager - SSM Session Manager](#14132-systems-manager---ssm-session-manager)
-  - [14.14. AWS OpsWorks](#1414-aws-opsworks)
-  - [14.15. Deployment - Summary](#1415-deployment---summary)
-- [15. Global Infrastructure](#15-global-infrastructure)
-  - [15.1. Why make a global application?](#151-why-make-a-global-application)
-  - [15.2. Global AWS Infrastructure](#152-global-aws-infrastructure)
-  - [15.3. Global Applications in AWS](#153-global-applications-in-aws)
-  - [15.4. Amazon Route 53 Overview](#154-amazon-route-53-overview)
-    - [15.4.1. Route 53 policies](#1541-route-53-policies)
-  - [15.5. AWS CloudFront](#155-aws-cloudfront)
-  - [15.6. CloudFront - Origins](#156-cloudfront---origins)
-  - [15.7. CloudFront vs S3 Cross Region Replication](#157-cloudfront-vs-s3-cross-region-replication)
-  - [15.8. S3 Transfer Acceleration](#158-s3-transfer-acceleration)
-  - [15.9. AWS Global Accelerator](#159-aws-global-accelerator)
-  - [15.10. AWS Global Accelerator vs CloudFront](#1510-aws-global-accelerator-vs-cloudfront)
-  - [15.11. AWS Outposts](#1511-aws-outposts)
-  - [15.12. AWS WaveLength](#1512-aws-wavelength)
-  - [15.13. AWS Local Zones](#1513-aws-local-zones)
-  - [15.14. Global Applications Architecture](#1514-global-applications-architecture)
-  - [15.15. Global Applications in AWS - Summary](#1515-global-applications-in-aws---summary)
-  - [15.16. Global Applications in AWS - Summary](#1516-global-applications-in-aws---summary)
-- [16. Cloud Integration](#16-cloud-integration)
-  - [16.1. Amazon SQS - Standard Queue](#161-amazon-sqs---standard-queue)
-  - [16.2. Amazon Kinesis](#162-amazon-kinesis)
-  - [16.3. Amazon SNS](#163-amazon-sns)
-  - [16.4. Amazon MQ](#164-amazon-mq)
-  - [16.5. Integration - Summary](#165-integration---summary)
-- [17. VPC](#17-vpc)
-  - [17.1. VPC - Crash Course](#171-vpc---crash-course)
-  - [17.2. VPC & Subnets Primer](#172-vpc--subnets-primer)
-  - [17.3. Internet Gateway & NAT Gateways](#173-internet-gateway--nat-gateways)
-  - [17.4. Network ACL & Security Groups](#174-network-acl--security-groups)
-  - [17.5. Network ACLs vs Security Groups](#175-network-acls-vs-security-groups)
-  - [17.6. VPC Flow Logs](#176-vpc-flow-logs)
-  - [17.7. VPC Peering](#177-vpc-peering)
-  - [17.8. VPC Endpoints](#178-vpc-endpoints)
-  - [17.9. Site to Site VPN & Direct Connect](#179-site-to-site-vpn--direct-connect)
-  - [17.10. Site-to-Site VPN](#1710-site-to-site-vpn)
-  - [17.11. Transit Gateway](#1711-transit-gateway)
-  - [17.12. VPC Closing Comments](#1712-vpc-closing-comments)
-- [18. Machine Learning](#18-machine-learning)
-  - [18.1. Amazon Rekognition](#181-amazon-rekognition)
-  - [18.2. Amazon Transcribe](#182-amazon-transcribe)
-  - [18.3. Amazon Polly](#183-amazon-polly)
-  - [18.4. Amazon Translate](#184-amazon-translate)
-  - [18.5. Amazon Lex & Connect](#185-amazon-lex--connect)
-  - [18.6. Amazon Comprehend](#186-amazon-comprehend)
-  - [18.7. Amazon SageMaker](#187-amazon-sagemaker)
-  - [18.8. Amazon Forecast](#188-amazon-forecast)
-  - [18.9. Amazon Kendra](#189-amazon-kendra)
-  - [18.10. Amazon Personalize](#1810-amazon-personalize)
-  - [18.11. AWS Machine Learning - Summary](#1811-aws-machine-learning---summary)
-- [19. Advanced Identity](#19-advanced-identity)
-  - [19.1. AWS STS (SecurityToken Service)](#191-aws-sts-securitytoken-service)
-  - [19.2. Amazon Cognito](#192-amazon-cognito)
-  - [19.3. What is Microsoft Active Directory (AD)?](#193-what-is-microsoft-active-directory-ad)
-    - [19.3.1. AWS Directory Services](#1931-aws-directory-services)
-  - [19.4. AWS Organizations](#194-aws-organizations)
-  - [19.5. AWS Single Sign-On (SSO)](#195-aws-single-sign-on-sso)
-  - [19.6. Advanced Identity - Summary](#196-advanced-identity---summary)
-- [20. Other AWS Services](#20-other-aws-services)
-  - [20.1. Amazon WorkSpaces](#201-amazon-workspaces)
-  - [20.2. Amazon AppStream 2.0](#202-amazon-appstream-20)
-    - [20.2.1. Amazon AppStream 2.0 vs WorkSpaces](#2021-amazon-appstream-20-vs-workspaces)
-  - [20.3. Amazon Sumerian](#203-amazon-sumerian)
-  - [20.4. AWS IoT Core](#204-aws-iot-core)
-  - [20.5. Amazon Elastic Transcoder](#205-amazon-elastic-transcoder)
-  - [20.6. AWS Device Farm](#206-aws-device-farm)
-  - [20.7. AWS Backup](#207-aws-backup)
-    - [20.7.1. Disaster Recovery Strategies](#2071-disaster-recovery-strategies)
-  - [20.8. AWS Elastic Disaster Recovery (DRS)](#208-aws-elastic-disaster-recovery-drs)
-  - [20.9. AWS DataSync](#209-aws-datasync)
-  - [20.10. AWS Fault Injection Simulator (FIS)](#2010-aws-fault-injection-simulator-fis)
-- [21. AWS related Abbreviations & Acronyms](#21-aws-related-abbreviations--acronyms)
-  - [21.1. A](#211-a)
-  - [21.2. B](#212-b)
-  - [21.3. C](#213-c)
-  - [21.4. D](#214-d)
-  - [21.5. E](#215-e)
-  - [21.6. F](#216-f)
-  - [21.7. H](#217-h)
-  - [21.8. I](#218-i)
-  - [21.9. J](#219-j)
-  - [21.10. K](#2110-k)
-  - [21.11. L](#2111-l)
-  - [21.12. M](#2112-m)
-  - [21.13. N](#2113-n)
-  - [21.14. O](#2114-o)
-  - [21.15. P](#2115-p)
-  - [21.16. Q](#2116-q)
-  - [21.17. R](#2117-r)
-  - [21.18. S](#2118-s)
-  - [21.19. T](#2119-t)
-  - [21.20. V](#2120-v)
-  - [21.21. W](#2121-w)
-- [22. Commands](#22-commands)
+  - [7.1. Introduction](#71-introduction)
+  - [7.2. S3 Use cases](#72-s3-use-cases)
+  - [7.3. Amazon S3 Overview](#73-amazon-s3-overview)
+    - [7.3.1. Buckets](#731-buckets)
+    - [7.3.2. Objects](#732-objects)
+  - [7.4. S3 Security](#74-s3-security)
+    - [7.4.1. S3 Bucket Policies](#741-s3-bucket-policies)
+    - [7.4.2. Bucket settings for Block Public Access](#742-bucket-settings-for-block-public-access)
+  - [7.5. S3 Websites](#75-s3-websites)
+  - [7.6. Amazon S3 - Versioning](#76-amazon-s3---versioning)
+  - [7.7. S3 Access Logs](#77-s3-access-logs)
+  - [7.8. S3 Replication (CRR & SRR)](#78-s3-replication-crr--srr)
+  - [7.9. S3 Storage Classes](#79-s3-storage-classes)
+  - [7.10. S3 Durability and Availability](#710-s3-durability-and-availability)
+  - [7.11. S3 Standard - General Purposes](#711-s3-standard---general-purposes)
+  - [7.12. S3 Standard - Infrequent Access (IA)](#712-s3-standard---infrequent-access-ia)
+  - [7.13. S3 Intelligent-Tiering](#713-s3-intelligent-tiering)
+  - [7.14. S3 One Zone - Infrequent Access (IA)](#714-s3-one-zone---infrequent-access-ia)
+  - [7.15. Amazon Glacier & Glacier Deep Archive](#715-amazon-glacier--glacier-deep-archive)
+  - [7.16. S3 Storage Classes Comparison](#716-s3-storage-classes-comparison)
+  - [7.17. Moving between storage classes](#717-moving-between-storage-classes)
+  - [7.18. S3 Object Lock & Glacier Vault Lock](#718-s3-object-lock--glacier-vault-lock)
+  - [7.19. S3 Encryption](#719-s3-encryption)
+  - [7.20. Shared Responsibility Model for S3](#720-shared-responsibility-model-for-s3)
+  - [7.21. AWS Snow Family](#721-aws-snow-family)
+  - [7.22. Data Migrations with AWS Snow Family](#722-data-migrations-with-aws-snow-family)
+    - [7.22.1. AWS Snowcone](#7221-aws-snowcone)
+    - [7.22.2. Snowball Edge (for data transfers)](#7222-snowball-edge-for-data-transfers)
+    - [7.22.3. AWS Snowmobile](#7223-aws-snowmobile)
+  - [7.23. Snow Family - Usage Process](#723-snow-family---usage-process)
+  - [7.24. What is Edge Computing?](#724-what-is-edge-computing)
+  - [7.25. Snow Family - Edge Computing](#725-snow-family---edge-computing)
+  - [7.26. AWS OpsHub](#726-aws-opshub)
+  - [7.27. Hybrid Cloud for Storage](#727-hybrid-cloud-for-storage)
+  - [7.28. AWS Storage Gateway](#728-aws-storage-gateway)
+  - [7.29. Amazon S3 - Summary](#729-amazon-s3---summary)
+- [8. Databases](#8-databases)
+  - [8.1. Introduction](#81-introduction)
+  - [8.2. Relational Databases](#82-relational-databases)
+  - [8.3. NoSQL Databases](#83-nosql-databases)
+  - [8.4. NoSQL data example: JSON](#84-nosql-data-example-json)
+  - [8.5. Databases & Shared Responsibility on AWS](#85-databases--shared-responsibility-on-aws)
+  - [8.6. AWS RDS Overview](#86-aws-rds-overview)
+  - [8.7. Advantage over using RDS versus deploying DB on EC2](#87-advantage-over-using-rds-versus-deploying-db-on-ec2)
+  - [8.8. Amazon Aurora](#88-amazon-aurora)
+  - [8.9. RDS Deployments: Read Replicas, Multi-AZ, Multi-Region](#89-rds-deployments-read-replicas-multi-az-multi-region)
+    - [8.9.1. Read Replicas](#891-read-replicas)
+    - [8.9.2. Multi-AZ](#892-multi-az)
+    - [8.9.3. Multi-Region](#893-multi-region)
+    - [8.9.4. Resume](#894-resume)
+  - [8.10. Amazon ElastiCache Overview](#810-amazon-elasticache-overview)
+  - [8.11. DynamoDB](#811-dynamodb)
+    - [8.11.1. DynamoDB Accelerator - DAX](#8111-dynamodb-accelerator---dax)
+    - [8.11.2. DynamoDB - Global Tables](#8112-dynamodb---global-tables)
+  - [8.12. Redshift Overview](#812-redshift-overview)
+  - [8.13. Amazon EMR](#813-amazon-emr)
+  - [8.14. Amazon Athena](#814-amazon-athena)
+  - [8.15. Amazon QuickSight](#815-amazon-quicksight)
+  - [8.16. DocumentDB](#816-documentdb)
+  - [8.17. Amazon Neptune](#817-amazon-neptune)
+  - [8.18. Amazon QLDB](#818-amazon-qldb)
+  - [8.19. Amazon Managed Blockchain](#819-amazon-managed-blockchain)
+  - [8.20. AWS Glue](#820-aws-glue)
+  - [8.21. DMS - Database Migration Service](#821-dms---database-migration-service)
+  - [8.22. Databases & Analytics Summary in AWS](#822-databases--analytics-summary-in-aws)
+- [9. Other Compute Services: ECS, Lambda, Batch, Lightsail](#9-other-compute-services-ecs-lambda-batch-lightsail)
+  - [9.1. ECS](#91-ecs)
+  - [9.2. Fargate](#92-fargate)
+  - [9.3. ECR](#93-ecr)
+  - [9.4. What's serverless?](#94-whats-serverless)
+  - [9.5. Why AWS Lambda?](#95-why-aws-lambda)
+    - [9.5.1. Benefits of AWS Lambda](#951-benefits-of-aws-lambda)
+    - [9.5.2. AWS Lambda language support](#952-aws-lambda-language-support)
+    - [9.5.3. AWS Lambda Pricing: example](#953-aws-lambda-pricing-example)
+  - [9.6. Amazon API Gateway](#96-amazon-api-gateway)
+  - [9.7. AWS Batch](#97-aws-batch)
+  - [9.8. Batch vs Lambda](#98-batch-vs-lambda)
+  - [9.9. Amazon Lightsail](#99-amazon-lightsail)
+  - [9.10. Other Compute - Summary](#910-other-compute---summary)
+  - [9.11. Lambda Summary](#911-lambda-summary)
+- [10. Deploying and Managing Infrastructure at Scale](#10-deploying-and-managing-infrastructure-at-scale)
+  - [10.1. What is CloudFormation?](#101-what-is-cloudformation)
+    - [10.1.1. Benefits of AWS CloudFormation](#1011-benefits-of-aws-cloudformation)
+    - [10.1.2. CloudFormation Stack Designer](#1012-cloudformation-stack-designer)
+  - [10.2. AWS Cloud Development Kit (CDK)](#102-aws-cloud-development-kit-cdk)
+  - [10.3. Developer problems on AWS](#103-developer-problems-on-aws)
+  - [10.4. AWS Elastic Beanstalk Overview](#104-aws-elastic-beanstalk-overview)
+  - [10.5. Elastic Beanstalk](#105-elastic-beanstalk)
+    - [10.5.1. Health Monitoring](#1051-health-monitoring)
+  - [10.6. AWS CodeDeploy](#106-aws-codedeploy)
+  - [10.7. AWS CodeCommit](#107-aws-codecommit)
+  - [10.8. AWS CodeBuild](#108-aws-codebuild)
+  - [10.9. AWS CodePipeline](#109-aws-codepipeline)
+  - [10.10. AWS CodeArtifact](#1010-aws-codeartifact)
+  - [10.11. AWS CodeStar](#1011-aws-codestar)
+  - [10.12. AWS Cloud9](#1012-aws-cloud9)
+  - [10.13. AWS Systems Manager (SSM)](#1013-aws-systems-manager-ssm)
+    - [10.13.1. How Systems Manager works?](#10131-how-systems-manager-works)
+    - [10.13.2. Systems Manager - SSM Session Manager](#10132-systems-manager---ssm-session-manager)
+  - [10.14. AWS OpsWorks](#1014-aws-opsworks)
+  - [10.15. Deployment - Summary](#1015-deployment---summary)
+- [11. Global Infrastructure](#11-global-infrastructure)
+  - [11.1. Why make a global application?](#111-why-make-a-global-application)
+  - [11.2. Global AWS Infrastructure](#112-global-aws-infrastructure)
+  - [11.3. Global Applications in AWS](#113-global-applications-in-aws)
+  - [11.4. Amazon Route 53 Overview](#114-amazon-route-53-overview)
+    - [11.4.1. Route 53 policies](#1141-route-53-policies)
+  - [11.5. AWS CloudFront](#115-aws-cloudfront)
+  - [11.6. CloudFront - Origins](#116-cloudfront---origins)
+  - [11.7. CloudFront vs S3 Cross Region Replication](#117-cloudfront-vs-s3-cross-region-replication)
+  - [11.8. S3 Transfer Acceleration](#118-s3-transfer-acceleration)
+  - [11.9. AWS Global Accelerator](#119-aws-global-accelerator)
+  - [11.10. AWS Global Accelerator vs CloudFront](#1110-aws-global-accelerator-vs-cloudfront)
+  - [11.11. AWS Outposts](#1111-aws-outposts)
+  - [11.12. AWS WaveLength](#1112-aws-wavelength)
+  - [11.13. AWS Local Zones](#1113-aws-local-zones)
+  - [11.14. Global Applications Architecture](#1114-global-applications-architecture)
+  - [11.15. Global Applications in AWS - Summary](#1115-global-applications-in-aws---summary)
+  - [11.16. Global Applications in AWS - Summary](#1116-global-applications-in-aws---summary)
+- [12. Cloud Integration](#12-cloud-integration)
+  - [12.1. Amazon SQS - Standard Queue](#121-amazon-sqs---standard-queue)
+  - [12.2. Amazon Kinesis](#122-amazon-kinesis)
+  - [12.3. Amazon SNS](#123-amazon-sns)
+  - [12.4. Amazon MQ](#124-amazon-mq)
+  - [12.5. Integration - Summary](#125-integration---summary)
+- [13. Cloud Monitoring](#13-cloud-monitoring)
+  - [13.1. Amazon CloudWatch Metrics](#131-amazon-cloudwatch-metrics)
+    - [13.1.1. Important Metrics](#1311-important-metrics)
+  - [13.2. Amazon CloudWatch Alarms](#132-amazon-cloudwatch-alarms)
+  - [13.3. Amazon CloudWatch Logs](#133-amazon-cloudwatch-logs)
+  - [13.4. CloudWatch Logs for EC2](#134-cloudwatch-logs-for-ec2)
+  - [13.5. Amazon CloudWatch Events](#135-amazon-cloudwatch-events)
+  - [13.6. Amazon EventBridge](#136-amazon-eventbridge)
+  - [13.7. AWS CloudTrail](#137-aws-cloudtrail)
+  - [13.8. CloudTrail Events](#138-cloudtrail-events)
+    - [13.8.1. CloudTrail Insights Events](#1381-cloudtrail-insights-events)
+    - [13.8.2. CloudTrail Events Retention](#1382-cloudtrail-events-retention)
+  - [13.9. AWS X-Ray](#139-aws-x-ray)
+    - [13.9.1. AWS X-Ray advantages](#1391-aws-x-ray-advantages)
+  - [13.10. Amazon CodeGuru](#1310-amazon-codeguru)
+  - [13.11. Amazon CodeGuru Reviewer](#1311-amazon-codeguru-reviewer)
+    - [13.11.1. Amazon CodeGuru Profiler](#13111-amazon-codeguru-profiler)
+  - [13.12. AWS Status - Service Health Dashboard](#1312-aws-status---service-health-dashboard)
+  - [13.13. AWS Personal Health Dashboard](#1313-aws-personal-health-dashboard)
+  - [13.14. Monitoring Summary](#1314-monitoring-summary)
+- [14. VPC](#14-vpc)
+  - [14.1. VPC - Crash Course](#141-vpc---crash-course)
+  - [14.2. VPC & Subnets Primer](#142-vpc--subnets-primer)
+  - [14.3. Internet Gateway & NAT Gateways](#143-internet-gateway--nat-gateways)
+  - [14.4. Network ACL & Security Groups](#144-network-acl--security-groups)
+  - [14.5. Network ACLs vs Security Groups](#145-network-acls-vs-security-groups)
+  - [14.6. VPC Flow Logs](#146-vpc-flow-logs)
+  - [14.7. VPC Peering](#147-vpc-peering)
+  - [14.8. VPC Endpoints](#148-vpc-endpoints)
+  - [14.9. Site to Site VPN & Direct Connect](#149-site-to-site-vpn--direct-connect)
+  - [14.10. Site-to-Site VPN](#1410-site-to-site-vpn)
+  - [14.11. Transit Gateway](#1411-transit-gateway)
+  - [14.12. VPC Closing Comments](#1412-vpc-closing-comments)
+- [15. Security & Compliance](#15-security--compliance)
+  - [15.1. AWS Shared Responsibility Model](#151-aws-shared-responsibility-model)
+    - [15.1.1. Example, for RDS](#1511-example-for-rds)
+    - [15.1.2. Example, for S3](#1512-example-for-s3)
+  - [15.2. DDOS Protection on AWS](#152-ddos-protection-on-aws)
+  - [15.3. AWS Shield](#153-aws-shield)
+  - [15.4. AWS WAF - Web Application Firewall](#154-aws-waf---web-application-firewall)
+  - [15.5. Penetration Testing on AWS Cloud](#155-penetration-testing-on-aws-cloud)
+  - [15.6. Data at rest vs. Data in transit](#156-data-at-rest-vs-data-in-transit)
+  - [15.7. AWS KMS (Key Management Service)](#157-aws-kms-key-management-service)
+  - [15.8. CloudHSM](#158-cloudhsm)
+  - [15.9. Types of CMK (Customer Master Keys)](#159-types-of-cmk-customer-master-keys)
+  - [15.10. AWS Certificate Manager (ACM)](#1510-aws-certificate-manager-acm)
+  - [15.11. AWS Secrets Manager](#1511-aws-secrets-manager)
+  - [15.12. AWS Artifact (not really a service)](#1512-aws-artifact-not-really-a-service)
+  - [15.13. Amazon GuardDuty](#1513-amazon-guardduty)
+  - [15.14. Amazon Inspector](#1514-amazon-inspector)
+    - [15.14.1. What does AWS Inspector evaluate?](#15141-what-does-aws-inspector-evaluate)
+  - [15.15. AWS Config](#1515-aws-config)
+  - [15.16. Amazon Macie](#1516-amazon-macie)
+  - [15.17. AWS Security Hub](#1517-aws-security-hub)
+  - [15.18. Amazon Detective](#1518-amazon-detective)
+  - [15.19. AWS Abuse](#1519-aws-abuse)
+  - [15.20. Root user privileges](#1520-root-user-privileges)
+  - [15.21. Summary: Security & Compliance](#1521-summary-security--compliance)
+- [16. Machine Learning](#16-machine-learning)
+  - [16.1. Amazon Rekognition](#161-amazon-rekognition)
+  - [16.2. Amazon Transcribe](#162-amazon-transcribe)
+  - [16.3. Amazon Polly](#163-amazon-polly)
+  - [16.4. Amazon Translate](#164-amazon-translate)
+  - [16.5. Amazon Lex & Connect](#165-amazon-lex--connect)
+  - [16.6. Amazon Comprehend](#166-amazon-comprehend)
+  - [16.7. Amazon SageMaker](#167-amazon-sagemaker)
+  - [16.8. Amazon Forecast](#168-amazon-forecast)
+  - [16.9. Amazon Kendra](#169-amazon-kendra)
+  - [16.10. Amazon Personalize](#1610-amazon-personalize)
+  - [16.11. AWS Machine Learning - Summary](#1611-aws-machine-learning---summary)
+- [17. Advanced Identity](#17-advanced-identity)
+  - [17.1. AWS STS (SecurityToken Service)](#171-aws-sts-securitytoken-service)
+  - [17.2. Amazon Cognito](#172-amazon-cognito)
+  - [17.3. What is Microsoft Active Directory (AD)?](#173-what-is-microsoft-active-directory-ad)
+    - [17.3.1. AWS Directory Services](#1731-aws-directory-services)
+  - [17.4. AWS Organizations](#174-aws-organizations)
+  - [17.5. AWS Single Sign-On (SSO)](#175-aws-single-sign-on-sso)
+  - [17.6. Advanced Identity - Summary](#176-advanced-identity---summary)
+- [18. Other AWS Services](#18-other-aws-services)
+  - [18.1. Amazon WorkSpaces](#181-amazon-workspaces)
+  - [18.2. Amazon AppStream 2.0](#182-amazon-appstream-20)
+    - [18.2.1. Amazon AppStream 2.0 vs WorkSpaces](#1821-amazon-appstream-20-vs-workspaces)
+  - [18.3. Amazon Sumerian](#183-amazon-sumerian)
+  - [18.4. AWS IoT Core](#184-aws-iot-core)
+  - [18.5. Amazon Elastic Transcoder](#185-amazon-elastic-transcoder)
+  - [18.6. AWS Device Farm](#186-aws-device-farm)
+  - [18.7. AWS Backup](#187-aws-backup)
+    - [18.7.1. Disaster Recovery Strategies](#1871-disaster-recovery-strategies)
+  - [18.8. AWS Elastic Disaster Recovery (DRS)](#188-aws-elastic-disaster-recovery-drs)
+  - [18.9. AWS DataSync](#189-aws-datasync)
+  - [18.10. AWS Fault Injection Simulator (FIS)](#1810-aws-fault-injection-simulator-fis)
+- [19. AWS related Abbreviations & Acronyms](#19-aws-related-abbreviations--acronyms)
+  - [19.1. A](#191-a)
+  - [19.2. B](#192-b)
+  - [19.3. C](#193-c)
+  - [19.4. D](#194-d)
+  - [19.5. E](#195-e)
+  - [19.6. F](#196-f)
+  - [19.7. H](#197-h)
+  - [19.8. I](#198-i)
+  - [19.9. J](#199-j)
+  - [19.10. K](#1910-k)
+  - [19.11. L](#1911-l)
+  - [19.12. M](#1912-m)
+  - [19.13. N](#1913-n)
+  - [19.14. O](#1914-o)
+  - [19.15. P](#1915-p)
+  - [19.16. Q](#1916-q)
+  - [19.17. R](#1917-r)
+  - [19.18. S](#1918-s)
+  - [19.19. T](#1919-t)
+  - [19.20. V](#1920-v)
+  - [19.21. W](#1921-w)
+- [20. Commands](#20-commands)
 
 ## 1. Traditionally, how to build infrastructure
 
@@ -361,9 +406,9 @@
 
 #### 2.2.3. Hybrid Cloud:
 
-- Keep some servers on premises and extend some capabilities to the Cloud
-- Control over sensitive assets in your private infrastructure
-- Flexibility and cost-effectiveness of the public cloud
+- Keep some servers on premises and extend some capabilities to the Cloud.
+- Control over sensitive assets in your private infrastructure.
+- Flexibility and cost-effectiveness of the public cloud.
 
 ### 2.3. The Five Characteristics of Cloud Computing
 
@@ -405,15 +450,15 @@
 ### 2.6. Types of Cloud Computing
 
 - Infrastructure as a Service (IaaS)
-  - Provide building blocks for cloud IT
-  - Provides networking, computers, data storage space
-  - Highest level of flexibility
-  - Easy parallel with traditional on-premises IT
+  - Provide building blocks for cloud IT.
+  - Provides networking, computers, data storage space.
+  - Highest level of flexibility.
+  - Easy parallel with traditional on-premises IT.
 - Platform as a Service (PaaS)
-  - Removes the need for your organization to manage the underlying infrastructure
-  - Focus on the deployment and management of your applications
+  - Removes the need for your organization to manage the underlying infrastructure.
+  - Focus on the deployment and management of your applications.
 - Software as a Service (SaaS)
-  - Completed product that is run and managed by the service provider
+  - Completed product that is run and managed by the service provider.
 
 ### 2.7. Example of Cloud Computing Types
 
@@ -441,25 +486,25 @@
 
 ### 2.9. AWS Global Infrastructure
 
-- AWS Regions
-- AWS Availability Zones
-- AWS Data Centers
-- AWS Edge Locations / Points of Presence
+- AWS Regions.
+- AWS Availability Zones.
+- AWS Data Centers.
+- AWS Edge Locations / Points of Presence.
 - https://infrastructure.aws/
 
 ### 2.10. AWS Regions
 
-- AWS has Regions all around the world
+- AWS has Regions all around the world.
 - Names can be us-east-1, eu-west-3...
-- A region is a cluster of data centers
-- Most AWS services are region-scoped
+- A region is a cluster of data centers.
+- Most AWS services are region-scoped.
 
 ### 2.11. How to choose an AWS Region?
 
-- **Compliance** with data governance and legal requirements: data never leaves a region without your explicit permission
-- **Proximity** to customers: reduced latency
-- **Available** services within a Region: new services and new features aren't available in every Region
-- **Pricing**: pricing varies region to region and is transparent in the service pricing page
+- **Compliance** with data governance and legal requirements: data never leaves a region without your explicit permission.
+- **Proximity** to customers: reduced latency.
+- **Available** services within a Region: new services and new features aren't available in every Region.
+- **Pricing**: pricing varies region to region and is transparent in the service pricing page.
 - **Capacity is unlimited in the cloud, you do not need to worry about it. The 4 points of considerations when choosing an AWS Region are: compliance with data governance and legal requirements, proximity to customers, available services and features within a Region, and pricing.**
 
 ### 2.12. AWS Availability Zones
@@ -468,14 +513,14 @@
   - ap-southeast-2a
   - ap-southeast-2b
   - ap-southeast-2c
-- Each availability zone (AZ) is one or more discrete data centers with redundant power, networking, and connectivity
-- They're separate from each other, so that they're isolated from disasters
-- They're connected with high bandwidth, ultra-low latency networking
+- Each availability zone (AZ) is one or more discrete data centers with redundant power, networking, and connectivity.
+- They're separate from each other, so that they're isolated from disasters.
+- They're connected with high bandwidth, ultra-low latency networking.
 
 ### 2.13. AWS Points of Presence (Edge Locations)
 
-- Amazon has 216 Points of Presence (205 Edge Locations & 11 Regional Caches) in 84 cities across 42 countries
-- Content is delivered to end users with lower latency
+- Amazon has 216 Points of Presence (205 Edge Locations & 11 Regional Caches) in 84 cities across 42 countries.
+- Content is delivered to end users with lower latency.
 
 ### 2.14. Tour of the AWS Console
 
@@ -1171,7 +1216,7 @@
 
 ## 7. Amazon S3
 
-## 8. Introduction
+### 7.1. Introduction
 
 - Amazon S3 is one of the main building blocks of AWS
 - It's advertised as "infinitely scaling" storage
@@ -1179,7 +1224,7 @@
 - Many AWS services use Amazon S3 as an integration as well
 - We'll have a step-by-step approach to S3
 
-## 9. S3 Use cases
+### 7.2. S3 Use cases
 
 - Backup and storage
 - Disaster Recovery
@@ -1191,9 +1236,9 @@
 - Software delivery
 - Static website
 
-## 10. Amazon S3 Overview
+### 7.3. Amazon S3 Overview
 
-### 10.1. Buckets
+#### 7.3.1. Buckets
 
 - Amazon S3 allows people to store objects (files) in "buckets" (directories)
 - Buckets must have a globally unique name (across all regions all accounts)
@@ -1206,7 +1251,7 @@
   - Not an IP
   - Must start with lowercase letter or number
 
-### 10.2. Objects
+#### 7.3.2. Objects
 
 - Objects (files) have a Key
 - The **key** is the **FULL** path:
@@ -1223,7 +1268,7 @@
 - **Tags** (Unicode key / value pair - up to 10) - useful for security / lifecycle
 - Version ID (if versioning is enabled)
 
-## 11. S3 Security
+### 7.4. S3 Security
 
 - User based
   - IAM policies - which API calls should be allowed for a specific user from IAM console
@@ -1236,7 +1281,7 @@
   - AND there's no explicit DENY
 - Encryption: encrypt objects in Amazon S3 using encryption keys
 
-### 11.1. S3 Bucket Policies
+#### 7.4.1. S3 Bucket Policies
 
 - JSON based policies
   - Resources: buckets and objects
@@ -1264,7 +1309,7 @@
 }
 ```
 
-### 11.2. Bucket settings for Block Public Access
+#### 7.4.2. Bucket settings for Block Public Access
 
 ![Settings for Block Public Access](/Images/EditBlockPublicAccess.PNG)
 
@@ -1272,7 +1317,7 @@
 - If you know your bucket should never be public, leave these on
 - Can be set at the account level
 
-### 11.3. S3 Websites
+### 7.5. S3 Websites
 
 - S3 can host static websites and have them accessible on the www
 - The website URL will be:
@@ -1281,7 +1326,7 @@
   - <bucket-name>.s3-website.<AWS-region>.amazonaws.com
 - If you get a 403 (Forbidden) error, make sure the bucket policy allows public reads!
 
-### 11.4. Amazon S3 - Versioning
+### 7.6. Amazon S3 - Versioning
 
 - You can version your files in Amazon S3
 - It is enabled at the **bucket level**
@@ -1293,14 +1338,14 @@
   - Any file that is not versioned prior to enabling versioning will have version "null"
   - Suspending versioning does not delete the previous versions
 
-### 11.5. S3 Access Logs
+### 7.7. S3 Access Logs
 
 - For audit purpose, you may want to log all access to S3 buckets
 - Any request made to S3, from any account, authorized or denied, will be logged into another S3 bucket
 - That data can be analyzed using data analysis tools...
 - Very helpful to come down to the root cause of an issue, or audit usage, view suspicious patterns, etc...
 
-### 11.6. S3 Replication (CRR & SRR)
+### 7.8. S3 Replication (CRR & SRR)
 
 - Must enable versioning in source and destination
 - Cross Region Replication (CRR)
@@ -1311,7 +1356,7 @@
 - CRR - Use cases: compliance, lower latency access, replication across accounts
 - SRR - Use cases: log aggregation, live replication between production and test accounts
 
-### 11.7. S3 Storage Classes
+### 7.9. S3 Storage Classes
 
 - Amazon S3 Standard - General Purpose
 - Amazon S3 Standard-Infrequent Access (IA)
@@ -1321,7 +1366,7 @@
 - Amazon Glacier Deep Archive
 - Amazon S3 Reduced Redundancy Storage (deprecated - omitted)
 
-### 11.8. S3 Durability and Availability
+### 7.10. S3 Durability and Availability
 
 - Durability:
   - High durability (99.999999999%, 11 9's) of objects across multiple AZ
@@ -1332,7 +1377,7 @@
   - S3 standard has 99.99% availability, which means it will not be available 53 minutes a year
   - Varies depending on storage class
 
-### 11.9. S3 Standard - General Purposes
+### 7.11. S3 Standard - General Purposes
 
 - 99.99% Availability
 - Used for frequently accessed data
@@ -1340,7 +1385,7 @@
 - Sustain 2 concurrent facility failures
 - Use Cases: Big Data analytics, mobile & gaming applications, content distribution...
 
-### 11.10. S3 Standard - Infrequent Access (IA)
+### 7.12. S3 Standard - Infrequent Access (IA)
 
 - Suitable for data that is less frequently accessed, but requires rapid access when needed
 - 99.9% Availability
@@ -1349,7 +1394,7 @@
 - Use Cases: As a data store for disaster recovery, backups...
 - **Amazon S3 Standard-Infrequent Access allow you to store infrequently accessed data, with rapid access when needed, has a high durability, and is stored in several Availability Zones to avoid data loss in case of a disaster. It can be used to store data for disaster recovery, backups, etc.**
 
-### 11.11. S3 Intelligent-Tiering
+### 7.13. S3 Intelligent-Tiering
 
 - 99.9% Availability
 - Same low latency and high throughput performance of S3 Standard
@@ -1359,7 +1404,7 @@
   - Infrequent access
 - Resilient against events that impact an entire Availability Zone
 
-### 11.12. S3 One Zone - Infrequent Access (IA)
+### 7.14. S3 One Zone - Infrequent Access (IA)
 
 - Same as IA but data is stored in a single AZ
 - 99.5% Availability
@@ -1367,7 +1412,7 @@
 - Lower cost compared to S3-IA (by 20%)
 - Use Cases: Storing secondary backup copies of on-premise data, or storing data you can recreate
 
-### 11.13. Amazon Glacier & Glacier Deep Archive
+### 7.15. Amazon Glacier & Glacier Deep Archive
 
 - Low cost object storage (in GB/month) meant for archiving / backup
 - Data is retained for the longer term (years)
@@ -1380,7 +1425,7 @@
   - Standard (12 hours)
   - Bulk (48 hours)
 
-### 11.14. S3 Storage Classes Comparison
+### 7.16. S3 Storage Classes Comparison
 
 |                                    |      S3 Standard       | S3 Intelligent-Tiering |     S3 Standard-IA     |    S3 One Zone-IA†     | S3 Glacier Instant Retrieval | S3 Glacier Flexible Retrieval | S3 Glacier Deep Archive |
 | :--------------------------------: | :--------------------: | :--------------------: | :--------------------: | :--------------------: | :--------------------------: | :---------------------------: | :---------------------: |
@@ -1395,14 +1440,14 @@
 |            Storage type            |         Object         |         Object         |         Object         |         Object         |            Object            |            Object             |         Object          |
 |       Lifecycle transitions        |          Yes           |          Yes           |          Yes           |          Yes           |             Yes              |              Yes              |           Yes           |
 
-### 11.15. Moving between storage classes
+### 7.17. Moving between storage classes
 
 - You can transition objects between storage classes
 - For infrequently accessed object, move them to STANDARD_IA
 - For archive objects you don't need in real-time, GLACIER or DEEP_ARCHIVE
 - Moving objects can be automated using a **lifecycle configuration**
 
-### 11.16. S3 Object Lock & Glacier Vault Lock
+### 7.18. S3 Object Lock & Glacier Vault Lock
 
 - S3 Object Lock
   - Adopt a WORM (Write Once Read Many) model
@@ -1412,14 +1457,14 @@
   - Lock the policy for future edits (can no longer be changed)
   - Helpful for compliance and data retention
 
-### 11.17. S3 Encryption
+### 7.19. S3 Encryption
 
 - Types:
   - No Encryption
   - Server-Side Encryption
   - Client-Side Encryption
 
-### 11.18. Shared Responsibility Model for S3
+### 7.20. Shared Responsibility Model for S3
 
 - Aws:
   - Infrastructure (global security, durability, availability, sustain concurrent loss of data in two facilities)
@@ -1433,7 +1478,7 @@
   - S3 Storage Classes
   - Data encryption at rest and in transit
 
-### 11.19. AWS Snow Family
+### 7.21. AWS Snow Family
 
 - Highly-secure, portable devices to collect and process data at the edge, and migrate data into and out of AWS
   - Data migration:
@@ -1444,7 +1489,7 @@
     - Snowcone
     - Snowball Edge
 
-### 11.20. Data Migrations with AWS Snow Family
+### 7.22. Data Migrations with AWS Snow Family
 
 - Challenges:
 
@@ -1466,7 +1511,7 @@
 
   - If it takes more than a week to transfer over the network, use Snowball devices!
 
-#### 11.20.1. AWS Snowcone
+#### 7.22.1. AWS Snowcone
 
 - Small, portable computing, anywhere, rugged & secure, withstands harsh environments
 - Light (4.5 pounds, 2.1 kg)
@@ -1476,7 +1521,7 @@
 - Must provide your own battery / cables
 - Can be sent back to AWS offline, or connect it to internet and use AWS DataSync to send data
 
-#### 11.20.2. Snowball Edge (for data transfers)
+#### 7.22.2. Snowball Edge (for data transfers)
 
 - Physical data transport solution: move TBs or PBs of data in or out of AWS
 - Alternative to moving data over the network (and paying network fees)
@@ -1489,14 +1534,14 @@
 - Use cases: large data cloud migrations, DC decommission, disaster recovery
 - **Snowball Edge is best-suited to move petabytes of data and offers computing capabilities. Be careful, it's recommended to use a fleet of Snowballs to move less than 10PBs of data. Over this quantity, it's better-suited to use Snowmobile.**
 
-#### 11.20.3. AWS Snowmobile
+#### 7.22.3. AWS Snowmobile
 
 - Transfer exabytes of data (1 EB = 1,000 PB = 1,000,000 TBs)
 - Each Snowmobile has 100 PB of capacity (use multiple in parallel)
 - High security: temperature controlled, GPS, 24/7 video surveillance
 - Better than Snowball if you transfer more than 10 PB
 
-### 11.21. Snow Family - Usage Process
+### 7.23. Snow Family - Usage Process
 
 1. Request Snowball devices from the AWS console for delivery
 2. Install the snowball client / AWS OpsHub on your servers
@@ -1505,7 +1550,7 @@
 5. Data will be loaded into an S3 bucket
 6. Snowball is completely wiped
 
-### 11.22. What is Edge Computing?
+### 7.24. What is Edge Computing?
 
 - Process data while it's being created on an edge location
   - A truck on the road, a ship on the sea, a mining station underground...
@@ -1519,7 +1564,7 @@
   - Transcoding media streams
 - Eventually (if need be) we can ship back the device to AWS (for transferring data for example)
 
-### 11.23. Snow Family - Edge Computing
+### 7.25. Snow Family - Edge Computing
 
 - Snowcone (smaller)
   - 2 CPUs, 4 GB of memory, wired or wireless access
@@ -1534,7 +1579,7 @@
 - All: Can run EC2 Instances & AWS Lambda functions (using AWS IoT Greengrass)
 - Long-term deployment options: 1 and 3 years discounted pricing
 
-### 11.24. AWS OpsHub
+### 7.26. AWS OpsHub
 
 - Historically, to use Snow Family devices, you needed a CLI (Command Line Interface tool)
 - Today, you can use AWS OpsHub (a software you install on your computer / laptop) to manage your Snow Family Device
@@ -1544,7 +1589,7 @@
 - Monitor device metrics (storage capacity, active instances on your device)
 - Launch compatible AWS services on your devices (ex: Amazon EC2 instances, AWS DataSync, Network File System (NFS))
 
-### 11.25. Hybrid Cloud for Storage
+### 7.27. Hybrid Cloud for Storage
 
 - AWS is pushing for "hybrid cloud"
   - Part of your infrastructure is on-premises
@@ -1557,7 +1602,7 @@
 - S3 is a proprietary storage technology (unlike EFS / NFS), so how do you expose the S3 data on-premise?
 - AWS Storage Gateway!
 
-### 11.26. AWS Storage Gateway
+### 7.28. AWS Storage Gateway
 
 - Bridge between on-premise data and cloud data in S3
 - Hybrid storage service to allow on- premises to seamlessly use the AWS Cloud
@@ -1567,7 +1612,7 @@
   - Volume Gateway
   - Tape Gateway
 
-### 11.27. Amazon S3 - Summary
+### 7.29. Amazon S3 - Summary
 
 - Buckets vs Objects: global unique name, tied to a region.
 - S3 security: IAM policy, S3 Bucket Policy (public access), S3 Encryption.
@@ -1582,9 +1627,9 @@
 - OpsHub: desktop application to manage Snow Family devices.
 - Storage Gateway: hybrid solution to extend on-premises storage to S3.
 
-## 12. Databases
+## 8. Databases
 
-### 12.1. Introduction
+### 8.1. Introduction
 
 - Storing data on disk (EFS, EBS, EC2 Instance Store, S3) can have its limits.
 - Sometimes, you want to store data in a database...
@@ -1593,12 +1638,12 @@
 - You define **relationships** between your **datasets**.
 - Databases are **optimized for a purpose** and come with different features, shapes and constraints.
 
-### 12.2. Relational Databases
+### 8.2. Relational Databases
 
 - Looks just like Excel spreadsheets, with links between them!
 - Can use the SQL language to perform queries / lookups.
 
-### 12.3. NoSQL Databases
+### 8.3. NoSQL Databases
 
 - NoSQL = non-SQL = non relational databases
 - NoSQL databases are purpose built for specific data models and have flexible schemas for building modern applications.
@@ -1609,7 +1654,7 @@
   - Highly functional: types optimized for the data model.
 - Examples: Key-value, document, graph, in-memory, search databases.
 
-### 12.4. NoSQL data example: JSON
+### 8.4. NoSQL data example: JSON
 
 - JSON = JavaScript Object Notation.
 - JSON is a common form of data that fits into a NoSQL model.
@@ -1634,7 +1679,7 @@
 }
 ```
 
-### 12.5. Databases & Shared Responsibility on AWS
+### 8.5. Databases & Shared Responsibility on AWS
 
 - AWS offers use to **manage** different databases.
 - **Databases** & Shared Responsibility on AWS include:
@@ -1644,7 +1689,7 @@
   - Monitoring, alerting.
 - Note: many databases technologies could be run on EC2, but you must handle yourself the resiliency, backup, patching, high availability, fault tolerance, scaling...
 
-### 12.6. AWS RDS Overview
+### 8.6. AWS RDS Overview
 
 - **Amazon Relational Database Service (Amazon RDS) is a SQL managed service that makes it easy to set up, operate, and scale a relational database in the cloud. It is suited for OLTP workloads.**
 - RDS stands for Relational Database Service.
@@ -1657,7 +1702,7 @@
   - Microsoft SQL Server
   - Aurora (AWS Proprietary database)
 
-### 12.7. Advantage over using RDS versus deploying DB on EC2
+### 8.7. Advantage over using RDS versus deploying DB on EC2
 
 - RDS is a managed service:
   - Automated provisioning, OS patching.
@@ -1670,7 +1715,7 @@
   - Storage backed by EBS (gp2 or io1).
 - BUT you can't SSH into your instances.
 
-### 12.8. Amazon Aurora
+### 8.8. Amazon Aurora
 
 - **Amazon Aurora is a MySQL and PostgreSQL-compatible relational database built for the cloud, that combines the performance and availability of traditional enterprise databases with the simplicity and cost-effectiveness of open source databases. It is a proprietary technology from AWS.**
 - Aurora is a proprietary technology from AWS (not open sourced).
@@ -1680,32 +1725,32 @@
 - Aurora costs more than RDS (20% more) - but is more efficient.
 - Not in the free tier.
 
-### 12.9. RDS Deployments: Read Replicas, Multi-AZ, Multi-Region
+### 8.9. RDS Deployments: Read Replicas, Multi-AZ, Multi-Region
 
-#### 12.9.1. Read Replicas
+#### 8.9.1. Read Replicas
 
 - Scale the read workload of your DB
 - Can create up to 5 Read Replicas
 - Data is only written to the main DB
 
-#### 12.9.2. Multi-AZ
+#### 8.9.2. Multi-AZ
 
 - Failover in case of AZ outage (high availability)
 - Data is only read/written to the main database
 - Can only have 1 other AZ as failover
 
-#### 12.9.3. Multi-Region
+#### 8.9.3. Multi-Region
 
 - Multi-Region (Read Replicas)
 - Disaster recovery in case of region issue
 - Local performance for global reads
 - Replication cost
 
-#### 12.9.4. Resume
+#### 8.9.4. Resume
 
 - **RDS Multi-AZ deployments main purpose is high availability, and RDS Read replicas main purpose is scalability. Moreover, Multi-Region deployments' main purpose is disaster recovery and local performance.**
 
-### 12.10. Amazon ElastiCache Overview
+### 8.10. Amazon ElastiCache Overview
 
 - **Amazon ElastiCache is a web service that makes it easy to deploy and run Memcached or Redis protocol-compliant server nodes in the cloud. ElastiCache caches are in-memory databases with high performance, low latency. They help reduce load off databases for read intensive workloads.**
 - The same way RDS is to get managed Relational Databases...
@@ -1713,7 +1758,7 @@
 - Helps **reduce load off databases for read intensive workloads**.
 - AWS takes care of OS maintenance / patching, optimizations, setup, configuration, monitoring, failure recovery and backups.
 
-### 12.11. DynamoDB
+### 8.11. DynamoDB
 
 - **DynamoDB is a fast and flexible non-relational database service for any scale. It can scale with no downtime, it can process millions of requests per second, and is fast and consistent in performance.**
 - Fully Managed Highly available with replication across 3 AZ.
@@ -1725,7 +1770,7 @@
 - Integrated with IAM for security, authorization and administration.
 - Low cost and auto scaling capabilities.
 
-#### 12.11.1. DynamoDB Accelerator - DAX
+#### 8.11.1. DynamoDB Accelerator - DAX
 
 - **Amazon DynamoDB Accelerator (DAX) is a fully managed, highly available, in-memory cache for Amazon DynamoDB that delivers up to a 10 times performance improvement—from milliseconds to microseconds—even at millions of requests per second.**
 - Fully Managed **in-memory** cache for DynamoDB.
@@ -1733,12 +1778,12 @@
 - Secure, highly scalable & highly available.
 - Difference with ElastiCache at the CCP level: DAX is only used for and is integrated with DynamoDB, while ElastiCache can be used for other databases.
 
-#### 12.11.2. DynamoDB - Global Tables
+#### 8.11.2. DynamoDB - Global Tables
 
 - Make a DynamoDB table accessible with low latency in multiple-regions.
 - Active-Active replication (read/write to any AWS Region).
 
-### 12.12. Redshift Overview
+### 8.12. Redshift Overview
 
 - **Amazon Redshift is a fully managed, petabyte-scale data warehouse service in the cloud.**
 - Redshift is based on PostgreSQL, but it's not used for OLTP.
@@ -1752,7 +1797,7 @@
 - BI tools such as AWS Quicksight or Tableau integrate with it.
 - **Manage their data warehouse.**
 
-### 12.13. Amazon EMR
+### 8.13. Amazon EMR
 
 - EMR stands for "Elastic MapReduce"
 - **Amazon EMR is a web service that enables businesses, researchers, data analysts, and developers to easily and cost-effectively process vast amounts of data. EMR helps creating Hadoop clusters (Big Data) to analyze and process vast amount of data.**
@@ -1762,7 +1807,7 @@
 - Auto-scaling and integrated with Spot instances
 - Use cases: data processing, machine learning, web indexing, big data...
 
-### 12.14. Amazon Athena
+### 8.14. Amazon Athena
 
 - **Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL. Athena is serverless, so there is no infrastructure to manage, and you pay only for the queries that you run.**
 - Serverless query service to analyze data stored in Amazon S3.
@@ -1773,7 +1818,7 @@
 - Use cases: Business intelligence / analytics / reporting, analyze & query VPC Flow Logs, ELB Logs, CloudTrail trails, etc...
 - Tip: analyze data in S3 using serverless SQL, use Athena.
 
-### 12.15. Amazon QuickSight
+### 8.15. Amazon QuickSight
 
 - **Amazon QuickSight is a fast, cloud-powered business intelligence (BI) service that makes it easy for you to deliver insights to everyone in your organization. You can create and publish interactive dashboards.**
 - Serverless machine learning-powered business intelligence service to create interactive dashboards.
@@ -1785,7 +1830,7 @@
   - Get business insights using data
 - Integrated with RDS, Aurora, Athena, Redshift, S3...
 
-### 12.16. DocumentDB
+### 8.16. DocumentDB
 
 - **Amazon DocumentDB (with MongoDB compatibility) is a fast, calable, highly available, and fully managed document database service that supports MongoDB workloads.**
 - Aurora is an "AWS-implementation" of PostgreSQL / MySQL...
@@ -1796,7 +1841,7 @@
 - Aurora storage automatically grows in increments of 10GB, up to 64 TB.
 - Automatically scales to workloads with millions of requests per seconds.
 
-### 12.17. Amazon Neptune
+### 8.17. Amazon Neptune
 
 - **Amazon Neptune is a fast, reliable, fully-managed graph database service that makes it easy to build and run applications that work with highly connected datasets. It can be used for knowledge graphs, fraud detection, recommendations engines, social networking, etc.**
 - Fully managed graph database.
@@ -1810,7 +1855,7 @@
 - Can store up to billions of relations and query the graph with milliseconds latency.
 - Highly available with replications across multiple AZs.
 
-### 12.18. Amazon QLDB
+### 8.18. Amazon QLDB
 
 - QLDB stands for "Quantum Ledger Database".
 - **Amazon QLDB is a fully managed ledger database that provides a transparent, immutable, and cryptographically verifiable transaction log owned by a central trusted authority. Amazon QLDB tracks each and every application data change and maintains a complete and verifiable history of changes over time.**
@@ -1821,7 +1866,7 @@
 - 2-3x better performance than common ledger blockchain frameworks, manipulate data using SQL.
 - Difference with Amazon Managed Blockchain: no decentralization component, in accordance with financial regulation rules.
 
-### 12.19. Amazon Managed Blockchain
+### 8.19. Amazon Managed Blockchain
 
 - Amazon Managed Blockchain is a fully managed service that makes it easy to create and manage scalable blockchain networks using the popular open source frameworks Hyperledger Fabric and Ethereum. It allows multiple parties to execute transactions without the need of a trusted, central authority.
 - Blockchain makes it possible to build applications where multiple parties can execute transactions without the need for a trusted, central authority.
@@ -1830,7 +1875,7 @@
   - Or create your own scalable private network
 - Compatible with the frameworks Hyperledger Fabric & Ethereum
 
-### 12.20. AWS Glue
+### 8.20. AWS Glue
 
 - **AWS Glue is a fully managed extract, transform, and load (ETL) service that makes it easy for customers to prepare and load their data for analytics.**
 - Managed extract, transform, and load (ETL) service.
@@ -1840,7 +1885,7 @@
   - **The AWS Glue Data Catalog is a central repository to store structural and operational metadata for all your data assets. For a given data set, you can store its table definition, physical location, add business relevant attributes, as well as track how this data has changed over time.**
   - Can be used by Athena, Redshift, EMR.
 
-### 12.21. DMS - Database Migration Service
+### 8.21. DMS - Database Migration Service
 
 - **AWS Database Migration Service helps you migrate databases to AWS quickly and securely. The source database remains fully operational during the migration, minimizing downtime to applications that rely on the database.**
 - Quickly and securely migrate databases to AWS, resilient, self healing
@@ -1849,7 +1894,7 @@
   - Homogeneous migrations: ex Oracle to Oracle
   - Heterogeneous migrations: ex Microsoft SQL Server to Aurora
 
-### 12.22. Databases & Analytics Summary in AWS
+### 8.22. Databases & Analytics Summary in AWS
 
 - Relational Databases - OLTP: RDS & Aurora (SQL).
 - Differences between Multi-AZ, Read Replicas, Multi-Region.
@@ -1866,9 +1911,9 @@
 - Database Migration: DMS.
 - Neptune: Graph database.
 
-## 13. Other Compute Services: ECS, Lambda, Batch, Lightsail
+## 9. Other Compute Services: ECS, Lambda, Batch, Lightsail
 
-### 13.1. ECS
+### 9.1. ECS
 
 - ECS = Elastic Container Service.
 - Launch Docker containers on AWS.
@@ -1876,20 +1921,20 @@
 - AWS takes care of starting / stopping containers.
 - Has integrations with the Application Load Balancer.
 
-### 13.2. Fargate
+### 9.2. Fargate
 
 - Launch Docker containers on AWS.
 - **You do not provision the infrastructure (no EC2 instances to manage)**.
 - Serverless offering.
 - AWS just runs containers for you based on the CPU / RAM you need.
 
-### 13.3. ECR
+### 9.3. ECR
 
 - Elastic Container Registry.
 - Private Docker Registry on AWS.
 - This is where you store your Docker images so they can be run by ECS or Fargate.
 
-### 13.4. What's serverless?
+### 9.4. What's serverless?
 
 - Serverless is a new paradigm in which the developers don't have to manage servers anymore.
 - They just deploy code / functions.
@@ -1902,7 +1947,7 @@
   - Fargate
   - Lambda
 
-### 13.5. Why AWS Lambda?
+### 9.5. Why AWS Lambda?
 
 - Amazon EC2:
   - Virtual Servers in the Cloud.
@@ -1915,7 +1960,7 @@
   - Run on-demand.
   - Scaling is automated!
 
-#### 13.5.1. Benefits of AWS Lambda
+#### 9.5.1. Benefits of AWS Lambda
 
 - Easy Pricing:
   - Pay per request and compute time.
@@ -1927,7 +1972,7 @@
 - Easy to get more resources per functions (up to 10GB of RAM!).
 - Increasing RAM will also improve CPU and network!
 
-#### 13.5.2. AWS Lambda language support
+#### 9.5.2. AWS Lambda language support
 
 - Node.js (JavaScript)
 - Python
@@ -1941,7 +1986,7 @@
   - The container image must implement the Lambda Runtime API
   - ECS / Fargate is preferred for running arbitrary Docker images
 
-#### 13.5.3. AWS Lambda Pricing: example
+#### 9.5.3. AWS Lambda Pricing: example
 
 - You can find overall pricing information here: https://aws.amazon.com/lambda/pricing/
 - Pay per **calls**:
@@ -1954,7 +1999,7 @@
   - After that $1.00 for 600,000 GB-seconds.
 - It is usually **very cheap** to run AWS Lambda so it's **very popular**.
 
-### 13.6. Amazon API Gateway
+### 9.6. Amazon API Gateway
 
 - Example: building a serverless API.
 - Fully managed service for developers to easily create, publish, maintain, monitor, and secure APIs.
@@ -1962,7 +2007,7 @@
 - Supports RESTful APIs and WebSocket APIs.
 - Support for security, user authentication, API throttling, API keys, monitoring...
 
-### 13.7. AWS Batch
+### 9.7. AWS Batch
 
 - **Fully managed** batch processing at **any scale**.
 - Efficiently run 100,000s of computing batch jobs on AWS.
@@ -1973,7 +2018,7 @@
 - Batch jobs are defined as **Docker images** and **run on ECS**.
 - Helpful for cost optimizations and focusing less on the infrastructure.
 
-### 13.8. Batch vs Lambda
+### 9.8. Batch vs Lambda
 
 - Lambda:
   - Time limit.
@@ -1986,7 +2031,7 @@
   - Rely on EBS / instance store for disk space.
   - Relies on EC2 (can be managed by AWS).
 
-### 13.9. Amazon Lightsail
+### 9.9. Amazon Lightsail
 
 - **Amazon Lightsail is designed to be the easiest way to launch and manage a virtual private server with AWS. Lightsail plans include everything you need to jumpstart your project - a virtual machine, SSD- based storage, data transfer, DNS management, and a static IP address - for a low, predictable price. It can be used to create a simple web application, a website or a dev/test environment.**
 - Virtual servers, storage, databases, and networking.
@@ -2000,7 +2045,7 @@
   - Dev / Test environment.
 - Has high availability but no auto-scaling, limited AWS integrations.
 
-### 13.10. Other Compute - Summary
+### 9.10. Other Compute - Summary
 
 - Docker: container technology to run applications.
 - ECS: run Docker containers on EC2 instances.
@@ -2011,7 +2056,7 @@
 - Batch: run batch jobs on AWS across managed EC2 instances.
 - Lightsail: predictable & low pricing for simple application & DB stacks.
 
-### 13.11. Lambda Summary
+### 9.11. Lambda Summary
 
 - Lambda is Serverless, Function as a Service, seamless scaling, reactive.
 - Lambda Billing:
@@ -2024,9 +2069,9 @@
   - Run a Serverless cron job.
 - API Gateway: expose Lambda functions as HTTP API.
 
-## 14. Deploying and Managing Infrastructure at Scale
+## 10. Deploying and Managing Infrastructure at Scale
 
-### 14.1. What is CloudFormation?
+### 10.1. What is CloudFormation?
 
 - CloudFormation is a declarative way of outlining your AWS Infrastructure, for any resources (most of them are supported).
 - For example, within a CloudFormation template, you say:
@@ -2036,7 +2081,7 @@
   - I want a load balancer (ELB) in front of these machines.
 - Then CloudFormation creates those for you, in the right order, with the exact configuration that you specify.
 
-#### 14.1.1. Benefits of AWS CloudFormation
+#### 10.1.1. Benefits of AWS CloudFormation
 
 **- CloudFormation are free of use, but you do pay for the resources created.**
 
@@ -2058,14 +2103,14 @@
   - Everything we'll see in this course is supported.
   - You can use "custom resources" for resources that are not supported.
 
-#### 14.1.2. CloudFormation Stack Designer
+#### 10.1.2. CloudFormation Stack Designer
 
 - **AWS CloudFormation templates are JSON or YAML-formatted text files. They are declarations of the AWS resources that make up a stack.**
 - Example: WordPress CloudFormation Stack.
 - We can see all the resources.
 - We can see the relations between the components.
 
-### 14.2. AWS Cloud Development Kit (CDK)
+### 10.2. AWS Cloud Development Kit (CDK)
 
 - **The AWS Cloud Development Kit (AWS CDK) is an open source software development framework to define your cloud application resources using familiar programming languages.**
   - JavaScript/TypeScript, Python, Java, and .NET.
@@ -2074,7 +2119,7 @@
   - Great for Lambda functions.
   - Great for Docker containers in ECS / EKS.
 
-### 14.3. Developer problems on AWS
+### 10.3. Developer problems on AWS
 
 - Managing infrastructure.
 - Deploying Code.
@@ -2084,7 +2129,7 @@
 - All the developers want is for their code to run!
 - Possibly, consistently across different applications and environments.
 
-### 14.4. AWS Elastic Beanstalk Overview
+### 10.4. AWS Elastic Beanstalk Overview
 
 - **Elastic Beanstalk is a Platform as a Service (PaaS). You only manage data and applications. AWS Elastic Beanstalk makes it even easier for developers to quickly deploy and manage applications in the AWS Cloud.**
 - Elastic Beanstalk is a developer centric view of deploying an application on AWS.
@@ -2094,7 +2139,7 @@
 - Beanstalk = Platform as a Service (PaaS).
 - **Elastic Beanstalk are free of use, but you do pay for the resources created..**
 
-### 14.5. Elastic Beanstalk
+### 10.5. Elastic Beanstalk
 
 - Managed service
   - Instance configuration / OS is handled by Beanstalk.
@@ -2121,19 +2166,19 @@
 - Multi-Container Docker.
 - Preconfigured Docker.
 
-#### 14.5.1. Health Monitoring
+#### 10.5.1. Health Monitoring
 
 - Health agent pushes metrics to CloudWatch.
 - Checks for app health, publishes health events.
 
-### 14.6. AWS CodeDeploy
+### 10.6. AWS CodeDeploy
 
 - **AWS CodeDeploy is a service that automates code deployments to any instance, including Amazon EC2 instances and instances running on-premises.**
 - We want to deploy our application automatically.
 - Hybrid service.
 - Servers / Instances must be provisioned and configured ahead of time with the CodeDeploy Agent.
 
-### 14.7. AWS CodeCommit
+### 10.7. AWS CodeCommit
 
 - **AWS CodeCommit is a secure, highly scalable, managed source control service that makes it easier for teams to collaborate on code. It also provides software version control.**
 - Before pushing the application code to servers, it needs to be stored somewhere.
@@ -2148,7 +2193,7 @@
   - Scalable & highly available.
   - Private, Secured, Integrated with AWS.
 
-### 14.8. AWS CodeBuild
+### 10.8. AWS CodeBuild
 
 - **AWS CodeBuild is a fully managed continuous integration service that compiles source code, runs tests, and produces software packages that are ready to deploy. With CodeBuild, you don't need to provision, manage, and scale your own build servers, it is serverless.**
 - Code building service in the cloud (name is obvious)
@@ -2159,7 +2204,7 @@
   - Secure.
   - Pay-as-you-go pricing - only pay for the build time.
 
-### 14.9. AWS CodePipeline
+### 10.9. AWS CodePipeline
 
 - Orchestrate the different steps to have the code automatically pushed to production.
   - Code => Build => Test => Provision => Deploy.
@@ -2168,7 +2213,7 @@
   - Fully managed, compatible with CodeCommit, CodeBuild, CodeDeploy, Elastic Beanstalk, CloudFormation, GitHub, 3rd-party services (GitHub...) & custom plugins...
 - Fast delivery & rapid updates.
 
-### 14.10. AWS CodeArtifact
+### 10.10. AWS CodeArtifact
 
 - **AWS CodeArtifact is a fully managed artifact repository (also called code dependencies) service that makes it easy for organizations of any size to securely store, publish, and share software packages used in their software development process.**
 - Software packages depend on each other to be built (also called code dependencies), and new ones are created.
@@ -2178,21 +2223,21 @@
 - Works with common dependency management tools such as Maven, Gradle, npm, yarn, twine, pip, and NuGet.
 - Developers and CodeBuild can then retrieve dependencies straight from CodeArtifact.
 
-### 14.11. AWS CodeStar
+### 10.11. AWS CodeStar
 
 - **CodeStar is used to quickly develop, build, and deploy applications on AWS. Elastic Beanstalk can be used to monitor and to check the health of an environment.**
 - Unified UI to easily manage software development activities in one place.
 - "Quick way" to get started to correctly set-up CodeCommit, CodePipeline, CodeBuild, CodeDeploy, Elastic Beanstalk, EC2, etc...
 - Can edit the code "in-the-cloud" using AWS Cloud9.
 
-### 14.12. AWS Cloud9
+### 10.12. AWS Cloud9
 
 - AWS Cloud9 is a cloud IDE (Integrated Development Environment) for writing, running and debugging code.
 - "Classic" IDE (like IntelliJ, Visual Studio Code...) are downloaded on a computer before being used.
 - A cloud IDE can be used within a web browser, meaning you can work on your projects from your office, home, or anywhere with internet with no setup necessary.
 - AWS Cloud9 also allows for code collaboration in real-time (pair programming).
 
-### 14.13. AWS Systems Manager (SSM)
+### 10.13. AWS Systems Manager (SSM)
 
 - **AWS Systems Manager gives you visibility and control of your infrastructure on AWS. It is used for patching systems at scale.**
 - Helps you manage your EC2 and On-Premises systems at scale.
@@ -2205,14 +2250,14 @@
   - Store parameter configuration with the SSM Parameter Store.
 - Works for both Windows and Linux OS.
 
-#### 14.13.1. How Systems Manager works?
+#### 10.13.1. How Systems Manager works?
 
 - We need to install the SSM agent onto the systems we control.
 - Installed by default on Amazon Linux AMI & some Ubuntu AMI.
 - If an instance can't be controlled with SSM, it's probably an issue with the SSM agent!
 - Thanks to the SSM agent, we can run commands, patch & configure our servers.
 
-#### 14.13.2. Systems Manager - SSM Session Manager
+#### 10.13.2. Systems Manager - SSM Session Manager
 
 - Allows you to start a secure shell on your EC2 and on-premises servers.
 - No SSH access, bastion hosts, or SSH keys needed.
@@ -2220,7 +2265,7 @@
 - Supports Linux, macOS, and Windows.
 - Send session log data to S3 or CloudWatch Logs.
 
-### 14.14. AWS OpsWorks
+### 10.14. AWS OpsWorks
 
 - Chef & Puppet help you perform server configuration automatically, or repetitive actions.
 - They work great with EC2 & On-Premises VM.
@@ -2230,7 +2275,7 @@
   - EC2 Instances, Databases, Load Balancers, EBS volumes...
 - Tip: Chef or Puppet needed => AWS OpsWorks.
 
-### 14.15. Deployment - Summary
+### 10.15. Deployment - Summary
 
 - CloudFormation: (AWS only):
   - Infrastructure as Code, works with almost all of AWS resources.
@@ -2250,9 +2295,9 @@
 - Cloud9: Cloud IDE (Integrated Development Environment) with collab.
 - AWS CDK: Define your cloud infrastructure using a programming language.
 
-## 15. Global Infrastructure
+## 11. Global Infrastructure
 
-### 15.1. Why make a global application?
+### 11.1. Why make a global application?
 
 - A **global application** is an application deployed in **multiple geographies**.
 - On AWS: this could be **Regions** and / or **Edge Locations**.
@@ -2266,13 +2311,13 @@
   - A DR plan is important to increase the availability of your application.
 - Attack protection: distributed global infrastructure is harder to attack
 
-### 15.2. Global AWS Infrastructure
+### 11.2. Global AWS Infrastructure
 
 - **Regions:** For deploying applications and infrastructure
 - **Availability Zones:** Made of multiple data centers
 - **Edge Locations (Points of Presence):** for content delivery as close as possible to users
 
-### 15.3. Global Applications in AWS
+### 11.3. Global Applications in AWS
 
 - **Global DNS: Route 53**
   - Great to route users to the closest deployment with least latency
@@ -2285,7 +2330,7 @@
 - **AWS Global Accelerator:**
   - Improve global application availability and performance using the AWS global network
 
-### 15.4. Amazon Route 53 Overview
+### 11.4. Amazon Route 53 Overview
 
 - **Route 53 features are (non exhaustive list): Domain Registration, DNS, Health Checks, Routing Policy**
 - Route53 is a Managed DNS (Domain Name System)
@@ -2296,11 +2341,11 @@
   - search.google.com => www.google.com == CNAME: hostname to hostname
   - example.com => AWS resource == Alias (ex: ELB, CloudFront, S3, RDS, etc...)
 
-#### 15.4.1. Route 53 policies
+#### 11.4.1. Route 53 policies
 
 - **Weighted Routing Policy is used to route traffic to multiple resources in proportions that you specify.**
 
-### 15.5. AWS CloudFront
+### 11.5. AWS CloudFront
 
 - **CloudFront uses Edge Location to cache content, and therefore bring more of your content closer to your viewers to improve read performance.**
 - **You can use AWS WAF web access control lists (web ACLs) to help minimize the effects of a distributed denial of service (DDoS) attack. For additional protection against DDoS attacks, AWS also provides AWS Shield Standard and AWS Shield Advanced.**
@@ -2310,7 +2355,7 @@
 - 216 Point of Presence globally (edge locations)
 - DDoS protection (because worldwide), integration with Shield, AWS Web Application Firewall
 
-### 15.6. CloudFront - Origins
+### 11.6. CloudFront - Origins
 
 - S3 bucket
   - For distributing files and caching them at the edge
@@ -2322,7 +2367,7 @@
   - S3 website (must first enable the bucket as a static S3 website)
   - Any HTTP backend you want
 
-### 15.7. CloudFront vs S3 Cross Region Replication
+### 11.7. CloudFront vs S3 Cross Region Replication
 
 - CloudFront:
   - Global Edge network.
@@ -2334,19 +2379,19 @@
   - Read only.
   - Great for dynamic content that needs to be available at low-latency in few regions.
 
-### 15.8. S3 Transfer Acceleration
+### 11.8. S3 Transfer Acceleration
 
 - **Amazon S3 Transfer Acceleration enables fast, easy, and secure transfers of files over long distances between your client and an S3 bucket. Transfer Acceleration takes advantage of Amazon CloudFront's globally distributed edge locations. As the data arrives at an edge location, data is routed to Amazon S3 over an optimized network path.**
 - Increase transfer speed by transferring file to an AWS edge location which will forward the data to the S3 bucket in the target region.
 
-### 15.9. AWS Global Accelerator
+### 11.9. AWS Global Accelerator
 
 - Improve global application availability and performance using the AWS global network.
 - Leverage the AWS internal network to optimize the route to your application (60% improvement).
 - 2 Anycast IP are created for your application and traffic is sent through Edge Locations.
 - The Edge locations send the traffic to your application.
 
-### 15.10. AWS Global Accelerator vs CloudFront
+### 11.10. AWS Global Accelerator vs CloudFront
 
 - They both use the AWS global network and its edge locations around the world.
 - Both services integrate with AWS Shield for DDoS protection.
@@ -2359,7 +2404,7 @@
   - Good for HTTP use cases that require static IP addresses.
   - Good for HTTP use cases that required deterministic, fast regional failover.
 
-### 15.11. AWS Outposts
+### 11.11. AWS Outposts
 
 - Hybrid Cloud: businesses that keep an on-premises infrastructure alongside a cloud infrastructure.
 - Therefore, two ways of dealing with IT systems:
@@ -2383,7 +2428,7 @@
   - Amazon RDS
   - Amazon EMR
 
-### 15.12. AWS WaveLength
+### 11.12. AWS WaveLength
 
 - **AWS Wavelength is an AWS Infrastructure offering optimized for mobile edge computing applications. Wavelength combines the high bandwidth and ultra-low latency of 5G networks with AWS compute and storage services to enable developers to innovate and build a whole new class of applications.**
 - WaveLength Zones are infrastructure deployments embedded within the telecommunications providers datacenters at the edge of the 5G networks.
@@ -2395,7 +2440,7 @@
 - No additional charges or service agreements.
 - Use cases: Smart Cities, ML-assisted diagnostics, Connected Vehicles, Interactive Live Video Streams, AR/VR, Real-time Gaming, ...
 
-### 15.13. AWS Local Zones
+### 11.13. AWS Local Zones
 
 - Places AWS compute, storage, database, and other selected AWS services closer to end users to run latency-sensitive applications
 - Extend your VPC to more locations - "Extension of an AWS Region"
@@ -2404,27 +2449,27 @@
   - AWS Region: N. Virginia (us-east-1)
   - AWS Local Zones: Boston, Chicago, Dallas, Houston, Miami, ...
 
-### 15.14. Global Applications Architecture
+### 11.14. Global Applications Architecture
 
-- Single Region, Single AZ
-- Single Region, Multi AZ
-- Multi Region, Active-Passive
-- Multi Region, Active-Active
+- Single Region, Single AZ.
+- Single Region, Multi AZ.
+- Multi Region, Active-Passive.
+- Multi Region, Active-Active.
 
-### 15.15. Global Applications in AWS - Summary
+### 11.15. Global Applications in AWS - Summary
 
 - Global DNS: Route 53
-  - Great to route users to the closest deployment with least latency
-  - Great for disaster recovery strategies
+  - Great to route users to the closest deployment with least latency.
+  - Great for disaster recovery strategies.
 - Global Content Delivery Network (CDN): CloudFront
-  - Replicate part of your application to AWS Edge Locations - decrease latency
-  - Cache common requests - improved user experience and decreased latency
+  - Replicate part of your application to AWS Edge Locations - decrease latency.
+  - Cache common requests - improved user experience and decreased latency.
 - S3 Transfer Acceleration
-  - Accelerate global uploads & downloads into Amazon S3
+  - Accelerate global uploads & downloads into Amazon S3.
 - AWS Global Accelerator
-  - Improve global application availability and performance using the AWS global network
+  - Improve global application availability and performance using the AWS global network.
 
-### 15.16. Global Applications in AWS - Summary
+### 11.16. Global Applications in AWS - Summary
 
 - AWS Outposts
   - Deploy Outposts Racks in your own Data Centers to extend AWS services
@@ -2435,7 +2480,7 @@
   - Bring AWS resources (compute, database, storage, ...) closer to your users
   - Good for latency-sensitive applications
 
-## 16. Cloud Integration
+## 12. Cloud Integration
 
 - When we start deploying multiple applications, they will inevitably need to communicate with one another.
 - There are two patterns of application communication:
@@ -2449,7 +2494,7 @@
   - using Kinesis: real-time data streaming model.
 - These services can scale independently from our application!
 
-### 16.1. Amazon SQS - Standard Queue
+### 12.1. Amazon SQS - Standard Queue
 
 - Oldest AWS offering (over 10 years old).
 - Fully managed service (~serverless), use to decouple applications.
@@ -2460,7 +2505,7 @@
 - Low latency (<10 ms on publish and receive).
 - Consumers share the work to read messages & scale horizontally.
 
-### 16.2. Amazon Kinesis
+### 12.2. Amazon Kinesis
 
 - **Amazon Kinesis makes it easy to collect, process, and analyze real-time, streaming data so you can get timely insights and react quickly to new information. Kinesis offers four services: Data Firehose, Data Analytics, Data Streams, Video Streams.**
 - Kinesis = real-time big data streaming.
@@ -2470,7 +2515,7 @@
 - Kinesis Data Analytics: perform real-time analytics on streams using SQL.
 - Kinesis Video Streams: monitor real-time video streams for analytics or ML.
 
-### 16.3. Amazon SNS
+### 12.3. Amazon SNS
 
 - **Is a highly available, durable, secure, fully managed pub/sub messaging service that enables you to decouple microservices, distributed systems, and serverless applications. It uses a push-based system.**
 - **Amazon Simple Queue Service (SQS) is a fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications. It uses a pull-based system.**
@@ -2479,7 +2524,7 @@
 - Each subscriber to the topic will get all the messages.
 - Up to 12,500,000 subscriptions per topic, 100,000 topics limit.
 
-### 16.4. Amazon MQ
+### 12.4. Amazon MQ
 
 - **Amazon MQ is a managed message broker service for Apache ActiveMQ and RabbitMQ that makes it easy to set up and operate message brokers in the cloud.**
 - SQS, SNS are "cloud-native" services, and they're using proprietary protocols from AWS.
@@ -2490,7 +2535,7 @@
 - Amazon MQ runs on a dedicated machine (not serverless).
 - Amazon MQ has both queue feature (SQS) and topic features (SNS).
 
-### 16.5. Integration - Summary
+### 12.5. Integration - Summary
 
 - SQS:
   - Queue service in AWS.
@@ -2506,9 +2551,209 @@
 - Amazon MQ: managed Apache MQ in the cloud (MQTT, AMQP protocols).
 - **When using SQS or SNS, you apply the "decouple your applications" principle. This means that IT systems should be designed in a way that reduces interdependencies—a change or a failure in one component should not cascade to other components.**
 
-## 17. VPC
+## 13. Cloud Monitoring
 
-### 17.1. VPC - Crash Course
+### 13.1. Amazon CloudWatch Metrics
+
+- **Amazon CloudWatch is a monitoring service for AWS cloud resources and the applications you run on AWS. You can use Amazon CloudWatch to collect and track metrics, collect and monitor log files, and set alarms.**
+- CloudWatch provides metrics for every services in AWS.
+- **Metric** is a variable to monitor (CPUUtilization, NetworkIn...).
+- Metrics have **timestamps**.
+- Can create **CloudWatch dashboards** of metrics.
+
+#### 13.1.1. Important Metrics
+
+- EC2 instances: CPU Utilization, Status Checks, Network (not RAM).
+  - Default metrics every 5 minutes.
+  - Option for Detailed Monitoring ($$$): metrics every 1 minute.
+- EBS volumes: Disk Read/Writes.
+- S3 buckets: BucketSizeBytes, NumberOfObjects, AllRequests.
+- Billing:Total Estimated Charge (only in us-east-1).
+- Service Limits: how much you've been using a service API.
+- Custom metrics: push your own metrics.
+
+### 13.2. Amazon CloudWatch Alarms
+
+- **The CloudWatch Alarms feature allows you to watch CloudWatch metrics and to receive notifications when the metrics fall outside of the levels (high or low thresholds) that you configure.**
+- Alarms are used to trigger notifications for any metric
+- Alarms actions...
+  - Auto Scaling: increase or decrease EC2 instances "desired" count
+  - EC2 Actions: stop, terminate, reboot or recover an EC2 instance
+  - SNS notifications: send a notification into an SNS topic
+- Various options (sampling, %, max, min, etc...)
+- Can choose the period on which to evaluate an alarm
+- Example: create a billing alarm on the CloudWatch Billing metric
+- Alarm States: OK. INSUFFICIENT_DATA, ALARM
+
+### 13.3. Amazon CloudWatch Logs
+
+- CloudWatch Logs can collect log from:
+  - Elastic Beanstalk: collection of logs from application.
+  - ECS: collection from containers.
+  - AWS Lambda: collection from function logs.
+  - CloudTrail based on filter.
+  - CloudWatch log agents: on EC2 machines or on-premises servers.
+  - Route53: Log DNS queries.
+- Enables real-time monitoring of logs.
+- Adjustable CloudWatch Logs retention.
+
+### 13.4. CloudWatch Logs for EC2
+
+- By default, no logs from your EC2 instance will go to CloudWatch.
+- You need to run a **CloudWatch agent** on EC2 to push the log files you want.
+- Make sure IAM permissions are correct.
+- **The CloudWatch log agent can be setup on-premises too**.
+
+### 13.5. Amazon CloudWatch Events
+
+- Schedule: Cron jobs (scheduled scripts).
+- Event Pattern: Event rules to react to a service doing something.
+- Trigger Lambda functions, send SQS/SNS messages...
+
+### 13.6. Amazon EventBridge
+
+- EventBridge is the next evolution of CloudWatch Events.
+- **Default event bus**: generated by AWS services (CloudWatch Events).
+- **Partner event bus**: receive events from SaaS service or applications (Zendesk, DataDog, Segment, Auth0...).
+- Custom Event buses: for your own applications.
+- Schema Registry: model event schema.
+- EventBridge has a different name to mark the new capabilities.
+- The CloudWatch Events name will be replaced with EventBridge.
+
+### 13.7. AWS CloudTrail
+
+- **Is a web service that records activity made on your account and delivers log files to your Amazon S3 bucket. AWS CloudTrail is a service that enables governance, compliance, operational auditing, and risk auditing of your AWS account.**
+- **Can record the history of events/API calls made within you AWS account, which will help determine who or what deleted the resource. You should investigate it first.**
+- Provides governance, compliance and audit for your AWS Account.
+- CloudTrail is enabled by default!
+- Get an history of events / API calls made within your AWS Account by:
+  - Console.
+  - SDK.
+  - CLI.
+  - AWS Services.
+- Can put logs from CloudTrail into CloudWatch Logs or S3.
+- A trail can be applied to All Regions (default) or a single Region.
+- If a resource is deleted in AWS, investigate CloudTrail first!
+
+### 13.8. CloudTrail Events
+
+- Management Events:
+  - Operations that are performed on resources in your AWS account
+  - Examples:
+    - Configuring security (IAM AttachRolePolicy)
+    - Configuring rules for routing data (Amazon EC2 CreateSubnet)
+    - Setting up logging (AWS CloudTrail CreateTrail)
+  - **By default, trails are configured to log management events**.
+  - Can separate Read Events (that don't modify resources) from Write Events (that may modify resources)
+- Data Events:
+  - By default, data events are not logged (because high volume operations)
+  - Amazon S3 object-level activity (ex: GetObject, DeleteObject, PutObject): can separate Read and Write Events
+  - AWS Lambda function execution activity (the Invoke API)
+
+#### 13.8.1. CloudTrail Insights Events
+
+- **AWS CloudTrail Insights helps AWS users identify and respond to unusual activity associated with write API calls by continuously analyzing CloudTrail management events.**
+- Enable **CloudTrail Insights to detect unusual activity** in your account:
+  - Inaccurate resource provisioning.
+  - Hitting service limits.
+  - Bursts of AWS IAM actions.
+  - Gaps in periodic maintenance activity.
+- CloudTrail Insights analyzes normal management events to create a baseline.
+- And then **continuously analyzes write events to detect unusual patterns**.
+  - Anomalies appear in the CloudTrail console.
+  - Event is sent to Amazon S3.
+  - An EventBridge event is generated (for automation needs).
+
+#### 13.8.2. CloudTrail Events Retention
+
+- Events are stored for 90 days in CloudTrail.
+- To keep events beyond this period, log them to S3 and use Athena.
+
+### 13.9. AWS X-Ray
+
+- **AWS X-Ray helps developers analyze and debug production, distributed applications, such as those built using a microservices architecture.**
+- Debugging in Production, the good old way:
+  - Test locally.
+  - Add log statements everywhere.
+  - Re-deploy in production.
+- Log formats differ across applications and log analysis is hard.
+- Debugging: one big monolith "easy", distributed services "hard".
+- No common views of your entire architecture.
+
+#### 13.9.1. AWS X-Ray advantages
+
+- Troubleshooting performance (bottlenecks)
+- Understand dependencies in a microservice architecture
+- Pinpoint service issues
+- Review request behavior
+- Find errors and exceptions
+- Are we meeting time SLA?
+- Where I am throttled?
+- Identify users that are impacted
+
+### 13.10. Amazon CodeGuru
+
+- **Amazon CodeGuru is a developer tool that provides intelligent recommendations to improve code quality and identify an application's most expensive lines of code.**
+- An ML-powered service for **automated code reviews** and **application performance recommendations**.
+- Provides two functionalities
+  - **CodeGuru Reviewer:** automated code reviews for static code analysis (development)
+  - **CodeGuru Profiler:** visibility/recommendations about application performance during runtime (production)
+
+### 13.11. Amazon CodeGuru Reviewer
+
+- Identify critical issues, security vulnerabilities, and hard-to-find bugs.
+- Example: common coding best practices, resource leaks, security detection, input validation.
+- Uses Machine Learning and automated reasoning.
+- Hard-learned lessons across millions of code reviews on 1000s of open-source and Amazon repositories.
+- Supports Java and Python.
+- Integrates with GitHub, Bitbucket, and AWS CodeCommit.
+
+#### 13.11.1. Amazon CodeGuru Profiler
+
+- Helps understand the runtime behavior of your application.
+- Example: identify if your application is consuming excessive CPU capacity on a logging routine.
+- Features:
+  - Identify and remove code inefficiencies.
+  - Improve application performance (e.g., reduce CPU utilization).
+  - Decrease compute costs.
+  - Provides heap summary (identify which objects using up memory).
+  - Anomaly Detection.
+- Support applications running on AWS or on-premise.
+- Minimal overhead on application.
+
+### 13.12. AWS Status - Service Health Dashboard
+
+- Shows all regions, all services health
+- Shows historical information for each day
+- Has an RSS feed you can subscribe to
+- https://status.aws.amazon.com/
+
+### 13.13. AWS Personal Health Dashboard
+
+- AWS Personal Health Dashboard provides **alerts and remediation guidance** when AWS is experiencing **events that may impact you**.
+- While the Service Health Dashboard displays the general status of AWS services, Personal Health Dashboard gives you a **personalized view into the performance and availability of the AWS services underlying your AWS resources**.
+- The dashboard displays **relevant and timely information** to help you manage events in progress and **provides proactive** notification to help you plan for **scheduled activities**.
+- Global service https://phd.aws.amazon.com/
+- Shows how AWS outages directly impact you & your AWS resources.
+- Alert, remediation, proactive, scheduled activities.
+
+### 13.14. Monitoring Summary
+
+- CloudWatch:
+  - Metrics: monitor the performance of AWS services and billing metrics.
+  - Alarms: automate notification, perform EC2 action, notify to SNS based on metric.
+  - Logs: collect log files from EC2 instances, servers, Lambda functions...
+  - Events (or EventBridge): react to events in AWS, or trigger a rule on a schedule.
+- CloudTrail: audit API calls made within your AWS account.
+- CloudTrail Insights: automated analysis of your CloudTrail Events.
+- X-Ray: trace requests made through your distributed applications.
+- Service Health Dashboard: status of all AWS services across all regions.
+- Personal Health Dashboard: AWS events that impact your infrastructure.
+- Amazon CodeGuru: automated code reviews and application performance recommendation.
+
+## 14. VPC
+
+### 14.1. VPC - Crash Course
 
 - At the AWS Certified Cloud Practitioner Level, you should know about:
   - VPC, Subnets, Internet Gateways & NAT Gateways.
@@ -2518,7 +2763,7 @@
   - Transit Gateway.
 - We'll have a look at the "default VPC" (created by default by AWS for you).
 
-### 17.2. VPC & Subnets Primer
+### 14.2. VPC & Subnets Primer
 
 - **A virtual private cloud (VPC) is a virtual network dedicated to your AWS account. It is logically isolated from other virtual networks in the AWS Cloud. You can launch your AWS resources, such as Amazon EC2 instances, into your VPC.**
 - **VPC - Virtual Private Cloud:** private network to deploy your resources (regional resource).
@@ -2527,7 +2772,7 @@
 - A **private subnet** is a subnet that is not accessible from the internet.
 - To define access to the internet and between subnets, we use Route Tables.
 
-### 17.3. Internet Gateway & NAT Gateways
+### 14.3. Internet Gateway & NAT Gateways
 
 - **NAT Gateways allow your instances in your private subnets to access the Internet while remaining private, and are managed by AWS.**
 - **Internet Gateways** helps our VPC instances connect with the internet.
@@ -2536,7 +2781,7 @@
 - **NAT Instances** (self-managed) allow your instances in your **Private Subnets** to access the internet while remaining private.
   - **NAT Instances allow your instances in your private subnets to access the Internet while remaining private, but are managed by you.**
 
-### 17.4. Network ACL & Security Groups
+### 14.4. Network ACL & Security Groups
 
 - **A network access control list (NACL) is an optional layer of security for your VPC that acts as a firewall for controlling traffic in and out of one or more subnets. They have both ALLOW and DENY rules.**
   - **NACL (Network ACL):**
@@ -2549,7 +2794,7 @@
   - Can have only ALLOW rules.
   - Rules include IP addresses and other security groups.
 
-### 17.5. Network ACLs vs Security Groups
+### 14.5. Network ACLs vs Security Groups
 
 | Security group                                                                                                                                               | Network ACL                                                                                                                                                                            |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2561,76 +2806,382 @@
 
 - https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Security.html
 
-### 17.6. VPC Flow Logs
+### 14.6. VPC Flow Logs
 
 - Capture information about IP traffic going into your interfaces:
-  - **VPC Flow** Logs
-  - **Subnet** Flow Logs
-  - **Elastic Network Interface** Flow Logs
+  - **VPC Flow** Logs.
+  - **Subnet** Flow Logs.
+  - **Elastic Network Interface** Flow Logs.
 - Helps to monitor & troubleshoot connectivity issues. Example:
-  - Subnets to internet
-  - Subnets to subnets
-  - Internet to subnets
+  - Subnets to internet.
+  - Subnets to subnets.
+  - Internet to subnets.
 - Captures network information from AWS managed interfaces too: Elastic Load Balancers, ElastiCache, RDS, Aurora, etc...
-- VPC Flow logs data can go to S3 / CloudWatch Logs
+- VPC Flow logs data can go to S3 / CloudWatch Logs.
 
-### 17.7. VPC Peering
+### 14.7. VPC Peering
 
-- Connect two VPC, privately using AWS' network
-- Make them behave as if they were in the same network
-- Must not have overlapping CIDR (IP address range)
-- VPC Peering connection is not transitive (must be established for each VPC that need to communicate with one another)
+- Connect two VPC, privately using AWS' network.
+- Make them behave as if they were in the same network.
+- Must not have overlapping CIDR (IP address range).
+- VPC Peering connection is not transitive (must be established for each VPC that need to communicate with one another).
 
-### 17.8. VPC Endpoints
+### 14.8. VPC Endpoints
 
-- Endpoints allow you to connect to AWS Services **using a private network** instead of the public www network
-- This gives you enhanced security and lower latency to access AWS services
-- VPC Endpoint **Gateway**: S3 & DynamoDB
-- VPC Endpoint **Interface**: the rest
+- Endpoints allow you to connect to AWS Services **using a private network** instead of the public www network.
+- This gives you enhanced security and lower latency to access AWS services.
+- VPC Endpoint **Gateway**: S3 & DynamoDB.
+- VPC Endpoint **Interface**: the rest.
 
-### 17.9. Site to Site VPN & Direct Connect
+### 14.9. Site to Site VPN & Direct Connect
 
 - **Site to Site VPN:**
-  - Connect an on-premises VPN to AWS
-  - The connection is automatically encrypted
-  - Goes over the public internet
+  - Connect an on-premises VPN to AWS.
+  - The connection is automatically encrypted.
+  - Goes over the public internet.
 - **AWS Direct Connect is a cloud service solution that makes it easy to establish a dedicated private network connection from your premises to AWS.**
   - **Direct Connect (DX):**
-    - Establish a physical connection between on-premises and AWS
-    - The connection is private, secure and fast
-    - Goes over a private network
-    - Takes at least a month to establish
+    - Establish a physical connection between on-premises and AWS.
+    - The connection is private, secure and fast.
+    - Goes over a private network.
+    - Takes at least a month to establish.
 
-### 17.10. Site-to-Site VPN
+### 14.10. Site-to-Site VPN
 
 - On-premises: must use a **Customer Gateway** (CGW)
 - AWS: must use a **Virtual Private Gateway** (VGW)
 
-### 17.11. Transit Gateway
+### 14.11. Transit Gateway
 
 - **Transit Gateway connects thousands of VPC and on-premises networks together in a single gateway.**
-- For having transitive peering between thousands of VPC and on-premises, hub-and-spoke (star) connection
-- One single Gateway to provide this functionality
-- Works with Direct Connect Gateway, VPN connections
+- For having transitive peering between thousands of VPC and on-premises, hub-and-spoke (star) connection.
+- One single Gateway to provide this functionality.
+- Works with Direct Connect Gateway, VPN connections.
 
-### 17.12. VPC Closing Comments
+### 14.12. VPC Closing Comments
 
-- VPC: Virtual Private Cloud
-- Subnets:Tied to an AZ, network partition of the VPC
-- Internet Gateway: at the VPC level, provide Internet Access
-- NAT Gateway / Instances: give internet access to private subnets
-- NACL: Stateless, subnet rules for inbound and outbound
-- Security Groups: Stateful, operate at the EC2 instance level or ENI
-- VPC Peering: Connect two VPC with non overlapping IP ranges, nontransitive
-- VPC Endpoints: Provide private access to AWS Services within VPC
-- VPC Flow Logs: network traffic logs
-- Site to Site VPN: VPN over public internet between on-premises DC and AWS
-- Direct Connect: direct private connection to AWS
-- Transit Gateway: Connect thousands of VPC and on-premises networks together
+- VPC: Virtual Private Cloud.
+- Subnets:Tied to an AZ, network partition of the VPC.
+- Internet Gateway: at the VPC level, provide Internet Access.
+- NAT Gateway / Instances: give internet access to private subnets.
+- NACL: Stateless, subnet rules for inbound and outbound.
+- Security Groups: Stateful, operate at the EC2 instance level or ENI.
+- VPC Peering: Connect two VPC with non overlapping IP ranges, nontransitive.
+- VPC Endpoints: Provide private access to AWS Services within VPC.
+- VPC Flow Logs: network traffic logs.
+- Site to Site VPN: VPN over public internet between on-premises DC and AWS.
+- Direct Connect: direct private connection to AWS.
+- Transit Gateway: Connect thousands of VPC and on-premises networks together.
 
-## 18. Machine Learning
+## 15. Security & Compliance
 
-### 18.1. Amazon Rekognition
+### 15.1. AWS Shared Responsibility Model
+
+- AWS responsibility - Security of the Cloud
+  - Protecting infrastructure (hardware, software, facilities, and networking) that runs all the AWS services.
+  - Managed services like S3, DynamoDB, RDS, etc.
+- Customer responsibility - Security in the Cloud
+  - For EC2 instance, customer is responsible for management of the guest OS (including security patches and updates), firewall & network configuration, IAM.
+  - Encrypting application data.
+- Shared controls:
+  - **AWS is responsible for patching and fixing flaws within the infrastructure, but customers are responsible for patching their guest OS and applications. Shared Controls also includes Configuration Management, and Awareness and Training.**
+  - Patch Management, Configuration Management, Awareness & Training.
+
+#### 15.1.1. Example, for RDS
+
+- AWS responsibility:
+  - Manage the underlying EC2 instance, disable SSH access.
+  - Automated DB patching.
+  - Automated OS patching.
+  - Audit the underlying instance and disks & guarantee it functions.
+- Your responsibility:
+  - Check the ports / IP / security group inbound rules in DB's SG.
+  - In-database user creation and permissions.
+  - Creating a database with or without public access.
+  - Ensure parameter groups or DB is configured to only allow SSL connections.
+  - Database encryption setting.
+
+#### 15.1.2. Example, for S3
+
+- AWS responsibility:
+  - Guarantee you get unlimited storage.
+  - Guarantee you get encryption.
+  - Ensure separation of the data between different customers.
+  - Ensure AWS employees can't access your data.
+- Your responsibility:
+  - Bucket configuration.
+  - Bucket policy / public setting.
+  - IAM user and roles.
+  - Enabling encryption.
+
+### 15.2. DDOS Protection on AWS
+
+- DDOS = Distributed Denial-of-Service
+- **AWS Shield Standard:** protects against DDOS attack for your website and applications, for all customers at no additional costs
+- **AWS Shield Advanced:** 24/7 premium DDoS protection
+- **AWS WAF:** Filter specific requests based on rules
+- **CloudFront and Route 53:**
+  - Availability protection using global edge network
+  - Combined with AWS Shield, provides attack mitigation at the edge
+- Be ready to scale - leverage **AWS Auto Scaling**
+
+### 15.3. AWS Shield
+
+- **AWS Shield Standard:**
+  - Free service that is activated for every AWS customer.
+  - Provides protection from attacks such as SYN/UDP Floods, Reflection attacks and other layer 3/layer 4 attacks.
+- **AWS Shield Advanced:**
+  - Optional DDoS mitigation service ($3,000 per month per organization).
+  - Protect against more sophisticated attack on Amazon EC2, Elastic Load Balancing (ELB), Amazon CloudFront, AWS Global Accelerator, and Route 53.
+  - 24/7 access to AWS DDoS response team (DRP).
+  - Protect against higher fees during usage spikes due to DDoS.
+
+### 15.4. AWS WAF - Web Application Firewall
+
+- **AWS WAF is a web application firewall that helps protect your web applications or APIs against common web exploits that may affect availability, compromise security, or consume excessive resources.**
+- Protects your web applications from common web exploits (Layer 7).
+- **Layer 7 is HTTP** (vs Layer 4 is TCP).
+- Deploy on **Application Load Balancer, API Gateway, CloudFront**.
+- Define Web ACL (Web Access Control List):
+  - Rules can include IP addresses, HTTP headers, HTTP body, or URI strings.
+  - Protects from common attack - **SQL injection** and **Cross-Site Scripting (XSS)**.
+  - Size constraints, **geo-match (block countries)**.
+  - Rate-based rules (to count occurrences of events) - for DDoS protection.
+
+### 15.5. Penetration Testing on AWS Cloud
+
+- AWS customers are welcome to carry out security assessments or penetration tests against their AWS infrastructure **without prior approval for 8 services**:
+  - Amazon EC2 instances, NAT Gateways, and Elastic Load Balancers.
+  - Amazon RDS.
+  - Amazon CloudFront.
+  - Amazon Aurora.
+  - Amazon API Gateways.
+  - AWS Lambda and Lambda Edge functions.
+  - Amazon Lightsail resources.
+  - Amazon Elastic Beanstalk environments.
+- List can increase over time...
+- **Prohibited Activities**
+  - DNS zone walking via Amazon Route 53 Hosted Zones.
+  - Denial of Service (DoS), Distributed Denial of Service (DDoS), Simulated DoS, Simulated DDoS.
+  - Port flooding.
+  - Protocol flooding.
+  - Request flooding (login request flooding, API request flooding).
+- For any other simulated events, contact aws-security-simulated-event@amazon.com.
+- Read more: https://aws.amazon.com/security/penetration-testing/.
+
+### 15.6. Data at rest vs. Data in transit
+
+- **At rest:** data stored or archived on a device.
+  - On a hard disk, on a RDS instance, in S3 Glacier Deep Archive, etc.
+- **In transit (in motion):** data being moved from one location to another.
+  - Transfer from on-premises to AWS, EC2 to DynamoDB, etc.
+  - Means data transferred on the network.
+- We want to encrypt data in both states to protect it!
+- For this we leverage **encryption keys**.
+
+### 15.7. AWS KMS (Key Management Service)
+
+- Anytime you hear "encryption" for an AWS service, it's most likely KMS.
+- KMS = **AWS manages the encryption keys for us**.
+- **Encryption Opt-in:**
+  - EBS volumes: encrypt volumes.
+  - S3 buckets: Server-side encryption of objects.
+  - Redshift database: encryption of data.
+  - RDS database: encryption of data.
+  - EFS drives: encryption of data.
+- **Encryption Automatically enabled:**
+  - CloudTrail Logs.
+  - S3 Glacier.
+  - Storage Gateway.
+
+### 15.8. CloudHSM
+
+- KMS => AWS manages the software for encryption.
+- CloudHSM => AWS provisions encryption hardware.
+- Dedicated Hardware (HSM = Hardware Security Module).
+- You manage your own encryption keys entirely (not AWS).
+- HSM device is tamper resistant, FIPS 140-2 Level 3 compliance.
+
+### 15.9. Types of CMK (Customer Master Keys)
+
+- **Customer Managed CMK:**
+  - Create, manage and used by the customer, can enable or disable.
+  - Possibility of rotation policy (new key generated every year, old key preserved).
+  - Possibility to bring-your-own-key.
+- **AWS managed CMK:**
+  - Created, managed and used on the customer's behalf by AWS.
+  - Used by AWS services (aws/s3, aws/ebs, aws/redshift).
+- **AWS owned CMK:**
+  - Collection of CMKs that an AWS service owns and manages to use in multiple accounts.
+  - AWS can use those to protect resources in your account (but you can't view the keys).
+- **CloudHSM Keys (custom keystore):**
+  - Keys generated from your own CloudHSM hardware device.
+  - Cryptographic operations are performed within the CloudHSM cluster.
+
+### 15.10. AWS Certificate Manager (ACM)
+
+- **AWS Certificate Manager is a service that lets you easily provision, manage, and deploy public and private Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificates for use with AWS services and your internal connected resources.**
+- Used to provide in-flight encryption for websites (HTTPS).
+- Supports both public and private TLS certificates.
+- Free of charge for public TLS certificates.
+- Automatic TLS certificate renewal.
+- Integrations with (load TLS certificates on):
+  - Elastic Load Balancers.
+  - CloudFront Distributions.
+  - APIs on API Gateway Auto Scaling group.
+
+### 15.11. AWS Secrets Manager
+
+- Newer service, meant for storing secrets.
+- Capability to force **rotation of secrets** every X days.
+- Automate generation of secrets on rotation (uses Lambda).
+- Integration with Amazon RDS (MySQL, PostgreSQL, Aurora).
+- Secrets are encrypted using KMS.
+- Mostly meant for RDS integration.
+
+### 15.12. AWS Artifact (not really a service)
+
+- **AWS Artifact is your go-to, central resource for compliance-related information that matters to you.**
+- Portal that provides customers with on-demand access to AWS compliance documentation and AWS agreements.
+- **Artifact Reports** - Allows you to download AWS security and compliance documents from third-party auditors, like AWS ISO certifications, Payment Card Industry (PCI), and System and Organization Control (SOC) reports.
+- **Artifact Agreements** - Allows you to review, accept, and track the status of AWS agreements such as the Business Associate Addendum (BAA) or the Health Insurance Portability and Accountability Act (HIPAA) for an individual account or in your organization.
+- Can be used to support internal audit or compliance.
+
+### 15.13. Amazon GuardDuty
+
+- **Amazon GuardDuty is a threat detection service that continuously monitors for malicious activity and unauthorized behavior to protect your AWS accounts and workloads.**
+- Intelligent Threat discovery to Protect AWS Account.
+- Uses Machine Learning algorithms, anomaly detection, 3rd party data.
+- One click to enable (30 days trial), no need to install software.
+- Input data includes:
+  - CloudTrail Events Logs - unusual API calls, unauthorized deployments.
+    - CloudTrail Management Events - create VPC subnet, create trail, ...
+    - CloudTrail S3 Data Events - get object, list objects, delete object, ...
+  - VPC Flow Logs - unusual internal traffic, unusual IP address.
+  - DNS Logs - compromised EC2 instances sending encoded data within DNS queries.
+  - Kubernetes Audit Logs - suspicious activities and potential EKS cluster compromises.
+- Can setup CloudWatch Event rules to be notified in case of findings.
+- CloudWatch Events rules can target AWS Lambda or SNS.
+- Can protect against CryptoCurrency attacks (has a dedicated "finding" for it).
+
+### 15.14. Amazon Inspector
+
+- **Amazon Inspector is an automated security assessment service that helps improve the security and compliance of applications deployed on AWS. It helps you test the network accessibility of your Amazon EC2 instances and the security state of your applications running on the instances.**
+- **Automated Security Assessments**.
+- **For EC2 instances:**
+  - Leveraging the AWS System Manager (SSM) agent.
+  - Analyze against unintended network accessibility.
+  - Analyze the running OS against known vulnerabilities.
+- **For Containers push to Amazon ECR:**
+  - Assessment of containers as they are pushed.
+- Reporting & integration with AWS Security Hub.
+- Send findings to Amazon Event Bridge.
+
+#### 15.14.1. What does AWS Inspector evaluate?
+
+- **Only for EC2 instances and container infrastructure**.
+- Continuous scanning of the infrastructure, only when needed.
+- Package vulnerabilities (EC2 & ECR) - database of CVE.
+- Network reachability (EC2).
+- A risk score is associated with all vulnerabilities for prioritization.
+
+### 15.15. AWS Config
+
+- **AWS Config is a service that enables you to assess, audit, and evaluate the configurations of your AWS resources.**
+- Helps with **auditing and recording compliance of your AWS resources**.
+- Helps record configurations and changes over time.
+- Possibility of storing the configuration data into S3 (analyzed by Athena).
+- Questions that can be solved by AWS Config:
+  - Is there unrestricted SSH access to my security groups?
+  - Do my buckets have any public access?
+  - How has my ALB configuration changed over time?
+- You can receive alerts (SNS notifications) for any changes.
+- AWS Config is a per-region service.
+- Can be aggregated across regions and accounts.
+
+### 15.16. Amazon Macie
+
+- Amazon Macie is a fully managed data security and data privacy service that uses **machine learning and pattern matching to discover and protect your sensitive data in AWS**.
+- Macie helps identify and alert you to **sensitive data, such as personally identifiable information (PII)**.
+
+### 15.17. AWS Security Hub
+
+- **AWS Security Hub provides you with a comprehensive view of your security state within AWS and your compliance with security standards and best practices.**
+- Central security tool to manage security across several AWS accounts and automate security checks.
+- Integrated dashboards showing current security and compliance status to quickly take actions.
+- Automatically aggregates alerts in predefined or personal findings formats from various AWS services & AWS partner tools:
+  - GuardDuty.
+  - Inspector.
+  - Macie.
+  - IAM Access Analyzer.
+  - AWS Systems Manager.
+  - AWS Firewall Manager.
+  - AWS Partner Network Solutions.
+- Must first enable the AWS Config Service.
+
+### 15.18. Amazon Detective
+
+- Amazon Detective **analyzes, investigates, and quickly identifies the root cause of security issues or suspicious activities (using ML and graphs)**.
+- GuardDuty, Macie, and Security Hub are used to identify potential security issues, or findings.
+- Sometimes security findings require deeper analysis to isolate the root cause and take action - it's a complex process.
+- Automatically collects and processes events from VPC Flow Logs, CloudTrail, GuardDuty and create a unified view.
+- Produces visualizations with details and context to get to the root cause.
+
+### 15.19. AWS Abuse
+
+- **Report suspected AWS resources used for abusive or illegal purposes**.
+- Abusive & prohibited behaviors are:
+  - **Spam** - receving undesired emails from AWS-owned IP address, websites & forums spammed by AWS resources.
+  - **Port scanning**- sending packets to your ports to discover the unsecured ones.
+  - **DoS or DDoS attacks** - AWS-owned IP addresses attempting to overwhlem or crash your servers/softwares.
+  - **Intrusion attempts** - logging in on your resources.
+  - **Hosting objectionable** or copyrighted content - distributing illegal or copyrighted content without consent.
+  - **Distributing malware** - AWS resources distributing softwares to harm computers or machines.
+- Contact the AWS Abuse team: AWS abuse form, or abuse@amazonaws.com.
+
+### 15.20. Root user privileges
+
+- Root user = Account Owner (created when the account is created).
+- Has complete access to all AWS services and resources.
+- **Lock away your AWS account root user access keys!**.
+- Do not use the root account for everyday tasks, even administrative tasks.
+- Actions that can be performed only by the root user:
+  - Change account settings (account name, email address, root user password, root user access keys).
+  - View certain tax invoices.
+  - Close your AWS account.
+  - Restore IAM user permissions.
+  - Change or cancel your AWS Support plan.
+  - Register as a seller in the Reserved Instance Marketplace.
+  - Configure an Amazon S3 bucket to enable MFA.
+  - Edit or delete an Amazon S3 bucket policy that includes an invalid VPC ID or VPC endpoint ID.
+  - Sign up for GovCloud.
+
+### 15.21. Summary: Security & Compliance
+
+- Shared Responsibility on AWS
+- Shield: Automatic DDoS Protection + 24/7 support for advanced
+- WAF: Firewall to filter incoming requests based on rules
+- KMS: Encryption keys managed by AWS
+- CloudHSM: Hardware encryption, we manage encryption keys
+- AWS Certificate Manager: provision, manage, and deploy SSL/TLS Certificates
+- Artifact: Get access to compliance reports such as PCI, ISO, etc...
+- GuardDuty: Find malicious behavior with VPC, DNS & CloudTrail Logs
+- Inspector: For EC2 only, install agent and find vulnerabilities
+- Config: Track config changes and compliance against rules
+- Macie: Find sensitive data (ex: PII data) in Amazon S3 buckets
+- CloudTrail: Track API calls made by users within account
+- AWS Security Hub: gather security findings from multiple AWS accounts
+- Amazon Detective: find the root cause of security issues or suspicious activities
+- AWS Abuse: Report AWS resources used for abusive or illegal purposes
+- Root user privileges:
+  - Change account settings
+  - Close your AWS account
+  - Change or cancel your AWS Support plan
+  - Register as a seller in the Reserved Instance Marketplace
+
+## 16. Machine Learning
+
+### 16.1. Amazon Rekognition
 
 - **Amazon Rekognition makes it easy to add image and video analysis to your applications using proven, highly scalable, deep learning technology that requires no machine learning expertise to use.**
 - Find objects, people, text, scenes in images and videos using ML.
@@ -2645,7 +3196,7 @@
   - Celebrity Recognition.
   - Pathing (ex: for sports game analysis).
 
-### 18.2. Amazon Transcribe
+### 16.2. Amazon Transcribe
 
 - **Amazon Transcribe is an AWS service that makes it easy for customers to convert speech-to-text.**
 - Automatically convert speech to text.
@@ -2655,19 +3206,19 @@
   - Automate closed captioning and subtitling.
   - Generate metadata for media assets to create a fully searchable archive.
 
-### 18.3. Amazon Polly
+### 16.3. Amazon Polly
 
 - **Amazon Polly is a service that turns text into lifelike speech.**
-- Turn text into lifelike speech using deep learning
-- Allowing you to create applications that talk
+- Turn text into lifelike speech using deep learning.
+- Allowing you to create applications that talk.
 
-### 18.4. Amazon Translate
+### 16.4. Amazon Translate
 
 - **Amazon Translate is a neural machine translation service that delivers fast, high-quality, and affordable language translation.**
 - Natural and accurate **language translation**.
 - Amazon Translate allows you to **localize content** - such as websites and applications - for **international users**, and to easily translate large volumes of text efficiently.
 
-### 18.5. Amazon Lex & Connect
+### 16.5. Amazon Lex & Connect
 
 - **Amazon Lex is a service for building conversational interfaces into any application using voice and text. Lex provides the advanced deep learning functionalities of automatic speech recognition (ASR) for converting speech to text, and natural language understanding (NLU) to recognize the intent of the text, to enable you to build applications with highly engaging user experiences and lifelike conversational interactions.**
 - **Amazon Lex:** (same technology that powers Alexa).
@@ -2680,7 +3231,7 @@
   - Can integrate with other CRM systems or AWS.
   - No upfront payments, 80% cheaper than traditional contact center solutions.
 
-### 18.6. Amazon Comprehend
+### 16.6. Amazon Comprehend
 
 - **Amazon Comprehend is a natural language processing (NLP) service that uses machine learning to find meaning and insights in text.**
 - For **Natural Language Processing - NLP**.
@@ -2695,14 +3246,14 @@
   - Analyze customer interactions (emails) to find what leads to a positive or negative experience.
   - Create and groups articles by topics that Comprehend will uncover.
 
-### 18.7. Amazon SageMaker
+### 16.7. Amazon SageMaker
 
 - **Amazon SageMaker is a fully managed service that provides every developer and data scientist with the ability to build, train, and deploy machine learning (ML) models quickly. SageMaker removes the heavy lifting from each step of the machine learning process to make it easier to develop high quality models.**
 - Fully managed service for developers / data scientists to build ML models.
 - Typically, difficult to do all the processes in one place + provision servers.
 - Machine learning process (simplified): predicting your exam score.
 
-### 18.8. Amazon Forecast
+### 16.8. Amazon Forecast
 
 - Fully managed service that uses ML to deliver highly accurate forecasts.
 - Example: predict the future sales of a raincoat.
@@ -2710,26 +3261,27 @@
 - Reduce forecasting time from months to hours.
 - Use cases: Product Demand Planning, Financial Planning, Resource Planning, ...
 
-### 18.9. Amazon Kendra
-- **Amazon Kendra is a highly accurate and easy to use enterprise search service that’s powered by machine learning.**
+### 16.9. Amazon Kendra
+
+- **Amazon Kendra is a highly accurate and easy to use enterprise search service that's powered by machine learning.**
 - Fully managed **document search service** powered by Machine Learning.
 - Extract answers from within a document (text, pdf, HTML, PowerPoint, MS Word, FAQs...).
 - Natural language search capabilities.
 - Learn from user interactions/feedback to promote preferred results **(Incremental Learning)**.
 - Ability to manually fine-tune search results (importance of data, freshness, custom, ...).
 
-### 18.10. Amazon Personalize
+### 16.10. Amazon Personalize
 
 - **Amazon Personalize is a machine learning service that makes it easy for developers to create individualized recommendations for customers using their applications.**
 - Fully managed ML-service to build apps with real-time personalized recommendations.
-- Example: personalized product recommendations/re-ranking, customized direct marketing
-  - Example: User bought gardening tools, provide recommendations on the next one to buy
-- Same technology used by Amazon.com
+- Example: personalized product recommendations/re-ranking, customized direct marketing.
+  - Example: User bought gardening tools, provide recommendations on the next one to buy.
+- Same technology used by Amazon.com.
 - Integrates into existing websites, applications, SMS, email marketing systems, ...
-- Implement in days, not months (you don’t need to build, train, and deploy ML solutions)
+- Implement in days, not months (you don't need to build, train, and deploy ML solutions).
 - Use cases: retail stores, media and entertainment...
 
-### 18.11. AWS Machine Learning - Summary
+### 16.11. AWS Machine Learning - Summary
 
 - Rekognition: face detection, labeling, celebrity recognition.
 - Transcribe: audio to text (ex: subtitles).
@@ -2743,9 +3295,9 @@
 - Kendra: ML-powered search engine.
 - Personalize: real-time personalized recommendations.
 
-## 19. Advanced Identity
+## 17. Advanced Identity
 
-### 19.1. AWS STS (SecurityToken Service)
+### 17.1. AWS STS (SecurityToken Service)
 
 - **AWS Security Token Service (AWS STS) is a web service that enables you to request temporary, limited-privilege credentials for AWS Identity and Access Management (IAM) users or for users that you authenticate (federated users).**
 - Enables you to create temporary, limited- privileges credentials to access your AWS resources.
@@ -2755,19 +3307,19 @@
   - IAM Roles for cross/same account access.
   - IAM Roles for Amazon EC2: provide temporary credentials for EC2 instances to access AWS resources.
 
-### 19.2. Amazon Cognito
+### 17.2. Amazon Cognito
 
 - **Amazon Cognito lets you add user sign-up, sign-in, and access control to your web and mobile apps quickly and easily.**
 - Identity for your Web and Mobile applications users (potentially millions).
 - Instead of creating them an IAM user, you create a user in Cognito.
 
-### 19.3. What is Microsoft Active Directory (AD)?
+### 17.3. What is Microsoft Active Directory (AD)?
 
 - Found on any Windows Server with AD Domain Services.
 - Database of objects: User Accounts, Computers, Printers, File Shares, Security Groups.
 - Centralized security management, create account, assign permissions.
 
-#### 19.3.1. AWS Directory Services
+#### 17.3.1. AWS Directory Services
 
 - **AWS Directory Service makes it easy for you to setup and run directories in the AWS cloud, or connect your AWS resources with an existing on-premises Microsoft Active Directory.**
 - **AWS Managed Microsoft AD:**
@@ -2780,18 +3332,18 @@
   - AD-compatible managed directory on AWS.
   - Cannot be joined with on-premise AD.
 
-### 19.4. AWS Organizations
+### 17.4. AWS Organizations
 
 - Organizations helps you to centrally manage billing; control access, compliance, and security; and share resources across your AWS accounts.
 
-### 19.5. AWS Single Sign-On (SSO)
+### 17.5. AWS Single Sign-On (SSO)
 
 - Centrally manage Single Sign-On to access multiple accounts and 3rd-party business applications.
 - Integrated with AWS Organizations.
 - Supports SAML 2.0 markup.
 - Integration with on-premise Active Directory.
 
-### 19.6. Advanced Identity - Summary
+### 17.6. Advanced Identity - Summary
 
 - IAM:
   - Identity and Access Management inside your AWS account.
@@ -2803,9 +3355,9 @@
 - Directory Services: integrate Microsoft Active Directory in AWS.
 - Single Sign-On (SSO): one login for multiple AWS accounts & applications.
 
-## 20. Other AWS Services
+## 18. Other AWS Services
 
-### 20.1. Amazon WorkSpaces
+### 18.1. Amazon WorkSpaces
 
 - **Amazon WorkSpaces is a fully managed, secure cloud desktop service. You can use Amazon WorkSpaces to provision either Windows or Linux desktops in just a few minutes and quickly scale to provide thousands of desktops to workers across the globe.**
 - Managed Desktop as a Service (DaaS) solution to easily provision Windows or Linux desktops.
@@ -2814,14 +3366,14 @@
 - Secured data - integrates with KMS.
 - Pay-as-you-go service with monthly or hourly rates.
 
-### 20.2. Amazon AppStream 2.0
+### 18.2. Amazon AppStream 2.0
 
 - **Amazon AppStream 2.0 is a fully managed non-persistent application and desktop streaming service that provides users instant access to their desktop applications from anywhere.**
 - Desktop Application Streaming Service.
 - Deliver to any computer, without acquiring, provisioning infrastructure.
 - The application is delivered from within a web browser.
 
-#### 20.2.1. Amazon AppStream 2.0 vs WorkSpaces
+#### 18.2.1. Amazon AppStream 2.0 vs WorkSpaces
 
 - **Workspaces:**
   - Fully managed VDI and desktop available.
@@ -2832,7 +3384,7 @@
   - Works with any device (that has a web browser).
   - Allow to configure an instance type per application type (CPU, RAM, GPU).
 
-### 20.3. Amazon Sumerian
+### 18.3. Amazon Sumerian
 
 - **Amazon Sumerian is a managed service that lets you create and run 3D, Augmented Reality (AR) and Virtual Reality (VR) applications. You can build immersive and interactive scenes that run on AR and VR, mobile devices, and your web browser.**
 - Create and run virtual reality (VR), augmented reality (AR), and 3D applications.
@@ -2840,7 +3392,7 @@
 - Ready-to-use templates and assets - no programming or 3D expertise required.
 - Accessible via a web-browser URLs or on popular hardware for AR/VR.
 
-### 20.4. AWS IoT Core
+### 18.4. AWS IoT Core
 
 - **AWS IoT Core, is serverless and lets you connect billions of devices to the AWS Cloud, lets you securely connect IoT devices to the AWS Cloud and other devices without the need to provision or manage servers.**
 - IoT stands for "Internet of Things" - the network of internet-connected devices that are able to collect and transfer data.
@@ -2850,7 +3402,7 @@
 - Integrates with a lot of AWS services (Lambda, S3, SageMaker, etc.).
 - Build IoT applications that gather, process, analyze, and act on data.
 
-### 20.5. Amazon Elastic Transcoder
+### 18.5. Amazon Elastic Transcoder
 
 - **Amazon Elastic Transcoder is media transcoding in the cloud. It is used to convert media files from their source format into versions that will play back on devices like smartphones, tablets, and PCs.**
 - Elastic Transcoder is used to convert media files stored in S3 into media files in the formats required by consumer playback devices (phones etc..)
@@ -2860,14 +3412,14 @@
   - Cost effective - duration-based pricing model.
   - Fully managed & secure, pay for what you use.
 
-### 20.6. AWS Device Farm
+### 18.6. AWS Device Farm
 
 - **AWS Device Farm is an application testing service that lets you improve the quality of your web and mobile apps by testing them across an extensive range of desktop browsers and real mobile devices; without having to provision and manage any testing infrastructure.**
 - Fully-managed service that tests your web and mobile apps against desktop browsers, real mobile devices, and tablets.
 - Run tests concurrently on multiple devices (speed up execution).
 - Ability to configure device settings (GPS, language, Wi-Fi, Bluetooth, ...).
 
-### 20.7. AWS Backup
+### 18.7. AWS Backup
 
 - **AWS Backup is a centralized backup service that makes it easy and cost-effective for you to backup your application data across AWS services in the AWS Cloud. CloudEndure Disaster Recovery minimizes downtime and data loss by providing fast, reliable recovery into AWS of your physical, virtual, and cloud-based servers.**
 - Fully-managed service to centrally manage and automate backups across AWS services.
@@ -2877,38 +3429,38 @@
 - Cross-Region Backup.
 - Cross-Account Backup (using AWS Organizations).
 
-#### 20.7.1. Disaster Recovery Strategies
+#### 18.7.1. Disaster Recovery Strategies
 
 - Backup and Restore (Cheapest)
 - Pilot Light
 - Multi-Site / Hot-Site
 - Warm Standby
 
-### 20.8. AWS Elastic Disaster Recovery (DRS)
+### 18.8. AWS Elastic Disaster Recovery (DRS)
 
-- Used to be named "CloudEndure Disaster Recovery"
-- Quickly and easily recover your physical, virtual, and cloud-based servers into AWS
+- Used to be named "CloudEndure Disaster Recovery".
+- Quickly and easily recover your physical, virtual, and cloud-based servers into AWS.
 - Example: protect your most critical databases (including Oracle, MySQL, and SQL Server), enterprise apps (SAP), protect your data from ransomware attacks, ...
-- Continuous block-level replication for your servers
+- Continuous block-level replication for your servers.
 
-### 20.9. AWS DataSync
+### 18.9. AWS DataSync
 
-- Move large amount of data from on-premises to AWS
-- Can synchronize to: Amazon S3 (any storage classes - including Glacier), Amazon EFS, Amazon FSx for Windows
-- Replication tasks can be scheduled hourly, daily, weekly
-- The replication tasks are **incremental** after the first full load
+- Move large amount of data from on-premises to AWS.
+- Can synchronize to: Amazon S3 (any storage classes - including Glacier), Amazon EFS, Amazon FSx for Windows.
+- Replication tasks can be scheduled hourly, daily, weekly.
+- The replication tasks are **incremental** after the first full load.
 
-### 20.10. AWS Fault Injection Simulator (FIS)
+### 18.10. AWS Fault Injection Simulator (FIS)
 
-- A fully managed service for running fault injection experiments on AWS workloads
-- Based on **Chaos Engineering** - stressing an application by creating disruptive events (e.g., sudden increase in CPU or memory), observing how the system responds, and implementing improvements
-- Helps you uncover hidden bugs and performance bottlenecks
+- A fully managed service for running fault injection experiments on AWS workloads.
+- Based on **Chaos Engineering** - stressing an application by creating disruptive events (e.g., sudden increase in CPU or memory), observing how the system responds, and implementing improvements.
+- Helps you uncover hidden bugs and performance bottlenecks.
 - Supports the following AWS services: EC2, ECS, EKS, RDS...
-- Use pre-built templates that generate the desired disruptions
+- Use pre-built templates that generate the desired disruptions.
 
-## 21. AWS related Abbreviations & Acronyms
+## 19. AWS related Abbreviations & Acronyms
 
-### 21.1. A
+### 19.1. A
 
 - AWS Amazon Web Services
 - Amazon ES Amazon Elasticsearch Service
@@ -2925,11 +3477,11 @@
 - ADFS Active Directory Federation Service
 - AVX Advanced Vector Extensions
 
-### 21.2. B
+### 19.2. B
 
 - BYOL Bring Your Own License
 
-### 21.3. C
+### 19.3. C
 
 - CDN Content Delivery Network
 - CRC Cyclic Redundancy Check
@@ -2939,7 +3491,7 @@
 - CRR Cross Region Replication
 - CI/CD Continuous Integration/Continuous Deployment
 
-### 21.4. D
+### 19.4. D
 
 - DMS Database Migration Service
 - DNS Domain Name System
@@ -2947,7 +3499,7 @@
 - DoS Denial of Service
 - DaaS Desktop as-a-Service
 
-### 21.5. E
+### 19.5. E
 
 - EC2 Elastic Compute Cloud
 - ECS EC2 Container Service
@@ -2965,12 +3517,12 @@
 - ENI Elastic Network Interface
 - ECU EC2 Compute Unit
 
-### 21.6. F
+### 19.6. F
 
 - FIFO First In First Out
 - FaaS Function as-a-Service
 
-### 21.7. H
+### 19.7. H
 
 - HPC High-Performance Compute
 - HVM Hardware Virtual Machine
@@ -2978,7 +3530,7 @@
 - HTTPS HTTP Secure
 - HDK Hardware Development Kit
 
-### 21.8. I
+### 19.8. I
 
 - IAM Identity & Access Management
 - iOT Internet Of Things
@@ -2991,29 +3543,30 @@
 - IPSec Internet Protocol Security
 - IaaS Infrastructure-as-a-Service
 
-### 21.9. J
+### 19.9. J
 
 - JSON JavaScript Object Notation
 
-### 21.10. K
+### 19.10. K
 
 - KMS Key Management Service
 - KVM Kernel-based Virtual Machine
 
-### 21.11. L
+### 19.11. L
 
 - LB Load Balancer
 - LCU Load Balancer Capacity Unit
 
-### 21.12. M
+### 19.12. M
 
 - MFA Multi-Factor Authentication
 - MSTSC Microsoft Terminal Service Client
 - MPP Massive Parallel Processing
 - MITM Man in the Middle Attack
+- ML Machine Learning
 - MPLS Multi Protocol Label Switching
 
-### 21.13. N
+### 19.13. N
 
 - NACL Network Access Control List
 - NLP Natural Language Processing
@@ -3022,24 +3575,24 @@
 - NAT Network Address Translation
 - NVMe Non-Volatile Memory Express
 
-### 21.14. O
+### 19.14. O
 
 - OLTP Online Transaction Processing
 - OLAP Online Analytics Processing
 - OCI Open Container Initiative
 
-### 21.15. P
+### 19.15. P
 
 - PCI DSS Payment Card Industry Data Security Standard
 - PVM Para Virtual Machine
 - PV ParaVirtual
 - PaaS Platform as a Service
 
-### 21.16. Q
+### 19.16. Q
 
 - QLDB Quantum Ledger Database
 
-### 21.17. R
+### 19.17. R
 
 - RAIDRedundant Array of Independent Disk
 - RDS Relational Database Service
@@ -3048,7 +3601,7 @@
 - RAM Random-access Memory
 - RIE Runtime Interface Emulator
 
-### 21.18. S
+### 19.18. S
 
 - SSEServer Side Encryption
 - S3 Simple Storage Service
@@ -3076,7 +3629,7 @@
 - STS Security Token Service
 - SNI Server Name Indication
 
-### 21.19. T
+### 19.19. T
 
 - TTL Time To Live
 - TLS Transport Layer Security
@@ -3086,7 +3639,7 @@
 - TPS Transaction Per Second
 - TCP Transmission Control Protocol
 
-### 21.20. V
+### 19.20. V
 
 - VPC Virtual Private Cloud
 - VM Virtual Machine
@@ -3096,11 +3649,11 @@
 - VDI Virtual Desktop Infrastructure
 - VPG Virtual Private Gateway
 
-### 21.21. W
+### 19.21. W
 
 - WAFWeb Application Firewall
 
-## 22. Commands
+## 20. Commands
 
 - List of AWS Regions
   - aws ec2 describe-regions
