@@ -293,50 +293,109 @@
   - [16.9. Amazon Kendra](#169-amazon-kendra)
   - [16.10. Amazon Personalize](#1610-amazon-personalize)
   - [16.11. AWS Machine Learning - Summary](#1611-aws-machine-learning---summary)
-- [17. Advanced Identity](#17-advanced-identity)
-  - [17.1. AWS STS (SecurityToken Service)](#171-aws-sts-securitytoken-service)
-  - [17.2. Amazon Cognito](#172-amazon-cognito)
-  - [17.3. What is Microsoft Active Directory (AD)?](#173-what-is-microsoft-active-directory-ad)
-    - [17.3.1. AWS Directory Services](#1731-aws-directory-services)
-  - [17.4. AWS Organizations](#174-aws-organizations)
-  - [17.5. AWS Single Sign-On (SSO)](#175-aws-single-sign-on-sso)
-  - [17.6. Advanced Identity - Summary](#176-advanced-identity---summary)
-- [18. Other AWS Services](#18-other-aws-services)
-  - [18.1. Amazon WorkSpaces](#181-amazon-workspaces)
-  - [18.2. Amazon AppStream 2.0](#182-amazon-appstream-20)
-    - [18.2.1. Amazon AppStream 2.0 vs WorkSpaces](#1821-amazon-appstream-20-vs-workspaces)
-  - [18.3. Amazon Sumerian](#183-amazon-sumerian)
-  - [18.4. AWS IoT Core](#184-aws-iot-core)
-  - [18.5. Amazon Elastic Transcoder](#185-amazon-elastic-transcoder)
-  - [18.6. AWS Device Farm](#186-aws-device-farm)
-  - [18.7. AWS Backup](#187-aws-backup)
-    - [18.7.1. Disaster Recovery Strategies](#1871-disaster-recovery-strategies)
-  - [18.8. AWS Elastic Disaster Recovery (DRS)](#188-aws-elastic-disaster-recovery-drs)
-  - [18.9. AWS DataSync](#189-aws-datasync)
-  - [18.10. AWS Fault Injection Simulator (FIS)](#1810-aws-fault-injection-simulator-fis)
-- [19. AWS related Abbreviations & Acronyms](#19-aws-related-abbreviations--acronyms)
-  - [19.1. A](#191-a)
-  - [19.2. B](#192-b)
-  - [19.3. C](#193-c)
-  - [19.4. D](#194-d)
-  - [19.5. E](#195-e)
-  - [19.6. F](#196-f)
-  - [19.7. H](#197-h)
-  - [19.8. I](#198-i)
-  - [19.9. J](#199-j)
-  - [19.10. K](#1910-k)
-  - [19.11. L](#1911-l)
-  - [19.12. M](#1912-m)
-  - [19.13. N](#1913-n)
-  - [19.14. O](#1914-o)
-  - [19.15. P](#1915-p)
-  - [19.16. Q](#1916-q)
-  - [19.17. R](#1917-r)
-  - [19.18. S](#1918-s)
-  - [19.19. T](#1919-t)
-  - [19.20. V](#1920-v)
-  - [19.21. W](#1921-w)
-- [20. Commands](#20-commands)
+- [17. Account Management, Billing & Support](#17-account-management-billing--support)
+  - [17.1. AWS Organizations](#171-aws-organizations)
+    - [17.1.1. Multi Account Strategies](#1711-multi-account-strategies)
+    - [17.1.2. Service Control Policies (SCP)](#1712-service-control-policies-scp)
+    - [17.1.3. AWS Organization - Consolidated Billing](#1713-aws-organization---consolidated-billing)
+  - [17.2. AWS Control Tower](#172-aws-control-tower)
+  - [17.3. Pricing Models in AWS](#173-pricing-models-in-aws)
+    - [17.3.1. Free services & free tier in AWS](#1731-free-services--free-tier-in-aws)
+    - [17.3.2. Compute Pricing - EC2](#1732-compute-pricing---ec2)
+    - [17.3.3. Compute Pricing - Lambda & ECS](#1733-compute-pricing---lambda--ecs)
+    - [17.3.4. Storage Pricing - S3](#1734-storage-pricing---s3)
+    - [17.3.5. Storage Pricing - EBS](#1735-storage-pricing---ebs)
+    - [17.3.6. Database Pricing - RDS](#1736-database-pricing---rds)
+    - [17.3.7. Content Delivery - CloudFront](#1737-content-delivery---cloudfront)
+      - [17.3.7.1. Networking Costs in AWS per GB - Simplified](#17371-networking-costs-in-aws-per-gb---simplified)
+    - [17.3.8. Savings Plan](#1738-savings-plan)
+  - [17.4. AWS Compute Optimizer](#174-aws-compute-optimizer)
+  - [17.5. Billing and Costing Tools](#175-billing-and-costing-tools)
+  - [17.6. AWS Pricing Calculator](#176-aws-pricing-calculator)
+  - [17.7. AWS Billing Dashboard](#177-aws-billing-dashboard)
+    - [17.7.1. Cost Allocation Tags](#1771-cost-allocation-tags)
+    - [17.7.2. Tagging and Resource Groups](#1772-tagging-and-resource-groups)
+    - [17.7.3. Cost and Usage Reports](#1773-cost-and-usage-reports)
+    - [17.7.4. Cost Explorer](#1774-cost-explorer)
+  - [17.8. Billing Alarms in CloudWatch](#178-billing-alarms-in-cloudwatch)
+  - [17.9. AWS Budgets](#179-aws-budgets)
+  - [17.10. Trusted Advisor](#1710-trusted-advisor)
+  - [17.11. Trusted Advisor - Support Plans](#1711-trusted-advisor---support-plans)
+  - [17.12. AWS Support Plans Pricing](#1712-aws-support-plans-pricing)
+    - [17.12.1. AWS Basic Support Plan](#17121-aws-basic-support-plan)
+    - [17.12.2. AWS Developer Support Plan](#17122-aws-developer-support-plan)
+    - [17.12.3. AWS Business Support Plan (24/7)](#17123-aws-business-support-plan-247)
+    - [17.12.4. AWS Enterprise On-Ramp Support Plan (24/7)](#17124-aws-enterprise-on-ramp-support-plan-247)
+    - [17.12.5. AWS Enterprise Support Plan (24/7)](#17125-aws-enterprise-support-plan-247)
+  - [17.13. Account Best Practices - Summary](#1713-account-best-practices---summary)
+  - [17.14. Billing and Costing Tools - Summary](#1714-billing-and-costing-tools---summary)
+- [18. Advanced Identity](#18-advanced-identity)
+  - [18.1. AWS STS (SecurityToken Service)](#181-aws-sts-securitytoken-service)
+  - [18.2. Amazon Cognito](#182-amazon-cognito)
+  - [18.3. What is Microsoft Active Directory (AD)?](#183-what-is-microsoft-active-directory-ad)
+    - [18.3.1. AWS Directory Services](#1831-aws-directory-services)
+  - [18.4. AWS Organizations](#184-aws-organizations)
+  - [18.5. AWS Single Sign-On (SSO)](#185-aws-single-sign-on-sso)
+  - [18.6. Advanced Identity - Summary](#186-advanced-identity---summary)
+- [19. Other AWS Services](#19-other-aws-services)
+  - [19.1. Amazon WorkSpaces](#191-amazon-workspaces)
+  - [19.2. Amazon AppStream 2.0](#192-amazon-appstream-20)
+    - [19.2.1. Amazon AppStream 2.0 vs WorkSpaces](#1921-amazon-appstream-20-vs-workspaces)
+  - [19.3. Amazon Sumerian](#193-amazon-sumerian)
+  - [19.4. AWS IoT Core](#194-aws-iot-core)
+  - [19.5. Amazon Elastic Transcoder](#195-amazon-elastic-transcoder)
+  - [19.6. AWS Device Farm](#196-aws-device-farm)
+  - [19.7. AWS Backup](#197-aws-backup)
+    - [19.7.1. Disaster Recovery Strategies](#1971-disaster-recovery-strategies)
+  - [19.8. AWS Elastic Disaster Recovery (DRS)](#198-aws-elastic-disaster-recovery-drs)
+  - [19.9. AWS DataSync](#199-aws-datasync)
+  - [19.10. AWS Fault Injection Simulator (FIS)](#1910-aws-fault-injection-simulator-fis)
+- [20. AWS Architecting & Ecosystem](#20-aws-architecting--ecosystem)
+  - [20.1. Well Architected Framework General - Guiding Principles](#201-well-architected-framework-general---guiding-principles)
+  - [20.2. AWS Cloud Best Practices - Design Principles](#202-aws-cloud-best-practices---design-principles)
+  - [20.3. Well Architected Framework 6 Pillars](#203-well-architected-framework-6-pillars)
+    - [20.3.1. Operational Excellence](#2031-operational-excellence)
+      - [20.3.1.1. Operational Excellence AWS Services](#20311-operational-excellence-aws-services)
+    - [20.3.2. Security](#2032-security)
+      - [20.3.2.1. Security AWS Services](#20321-security-aws-services)
+    - [20.3.3. Reliability](#2033-reliability)
+      - [20.3.3.1. Reliability AWS Services](#20331-reliability-aws-services)
+    - [20.3.4. Performance Efficiency](#2034-performance-efficiency)
+      - [20.3.4.1. Performance Efficiency AWS Services](#20341-performance-efficiency-aws-services)
+    - [20.3.5. Cost Optimization](#2035-cost-optimization)
+      - [20.3.5.1. Cost Optimization AWS Services](#20351-cost-optimization-aws-services)
+    - [20.3.6. Sustainability](#2036-sustainability)
+      - [20.3.6.1. Sustainability AWS Services](#20361-sustainability-aws-services)
+  - [20.4. AWS Well-Architected Tool](#204-aws-well-architected-tool)
+  - [20.5. AWS Right Sizing](#205-aws-right-sizing)
+  - [20.6. AWS Ecosystem - Free resources](#206-aws-ecosystem---free-resources)
+  - [20.7. AWS Marketplace](#207-aws-marketplace)
+  - [20.8. AWS Training](#208-aws-training)
+  - [20.9. AWS Professional Services & Partner Network](#209-aws-professional-services--partner-network)
+  - [20.10. AWS Knowledge Center](#2010-aws-knowledge-center)
+- [21. AWS related Abbreviations & Acronyms](#21-aws-related-abbreviations--acronyms)
+  - [21.1. A](#211-a)
+  - [21.2. B](#212-b)
+  - [21.3. C](#213-c)
+  - [21.4. D](#214-d)
+  - [21.5. E](#215-e)
+  - [21.6. F](#216-f)
+  - [21.7. H](#217-h)
+  - [21.8. I](#218-i)
+  - [21.9. J](#219-j)
+  - [21.10. K](#2110-k)
+  - [21.11. L](#2111-l)
+  - [21.12. M](#2112-m)
+  - [21.13. N](#2113-n)
+  - [21.14. O](#2114-o)
+  - [21.15. P](#2115-p)
+  - [21.16. Q](#2116-q)
+  - [21.17. R](#2117-r)
+  - [21.18. S](#2118-s)
+  - [21.19. T](#2119-t)
+  - [21.20. V](#2120-v)
+  - [21.21. W](#2121-w)
+- [22. Commands](#22-commands)
 
 ## 1. Traditionally, how to build infrastructure
 
@@ -765,6 +824,7 @@
 
 #### 4.5.2. Compute Optimized
 
+- **AWS Compute Optimizer recommends optimal AWS resources for your workloads to reduce costs and improve performance by using machine learning to analyze historical utilization metrics.**
 - Great for compute-intensive tasks that require high performance processors:
   - Batch processing workloads.
   - Media transcoding.
@@ -1175,6 +1235,7 @@
 
 ### 6.8. What's an Auto Scaling Group?
 
+- **Auto Scaling in EC2 allows you to have the right number of instances to handle the application load. Auto Scaling in DynamoDB automatically adjusts read and write throughput capacity, in response to dynamically changing request volumes, with zero downtime. These are both examples of horizontal scaling.**
 - In real-life, the load on your websites and application can change
 - In the cloud, you can create and get rid of servers very quickly
 - The goal of an Auto Scaling Group (ASG) is to:
@@ -3295,9 +3356,392 @@
 - Kendra: ML-powered search engine.
 - Personalize: real-time personalized recommendations.
 
-## 17. Advanced Identity
+## 17. Account Management, Billing & Support
 
-### 17.1. AWS STS (SecurityToken Service)
+### 17.1. AWS Organizations
+
+- Global service.
+- Allows to manage **multiple AWS accounts**.
+- The main account is the master account.
+- Cost Benefits:
+  - **Consolidated Billing** across all accounts - single payment method.
+  - Pricing benefits from **aggregated usage** (volume discount for EC2, S3...).
+  - **Pooling of Reserved EC2 instances** for optimal savings.
+- API is available to **automate AWS account creation**.
+- **Restrict account privileges using Service Control Policies (SCP)**.
+
+#### 17.1.1. Multi Account Strategies
+
+- Create accounts per **department**, per **cost center**, per **dev / test / prod**, based on **regulatory restrictions** (using SCP), for **better resource isolation** (ex: VPC), to have **separate per-account service limits**, isolated account for **logging**.
+- Multi Account vs One Account Multi VPC.
+- Use tagging standards for billing purposes.
+- Enable CloudTrail on all accounts, send logs to central S3 account.
+- Send CloudWatch Logs to central logging account.
+
+#### 17.1.2. Service Control Policies (SCP)
+
+- **Service control policies (SCPs) are a type of organization policy that you can use to manage permissions in your organization. An SCP spans all IAM users, groups, and roles, including the AWS account root user.**
+- Whitelist or blacklist IAM actions.
+- Applied at the **OU** or **Account** level.
+- Does not apply to the Master Account.
+- SCP is applied to all the **Users and Roles** of the Account, including Root user.
+- The SCP does not affect service-linked roles.
+  - Service-linked roles enable other AWS services to integrate with AWS Organizations and can't be restricted by SCPs.
+- SCP must have an explicit Allow (does not allow anything by default).
+- Use cases:
+  - Restrict access to certain services (for example: can't use EMR).
+  - Enforce PCI compliance by explicitly disabling services.
+
+#### 17.1.3. AWS Organization - Consolidated Billing
+
+- When enabled, provides you with:
+  - Combined Usage - combine the usage across all AWS accounts in the AWS Organization to share the volume pricing, Reserved Instances and Savings Plans discounts.
+  - One Bill - get one bill for all AWS Accounts in the AWS Organization.
+- The management account can turn off Reserved Instances discount sharing for any account in the AWS Organization, including itself.
+
+### 17.2. AWS Control Tower
+
+- **AWS Control Tower offers the easiest way to set up and govern a new, secure, multi-account AWS environment. It establishes a landing zone that is based on best-practices blueprints, and enables governance using guardrails you can choose from a pre-packaged list.**
+- Easy way to **set up and govern a secure and compliant multi-account AWS environment** based on best practices.
+- Benefits:
+  - Automate the set up of your environment in a few clicks.
+  - Automate ongoing policy management using guardrails.
+  - Detect policy violations and remediate them.
+  - Monitor compliance through an interactive dashboard.
+- AWS Control Tower runs on top of AWS Organizations:
+  - It automatically sets up AWS Organizations to organize accounts and implement SCPs (Service Control Policies).
+
+### 17.3. Pricing Models in AWS
+
+- AWS has 4 pricing models:
+  - **Pay as you go:** pay for what you use, remain agile, responsive, meet scale demands.
+  - **Save when you reserve:** minimize risks, predictably manage budgets, comply with long-terms requirements.
+    - Reservations are available for EC2 Reserved Instances, DynamoDB Reserved Capacity, ElastiCache Reserved Nodes, RDS Reserved Instance, Redshift Reserved Nodes.
+  - **Pay less by using more:** volume-based discounts
+  - **Pay less as AWS grows**
+
+#### 17.3.1. Free services & free tier in AWS
+
+- IAM.
+- VPC.
+- Consolidated Billing.
+- **You do pay for the resources created:**
+  - Elastic Beanstalk.
+  - CloudFormation.
+  - Auto Scaling Groups.
+- Free Tier: https://aws.amazon.com/free/
+  - EC2 t2.micro instance for a year.
+  - S3, EBS, ELB, AWS Data transfer.
+
+#### 17.3.2. Compute Pricing - EC2
+
+- Only charged for what you use.
+- Number of instances.
+- Instance configuration:
+  - Physical capacity.
+  - Region.
+  - OS and software.
+  - Instance type.
+  - Instance size.
+- ELB running time and amount of data processed.
+- Detailed monitoring.
+- On-demand instances:
+  - Minimum of 60s.
+    - **With Linux EC2 instances, you pay per second of compute capacity. There is also a minimum of 60s of use.**
+  - Pay per second (Linux/Windows) or per hour (other).
+- Reserved instances:
+  - Up to 75% discount compared to On-demand on hourly rate.
+  - 1 or 3 years commitment.
+  - All upfront, partial upfront, no upfront.
+- Spot instances:
+  - Up to 90% discount compared to On-demand on hourly rate.
+  - Bid for unused capacity.
+- Dedicated Host:
+  - On-demand.
+  - Reservation for 1 year or 3 years commitment.
+- **Savings plans as an alternative to save on sustained usage**.
+
+#### 17.3.3. Compute Pricing - Lambda & ECS
+
+- Lambda:
+  - Pay per call.
+  - Pay per duration.
+- ECS:
+  - EC2 Launch Type Model: No additional fees, you pay for AWS resources stored and created in your application.
+- Fargate:
+  - Fargate Launch Type Model: Pay for vCPU and memory resources allocated to your applications in your containers.
+
+#### 17.3.4. Storage Pricing - S3
+
+- Storage class: S3 Standard, S3 Infrequent Access, S3 One-Zone IA, S3 Intelligent Tiering, S3 Glacier and S3 Glacier Deep Archive.
+- Number and size of objects: Price can be tiered (based on volume).
+- Number and type of requests.
+- Data transfer OUT of the S3 region.
+- S3 Transfer Acceleration.
+- Lifecycle transitions.
+- Similar service: EFS (pay per use, has infrequent access & lifecycle rules).
+
+#### 17.3.5. Storage Pricing - EBS
+
+- Volume type (based on performance).
+- Storage volume in GB per month **provisionned**.
+- IOPS:
+  - General Purpose SSD: Included.
+  - Provisioned IOPS SSD: Provisionned amount in IOPS.
+  - Magnetic: Number of requests.
+- Snapshots:
+  - Added data cost per GB per month.
+- Data transfer:
+  - Outbound data transfer are tiered for volume discounts.
+  - Inbound is free.
+
+#### 17.3.6. Database Pricing - RDS
+
+- Per hour billing.
+- Database characteristics:
+  - Engine.
+  - Size.
+  - Memory class.
+- Purchase type:
+  - On-demand.
+  - Reserved instances (1 or 3 years) with required up-front.
+- Backup Storage: There is no additional charge for backup storage up to 100% of your total database storage for a region.
+- Additional storage (per GB per month)
+- Number of input and output requests per month
+- Deployment type (storage and I/O are variable):
+  - Single AZ
+  - Multiple AZs
+- Data transfer:
+  - Outbound data transfer are tiered for volume discounts
+  - Inbound is free
+
+#### 17.3.7. Content Delivery - CloudFront
+
+- Pricing is different across different geographic regions.
+- Aggregated for each edge location, then applied to your bill.
+- Data Transfer Out (volume discount).
+- Number of HTTP/HTTPS requests.
+
+##### 17.3.7.1. Networking Costs in AWS per GB - Simplified
+
+- Use Private IP instead of Public IP for good savings and better network performance.
+- Use same AZ for maximum savings (at the cost of high availability).
+
+#### 17.3.8. Savings Plan
+
+- Commit a certain $ amount per hour for 1 or 3 years
+- Easiest way to setup long-term commitments on AWS
+- EC2 Savings Plan
+  - Up to 72% discount compared to On-Demand
+  - Commit to usage of individual instance families in a region (e.g. C5 or M5)
+  - Regardless of AZ, size (m5.xl to m5.4xl), OS (Linux/Windows) or tenancy
+  - All upfront, partial upfront, no upfront
+- Compute Savings Plan
+  - Up to 66% discount compared to On-Demand
+  - Regardless of Family, Region, size, OS, tenancy, compute options
+  - Compute Options: EC2, Fargate, Lambda
+  - **Compute Savings Plans provide the most flexibility and help to reduce your costs by up to 66% in exchange for a commitment to a consistent amount of usage for a 1 or 3 year term. These plans automatically apply to EC2 instance usage regardless of instance family, size, AZ, region, OS or tenancy, and also apply to Fargate or Lambda usage.**
+- Setup from the AWS Cost Explorer console
+- Estimate pricing at https://aws.amazon.com/savingsplans/pricing/
+
+### 17.4. AWS Compute Optimizer
+
+- Reduce costs and improve performance by recommending optimal AWS resources for your workloads.
+- Helps you choose optimal configurations and right - size your workloads (over/under provisioned).
+- Uses Machine Learning to analyze your resources, configurations and their utilization CloudWatch metrics.
+- Supported resources:
+  - EC2 instances.
+  - EC2 Auto Scaling Groups.
+  - EBS volumes.
+  - Lambda functions.
+- Lower your costs by up to 25%.
+- Recommendations can be exported to S3.
+
+### 17.5. Billing and Costing Tools
+
+- **Estimating costs in the cloud:**
+  - Pricing Calculator.
+- **Tracking costs in the cloud:**
+  - Billing Dashboard.
+  - Cost Allocation Tags.
+  - Cost and Usage Reports.
+  - Cost Explorer.
+- **Monitoring against costs plans:**
+  - Billing Alarms.
+  - Budgets.
+
+### 17.6. AWS Pricing Calculator
+
+- **The AWS Simple Monthly Calculator is an easy-to-use online tool that enables you to estimate their architecture solution monthly cost of AWS services for your use case based on your expected usage. It is being replaced by AWS Pricing Calculator.**
+- **The TCO calculators allow you to estimate the cost savings when using AWS and provide a detailed set of reports that can be used in executive presentations.**
+- Available at https://calculator.aws/.
+- Estimate the cost for your solution architecture.
+
+### 17.7. AWS Billing Dashboard
+
+#### 17.7.1. Cost Allocation Tags
+
+- Use **cost allocation tags** to track your AWS costs on a detailed level.
+- **AWS generated tags:**
+  - Automatically applied to the resource you create.
+  - Starts with Prefix aws: (e.g. aws: createdBy).
+- **User-defined tags:**
+  - Defined by the user.
+
+#### 17.7.2. Tagging and Resource Groups
+
+- **Tags** are used for organizing resources:
+  - EC2: instances, images, load balancers, security groups...
+  - RDS, VPC resources, Route 53, IAM users, etc...
+  - Resources created by CloudFormation are all tagged the same way.
+- Free naming, common tags are: Name, Environment, Team ...
+- Tags can be used to create Resource Groups:
+  - Create, maintain, and view a collection of resources that share common tags.
+  - Manage these tags using the Tag Editor.
+
+#### 17.7.3. Cost and Usage Reports
+
+- Dive deeper into your AWS costs and usage.
+- The AWS Cost & Usage Report contains the most comprehensive set of AWS cost and usage data available, including additional metadata about AWS services, pricing, and reservations (e.g., Amazon EC2 Reserved Instances (RIs)).
+- The AWS Cost & Usage Report lists AWS usage for each service category used by an account and its IAM users in hourly or daily line items, as well as any tags that you have activated for cost allocation purposes.
+- Can be integrated with Athena, Redshift or QuickSight.
+
+#### 17.7.4. Cost Explorer
+
+- **Cost Explorer can be used to forecast usage up to 12 months based on the previous usage. It can also be used to choose an optimal Savings Plan. Cost Explorer has an easy-to-use interface that lets you visualize, understand, and manage your AWS costs and usage over time.**
+- Visualize, understand, and manage your AWS costs and usage over time.
+- Create custom reports that analyze cost and usage data.
+- Analyze your data at a high level: total costs and usage across all accounts.
+- Or Monthly, hourly, resource level granularity.
+- Choose an optimal Savings Plan (to lower prices on your bill).
+- Forecast usage up to 12 months based on previous usage.
+
+### 17.8. Billing Alarms in CloudWatch
+
+- Billing data metric is stored in CloudWatch us-east-1.
+- Billing data are for overall worldwide AWS costs.
+- It's for actual cost, not for projected costs.
+- Intended a simple alarm (not as powerful as AWS Budgets).
+
+### 17.9. AWS Budgets
+
+- **AWS Budgets gives you the ability to set custom budgets that alert you when your costs or usage exceed (or are forecasted to exceed) your budgeted amount. Difference with CloudWatch Billing Alarms: CloudWatch Billing Alarms only send alerts when your costs and usage are exceeding your budget, not when it is forecasted to exceed your budget, while AWS Budgets does both.**
+- Create budget and **send alarms when costs exceeds the budget**.
+- 3 types of budgets: Usage, Cost, Reservation.
+- For Reserved Instances (RI):
+  - Track utilization.
+  - Supports EC2, ElastiCache, RDS, Redshift.
+- Up to 5 SNS notifications per budget.
+- Can filter by: Service, Linked Account, Tag, Purchase Option, Instance Type, Region, Availability Zone, API Operation, etc...
+- Same options as AWS Cost Explorer!
+- 2 budgets are free, then $0.02/day/budget.
+
+### 17.10. Trusted Advisor
+
+- **AWS Trusted Advisor is an online tool that provides you real time guidance to help you provision your resources following AWS best practices, including performance, security, and fault tolerance, but also cost optimization and service limits.**
+- No need to install anything - high level AWS account assessment
+- Analyze your AWS accounts and provides recommendation on 5 categories:
+  - Cost optimization
+  - Performance
+  - Security
+  - Fault tolerance
+  - Service limits
+
+### 17.11. Trusted Advisor - Support Plans
+
+| 7 CORE CHECKS - Basic & Developer Support plan | FULL CHECKS - Business & Enterprise Support plan |
+| ---------------------------------------------- | ------------------------------------------------ |
+| S3 Bucket Permissions                          | Full Checks available on the 5 categories        |
+| Security Groups - Specific Ports Unrestricted  | Ability to set CloudWatch alarms when            |
+| IAM Use (one IAM user minimum)                 | reaching limits                                  |
+| MFA on Root Account                            | Programmatic Access using AWS Support API        |
+| EBS Public Snapshots                           |                                                  |
+| RDS Public Snapshots                           |                                                  |
+| Service Limits                                 |                                                  |
+
+### 17.12. AWS Support Plans Pricing
+
+#### 17.12.1. AWS Basic Support Plan
+
+- **Customer Service & Communities -** 24x7 access to customer service, documentation, whitepapers, and support forums.
+- **AWS Trusted Advisor -** Access to the 7 core Trusted Advisor checks and guidance to provision your resources following best practices to increase performance and improve security.
+- **AWS Personal Health Dashboard -** A personalized view of the health of AWS services, and alerts when your resources are impacted.
+
+#### 17.12.2. AWS Developer Support Plan
+
+- All Basic Support Plan +
+- **Business hours email access** to Cloud Support Associates.
+- Unlimited cases / 1 primary contact.
+- Case severity / response times:
+  - General guidance: < 24 business hours.
+  - System impaired: < 12 business hours.
+
+#### 17.12.3. AWS Business Support Plan (24/7)
+
+- Intended to be used if you have **production workloads**.
+- **Trusted Advisor** - Full set of checks + API access.
+- **24x7 phone, email, and chat access** to Cloud Support Engineers.
+- Unlimited cases / unlimited contacts.
+- Access to Infrastructure Event Management **for additional fee**.
+- Case severity / response times:
+  - General guidance: < 24 business hours.
+  - System impaired: < 12 business hours.
+  - Production system impaired: < 4 hours.
+  - Production system down: < 1 hour.
+
+#### 17.12.4. AWS Enterprise On-Ramp Support Plan (24/7)
+
+- Intended to be used if you have production or business critical workloads.
+- All of Business Support Plan +
+- Access to a pool of **Technical Account Managers (TAM)**.
+- **Concierge Support Team** (for billing and account best practices).
+- **Infrastructure Event Management, Well-Architected & Operations Reviews**.
+- Case severity / response times:
+  - Production system impaired: < 4 hours.
+  - Production system down: < 1 hour.
+  - **Business-critical system down: < 30 minutes**.
+
+#### 17.12.5. AWS Enterprise Support Plan (24/7)
+
+- Intended to be used if you have **mission critical workloads**.
+- All of Business Support Plan +
+- Access to a **designated** Technical Account Manager (TAM).
+- **Concierge Support Team** (for billing and account best practices).
+- **Infrastructure Event Management, Well-Architected & Operations Reviews**.
+- Case severity / response times:
+  - Production system impaired: < 4 hours.
+  - Production system down: < 1 hour.
+  - **Business-critical system down: < 15 minutes**.
+
+### 17.13. Account Best Practices - Summary
+
+- Operate multiple accounts using **Organizations**.
+- Use **SCP** (service control policies) to restrict account power.
+- Easily setup multiple accounts with best-practices with **AWS Control Tower**.
+- **Use Tags & Cost Allocation Tags** for easy management & billing.
+- **IAM guidelines**: MFA, least-privilege, password policy, password rotation.
+- **Config** to record all resources configurations & compliance over time.
+- **CloudFormation** to deploy stacks across accounts and regions.
+- **Trusted Advisor** to get insights, Support Plan adapted to your needs.
+- Send Service Logs and Access Logs to **S3 or CloudWatch Logs**.
+- **CloudTrail** to record API calls made within your account.
+- **If your Account is compromised:** change the root password, delete and rotate all passwords / keys, contact the AWS support.
+
+### 17.14. Billing and Costing Tools - Summary
+
+- **Compute Optimizer:** recommends resources, configurations to reduce cost.
+- **Pricing Calculator:** cost of services on AWS.
+- **Billing Dashboard:** high level overview + free tier dashboard.
+- **Cost Allocation Tags:** tag resources to create detailed reports.
+- **Cost and Usage Reports:** most comprehensive billing dataset.
+- **Cost Explorer:** View current usage (detailed) and forecast usage.
+- **Billing Alarms:** in us-east-1 - track overall and per-service billing.
+- **Budgets:** more advanced - track usage, costs, RI, and get alerts.
+- **Savings Plans:** easy way to save based on long-term usage of AWS.
+
+## 18. Advanced Identity
+
+### 18.1. AWS STS (SecurityToken Service)
 
 - **AWS Security Token Service (AWS STS) is a web service that enables you to request temporary, limited-privilege credentials for AWS Identity and Access Management (IAM) users or for users that you authenticate (federated users).**
 - Enables you to create temporary, limited- privileges credentials to access your AWS resources.
@@ -3307,19 +3751,19 @@
   - IAM Roles for cross/same account access.
   - IAM Roles for Amazon EC2: provide temporary credentials for EC2 instances to access AWS resources.
 
-### 17.2. Amazon Cognito
+### 18.2. Amazon Cognito
 
 - **Amazon Cognito lets you add user sign-up, sign-in, and access control to your web and mobile apps quickly and easily.**
 - Identity for your Web and Mobile applications users (potentially millions).
 - Instead of creating them an IAM user, you create a user in Cognito.
 
-### 17.3. What is Microsoft Active Directory (AD)?
+### 18.3. What is Microsoft Active Directory (AD)?
 
 - Found on any Windows Server with AD Domain Services.
 - Database of objects: User Accounts, Computers, Printers, File Shares, Security Groups.
 - Centralized security management, create account, assign permissions.
 
-#### 17.3.1. AWS Directory Services
+#### 18.3.1. AWS Directory Services
 
 - **AWS Directory Service makes it easy for you to setup and run directories in the AWS cloud, or connect your AWS resources with an existing on-premises Microsoft Active Directory.**
 - **AWS Managed Microsoft AD:**
@@ -3332,18 +3776,18 @@
   - AD-compatible managed directory on AWS.
   - Cannot be joined with on-premise AD.
 
-### 17.4. AWS Organizations
+### 18.4. AWS Organizations
 
 - Organizations helps you to centrally manage billing; control access, compliance, and security; and share resources across your AWS accounts.
 
-### 17.5. AWS Single Sign-On (SSO)
+### 18.5. AWS Single Sign-On (SSO)
 
 - Centrally manage Single Sign-On to access multiple accounts and 3rd-party business applications.
 - Integrated with AWS Organizations.
 - Supports SAML 2.0 markup.
 - Integration with on-premise Active Directory.
 
-### 17.6. Advanced Identity - Summary
+### 18.6. Advanced Identity - Summary
 
 - IAM:
   - Identity and Access Management inside your AWS account.
@@ -3355,9 +3799,9 @@
 - Directory Services: integrate Microsoft Active Directory in AWS.
 - Single Sign-On (SSO): one login for multiple AWS accounts & applications.
 
-## 18. Other AWS Services
+## 19. Other AWS Services
 
-### 18.1. Amazon WorkSpaces
+### 19.1. Amazon WorkSpaces
 
 - **Amazon WorkSpaces is a fully managed, secure cloud desktop service. You can use Amazon WorkSpaces to provision either Windows or Linux desktops in just a few minutes and quickly scale to provide thousands of desktops to workers across the globe.**
 - Managed Desktop as a Service (DaaS) solution to easily provision Windows or Linux desktops.
@@ -3366,14 +3810,14 @@
 - Secured data - integrates with KMS.
 - Pay-as-you-go service with monthly or hourly rates.
 
-### 18.2. Amazon AppStream 2.0
+### 19.2. Amazon AppStream 2.0
 
 - **Amazon AppStream 2.0 is a fully managed non-persistent application and desktop streaming service that provides users instant access to their desktop applications from anywhere.**
 - Desktop Application Streaming Service.
 - Deliver to any computer, without acquiring, provisioning infrastructure.
 - The application is delivered from within a web browser.
 
-#### 18.2.1. Amazon AppStream 2.0 vs WorkSpaces
+#### 19.2.1. Amazon AppStream 2.0 vs WorkSpaces
 
 - **Workspaces:**
   - Fully managed VDI and desktop available.
@@ -3384,7 +3828,7 @@
   - Works with any device (that has a web browser).
   - Allow to configure an instance type per application type (CPU, RAM, GPU).
 
-### 18.3. Amazon Sumerian
+### 19.3. Amazon Sumerian
 
 - **Amazon Sumerian is a managed service that lets you create and run 3D, Augmented Reality (AR) and Virtual Reality (VR) applications. You can build immersive and interactive scenes that run on AR and VR, mobile devices, and your web browser.**
 - Create and run virtual reality (VR), augmented reality (AR), and 3D applications.
@@ -3392,7 +3836,7 @@
 - Ready-to-use templates and assets - no programming or 3D expertise required.
 - Accessible via a web-browser URLs or on popular hardware for AR/VR.
 
-### 18.4. AWS IoT Core
+### 19.4. AWS IoT Core
 
 - **AWS IoT Core, is serverless and lets you connect billions of devices to the AWS Cloud, lets you securely connect IoT devices to the AWS Cloud and other devices without the need to provision or manage servers.**
 - IoT stands for "Internet of Things" - the network of internet-connected devices that are able to collect and transfer data.
@@ -3402,7 +3846,7 @@
 - Integrates with a lot of AWS services (Lambda, S3, SageMaker, etc.).
 - Build IoT applications that gather, process, analyze, and act on data.
 
-### 18.5. Amazon Elastic Transcoder
+### 19.5. Amazon Elastic Transcoder
 
 - **Amazon Elastic Transcoder is media transcoding in the cloud. It is used to convert media files from their source format into versions that will play back on devices like smartphones, tablets, and PCs.**
 - Elastic Transcoder is used to convert media files stored in S3 into media files in the formats required by consumer playback devices (phones etc..)
@@ -3412,14 +3856,14 @@
   - Cost effective - duration-based pricing model.
   - Fully managed & secure, pay for what you use.
 
-### 18.6. AWS Device Farm
+### 19.6. AWS Device Farm
 
 - **AWS Device Farm is an application testing service that lets you improve the quality of your web and mobile apps by testing them across an extensive range of desktop browsers and real mobile devices; without having to provision and manage any testing infrastructure.**
 - Fully-managed service that tests your web and mobile apps against desktop browsers, real mobile devices, and tablets.
 - Run tests concurrently on multiple devices (speed up execution).
 - Ability to configure device settings (GPS, language, Wi-Fi, Bluetooth, ...).
 
-### 18.7. AWS Backup
+### 19.7. AWS Backup
 
 - **AWS Backup is a centralized backup service that makes it easy and cost-effective for you to backup your application data across AWS services in the AWS Cloud. CloudEndure Disaster Recovery minimizes downtime and data loss by providing fast, reliable recovery into AWS of your physical, virtual, and cloud-based servers.**
 - Fully-managed service to centrally manage and automate backups across AWS services.
@@ -3429,28 +3873,28 @@
 - Cross-Region Backup.
 - Cross-Account Backup (using AWS Organizations).
 
-#### 18.7.1. Disaster Recovery Strategies
+#### 19.7.1. Disaster Recovery Strategies
 
 - Backup and Restore (Cheapest)
 - Pilot Light
 - Multi-Site / Hot-Site
 - Warm Standby
 
-### 18.8. AWS Elastic Disaster Recovery (DRS)
+### 19.8. AWS Elastic Disaster Recovery (DRS)
 
 - Used to be named "CloudEndure Disaster Recovery".
 - Quickly and easily recover your physical, virtual, and cloud-based servers into AWS.
 - Example: protect your most critical databases (including Oracle, MySQL, and SQL Server), enterprise apps (SAP), protect your data from ransomware attacks, ...
 - Continuous block-level replication for your servers.
 
-### 18.9. AWS DataSync
+### 19.9. AWS DataSync
 
 - Move large amount of data from on-premises to AWS.
 - Can synchronize to: Amazon S3 (any storage classes - including Glacier), Amazon EFS, Amazon FSx for Windows.
 - Replication tasks can be scheduled hourly, daily, weekly.
 - The replication tasks are **incremental** after the first full load.
 
-### 18.10. AWS Fault Injection Simulator (FIS)
+### 19.10. AWS Fault Injection Simulator (FIS)
 
 - A fully managed service for running fault injection experiments on AWS workloads.
 - Based on **Chaos Engineering** - stressing an application by creating disruptive events (e.g., sudden increase in CPU or memory), observing how the system responds, and implementing improvements.
@@ -3458,9 +3902,295 @@
 - Supports the following AWS services: EC2, ECS, EKS, RDS...
 - Use pre-built templates that generate the desired disruptions.
 
-## 19. AWS related Abbreviations & Acronyms
+## 20. AWS Architecting & Ecosystem
 
-### 19.1. A
+### 20.1. Well Architected Framework General - Guiding Principles
+
+- Stop guessing your capacity needs.
+- Test systems at production scale.
+- Automate to make architectural experimentation easier.
+- Allow for evolutionary architectures.
+  - Design based on changing requirements.
+- Drive architectures using data.
+- Improve through game days.
+  - Simulate applications for flash sale days.
+
+### 20.2. AWS Cloud Best Practices - Design Principles
+
+- **Scalability:** vertical & horizontal.
+- **Disposable Resources:** servers should be disposable & easily configured.
+- **Automation:** Serverless, Infrastructure as a Service, Auto Scaling...
+- **Loose Coupling:**
+  - Monolith are applications that do more and more over time, become bigger.
+  - Break it down into smaller, loosely coupled components.
+  - A change or a failure in one component should not cascade to other components.
+- **Services, not Servers:**
+  - Don't use just EC2.
+  - Use managed services, databases, serverless, etc!
+
+### 20.3. Well Architected Framework 6 Pillars
+
+1. Operational Excellence.
+2. Security.
+3. Reliability.
+4. Performance Efficiency.
+5. Cost Optimization.
+6. Sustainability.
+
+- They are not something to balance, or trade-offs, they're a synergy.
+
+#### 20.3.1. Operational Excellence
+
+- Includes the ability to run and monitor systems to deliver business value and to continually improve supporting processes and procedures.
+- Design Principles:
+  - **Perform operations as code** - Infrastructure as code.
+  - **Annotate documentation** - Automate the creation of annotated documentation after every build.
+  - **Make frequent, small, reversible changes** - So that in case of any failure, you can reverse it.
+  - **Refine operations procedures frequently** - And ensure that team members are familiar with it.
+  - **Anticipate failure**.
+  - **Learn from all operational failures**.
+
+##### 20.3.1.1. Operational Excellence AWS Services
+
+- Prepare:
+  - AWS CloudFormation
+  - AWS Config
+- Operate:
+  - AWS CloudFormation
+  - AWS Config
+  - AWS CloudTrail
+  - Amazon CloudWatch
+  - AWS X-Ray
+- Evolve:
+  - AWS CloudFormation
+  - AWS CodeBuild
+  - AWS CodeCommit
+  - AWS CodeDeploy
+  - AWS CodePipeline
+
+#### 20.3.2. Security
+
+- Includes the ability to protect information, systems, and assets while delivering business value through risk assessments and mitigation strategies.
+- Design Principles:
+  - **Implement a strong identity foundation** - Centralize privilege management and reduce (or even eliminate) reliance on long-term credentials - Principle of least privilege - IAM.
+  - **Enable traceability** - Integrate logs and metrics with systems to automatically respond and take action.
+  - **Apply security at all layers** - Like edge network, VPC, subnet, load balancer, every instance, operating system, and application.
+  - **Automate security best practices**.
+  - **Protect data in transit and at rest** - Encryption, tokenization, and access control.
+  - **Keep people away from data** - Reduce or eliminate the need for direct access or manual processing of data.
+  - **Prepare for security events** - Run incident response simulations and use tools with automation to increase your speed for detection, investigation, and recovery.
+  - **Shared Responsibility Model**.
+
+##### 20.3.2.1. Security AWS Services
+
+- Identity and Access Management:
+  - IAM
+  - AWS-STS
+  - MFA token
+  - AWS Organizations
+- Detective Controls:
+  - AWS Config
+  - AWS CloudTrail
+  - Amazon CloudWatch
+- Infrastructure Protection:
+  - Amazon CloudFront
+  - Amazon VPC
+  - AWS Shield
+  - AWS WAF
+  - Amazon Inspector
+- Data Protection:
+  - KMS
+  - S3
+  - Elastic Load Balancing (ELB)
+  - Amazon EBS
+  - Amazon RDS
+- Incident Response:
+  - IAM
+  - AWS CloudFormation
+  - Amazon CloudWatch Events
+
+#### 20.3.3. Reliability
+
+- Ability of a system to recover from infrastructure or service disruptions, dynamically acquire computing resources to meet demand, and mitigate disruptions such as misconfigurations or transient network issues.
+- Design Principles:
+  - **Test recovery procedures** - Use automation to simulate different failures or to recreate scenarios that led to failures before.
+  - **Automatically recover from failure** - Anticipate and remediate failures before they occur.
+  - **Scale horizontally to increase aggregate system availability** - Distribute requests across multiple, smaller resources to ensure that they don't share a common point of failure.
+  - **Stop guessing capacity** - Maintain the optimal level to satisfy demand without over or under provisioning - Use Auto Scaling.
+  - **Manage change in automation** - Use automation to make changes to infrastructure.
+
+##### 20.3.3.1. Reliability AWS Services
+
+- Foundations:
+  - IAM
+  - Amazon VPC
+  - Service Quotas
+  - AWS Trusted Advisor
+- Change Management:
+  - AWS Auto Scaling
+  - Amazon CloudWatch
+  - AWS CloudTrail
+  - AWS Config
+- Failure Management:
+  - Backups
+  - AWS CloudFormation
+  - Amazon S3
+  - Amazon S3 Glacier
+  - Amazon Route 53
+
+#### 20.3.4. Performance Efficiency
+
+- Includes the ability to use computing resources efficiently to meet system requirements, and to maintain that efficiency as demand changes and technologies evolve.
+- Design Principles:
+  - **Democratize advanced technologies** - Advance technologies become services and hence you can focus more on product development.
+  - **Go global in minutes** - Easy deployment in multiple regions.
+  - **Use serverless architectures** - Avoid burden of managing servers.
+  - **Experiment more often** - Easy to carry out comparative testing.
+  - **Mechanical sympathy** - Be aware of all AWS services.
+
+##### 20.3.4.1. Performance Efficiency AWS Services
+
+- Selection:
+  - AWS Auto Scaling
+  - AWS Lambda
+  - Amazon Elastic Block Store (EBS)
+  - Amazon Simple Storage Service (S3)
+  - Amazon RDS
+- Review:
+  - AWS CloudFormation
+- Monitoring:
+  - Amazon CloudWatch
+  - AWS Lambda
+- Tradeoffs:
+  - Amazon RDS
+  - Amazon ElastiCache
+  - AWS Snowball
+  - Amazon CloudFront
+
+#### 20.3.5. Cost Optimization
+
+- Includes the ability to run systems to deliver business value at the lowest price point.
+- Design Principles:
+  - **Adopt a consumption mode** - Pay only for what you use.
+  - **Measure overall efficiency** - Use CloudWatch.
+  - **Stop spending money on data center operations** - AWS does the infrastructure part and enables customer to focus on organization projects.
+  - **Analyze and attribute expenditure** - Accurate identification of system usage and costs, helps measure return on investment (ROI)- Make sure to use tags.
+  - **Use managed and application level services to reduce cost of ownership** - As managed services operate at cloud scale, they can offer a lower cost per transaction or service.
+
+##### 20.3.5.1. Cost Optimization AWS Services
+
+- Expenditure Awareness:
+  - AWS Budgets
+  - AWS Cost and Usage Report
+  - AWS Cost Explorer
+  - Reserved Instance Reporting
+- Cost-Effective Resources:
+  - Spot instance
+  - Reserved instance
+  - Amazon S3 Glacier
+- Matching supply and demand:
+  - AWS Auto Scaling
+  - AWS Lambda
+- Optimizing Over Time:
+  - AWS Trusted Advisor
+  - AWS Cost and Usage Report
+
+#### 20.3.6. Sustainability
+
+- The sustainability pillar focuses on minimizing the environmental impacts of running cloud workloads.
+- Design Principles:
+  - **Understand your impact** - establish performance indicators, evaluate improvements.
+  - **Establish sustainability goals** - Set long-term goals for each workload, model return on investment (ROI).
+  - **Maximize utilization** - Right size each workload to maximize the energy efficiency of the underlying hardware and minimize idle resources.
+  - **Anticipate and adopt new, more efficient hardware and software offerings** - and design for flexibility to adopt new technologies over time.
+  - **Use managed services** - Shared services reduce the amount of infrastructure; Managed services help automate sustainability best practices as moving infrequent accessed data to cold storage and adjusting compute capacity.
+  - **Reduce the downstream impact of your cloud workloads** - Reduce the amount of energy or resources required to use your services and reduce the need for your customers to upgrade their devices.
+
+##### 20.3.6.1. Sustainability AWS Services
+
+- EC2 Auto Scaling, Serverless Offering (Lambda, Fargate).
+- Cost Explorer, AWS Graviton 2, EC2 T instances, @Spot Instances.
+- EFS-IA, Amazon S3 Glacier, EBS Cold HDD volumes.
+- S3 Lifecycle Configurations, S3 Intelligent Tiering.
+- Amazon Data Lifecycle Manager.
+- Read Local, Write Global: RDS Read Replicas, Aurora Global DB, DynamoDB Global Table, CloudFront.
+
+### 20.4. AWS Well-Architected Tool
+
+- Free tool to **review your architectures** against the 6 pillars Well-Architected Framework and **adopt architectural best practices**.
+- How does it work?
+  - Select your workload and answer questions.
+  - Review your answers against the 6 pillars.
+  - Obtain advice: get videos and documentations, generate a report, see the results in a dashboard.
+- Let's have a look: https://console.aws.amazon.com/wellarchitected
+  - https://aws.amazon.com/blogs/aws/new-aws-well-architected-tool-review-workloads-against-best-practices/
+
+### 20.5. AWS Right Sizing
+
+- EC2 has many instance types, but choosing the most powerful instance type isn't the best choice, because the cloud is **elastic**.
+- Right sizing is the process of matching instance types and sizes to your workload performance and capacity requirements **at the lowest possible cost**.
+- **Scaling up is easy so always start small**.
+- It's also the process of looking at deployed instances and identifying opportunities to eliminate or downsize without compromising capacity or other requirements, which results in lower costs.
+- It's important to Right Size...
+  - **Before a Cloud Migration**.
+  - **Continuously after the cloud onboarding process (requirements change over time)**.
+- CloudWatch, Cost Explorer, Trusted Advisor, 3rd party tools can help.
+
+### 20.6. AWS Ecosystem - Free resources
+
+- **AWS Blogs:** https://aws.amazon.com/blogs/aws/
+- **AWS Forums (community):** https://forums.aws.amazon.com/index.jspa
+- **AWS Whitepapers & Guides:** https://aws.amazon.com/whitepapers
+- **AWS Quick Starts:** https://aws.amazon.com/quickstart/
+  - Automated, gold-standard deployments in the AWS Cloud
+  - Build your production environment quickly with templates
+  - Example: WordPress on AWS https://fwd.aws/P3yyv?did=qs_card&trk=qs_card
+  - Leverages CloudFormation
+- **AWS Solutions:** https://aws.amazon.com/solutions/
+  - Vetted Technology Solutions for the AWS Cloud.
+  - Example - AWS Landing Zone: secure, multi-account AWS environment:
+    - https://aws.amazon.com/solutions/implementations/aws-landing-zone/
+    - "Replaced" by AWS Control Tower
+
+### 20.7. AWS Marketplace
+
+- Digital catalog with thousands of software listings from **independent software vendors** (3rd party).
+- Example:
+  - Custom AMI (custom OS, firewalls, technical solutions...).
+  - CloudFormation templates.
+  - Software as a Service.
+  - Containers.
+- If you buy through the AWS Marketplace, it goes into your AWS bill.
+- You can **sell your own solutions** on the AWS Marketplace.
+
+### 20.8. AWS Training
+
+- AWS Digital (online) and Classroom Training (in-person or virtual).
+- AWS Private Training (for your organization).
+- Training and Certification for the U.S Government.
+- Training and Certification for the Enterprise.
+- AWS Academy: helps universities teach AWS.
+
+### 20.9. AWS Professional Services & Partner Network
+
+- The AWS Professional Services organization is a global team of experts
+- They work alongside your team and a chosen member of the APN
+- APN = AWS Partner Network
+- APN Technology Partners: providing hardware, connectivity, and software
+- APN Consulting Partners: professional services firm to help build on AWS
+- APN Training Partners: find who can help you learn AWS
+- AWS Competency Program: AWS Competencies are granted to APN Partners who have demonstrated technical proficiency and proven
+  customer success in specialized solution areas.
+- AWS Navigate Program: help Partners become better Partners
+
+### 20.10. AWS Knowledge Center
+
+- Contains the most frequent & common questions and requests
+  - https://aws.amazon.com/premiumsupport/knowledge-center/
+
+## 21. AWS related Abbreviations & Acronyms
+
+### 21.1. A
 
 - AWS Amazon Web Services
 - Amazon ES Amazon Elasticsearch Service
@@ -3477,11 +4207,11 @@
 - ADFS Active Directory Federation Service
 - AVX Advanced Vector Extensions
 
-### 19.2. B
+### 21.2. B
 
 - BYOL Bring Your Own License
 
-### 19.3. C
+### 21.3. C
 
 - CDN Content Delivery Network
 - CRC Cyclic Redundancy Check
@@ -3491,7 +4221,7 @@
 - CRR Cross Region Replication
 - CI/CD Continuous Integration/Continuous Deployment
 
-### 19.4. D
+### 21.4. D
 
 - DMS Database Migration Service
 - DNS Domain Name System
@@ -3499,7 +4229,7 @@
 - DoS Denial of Service
 - DaaS Desktop as-a-Service
 
-### 19.5. E
+### 21.5. E
 
 - EC2 Elastic Compute Cloud
 - ECS EC2 Container Service
@@ -3517,12 +4247,12 @@
 - ENI Elastic Network Interface
 - ECU EC2 Compute Unit
 
-### 19.6. F
+### 21.6. F
 
 - FIFO First In First Out
 - FaaS Function as-a-Service
 
-### 19.7. H
+### 21.7. H
 
 - HPC High-Performance Compute
 - HVM Hardware Virtual Machine
@@ -3530,7 +4260,7 @@
 - HTTPS HTTP Secure
 - HDK Hardware Development Kit
 
-### 19.8. I
+### 21.8. I
 
 - IAM Identity & Access Management
 - iOT Internet Of Things
@@ -3543,21 +4273,21 @@
 - IPSec Internet Protocol Security
 - IaaS Infrastructure-as-a-Service
 
-### 19.9. J
+### 21.9. J
 
 - JSON JavaScript Object Notation
 
-### 19.10. K
+### 21.10. K
 
 - KMS Key Management Service
 - KVM Kernel-based Virtual Machine
 
-### 19.11. L
+### 21.11. L
 
 - LB Load Balancer
 - LCU Load Balancer Capacity Unit
 
-### 19.12. M
+### 21.12. M
 
 - MFA Multi-Factor Authentication
 - MSTSC Microsoft Terminal Service Client
@@ -3566,7 +4296,7 @@
 - ML Machine Learning
 - MPLS Multi Protocol Label Switching
 
-### 19.13. N
+### 21.13. N
 
 - NACL Network Access Control List
 - NLP Natural Language Processing
@@ -3575,24 +4305,24 @@
 - NAT Network Address Translation
 - NVMe Non-Volatile Memory Express
 
-### 19.14. O
+### 21.14. O
 
 - OLTP Online Transaction Processing
 - OLAP Online Analytics Processing
 - OCI Open Container Initiative
 
-### 19.15. P
+### 21.15. P
 
 - PCI DSS Payment Card Industry Data Security Standard
 - PVM Para Virtual Machine
 - PV ParaVirtual
 - PaaS Platform as a Service
 
-### 19.16. Q
+### 21.16. Q
 
 - QLDB Quantum Ledger Database
 
-### 19.17. R
+### 21.17. R
 
 - RAIDRedundant Array of Independent Disk
 - RDS Relational Database Service
@@ -3601,7 +4331,7 @@
 - RAM Random-access Memory
 - RIE Runtime Interface Emulator
 
-### 19.18. S
+### 21.18. S
 
 - SSEServer Side Encryption
 - S3 Simple Storage Service
@@ -3629,8 +4359,9 @@
 - STS Security Token Service
 - SNI Server Name Indication
 
-### 19.19. T
+### 21.19. T
 
+- TAM Technical Account Managers
 - TTL Time To Live
 - TLS Transport Layer Security
 - TPM Trusted Platform Module
@@ -3639,7 +4370,7 @@
 - TPS Transaction Per Second
 - TCP Transmission Control Protocol
 
-### 19.20. V
+### 21.20. V
 
 - VPC Virtual Private Cloud
 - VM Virtual Machine
@@ -3649,11 +4380,11 @@
 - VDI Virtual Desktop Infrastructure
 - VPG Virtual Private Gateway
 
-### 19.21. W
+### 21.21. W
 
 - WAFWeb Application Firewall
 
-## 20. Commands
+## 22. Commands
 
 - List of AWS Regions
   - aws ec2 describe-regions
