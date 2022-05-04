@@ -74,16 +74,16 @@
   - [5.3. EBS - Delete on Termination attribute](#53-ebs---delete-on-termination-attribute)
   - [5.4. EBS Snapshots](#54-ebs-snapshots)
   - [5.5. AMI Overview](#55-ami-overview)
-  - [5.6. AMI Process (from an EC2 instance)](#56-ami-process-from-an-ec2-instance)
-  - [5.7. EC2 Image Builder](#57-ec2-image-builder)
-  - [5.8. EC2 Instance Store](#58-ec2-instance-store)
-  - [5.9. EFS - Elastic File System](#59-efs---elastic-file-system)
-  - [5.10. EFS Infrequent Access (EFS-IA)](#510-efs-infrequent-access-efs-ia)
-  - [5.11. Shared Responsibility Model for EC2 Storage](#511-shared-responsibility-model-for-ec2-storage)
-  - [5.12. Amazon FSx - Overview](#512-amazon-fsx---overview)
-    - [5.12.1. Amazon FSx for Windows File Server](#5121-amazon-fsx-for-windows-file-server)
-    - [5.12.2. Amazon FSx for Lustre](#5122-amazon-fsx-for-lustre)
-  - [5.13. EC2 Instance Storage Summary](#513-ec2-instance-storage-summary)
+    - [5.5.1. AMI Process (from an EC2 instance)](#551-ami-process-from-an-ec2-instance)
+  - [5.6. EC2 Image Builder](#56-ec2-image-builder)
+  - [5.7. EC2 Instance Store](#57-ec2-instance-store)
+  - [5.8. EFS - Elastic File System](#58-efs---elastic-file-system)
+  - [5.9. EFS Infrequent Access (EFS-IA)](#59-efs-infrequent-access-efs-ia)
+  - [5.10. Shared Responsibility Model for EC2 Storage](#510-shared-responsibility-model-for-ec2-storage)
+  - [5.11. Amazon FSx - Overview](#511-amazon-fsx---overview)
+    - [5.11.1. Amazon FSx for Windows File Server](#5111-amazon-fsx-for-windows-file-server)
+    - [5.11.2. Amazon FSx for Lustre](#5112-amazon-fsx-for-lustre)
+  - [5.12. EC2 Instance Storage Summary](#512-ec2-instance-storage-summary)
 - [6. Elastic Load Balancing & Auto Scaling Groups](#6-elastic-load-balancing--auto-scaling-groups)
   - [6.1. Scalability & High Availability](#61-scalability--high-availability)
     - [6.1.1. Vertical Scalability](#611-vertical-scalability)
@@ -350,6 +350,9 @@
   - [19.8. AWS Elastic Disaster Recovery (DRS)](#198-aws-elastic-disaster-recovery-drs)
   - [19.9. AWS DataSync](#199-aws-datasync)
   - [19.10. AWS Fault Injection Simulator (FIS)](#1910-aws-fault-injection-simulator-fis)
+  - [19.11. AWS Step Functions](#1911-aws-step-functions)
+  - [19.12. Amazon AppFlow](#1912-amazon-appflow)
+  - [19.13. AWS CloudSearch](#1913-aws-cloudsearch)
 - [20. AWS Architecting & Ecosystem](#20-aws-architecting--ecosystem)
   - [20.1. Well Architected Framework General - Guiding Principles](#201-well-architected-framework-general---guiding-principles)
   - [20.2. AWS Cloud Best Practices - Design Principles](#202-aws-cloud-best-practices---design-principles)
@@ -562,13 +565,14 @@
 
 - **Compliance** with data governance and legal requirements: data never leaves a region without your explicit permission.
 - **Proximity** to customers: reduced latency.
-- **Available** services within a Region: new services and new features aren't available in every Region.
-- **Pricing**: pricing varies region to region and is transparent in the service pricing page.
+- **Available services** within a Region: new services and new features aren't available in every Region.
+- **Pricing** pricing varies region to region and is transparent in the service pricing page.
 - **Capacity is unlimited in the cloud, you do not need to worry about it. The 4 points of considerations when choosing an AWS Region are: compliance with data governance and legal requirements, proximity to customers, available services and features within a Region, and pricing.**
 
 ### 2.12. AWS Availability Zones
 
-- Each region has many availability zones (usually 3, min is 2, max is 6). Example:
+- Each region has many availability zones (usually 3, min is 2, max is 6).
+- Example:
   - ap-southeast-2a
   - ap-southeast-2b
   - ap-southeast-2c
@@ -1059,14 +1063,14 @@
   - Your own AMI: you make and maintain them yourself
   - An AWS Marketplace AMI: an AMI someone else made (and potentially sells)
 
-### 5.6. AMI Process (from an EC2 instance)
+#### 5.5.1. AMI Process (from an EC2 instance)
 
 - Start an EC2 instance and customize it.
 - Stop the instance (for data integrity).
 - Build an AMI - this will also create EBS snapshots.
 - Launch instances from other AMIs.
 
-### 5.7. EC2 Image Builder
+### 5.6. EC2 Image Builder
 
 - Used to automate the creation of Virtual Machines or container images.
 - => Automate the creation, maintain, validate and test **EC2 AMIs**.
@@ -1080,7 +1084,7 @@
   3. New AMI
   4. Test EC2 Instance
 
-### 5.8. EC2 Instance Store
+### 5.7. EC2 Instance Store
 
 - EBS volumes are **network drives** with good but "limited" performance.
 - **If you need a high-performance hardware disk, use EC2 Instance Store**.
@@ -1090,13 +1094,13 @@
 - Risk of data loss if hardware fails.
 - Backups and Replication are your responsibility.
 
-### 5.9. EFS - Elastic File System
+### 5.8. EFS - Elastic File System
 
 - Managed NFS (network file system) that **can be mounted on 100s of EC2**.
 - EFS works with **Linux** EC2 instances in **multi-AZ**.
 - Highly available, scalable, expensive (3x gp2), pay per use, no capacity planning.
 
-### 5.10. EFS Infrequent Access (EFS-IA)
+### 5.9. EFS Infrequent Access (EFS-IA)
 
 - **Storage class** that is cost-optimized for files not accessed every day.
 - Up to 92% lower cost compared to EFS Standard.
@@ -1105,7 +1109,7 @@
 - Example: move files that are not accessed for 60 days to EFS-IA.
 - Transparent to the applications accessing EFS.
 
-### 5.11. Shared Responsibility Model for EC2 Storage
+### 5.10. Shared Responsibility Model for EC2 Storage
 
 - AWS
   - Infrastructure.
@@ -1118,7 +1122,7 @@
   - Responsibility of any data on the drives.
   - Understanding the risk of using EC2 Instance Store.
 
-### 5.12. Amazon FSx - Overview
+### 5.11. Amazon FSx - Overview
 
 - Launch 3rd party high-performance file systems on AWS.
 - Fully managed service.
@@ -1127,7 +1131,7 @@
   - FSx for Windows File Server
   - FSx for NetApp ONTAP
 
-#### 5.12.1. Amazon FSx for Windows File Server
+#### 5.11.1. Amazon FSx for Windows File Server
 
 - A fully managed, highly reliable, and scalable Windows native shared file system.
 - Built on Windows File Server.
@@ -1135,14 +1139,14 @@
 - Integrated with Microsoft Active Directory.
 - Can be accessed from AWS or your on-premise infrastructure.
 
-#### 5.12.2. Amazon FSx for Lustre
+#### 5.11.2. Amazon FSx for Lustre
 
 - A fully managed, high-performance, scalable file storage for **High Performance Computing (HPC)**.
 - The name Lustre is derived from "Linux" and "cluster".
 - Machine Learning, Analytics, Video Processing, Financial Modeling, ...
 - Scales up to 100s GB/s, millions of IOPS, sub-ms latencies.
 
-### 5.13. EC2 Instance Storage Summary
+### 5.12. EC2 Instance Storage Summary
 
 - EBS volumes:
   - Network drives attached to one EC2 instance at a time
@@ -1929,7 +1933,7 @@
 
 ### 8.19. Amazon Managed Blockchain
 
-- Amazon Managed Blockchain is a fully managed service that makes it easy to create and manage scalable blockchain networks using the popular open source frameworks Hyperledger Fabric and Ethereum. It allows multiple parties to execute transactions without the need of a trusted, central authority.
+- **Amazon Managed Blockchain is a fully managed service that makes it easy to create and manage scalable blockchain networks using the popular open source frameworks Hyperledger Fabric and Ethereum. It allows multiple parties to execute transactions without the need of a trusted, central authority.**
 - Blockchain makes it possible to build applications where multiple parties can execute transactions without the need for a trusted, central authority.
 - Amazon Managed Blockchain is a managed service to:
   - Join public blockchain networks
@@ -3901,6 +3905,44 @@
 - Helps you uncover hidden bugs and performance bottlenecks.
 - Supports the following AWS services: EC2, ECS, EKS, RDS...
 - Use pre-built templates that generate the desired disruptions.
+
+### 19.11. AWS Step Functions
+
+- AWS Step Functions is a low-code, visual workflow service that developers use to build distributed applications, automate IT and business processes, and build data and machine learning pipelines using AWS services.
+- Workflows manage failures, retries, parallelization, service integrations, and observability so developers can focus on higher-value business logic.
+  - Benefits:
+  - Build and deploy rapidly
+    - Get started quickly with Workflow Studio, a simple drag-and-drop interface. With Step Functions, you can express complex business logic as low-code, event-driven workflows that connect services, systems or people within minutes.
+  - Write less integration code
+    - Compose AWS resources from over 200 services including Lambda, ECS, Fargate, Batch, DynamoDB, SNS, SQS, SageMaker, EventBridge, or EMR into resilient business workflows, data pipelines, or applications.
+  - Build fault-tolerant and stateful workflows
+    - Step Functions manages state, checkpoints, and restarts for you to make sure that your workflows run in order and as expected. Built-in try/catch, retry, and rollback capabilities deal with errors and exceptions automatically based on your defined business logic.
+  - Designed for reliability and scale
+    Step Functions offers two workflow types - Standard or Express - that can be used depending on your specific use case. Standard Workflows are used to manage long-running workloads. Express Workflows support high-volume event processing workloads.
+
+### 19.12. Amazon AppFlow
+
+- Amazon AppFlow is a fully managed integration service that enables you to securely transfer data between Software-as-a-Service (SaaS) applications like Salesforce, SAP, Zendesk, Slack, and ServiceNow, and AWS services like Amazon S3 and Amazon Redshift, in just a few clicks.
+- With AppFlow, you can run data flows at enterprise scale at the frequency you choose - on a schedule, in response to a business event, or on demand.
+- You can configure data transformation capabilities like filtering and validation to generate rich, ready-to-use data as part of the flow itself, without additional steps.
+- AppFlow automatically encrypts data in motion, and allows users to restrict data from flowing over the public Internet for SaaS applications that are integrated with AWS PrivateLink, reducing exposure to security threats.
+- Benefits:
+  - Integrate with a few clicks
+    - Anyone can use AppFlow to integrate applications in a few minutes – no more waiting days or weeks to code custom connectors.
+    - Features like data pagination, error logging, and network connection retries are included by default so there’s no coding or management.
+    - With Appflow, data flow quality is built in, and you can enrich the flow of data through mapping, merging, masking, filtering, and validation as part of the flow itself.
+  - Transfer data at massive scale
+    - AppFlow easily scales up without the need to plan or provision resources, so you can move large volumes of data without breaking it down into multiple batches.
+    - AppFlow can run up to 100 GB per flow, which enables you to easily transfer millions of Salesforce records or Zendesk events or Marketo responses or other data - all while running a single flow.
+  - Automate data security
+    - All data flowing through AppFlow is encrypted at rest and in transit, and you can encrypt data with AWS keys, or bring your own custom keys.
+    - With AppFlow, you can use your existing Identity and Access Management (IAM) policies to enforce fine-grained permissions, rather than creating new policies.
+    - For SaaS integrations with AWS PrivateLink enabled, data is secured from the public internet by default.
+
+### 19.13. AWS CloudSearch
+
+- Amazon CloudSearch is a managed service in the AWS Cloud that makes it simple and cost-effective to set up, manage, and scale a search solution for your website or application.
+- Amazon CloudSearch supports 34 languages and popular search features such as highlighting, autocomplete, and geospatial search.
 
 ## 20. AWS Architecting & Ecosystem
 
