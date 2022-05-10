@@ -58,16 +58,17 @@
   - [4.9. Security Groups Good to know](#49-security-groups-good-to-know)
   - [4.10. Classic Ports to know](#410-classic-ports-to-know)
   - [4.11. How to SSH into your EC2 Instance](#411-how-to-ssh-into-your-ec2-instance)
-  - [4.12. EC2 Instance Connect](#412-ec2-instance-connect)
-  - [4.13. EC2 Instances Purchasing Options](#413-ec2-instances-purchasing-options)
-    - [4.13.1. EC2 On Demand](#4131-ec2-on-demand)
-    - [4.13.2. EC2 Reserved Instances](#4132-ec2-reserved-instances)
-    - [4.13.3. EC2 Spot Instances](#4133-ec2-spot-instances)
-    - [4.13.4. EC2 Dedicated Hosts](#4134-ec2-dedicated-hosts)
-    - [4.13.5. EC2 Dedicated Instances](#4135-ec2-dedicated-instances)
-  - [4.14. Which purchasing option is right for me? (correlation with Hotel)](#414-which-purchasing-option-is-right-for-me-correlation-with-hotel)
-  - [4.15. Shared Responsibility Model for EC2](#415-shared-responsibility-model-for-ec2)
-  - [4.16. EC2 - Summary](#416-ec2---summary)
+  - [4.12. Elastic IP](#412-elastic-ip)
+  - [4.13. EC2 Instance Connect](#413-ec2-instance-connect)
+  - [4.14. EC2 Instances Purchasing Options](#414-ec2-instances-purchasing-options)
+    - [4.14.1. EC2 On Demand](#4141-ec2-on-demand)
+    - [4.14.2. EC2 Reserved Instances](#4142-ec2-reserved-instances)
+    - [4.14.3. EC2 Spot Instances](#4143-ec2-spot-instances)
+    - [4.14.4. EC2 Dedicated Hosts](#4144-ec2-dedicated-hosts)
+    - [4.14.5. EC2 Dedicated Instances](#4145-ec2-dedicated-instances)
+  - [4.15. Which purchasing option is right for me? (correlation with Hotel)](#415-which-purchasing-option-is-right-for-me-correlation-with-hotel)
+  - [4.16. Shared Responsibility Model for EC2](#416-shared-responsibility-model-for-ec2)
+  - [4.17. EC2 - Summary](#417-ec2---summary)
 - [5. EC2 Instance Storage](#5-ec2-instance-storage)
   - [5.1. What's an EBS Volume?](#51-whats-an-ebs-volume)
   - [5.2. EBS Volume](#52-ebs-volume)
@@ -914,7 +915,12 @@
 - Command
   - ssh -i D:\MY_PENFILE.pem ec2-user@PUBLIC_IP
 
-### 4.12. EC2 Instance Connect
+### 4.12. Elastic IP
+
+- An Elastic IP address is a reserved public IP address that you can assign to any EC2 instance in a particular region, until you choose to release it.
+- To allocate an Elastic IP address to your account in a particular region, see Allocate an Elastic IP address.
+
+### 4.13. EC2 Instance Connect
 
 - Connect to your EC2 instance within your browser
 - No need to use your key file that was downloaded
@@ -922,7 +928,7 @@
 - **Works only out-of-the-box with Amazon Linux 2**
 - Need to make sure the port 22 is still opened!
 
-### 4.13. EC2 Instances Purchasing Options
+### 4.14. EC2 Instances Purchasing Options
 
 - On-Demand Instances: short workload, predictable pricing
 - Reserved: (MINIMUM 1 year)
@@ -933,7 +939,7 @@
 - Dedicated Hosts: book an entire physical server, control instance placement
 - Dedicated Instances: no other customers will share your hardware
 
-#### 4.13.1. EC2 On Demand
+#### 4.14.1. EC2 On Demand
 
 - Pay for what you use:
   - Linux or Windows - billing per second, after the first minute
@@ -942,7 +948,7 @@
 - No long-term commitment
 - Recommended for **short-term** and **un-interrupted workloads**, where you can't predict how the application will behave
 
-#### 4.13.2. EC2 Reserved Instances
+#### 4.14.2. EC2 Reserved Instances
 
 - Up to 72% discount compared to On-demand
 - Reservation period: 1 year = + discount | 3 years = +++ discount
@@ -957,7 +963,7 @@
   - When you require a fraction of day / week / month
   - Commitment for 1 year only
 
-#### 4.13.3. EC2 Spot Instances
+#### 4.14.3. EC2 Spot Instances
 
 - Can get a discount of up to 90% compared to On-demand
 - Instances that you can "lose" at any point of time if your max price is less than the
@@ -971,7 +977,7 @@
   - Workloads with a flexible start and end time
 - Not suitable for critical jobs or databases
 
-#### 4.13.4. EC2 Dedicated Hosts
+#### 4.14.4. EC2 Dedicated Hosts
 
 - An Amazon EC2 Dedicated Host is a physical server with EC2 instance capacity fully dedicated to your use. Dedicated Hosts can help you address compliance requirements and reduce costs by allowing you to use your existing server-bound software licenses.
 - Allocated for your account for a 3-year period reservation
@@ -979,20 +985,20 @@
 - Useful for software that have complicated licensing model (BYOL - Bring Your Own License)
 - Or for companies that have strong regulatory or compliance needs
 
-#### 4.13.5. EC2 Dedicated Instances
+#### 4.14.5. EC2 Dedicated Instances
 
 - Instances running on hardware that's dedicated to you
 - May share hardware with other instances in same account
 - No control over instance placement (can move hardware after Stop / Start)
 
-### 4.14. Which purchasing option is right for me? (correlation with Hotel)
+### 4.15. Which purchasing option is right for me? (correlation with Hotel)
 
 - On demand: coming and staying in resort whenever we like, we pay the full price
 - Reserved: like planning ahead and if we plan to stay for a long time, we may get a good discount.
 - Spot instances: the hotel allows people to bid for the empty rooms and the highest bidder keeps the rooms. You can get kicked out at any time
 - Dedicated Hosts: We book an entire building of the resort
 
-### 4.15. Shared Responsibility Model for EC2
+### 4.16. Shared Responsibility Model for EC2
 
 - AWS:
   - Infrastructure (global network security)
@@ -1006,7 +1012,7 @@
   - IAM Roles assigned to EC2ASDASD\_\_& IAM user access management
   - Data security on your instance
 
-### 4.16. EC2 - Summary
+### 4.17. EC2 - Summary
 
 - EC2 Instance: AMI (OS) + Instance Size (CPU + RAM) + Storage + security groups + EC2 User Data.
 - Security Groups: Firewall attached to the EC2 instance.
@@ -1287,7 +1293,6 @@
 - It's advertised as "infinitely scaling" storage
 - Many websites use Amazon S3 as a backbone
 - Many AWS services use Amazon S3 as an integration as well
-- We'll have a step-by-step approach to S3
 
 ### 7.2. S3 Use cases
 
@@ -1463,8 +1468,7 @@
 
 - 99.9% Availability
 - Same low latency and high throughput performance of S3 Standard
-- Cost-optimized by automatically moving objects between two access
-  tiers based on changing access patterns:
+- Cost-optimized by automatically moving objects between two access tiers based on changing access patterns:
   - Frequent access
   - Infrequent access
 - Resilient against events that impact an entire Availability Zone
@@ -1813,7 +1817,8 @@
 
 #### 8.9.4. Resume
 
-- **RDS Multi-AZ deployments main purpose is high availability, and RDS Read replicas main purpose is scalability. Moreover, Multi-Region deployments' main purpose is disaster recovery and local performance.**
+- **RDS Multi-AZ deployments main purpose is high availability, and RDS Read replicas main purpose is scalability.**
+- **Moreover, Multi-Region deployments main purpose is disaster recovery and local performance.**
 
 ### 8.10. Amazon ElastiCache Overview
 
@@ -2677,6 +2682,9 @@
 
 ### 13.6. Amazon EventBridge
 
+- Is a serverless event bus that makes it easier to build event-driven applications at scale using events generated from your applications, integrated Software-as-a-Service (SaaS) applications, and AWS services.
+- Delivers a stream of real-time data from event sources such as Zendesk or Shopify to targets like AWS Lambda and other SaaS applications.
+- You can set up routing rules to determine where to send your data to build application architectures that react in real-time to your data sources with event publisher and consumer completely decoupled.
 - EventBridge is the next evolution of CloudWatch Events.
 - **Default event bus**: generated by AWS services (CloudWatch Events).
 - **Partner event bus**: receive events from SaaS service or applications (Zendesk, DataDog, Segment, Auth0...).
