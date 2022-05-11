@@ -67,8 +67,9 @@
     - [4.14.4. EC2 Dedicated Hosts](#4144-ec2-dedicated-hosts)
     - [4.14.5. EC2 Dedicated Instances](#4145-ec2-dedicated-instances)
   - [4.15. Which purchasing option is right for me? (correlation with Hotel)](#415-which-purchasing-option-is-right-for-me-correlation-with-hotel)
-  - [4.16. Shared Responsibility Model for EC2](#416-shared-responsibility-model-for-ec2)
-  - [4.17. EC2 - Summary](#417-ec2---summary)
+  - [4.16. AWS License Manager](#416-aws-license-manager)
+  - [4.17. Shared Responsibility Model for EC2](#417-shared-responsibility-model-for-ec2)
+  - [4.18. EC2 - Summary](#418-ec2---summary)
 - [5. EC2 Instance Storage](#5-ec2-instance-storage)
   - [5.1. What's an EBS Volume?](#51-whats-an-ebs-volume)
   - [5.2. EBS Volume](#52-ebs-volume)
@@ -354,6 +355,7 @@
   - [19.11. AWS Step Functions](#1911-aws-step-functions)
   - [19.12. Amazon AppFlow](#1912-amazon-appflow)
   - [19.13. AWS CloudSearch](#1913-aws-cloudsearch)
+  - [19.14. Aws Service Catalog](#1914-aws-service-catalog)
 - [20. AWS Architecting & Ecosystem](#20-aws-architecting--ecosystem)
   - [20.1. Well Architected Framework General - Guiding Principles](#201-well-architected-framework-general---guiding-principles)
   - [20.2. AWS Cloud Best Practices - Design Principles](#202-aws-cloud-best-practices---design-principles)
@@ -998,7 +1000,16 @@
 - Spot instances: the hotel allows people to bid for the empty rooms and the highest bidder keeps the rooms. You can get kicked out at any time
 - Dedicated Hosts: We book an entire building of the resort
 
-### 4.16. Shared Responsibility Model for EC2
+### 4.16. AWS License Manager
+
+- AWS License Manager makes it easier to manage your software licenses from vendors such as Microsoft, SAP, Oracle, and IBM across AWS and on-premises environments.
+- AWS License Manager lets administrators create customized licensing rules that mirror the terms of their licensing agreements.
+- Administrators can use these rules to help prevent licensing violations, such as using more licenses than an agreement stipulates.
+- Rules in AWS License Manager help prevent a licensing breach by stopping the instance from launching or by notifying administrators about the infringement.
+- Administrators gain control and visibility of all their licenses with the AWS License Manager dashboard and reduce the risk of non-compliance, misreporting, and additional costs due to licensing overages.
+- Independent software vendors (ISVs) can also use AWS License Manager to easily distribute and track licenses.
+
+### 4.17. Shared Responsibility Model for EC2
 
 - AWS:
   - Infrastructure (global network security)
@@ -1012,7 +1023,7 @@
   - IAM Roles assigned to EC2ASDASD\_\_& IAM user access management
   - Data security on your instance
 
-### 4.17. EC2 - Summary
+### 4.18. EC2 - Summary
 
 - EC2 Instance: AMI (OS) + Instance Size (CPU + RAM) + Storage + security groups + EC2 User Data.
 - Security Groups: Firewall attached to the EC2 instance.
@@ -1056,6 +1067,8 @@
 - Make a backup (snapshot) of your EBS volume at a point in time.
 - Not necessary to detach volume to do snapshot, **but recommended**.
 - Can copy snapshots across AZ or Region.
+- Quotas:
+  - Manual DB instance snapshots -> Each supported Region: 100
 
 ### 5.5. AMI Overview
 
@@ -1870,7 +1883,7 @@
 ### 8.13. Amazon EMR
 
 - EMR stands for "Elastic MapReduce"
-- **Amazon EMR is a web service that enables businesses, researchers, data analysts, and developers to easily and cost-effectively process vast amounts of data. EMR helps creating Hadoop clusters (Big Data) to analyze and process vast amount of data.**
+- **Amazon EMR is a web service that enables businesses, researchers, data analysts, and developers to easily and cost-effectively process vast amounts of data. EMR helps creating Apache Hadoop clusters (Big Data) to analyze and process vast amount of data.**
 - The clusters can be made of hundreds of EC2 instances
 - Also supports Apache Spark, HBase, Presto, Flink...
 - EMR takes care of all the provisioning and configuration
@@ -1971,7 +1984,7 @@
 - In-memory Database: ElastiCache.
 - Key/Value Database: DynamoDB (serverless) & DAX (cache for DynamoDB).
 - Warehouse - OLAP: Redshift (SQL).
-- Hadoop Cluster: EMR.
+- Apache Hadoop Cluster: EMR.
 - Athena: query data on Amazon S3 (serverless & SQL).
 - QuickSight: dashboards on your data (serverless).
 - DocumentDB: "Aurora for MongoDB" (JSON - NoSQL database).
@@ -3637,7 +3650,8 @@
 
 ### 17.9. AWS Budgets
 
-- **AWS Budgets gives you the ability to set custom budgets that alert you when your costs or usage exceed (or are forecasted to exceed) your budgeted amount. Difference with CloudWatch Billing Alarms: CloudWatch Billing Alarms only send alerts when your costs and usage are exceeding your budget, not when it is forecasted to exceed your budget, while AWS Budgets does both.**
+- **AWS Budgets gives you the ability to set custom budgets that alert you when your costs or usage exceed (or are forecasted to exceed) your budgeted amount.**
+- **Difference with CloudWatch Billing Alarms: CloudWatch Billing Alarms only send alerts when your costs and usage are exceeding your budget, not when it is forecasted to exceed your budget, while AWS Budgets does both.**
 - Create budget and **send alarms when costs exceeds the budget**.
 - 3 types of budgets: Usage, Cost, Reservation.
 - For Reserved Instances (RI):
@@ -3951,6 +3965,14 @@
 
 - Amazon CloudSearch is a managed service in the AWS Cloud that makes it simple and cost-effective to set up, manage, and scale a search solution for your website or application.
 - Amazon CloudSearch supports 34 languages and popular search features such as highlighting, autocomplete, and geospatial search.
+
+### 19.14. Aws Service Catalog
+
+- AWS Service Catalog allows organizations to create and manage catalogs of IT services that are approved for use on AWS.
+- These IT services can include everything from virtual machine images, servers, software, and databases to complete multi-tier application architectures.
+- AWS Service Catalog allows you to centrally manage deployed IT services and your applications, resources, and metadata.
+- This helps you achieve consistent governance and meet your compliance requirements, while enabling users to quickly deploy only the approved IT services they need. With AWS Service Catalog AppRegistry, organizations can understand the application context of their AWS resources.
+- You can define and manage your applications and their metadata, to keep track of cost, performance, security, compliance and operational status at the application level.
 
 ## 20. AWS Architecting & Ecosystem
 
