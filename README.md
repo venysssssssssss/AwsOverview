@@ -200,7 +200,8 @@
     - [10.13.1. How Systems Manager works?](#10131-how-systems-manager-works)
     - [10.13.2. Systems Manager - SSM Session Manager](#10132-systems-manager---ssm-session-manager)
   - [10.14. AWS OpsWorks](#1014-aws-opsworks)
-  - [10.15. Deployment - Summary](#1015-deployment---summary)
+  - [10.15. AWS Amplify](#1015-aws-amplify)
+  - [10.16. Deployment - Summary](#1016-deployment---summary)
 - [11. Global Infrastructure](#11-global-infrastructure)
   - [11.1. Why make a global application?](#111-why-make-a-global-application)
   - [11.2. Global AWS Infrastructure](#112-global-aws-infrastructure)
@@ -356,6 +357,7 @@
   - [19.12. Amazon AppFlow](#1912-amazon-appflow)
   - [19.13. AWS CloudSearch](#1913-aws-cloudsearch)
   - [19.14. Aws Service Catalog](#1914-aws-service-catalog)
+  - [19.15. Amazon SES - Simple Email Service](#1915-amazon-ses---simple-email-service)
 - [20. AWS Architecting & Ecosystem](#20-aws-architecting--ecosystem)
   - [20.1. Well Architected Framework General - Guiding Principles](#201-well-architected-framework-general---guiding-principles)
   - [20.2. AWS Cloud Best Practices - Design Principles](#202-aws-cloud-best-practices---design-principles)
@@ -2214,12 +2216,13 @@
 
 ### 10.4. AWS Elastic Beanstalk Overview
 
-- **Elastic Beanstalk is a Platform as a Service (PaaS). You only manage data and applications. AWS Elastic Beanstalk makes it even easier for developers to quickly deploy and manage applications in the AWS Cloud.**
+- **Elastic Beanstalk is a Platform as a Service (PaaS).**
+- **You only manage data and applications.**
+- **AWS Elastic Beanstalk makes it even easier for developers to quickly deploy and manage applications in the AWS Cloud.**
 - Elastic Beanstalk is a developer centric view of deploying an application on AWS.
 - It uses all the component's we've seen before: EC2, ASG, ELB, RDS, etc...
 - But it's all in one view that's easy to make sense of!
 - We still have full control over the configuration.
-- Beanstalk = Platform as a Service (PaaS).
 - **Elastic Beanstalk are free of use, but you do pay for the resources created..**
 
 ### 10.5. Elastic Beanstalk
@@ -2358,7 +2361,13 @@
   - EC2 Instances, Databases, Load Balancers, EBS volumes...
 - Tip: Chef or Puppet needed => AWS OpsWorks.
 
-### 10.15. Deployment - Summary
+### 10.15. AWS Amplify
+
+- AWS Amplify is a set of purpose-built tools and features that lets frontend web and mobile developers quickly and easily build full-stack applications on AWS, with the flexibility to leverage the breadth of AWS services as your use cases evolve.
+- With Amplify, you can configure a web or mobile app backend, connect your app in minutes, visually build a web frontend UI, and easily manage app content outside the AWS console.
+- Ship faster and scale effortlessly—with no cloud expertise needed.
+
+### 10.16. Deployment - Summary
 
 - CloudFormation: (AWS only):
   - Infrastructure as Code, works with almost all of AWS resources.
@@ -3152,7 +3161,8 @@
 
 ### 15.14. Amazon Inspector
 
-- **Amazon Inspector is an automated security assessment service that helps improve the security and compliance of applications deployed on AWS. It helps you test the network accessibility of your Amazon EC2 instances and the security state of your applications running on the instances.**
+- **Amazon Inspector is an automated security assessment service that helps improve the security and compliance of applications deployed on AWS.**
+- **It helps you test the network accessibility of your Amazon EC2 instances and the security state of your applications running on the instances.**
 - **Automated Security Assessments**.
 - **For EC2 instances:**
   - Leveraging the AWS System Manager (SSM) agent.
@@ -3891,7 +3901,8 @@
 
 ### 19.7. AWS Backup
 
-- **AWS Backup is a centralized backup service that makes it easy and cost-effective for you to backup your application data across AWS services in the AWS Cloud. CloudEndure Disaster Recovery minimizes downtime and data loss by providing fast, reliable recovery into AWS of your physical, virtual, and cloud-based servers.**
+- **AWS Backup is a centralized backup service that makes it easy and cost-effective for you to backup your application data across AWS services in the AWS Cloud**
+- **CloudEndure Disaster Recovery minimizes downtime and data loss by providing fast, reliable recovery into AWS of your physical, virtual, and cloud-based servers.**
 - Fully-managed service to centrally manage and automate backups across AWS services.
 - On-demand and scheduled backups.
 - Supports PITR (Point-in-time Recovery).
@@ -3973,6 +3984,13 @@
 - AWS Service Catalog allows you to centrally manage deployed IT services and your applications, resources, and metadata.
 - This helps you achieve consistent governance and meet your compliance requirements, while enabling users to quickly deploy only the approved IT services they need. With AWS Service Catalog AppRegistry, organizations can understand the application context of their AWS resources.
 - You can define and manage your applications and their metadata, to keep track of cost, performance, security, compliance and operational status at the application level.
+
+### 19.15. Amazon SES - Simple Email Service
+
+- Amazon Simple Email Service (SES) is a cost-effective, flexible, and scalable email service that enables developers to send mail from within any application.
+- You can configure Amazon SES quickly to support several email use cases, including transactional, marketing, or mass email communications.
+- Amazon SES's flexible IP deployment and email authentication options help drive higher deliverability and protect sender reputation, while sending analytics measure the impact of each email.
+- With Amazon SES, you can send email securely, globally, and at scale.
 
 ## 20. AWS Architecting & Ecosystem
 
@@ -4414,7 +4432,6 @@
 - SES Simple Email Service
 - SNS Simple Notification Service
 - SQS Simple Queue Service
-- SES Simple Email Service
 - SLA Service Level Agreement
 - SSL Secure Socket Layer
 - SOA Start of Authority
