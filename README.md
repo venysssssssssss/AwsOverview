@@ -62,9 +62,11 @@
   - [4.13. EC2 Instances Purchasing Options](#413-ec2-instances-purchasing-options)
     - [4.13.1. EC2 On Demand](#4131-ec2-on-demand)
     - [4.13.2. EC2 Reserved Instances](#4132-ec2-reserved-instances)
-    - [4.13.3. EC2 Spot Instances](#4133-ec2-spot-instances)
-    - [4.13.4. EC2 Dedicated Hosts](#4134-ec2-dedicated-hosts)
-    - [4.13.5. EC2 Dedicated Instances](#4135-ec2-dedicated-instances)
+    - [4.13.3. EC2 Savings Plans](#4133-ec2-savings-plans)
+    - [4.13.4. EC2 Spot Instances](#4134-ec2-spot-instances)
+    - [4.13.5. EC2 Dedicated Hosts](#4135-ec2-dedicated-hosts)
+    - [4.13.6. EC2 Dedicated Instances](#4136-ec2-dedicated-instances)
+    - [4.13.7. EC2 Capacity Reservations](#4137-ec2-capacity-reservations)
   - [4.14. Which purchasing option is right for me? (correlation with Hotel)](#414-which-purchasing-option-is-right-for-me-correlation-with-hotel)
   - [4.15. Shared Responsibility Model for EC2](#415-shared-responsibility-model-for-ec2)
   - [4.16. EC2 - Summary](#416-ec2---summary)
@@ -73,17 +75,24 @@
   - [5.2. EBS Volume](#52-ebs-volume)
   - [5.3. EBS - Delete on Termination attribute](#53-ebs---delete-on-termination-attribute)
   - [5.4. EBS Snapshots](#54-ebs-snapshots)
+    - [5.4.1. EBS Snapshots Features](#541-ebs-snapshots-features)
   - [5.5. AMI Overview](#55-ami-overview)
     - [5.5.1. AMI Process (from an EC2 instance)](#551-ami-process-from-an-ec2-instance)
   - [5.6. EC2 Image Builder](#56-ec2-image-builder)
   - [5.7. EC2 Instance Store](#57-ec2-instance-store)
-  - [5.8. EFS - Elastic File System](#58-efs---elastic-file-system)
-  - [5.9. EFS Infrequent Access (EFS-IA)](#59-efs-infrequent-access-efs-ia)
-  - [5.10. Shared Responsibility Model for EC2 Storage](#510-shared-responsibility-model-for-ec2-storage)
-  - [5.11. Amazon FSx - Overview](#511-amazon-fsx---overview)
-    - [5.11.1. Amazon FSx for Windows File Server](#5111-amazon-fsx-for-windows-file-server)
-    - [5.11.2. Amazon FSx for Lustre](#5112-amazon-fsx-for-lustre)
-  - [5.12. EC2 Instance Storage Summary](#512-ec2-instance-storage-summary)
+  - [5.8. EBS Volume Types](#58-ebs-volume-types)
+  - [5.9. EBS Volume Types Use cases](#59-ebs-volume-types-use-cases)
+    - [5.9.1. General Purpose SSD](#591-general-purpose-ssd)
+    - [5.9.2. Provisioned IOPS (PIOPS) SSD](#592-provisioned-iops-piops-ssd)
+    - [5.9.3. Hard Disk Drives (HDD)](#593-hard-disk-drives-hdd)
+  - [5.10. EBS Multi-Attach - io1/io2 family](#510-ebs-multi-attach---io1io2-family)
+  - [5.11. EFS - Elastic File System](#511-efs---elastic-file-system)
+  - [5.12. EFS Infrequent Access (EFS-IA)](#512-efs-infrequent-access-efs-ia)
+  - [5.13. Shared Responsibility Model for EC2 Storage](#513-shared-responsibility-model-for-ec2-storage)
+  - [5.14. Amazon FSx - Overview](#514-amazon-fsx---overview)
+    - [5.14.1. Amazon FSx for Windows File Server](#5141-amazon-fsx-for-windows-file-server)
+    - [5.14.2. Amazon FSx for Lustre](#5142-amazon-fsx-for-lustre)
+  - [5.15. EC2 Instance Storage Summary](#515-ec2-instance-storage-summary)
 - [6. Elastic Load Balancing & Auto Scaling Groups](#6-elastic-load-balancing--auto-scaling-groups)
   - [6.1. Scalability & High Availability](#61-scalability--high-availability)
     - [6.1.1. Vertical Scalability](#611-vertical-scalability)
@@ -659,11 +668,11 @@
 
 ### 3.5. Multi Factor Authentication - MFA
 
-- Users have access to your account and can possibly change configurations or delete resources in your AWS account
-- **You want to protect your Root Accounts and IAM users**
-- MFA = password you know + security device you own
+- Users have access to your account and can possibly change configurations or delete resources in your AWS account.
+- **You want to protect your Root Accounts and IAM users.**
+- MFA = password you know + security device you own.
 - Main benefit of MFA:
-  - If a password is stolen or hacked, the account is not compromised
+  - If a password is stolen or hacked, the account is not compromised.
 
 ### 3.6. MFA devices options in AWS
 
@@ -672,22 +681,22 @@
   - Authy (multi-device).
   - Support for multiple tokens on a single device.
 - Universal 2nd Factor (U2F) Security Key:
-  - YubiKey by Yubico (3rd party)
-    - Support for multiple tokens on a single device. Support for multiple root and IAM users using a single security key
+  - YubiKey by Yubico (3rd party):
+    - Support for multiple tokens on a single device. Support for multiple root and IAM users using a single security key.
 - Hardware Key Fob MFA Device:
-  - Provided by Gemalto (3rd party)
+  - Provided by Gemalto (3rd party).
 - Hardware Key Fob MFA Device for AWS GovCloud (US):
-  - Provided by SurePassID (3rd party)
+  - Provided by SurePassID (3rd party).
 
 ### 3.7. How can users access AWS ?
 
 - To access AWS, you have three options:
-  - AWS Management Console (protected by password + MFA).
-  - AWS Command Line Interface (CLI): protected by access keys.
-  - AWS Software Developer Kit (SDK) - for code: protected by access keys.
+  - **AWS Management Console** (protected by password + MFA).
+  - **AWS Command Line Interface (CLI):** protected by access keys.
+  - **AWS Software Developer Kit (SDK)** - for code: protected by access keys.
 - Access Keys are generated through the AWS Console.
 - Users manage their own access keys.
-- Access Keys are secret, just like a password. Don't share them.
+- **Access Keys are secret, just like a password. Don't share them.**
 - Access Key ID ~= username.
 - Secret Access Key ~= password.
 - Example (Fake) Access Keys.
@@ -697,23 +706,23 @@
 
 ### 3.8. What's the AWS CLI?
 
-- A tool that enables you to interact with AWS services using commands in your command-line shell
-- Direct access to the public APIs of AWS services
-- You can develop scripts to manage your resources
-- It's open-source https://github.com/aws/aws-cli
-- Alternative to using AWS Management Console
+- A tool that enables you to interact with AWS services using commands in your command-line shell.
+- Direct access to the public APIs of AWS services.
+- You can develop scripts to manage your resources.
+- It's open-source https://github.com/aws/aws-cli.
+- Alternative to using AWS Management Console.
 
 ### 3.9. What's the AWS SDK?
 
-- AWS Software Development Kit (AWS SDK)
-- Language-specific APIs (set of libraries)
-- Enables you to access and manage AWS services programmatically
-- Embedded within your application
+- AWS Software Development Kit (AWS SDK).
+- Language-specific APIs (set of libraries).
+- Enables you to access and manage AWS services programmatically.
+- Embedded within your application.
 - Supports:
-  - SDKs (JavaScript, Python, PHP, .NET, Ruby, Java, Go, Node.js, C++, C#)
-  - Mobile SDKs (Android, iOS, ...)
-  - IoT Device SDKs (Embedded C, Arduino, ...)
-- Example: AWS CLI is built on AWS SDK for Python
+  - SDKs (JavaScript, Python, PHP, .NET, Ruby, Java, Go, Node.js, C++, C#).
+  - Mobile SDKs (Android, iOS, ...).
+  - IoT Device SDKs (Embedded C, Arduino, ...).
+- Example: AWS CLI is built on AWS SDK for Python.
 
 ### 3.10. IAM Roles for Services
 
@@ -726,36 +735,36 @@
 
 ### 3.11. IAM Security Tools
 
-- IAM Credentials Report (account-level)
-  - A report that lists all your account's users and the status of their various credentials
-- IAM Access Advisor (user-level)
+- **IAM Credentials Report (account-level):**
+  - A report that lists all your account's users and the status of their various credentials.
+- **IAM Access Advisor (user-level):**
   - Access advisor shows the service permissions granted to a user and when those services were last accessed.
   - You can use this information to revise your policies.
 
 ### 3.12. IAM Guidelines & Best Practices
 
-- Don't use the root account except for AWS account setup
-- One physical user = One AWS user
-- **Assign users to groups** and assign permissions to groups
-- Create a **strong password policy**
-- Use and enforce the use of **Multi Factor Authentication (MFA)**
-- Create and use **Roles** for giving permissions to AWS services
-- Use Access Keys for Programmatic Access (CLI / SDK)
-- Audit permissions of your account with the IAM Credentials Report
-- **Never share IAM users & Access Keys**
+- Don't use the root account except for AWS account setup.
+- One physical user = One AWS user.
+- **Assign users to groups** and assign permissions to groups.
+- Create a **strong password policy**.
+- Use and enforce the use of **Multi Factor Authentication (MFA)**.
+- Create and use **Roles** for giving permissions to AWS services.
+- Use Access Keys for Programmatic Access (CLI / SDK).
+- Audit permissions of your account with the IAM Credentials Report.
+- **Never share IAM users & Access Keys.**
 
 ### 3.13. Shared Responsibility Model for IAM
 
 - AWS:
-  - Infrastructure (global network security)
-  - Configuration and vulnerability analysis
-  - Compliance validation
+  - Infrastructure (global network security).
+  - Configuration and vulnerability analysis.
+  - Compliance validation.
 - You (Customer):
-  - Users, Groups, Roles, Policies management and monitoring
-  - Enable MFA on all accounts
-  - Rotate all your keys often
-  - Use IAM tools to apply appropriate permissions
-  - Analyze access patterns & review permissions
+  - Users, Groups, Roles, Policies management and monitoring.
+  - Enable MFA on all accounts.
+  - Rotate all your keys often.
+  - Use IAM tools to apply appropriate permissions.
+  - Analyze access patterns & review permissions.
 
 ### 3.14. IAM - Summary
 
@@ -797,7 +806,7 @@
 ### 4.3. EC2 User Data
 
 - It is possible to bootstrap our instances using an EC2 User data script.
-- **bootstrapping** means launching commands when a machine starts.
+- **Bootstrapping** means launching commands when a machine starts.
 - That script is **only run once** at the instance first start.
 - EC2 user data is used to automate boot tasks such as:
   - Installing updates.
@@ -824,7 +833,6 @@
   - Compute.
   - Memory.
   - Networking.
-- In the course, we will be using the t2.micro which is a General Purpose EC2 instance.
 
 #### 4.5.2. Compute Optimized
 
@@ -839,23 +847,22 @@
 
 #### 4.5.3. Memory Optimized
 
-- Fast performance for workloads that process large data sets in memory
+- Fast performance for workloads that process large data sets in memory.
 - Use cases:
-- High performance, relational/non-relational databases
-- Distributed web scale cache stores
-- In-memory databases optimized for BI (business intelligence)
-- Applications performing real-time processing of big unstructured data
+  - High performance, relational/non-relational databases.
+  - Distributed web scale cache stores.
+  - In-memory databases optimized for BI (business intelligence).
+  - Applications performing real-time processing of big unstructured data.
 
 #### 4.5.4. Storage Optimized
 
-- Great for storage-intensive tasks that require high, sequential read and write
-  access to large data sets on local storage
+- Great for storage-intensive tasks that require high, sequential read and write access to large data sets on local storage.
 - Use cases:
-- High frequency online transaction processing (OLTP) systems
-- Relational & NoSQL databases
-- Cache for in-memory databases (for example, Redis)
-- Data warehousing applications
-- Distributed file systems
+  - High frequency online transaction processing (OLTP) systems.
+  - Relational & NoSQL databases.
+  - Cache for in-memory databases (for example, Redis).
+  - Data warehousing applications.
+  - Distributed file systems.
 
 ### 4.6. EC2 Instance Types: example
 
@@ -871,76 +878,78 @@
 
 ### 4.7. Introduction to Security Groups
 
-- Security Groups are the fundamental of network security in AWS
+- Security Groups are the fundamental of network security in AWS.
 - They control how traffic is allowed into or out of our EC2 Instances.
-- Security groups only contain **allow** rules
-- Security groups rules can reference by IP or by security group
+- Security groups only contain **allow** rules.
+- Security groups rules can reference by IP or by security group.
 
 ### 4.8. Security Groups Deeper Dive
 
-- Security groups are acting as a "firewall" on EC2 instances
+- Security groups are acting as a "firewall" on EC2 instances.
 - They regulate:
-  - Access to Ports
-  - Authorised IP ranges IPv4 and IPv6
-  - Control of inbound network (from other to the instance)
-  - Control of outbound network (from the instance to other)
+  - Access to Ports.
+  - Authorised IP ranges IPv4 and IPv6.
+  - Control of inbound network (from other to the instance).
+  - Control of outbound network (from the instance to other).
 
 ### 4.9. Security Groups Good to know
 
-- Can be attached to multiple instances
-- Locked down to a region / VPC combination
-- Does live "outside" the EC2 - if traffic is blocked the EC2 instance won't see it
-- It's good to maintain one separate security group for SSH access
-- If your application is not accessible (time out), then it's a security group issue
-- If your application gives a "connection refused" error, then it's an application error or it's not launched
-- All inbound traffic is **blocked** by default
-- All outbound traffic is **authorised** by default
+- Can be attached to multiple instances.
+- Locked down to a region / VPC combination.
+- Does live "outside" the EC2 - if traffic is blocked the EC2 instance won't see it.
+- It's good to maintain one separate security group for SSH access.
+- If your application is not accessible (time out), then it's a security group issue.
+- If your application gives a "connection refused" error, then it's an application error or it's not launched.
+- All inbound traffic is **blocked** by default.
+- All outbound traffic is **authorised** by default.
 
 ### 4.10. Classic Ports to know
 
-- 22 = SSH (Secure Shell) - log into a Linux instance
-- 21 = FTP (File Transfer Protocol) - upload files into a file share
-- 22 = SFTP (Secure File Transfer Protocol) - upload files using SSH
-- 80 = HTTP - access unsecured websites
-- 443 = HTTPS - access secured websites
-- 3389 = RDP (Remote Desktop Protocol) - log into a Windows instance
+- 22 = SSH (Secure Shell) - log into a Linux instance.
+- 21 = FTP (File Transfer Protocol) - upload files into a file share.
+- 22 = SFTP (Secure File Transfer Protocol) - upload files using SSH.
+- 80 = HTTP - access unsecured websites.
+- 443 = HTTPS - access secured websites.
+- 3389 = RDP (Remote Desktop Protocol) - log into a Windows instance.
 
 ### 4.11. How to SSH into your EC2 Instance
 
-- Windows
-- We'll learn how to SSH into your EC2 instance using Windows
-- Configure pem file
-  ![Permission Propertie Aws PemFile](/Images/PermissionPropertieAwsPemFile.png)
-- Command
-  - ssh -i D:\MY_PENFILE.pem ec2-user@PUBLIC_IP
+- Windows:
+  - We'll learn how to SSH into your EC2 instance using Windows.
+  - Configure pem file
+    ![Permission Propertie Aws PemFile](/Images/PermissionPropertieAwsPemFile.png)
+  - Command
+    - ssh -i D:\MY_PENFILE.pem ec2-user@PUBLIC_IP.
 
 ### 4.12. EC2 Instance Connect
 
-- Connect to your EC2 instance within your browser
-- No need to use your key file that was downloaded
-- The "magic" is that a temporary key is uploaded onto EC2 by AWS
-- **Works only out-of-the-box with Amazon Linux 2**
+- Connect to your EC2 instance within your browser.
+- No need to use your key file that was downloaded.
+- The "magic" is that a temporary key is uploaded onto EC2 by AWS.
+- **Works only out-of-the-box with Amazon Linux 2.**
 - Need to make sure the port 22 is still opened!
 
 ### 4.13. EC2 Instances Purchasing Options
 
-- On-Demand Instances: short workload, predictable pricing
+- On-Demand Instances: short workload, predictable pricing.
 - Reserved: (MINIMUM 1 year)
-  - Reserved Instances: long workloads
-  - Convertible Reserved Instances: long workloads with flexible instances
-  - Scheduled Reserved Instances: example - every Thursday between 3 and 6 pm
-- Spot Instances: short workloads, cheap, can lose instances (less reliable)
-- Dedicated Hosts: book an entire physical server, control instance placement
-- Dedicated Instances: no other customers will share your hardware
+  - Reserved Instances: long workloads.
+  - Convertible Reserved Instances: long workloads with flexible instances.
+  - Scheduled Reserved Instances: example - every Thursday between 3 and 6 pm.
+- Savings Plans (1 & 3 years) -commitment to an amount of usage, long workload.
+- Spot Instances: short workloads, cheap, can lose instances (less reliable).
+- Dedicated Hosts: book an entire physical server, control instance placement.
+- Dedicated Instances: no other customers will share your hardware.
+- Capacity Reservations: reserve capacity in a specific AZ for any duration.
 
 #### 4.13.1. EC2 On Demand
 
 - Pay for what you use:
-  - Linux or Windows - billing per second, after the first minute
-  - All other operating systems - billing per hour
-- Has the highest cost but no upfront payment
-- No long-term commitment
-- Recommended for **short-term** and **un-interrupted workloads**, where you can't predict how the application will behave
+  - Linux or Windows - billing per second, after the first minute.
+  - All other operating systems - billing per hour.
+- Has the highest cost but no upfront payment.
+- No long-term commitment.
+- Recommended for **short-term** and **un-interrupted workloads**, where you can't predict how the application will behave.
 
 #### 4.13.2. EC2 Reserved Instances
 
@@ -957,40 +966,65 @@
   - When you require a fraction of day / week / month
   - Commitment for 1 year only
 
-#### 4.13.3. EC2 Spot Instances
+#### 4.13.3. EC2 Savings Plans
 
-- Can get a discount of up to 90% compared to On-demand
-- Instances that you can "lose" at any point of time if your max price is less than the
-  current spot price
-- The MOST cost-efficient instances in AWS
-- Useful for workloads that are resilient to failure
-  - Batch jobs
-  - Data analysis
-  - Image processing
-  - Any distributed workloads
-  - Workloads with a flexible start and end time
-- Not suitable for critical jobs or databases
+- Get a discount based on long-term usage (up to 72% - same as RIs).
+- Commit to a certain type of usage ($10/hour for 1 or 3 years).
+- Usage beyond EC2 Savings Plans is billed at the On-Demand price.
+- Locked to a specific instance family & AWS region (e.g., M5 in us-east-1).
+- Flexible across:
+  - Instance Size (e.g., m5.xlarge, m5.2xlarge).
+  - OS (e.g., Linux, Windows).
+  - Tenancy (Host, Dedicated, Default).
 
-#### 4.13.4. EC2 Dedicated Hosts
+#### 4.13.4. EC2 Spot Instances
 
-- An Amazon EC2 Dedicated Host is a physical server with EC2 instance capacity fully dedicated to your use. Dedicated Hosts can help you address compliance requirements and reduce costs by allowing you to use your existing server-bound software licenses.
-- Allocated for your account for a 3-year period reservation
-- More expensive
-- Useful for software that have complicated licensing model (BYOL - Bring Your Own License)
-- Or for companies that have strong regulatory or compliance needs
+- Can get a discount of up to 90% compared to On-demand.
+- Instances that you can "lose" at any point of time if your max price is less than the current spot price.
+- The MOST cost-efficient instances in AWS.
+- Useful for workloads that are resilient to failure:
+  - Batch jobs.
+  - Data analysis.
+  - Image processing.
+  - Any distributed workloads.
+  - Workloads with a flexible start and end time.
+- Not suitable for critical jobs or databases.
 
-#### 4.13.5. EC2 Dedicated Instances
+#### 4.13.5. EC2 Dedicated Hosts
 
-- Instances running on hardware that's dedicated to you
-- May share hardware with other instances in same account
-- No control over instance placement (can move hardware after Stop / Start)
+- **An Amazon EC2 Dedicated Host is a physical server with EC2 instance capacity fully dedicated to your use. Dedicated Hosts can help you address compliance requirements and reduce costs by allowing you to use your existing server-bound software licenses.**
+- A physical server with EC2 instance capacity fully dedicated to your use.
+- Allows you address compliance requirements and use your existing server - bound software licenses (per-socket, per-core, pe—VM software licenses).
+- Purchasing Options:
+  - On-demand - pay per second for active Dedicated Host.
+  - Reserved - 1 or 3 years (No Upfront, Partial Upfront, All Upfront).
+- The most expensive option.
+- Useful for software that have complicated licensing model (BYOL - Bring Your Own License).
+- Or for companies that have strong regulatory or compliance needs.
+
+#### 4.13.6. EC2 Dedicated Instances
+
+- Instances running on hardware that's dedicated to you.
+- May share hardware with other instances in same account.
+- No control over instance placement (can move hardware after Stop / Start).
+
+#### 4.13.7. EC2 Capacity Reservations
+
+- Reserve On-Demand instances capacity in a specific AZ for any duration.
+- You always have access to EC2 capacity when you need it.
+- No time commitment (create/cancel anytime), no billing discounts.
+- Combine with Regional Reserved Instances and Savings Plans to benefit from billing discounts.
+- You're charged at On-Demand rate whether you run instances or not.
+- Suitable for short-term, uninterrupted workloads that needs to be in a specific AZ.
 
 ### 4.14. Which purchasing option is right for me? (correlation with Hotel)
 
-- On demand: coming and staying in resort whenever we like, we pay the full price
-- Reserved: like planning ahead and if we plan to stay for a long time, we may get a good discount.
-- Spot instances: the hotel allows people to bid for the empty rooms and the highest bidder keeps the rooms. You can get kicked out at any time
-- Dedicated Hosts: We book an entire building of the resort
+- **On demand:** coming and staying in resort whenever we like, we pay the full price.
+- **Reserved:** like planning ahead and if we plan to stay for a long time, we may get a good discount.
+- **Savings Plans:** pay a certain amount per hour for certain period and stay in any room type (e.g, King, Suite, Sea View, ...).
+- **Spot instances:** the hotel allows people to bid for the empty rooms and the highest bidder keeps the rooms. You can get kicked out at any time.
+- **Dedicated Hosts:** We book an entire building of the resort.
+- **Capacity Reservations:** you book a room for a period with full price even you don't stay in it.
 
 ### 4.15. Shared Responsibility Model for EC2
 
@@ -1021,9 +1055,10 @@
 
 - An **EBS (Elastic Block Store) Volume** is a **network drive** you can attach to your instances while they run.
 - It allows your instances to persist data, even after their termination.
-- **They can only be mounted to one instance at a time (at the CCP level)**.
+- **They can only be mounted to one instance at a time (at the CCP level).**
 - They are bound to a specific **availability zone (AZ)**.
 - Analogy: Think of them as a "network USB stick".
+- Free tier: 30 GB of free EBS storage of type General Purpose (SSD) or Magnetic per month.
 
 ### 5.2. EBS Volume
 
@@ -1039,11 +1074,11 @@
 
 ### 5.3. EBS - Delete on Termination attribute
 
-- Controls the EBS behaviour when an EC2 instance terminates
-  - By default, the root EBS volume is deleted (attribute enabled)
-  - By default, any other attached EBS volume is not deleted (attribute disabled)
-- This can be controlled by the AWS console / AWS CLI
-- **Use case: preserve root volume when instance is terminated**
+- Controls the EBS behaviour when an EC2 instance terminates.
+  - By default, the root EBS volume is deleted (attribute enabled).
+  - By default, any other attached EBS volume is not deleted (attribute disabled).
+- This can be controlled by the AWS console / AWS CLI.
+- **Use case: preserve root volume when instance is terminated.**
 
 ### 5.4. EBS Snapshots
 
@@ -1051,17 +1086,26 @@
 - Not necessary to detach volume to do snapshot, **but recommended**.
 - Can copy snapshots across AZ or Region.
 
+#### 5.4.1. EBS Snapshots Features
+
+- **EBS Snapshot Archive:**
+  - Move a Snapshot to an "archive tier" that is 75% cheaper.
+  - Takes within 24 to 72 hours for restoring the archive.
+- **Recycle Bin for EBS Snapshots:**
+  - Setup rules to retain deleted snapshots so you can recover them after an accidental deletion.
+  - Specify retention (from 1 day to 1 year).
+
 ### 5.5. AMI Overview
 
 - AMI = Amazon Machine Image.
 - AMI are a **customization** of an EC2 instance.
   - You add your own software, configuration, operating system, monitoring...
-  - Faster boot / configuration time because all your software is pre-packaged
+  - Faster boot / configuration time because all your software is pre-packaged.
 - AMI are built for a **specific region** (and can be copied across regions).
 - You can launch EC2 instances from:
-  - A Public AMI: AWS provided
-  - Your own AMI: you make and maintain them yourself
-  - An AWS Marketplace AMI: an AMI someone else made (and potentially sells)
+  - **A Public AMI:** AWS provided.
+  - **Your own AMI:** you make and maintain them yourself.
+  - **An AWS Marketplace AMI:** an AMI someone else made (and potentially sells).
 
 #### 5.5.1. AMI Process (from an EC2 instance)
 
@@ -1073,7 +1117,7 @@
 ### 5.6. EC2 Image Builder
 
 - Used to automate the creation of Virtual Machines or container images.
-- => Automate the creation, maintain, validate and test **EC2 AMIs**.
+- Automate the creation, maintain, validate and test **EC2 AMIs**.
 - Can be run on a schedule (weekly, whenever packages are updated, etc...).
 - Free service (only pay for the underlying resources).
 - Steps:
@@ -1094,13 +1138,74 @@
 - Risk of data loss if hardware fails.
 - Backups and Replication are your responsibility.
 
-### 5.8. EFS - Elastic File System
+### 5.8. EBS Volume Types
+
+- EBS Volumes come in 6 types:
+  - gp2 / gp3 (SSD): General purpose SSD volume that balances price and performance for a wide variety of workloads.
+  - io1 / io2 (SSD): Highest-performance SSD volume for mission-critical low-latency or high-throughput workloads.
+  - st1 (HDD): Low cost HDD volume designed for frequently accessed, throughput-intensive workloads.
+  - sc1 (HDD): Lowest cost HDD volume designed for less frequently accessed workloads.
+- EBS Volumes are characterized in Size | Throughput | IOPS (I/O Ops Per Sec).
+- When in doubt always consult the AWS documentation - it's good!
+- **Only gp2/gp3 and io1/io2 can be used as boot volumes.**
+
+### 5.9. EBS Volume Types Use cases
+
+#### 5.9.1. General Purpose SSD
+
+- Cost effective storage, low-latency.
+- System boot volumes, Virtual desktops, Development and test environments.
+- 1 GiB - 16 TiB.
+- gp3:
+  - Baseline of 3,000 IOPS and throughput of 125 MiB/s.
+  - Can increase IOPS up to 16,000 and throughput up to 1000 MiB/s independently.
+- gp2:
+  - Small gp2 volumes can burst IOPS to 3,000.
+  - Size of the volume and IOPS are linked, max IOPS is 16,000.
+  - 3 IOPS per GB, means at 5,334 GB we are at the max IOPS.
+
+#### 5.9.2. Provisioned IOPS (PIOPS) SSD
+
+- Critical business applications with sustained IOPS performance.
+- Or applications that need more than 16,000 IOPS.
+- Great for databases workloads (sensitive to storage perf and consistency).
+- io1/io2 (4 GiB - 16 TiB):
+  - Max PIOPS: 64,000 for Nitro EC2 instances & 32,000 for other.
+  - Can increase PIOPS independently from storage size.
+  - io2 have more durability and more IOPS per GiB (at the same price as io1).
+- io2 Block Express (4 GiB - 64 TiB):
+  - Sub-millisecond latency.
+  - Max PIOPS: 256,000 with an IOPS:GiB ratio of 1,000:1.
+- Supports EBS Multi-attach.
+
+#### 5.9.3. Hard Disk Drives (HDD)
+
+- Cannot be a boot volume.
+- 25 GiB to 16 TiB.
+- Throughput Optimized HDD (st1):
+  - Big Data, Data Warehouses, Log Processing.
+  - **Max throughput** 500 MiB/s - max IOPS 500.
+- Cold HDD (sc1):
+  - For data that is infrequently accessed.
+  - Scenarios where lowest cost is important.
+  - **Max throughput** 250 MiB/s - max IOPS 250.
+
+### 5.10. EBS Multi-Attach - io1/io2 family
+
+- Attach the same EBS volume to multiple EC2 instances in the same AZ.
+- Each instance has full read & write permissions to the volume.
+- Use case:
+  - Achieve higher application availability in clustered Linux applications (ex: Teradata).
+  - Applications must manage concurrent write operations.
+- Must use a file system that's cluster-aware (not XFS, EX4, etc...).
+
+### 5.11. EFS - Elastic File System
 
 - Managed NFS (network file system) that **can be mounted on 100s of EC2**.
 - EFS works with **Linux** EC2 instances in **multi-AZ**.
 - Highly available, scalable, expensive (3x gp2), pay per use, no capacity planning.
 
-### 5.9. EFS Infrequent Access (EFS-IA)
+### 5.12. EFS Infrequent Access (EFS-IA)
 
 - **Storage class** that is cost-optimized for files not accessed every day.
 - Up to 92% lower cost compared to EFS Standard.
@@ -1109,7 +1214,7 @@
 - Example: move files that are not accessed for 60 days to EFS-IA.
 - Transparent to the applications accessing EFS.
 
-### 5.10. Shared Responsibility Model for EC2 Storage
+### 5.13. Shared Responsibility Model for EC2 Storage
 
 - AWS
   - Infrastructure.
@@ -1122,7 +1227,7 @@
   - Responsibility of any data on the drives.
   - Understanding the risk of using EC2 Instance Store.
 
-### 5.11. Amazon FSx - Overview
+### 5.14. Amazon FSx - Overview
 
 - Launch 3rd party high-performance file systems on AWS.
 - Fully managed service.
@@ -1131,7 +1236,7 @@
   - FSx for Windows File Server
   - FSx for NetApp ONTAP
 
-#### 5.11.1. Amazon FSx for Windows File Server
+#### 5.14.1. Amazon FSx for Windows File Server
 
 - A fully managed, highly reliable, and scalable Windows native shared file system.
 - Built on Windows File Server.
@@ -1139,14 +1244,14 @@
 - Integrated with Microsoft Active Directory.
 - Can be accessed from AWS or your on-premise infrastructure.
 
-#### 5.11.2. Amazon FSx for Lustre
+#### 5.14.2. Amazon FSx for Lustre
 
 - A fully managed, high-performance, scalable file storage for **High Performance Computing (HPC)**.
 - The name Lustre is derived from "Linux" and "cluster".
 - Machine Learning, Analytics, Video Processing, Financial Modeling, ...
 - Scales up to 100s GB/s, millions of IOPS, sub-ms latencies.
 
-### 5.12. EC2 Instance Storage Summary
+### 5.15. EC2 Instance Storage Summary
 
 - EBS volumes:
   - Network drives attached to one EC2 instance at a time
@@ -2165,7 +2270,6 @@
   - Leverage existing templates on the web!
   - Leverage the documentation.
 - Supports (almost) all AWS resources:
-  - Everything we'll see in this course is supported.
   - You can use "custom resources" for resources that are not supported.
 
 #### 10.1.2. CloudFormation Stack Designer
@@ -3928,8 +4032,8 @@
 - AppFlow automatically encrypts data in motion, and allows users to restrict data from flowing over the public Internet for SaaS applications that are integrated with AWS PrivateLink, reducing exposure to security threats.
 - Benefits:
   - Integrate with a few clicks
-    - Anyone can use AppFlow to integrate applications in a few minutes – no more waiting days or weeks to code custom connectors.
-    - Features like data pagination, error logging, and network connection retries are included by default so there’s no coding or management.
+    - Anyone can use AppFlow to integrate applications in a few minutes - no more waiting days or weeks to code custom connectors.
+    - Features like data pagination, error logging, and network connection retries are included by default so there's no coding or management.
     - With Appflow, data flow quality is built in, and you can enrich the flow of data through mapping, merging, masking, filtering, and validation as part of the flow itself.
   - Transfer data at massive scale
     - AppFlow easily scales up without the need to plan or provision resources, so you can move large volumes of data without breaking it down into multiple batches.
