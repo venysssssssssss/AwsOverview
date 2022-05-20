@@ -87,12 +87,15 @@
     - [5.9.3. Hard Disk Drives (HDD)](#593-hard-disk-drives-hdd)
   - [5.10. EBS Multi-Attach - io1/io2 family](#510-ebs-multi-attach---io1io2-family)
   - [5.11. EFS - Elastic File System](#511-efs---elastic-file-system)
-  - [5.12. EFS Infrequent Access (EFS-IA)](#512-efs-infrequent-access-efs-ia)
-  - [5.13. Shared Responsibility Model for EC2 Storage](#513-shared-responsibility-model-for-ec2-storage)
-  - [5.14. Amazon FSx - Overview](#514-amazon-fsx---overview)
-    - [5.14.1. Amazon FSx for Windows File Server](#5141-amazon-fsx-for-windows-file-server)
-    - [5.14.2. Amazon FSx for Lustre](#5142-amazon-fsx-for-lustre)
-  - [5.15. EC2 Instance Storage Summary](#515-ec2-instance-storage-summary)
+    - [5.11.1. EFS – Performance & Storage Classes](#5111-efs--performance--storage-classes)
+    - [5.11.2. EBS vs EFS – Elastic Block Storage](#5112-ebs-vs-efs--elastic-block-storage)
+    - [5.11.3. EBS vs EFS – Elastic File System](#5113-ebs-vs-efs--elastic-file-system)
+    - [5.11.4. EFS Infrequent Access (EFS-IA)](#5114-efs-infrequent-access-efs-ia)
+  - [5.12. Shared Responsibility Model for EC2 Storage](#512-shared-responsibility-model-for-ec2-storage)
+  - [5.13. Amazon FSx - Overview](#513-amazon-fsx---overview)
+    - [5.13.1. Amazon FSx for Windows File Server](#5131-amazon-fsx-for-windows-file-server)
+    - [5.13.2. Amazon FSx for Lustre](#5132-amazon-fsx-for-lustre)
+  - [5.14. EC2 Instance Storage Summary](#514-ec2-instance-storage-summary)
 - [6. Elastic Load Balancing & Auto Scaling Groups](#6-elastic-load-balancing--auto-scaling-groups)
   - [6.1. Scalability & High Availability](#61-scalability--high-availability)
     - [6.1.1. Vertical Scalability](#611-vertical-scalability)
@@ -101,11 +104,11 @@
   - [6.3. High Availability & Scalability For EC2](#63-high-availability--scalability-for-ec2)
   - [6.4. Scalability vs Elasticity (vs Agility)](#64-scalability-vs-elasticity-vs-agility)
   - [6.5. What is load balancing?](#65-what-is-load-balancing)
-  - [6.6. Why use a load balancer?](#66-why-use-a-load-balancer)
-  - [6.7. Why use an Elastic Load Balancer (ELB)?](#67-why-use-an-elastic-load-balancer-elb)
-  - [6.8. What's an Auto Scaling Group?](#68-whats-an-auto-scaling-group)
-  - [6.9. Auto Scaling Groups - Scaling Strategies](#69-auto-scaling-groups---scaling-strategies)
-  - [6.10. ELB & ASG - Summary](#610-elb--asg---summary)
+    - [6.5.1. Why use a load balancer?](#651-why-use-a-load-balancer)
+    - [6.5.2. Why use an Elastic Load Balancer (ELB)?](#652-why-use-an-elastic-load-balancer-elb)
+  - [6.6. What's an Auto Scaling Group?](#66-whats-an-auto-scaling-group)
+  - [6.7. Auto Scaling Groups - Scaling Strategies](#67-auto-scaling-groups---scaling-strategies)
+  - [6.8. ELB & ASG - Summary](#68-elb--asg---summary)
 - [7. Amazon S3](#7-amazon-s3)
   - [7.1. Introduction](#71-introduction)
   - [7.2. S3 Use cases](#72-s3-use-cases)
@@ -1204,8 +1207,56 @@
 - Managed NFS (network file system) that **can be mounted on 100s of EC2**.
 - EFS works with **Linux** EC2 instances in **multi-AZ**.
 - Highly available, scalable, expensive (3x gp2), pay per use, no capacity planning.
+- Use cases: content management, web serving, data sharing, Wordpress.
+- Uses NFSv4.1 protocol.
+- Uses security group to control access to EFS.
+- **Compatible with Linux based AMI (not Windows).**
+- Encryption at rest using KMS.
+- POSIX file system (~Linux) that has a standard file API.
+- File system scales automatically, pay-per-use, no capacity planning!
 
-### 5.12. EFS Infrequent Access (EFS-IA)
+#### 5.11.1. EFS – Performance & Storage Classes
+
+- **EFS Scale:**
+  - 1000s of concurrent NFS clients, 10 GB+ /s throughput.
+  - Grow to Petabyte-scale network file system, automatically.
+- **Performance mode (set at EFS creation time):**
+  - General purpose (default): latency-sensitive use cases (web server, CMS, etc...).
+  - Max I/O – higher latency, throughput, highly parallel (big data, media processing).
+- **Throughput mode:**
+  - Bursting (1 TB = 50MiB/s + burst of up to 100MiB/s).
+  - Provisioned: set your throughput regardless of storage size, ex: 1 GiB/s for 1 TB storage.
+- **Storage Tiers (lifecycle management feature – move file after N days):**
+  - Standard: for frequently accessed files.
+  - Infrequent access (EFS-IA): cost to retrieve files, lower price to store. Enable EFS-IA with a Lifecycle Policy.
+- **Availability and durability:**
+  - Regional: Multi-AZ, great for prod.
+  - One Zone: One AZ, great for dev, backup enabled by default, compatible with IA (EFS One Zone-IA).
+- Over 90% in cost savings.
+
+#### 5.11.2. EBS vs EFS – Elastic Block Storage
+
+- EBS volumes:
+  - Can be attached to only one instance at a time.
+  - Are locked at the Availability Zone (AZ) level.
+  - gp2: IO increases if the disk size increases.
+  - io1: can increase IO independently.
+- To migrate an EBS volume across AZ:
+  - Take a snapshot.
+  - Restore the snapshot to another AZ.
+  - EBS backups use IO and you shouldn’t run them while your application is handling a lot of traffic.
+- Root EBS Volumes of instances get terminated by default if the EC2 instance gets terminated (you can disable that).
+
+#### 5.11.3. EBS vs EFS – Elastic File System
+
+- Mounting 100s of instances across AZ.
+- EFS share website files (WordPress).
+- Only for Linux Instances (POSIX).
+- EFS has a higher price point than EBS.
+- Can leverage EFS-IA for cost savings.
+- Remember: EFS vs EBS vs Instance Store.
+
+#### 5.11.4. EFS Infrequent Access (EFS-IA)
 
 - **Storage class** that is cost-optimized for files not accessed every day.
 - Up to 92% lower cost compared to EFS Standard.
@@ -1214,29 +1265,29 @@
 - Example: move files that are not accessed for 60 days to EFS-IA.
 - Transparent to the applications accessing EFS.
 
-### 5.13. Shared Responsibility Model for EC2 Storage
+### 5.12. Shared Responsibility Model for EC2 Storage
 
-- AWS
+- AWS:
   - Infrastructure.
   - Replication for data for EBS volumes & EFS drives.
   - Replacing faulty hardware.
   - Ensuring their employees cannot access your data.
-- You
+- You:
   - Setting up backup / snapshot procedures.
   - Setting up data encryption.
   - Responsibility of any data on the drives.
   - Understanding the risk of using EC2 Instance Store.
 
-### 5.14. Amazon FSx - Overview
+### 5.13. Amazon FSx - Overview
 
 - Launch 3rd party high-performance file systems on AWS.
 - Fully managed service.
 - Products:
-  - FSx for Lustre
-  - FSx for Windows File Server
-  - FSx for NetApp ONTAP
+  - FSx for Lustre.
+  - FSx for Windows File Server.
+  - FSx for NetApp ONTAP.
 
-#### 5.14.1. Amazon FSx for Windows File Server
+#### 5.13.1. Amazon FSx for Windows File Server
 
 - A fully managed, highly reliable, and scalable Windows native shared file system.
 - Built on Windows File Server.
@@ -1244,28 +1295,28 @@
 - Integrated with Microsoft Active Directory.
 - Can be accessed from AWS or your on-premise infrastructure.
 
-#### 5.14.2. Amazon FSx for Lustre
+#### 5.13.2. Amazon FSx for Lustre
 
 - A fully managed, high-performance, scalable file storage for **High Performance Computing (HPC)**.
 - The name Lustre is derived from "Linux" and "cluster".
 - Machine Learning, Analytics, Video Processing, Financial Modeling, ...
 - Scales up to 100s GB/s, millions of IOPS, sub-ms latencies.
 
-### 5.15. EC2 Instance Storage Summary
+### 5.14. EC2 Instance Storage Summary
 
 - EBS volumes:
-  - Network drives attached to one EC2 instance at a time
-  - Mapped to an Availability Zones
-  - Can use EBS Snapshots for backups / transferring EBS volumes across AZ
-- AMI: create ready-to-use EC2 instances with our customizations
-- EC2 Image Builder: automatically build, test and distribute AMIs
+  - Network drives attached to one EC2 instance at a time.
+  - Mapped to an Availability Zones.
+  - Can use EBS Snapshots for backups / transferring EBS volumes across AZ.
+- AMI: create ready-to-use EC2 instances with our customizations.
+- EC2 Image Builder: automatically build, test and distribute AMIs.
 - EC2 Instance Store:
-  - High performance hardware disk attached to our EC2 instance
-  - Lost if our instance is stopped / terminated
-- EFS: network file system, can be attached to 100s of instances in a region
-- EFS-IA: cost-optimized storage class for infrequent accessed files
-- FSx for Windows: Network File System for Windows servers
-- FSx for Lustre: High Performance Computing Linux file system
+  - High performance hardware disk attached to our EC2 instance.
+  - Lost if our instance is stopped / terminated.
+- EFS: network file system, can be attached to 100s of instances in a region.
+- EFS-IA: cost-optimized storage class for infrequent accessed files.
+- FSx for Windows: Network File System for Windows servers.
+- FSx for Lustre: High Performance Computing Linux file system.
 
 ## 6. Elastic Load Balancing & Auto Scaling Groups
 
@@ -1283,20 +1334,24 @@
 - Vertical Scalability means increasing the size of the instance.
 - For example, your application runs on a t2.micro.
 - Scaling that application vertically means running it on a t2.large.
-- Vertical scalability is very common for non distributed systems, such as a database.
+- Vertical scalability is very common for **NON** distributed systems, such as a database.
+- RDS, ElastiCache are services that can scale vertically.
 - There's usually a limit to how much you can vertically scale (hardware limit).
 
 #### 6.1.2. Horizontal Scalability
 
 - Horizontal Scalability means increasing the number of instances / systems for your application.
-- Horizontal scaling implies distributed systems. - This is very common for web applications / modern applications.
+- Horizontal scaling implies distributed systems.
+- This is very common for web applications / modern applications.
 - It's easy to horizontally scale thanks the cloud offerings such as Amazon EC2.
 
 ### 6.2. High Availability
 
 - High Availability usually goes hand in hand with horizontal scaling.
-- High availability means running your application / system in at least 2 Availability Zones.
+- High availability means running your application / system in at least 2 data centers (Availability Zones).
 - The goal of high availability is to survive a data center loss (disaster).
+- The high availability can be passive (for RDS Multi AZ for example).
+- The high availability can be active (for horizontal scaling).
 
 ### 6.3. High Availability & Scalability For EC2
 
@@ -1320,29 +1375,34 @@
 
 - Load balancers are servers that forward internet traffic to multiple servers (EC2 Instances) downstream.
 
-### 6.6. Why use a load balancer?
+#### 6.5.1. Why use a load balancer?
 
-- Spread load across multiple downstream instances
-- Expose a single point of access (DNS) to your application
-- Seamlessly handle failures of downstream instances
-- Do regular health checks to your instances
-- Provide SSL termination (HTTPS) for your websites
-- High availability across zones
+- Spread load across multiple downstream instances.
+- Expose a single point of access (DNS) to your application.
+- Seamlessly handle failures of downstream instances.
+- Do regular health checks to your instances.
+- Provide SSL termination (HTTPS) for your websites.
+- Enforce stickiness with cookies.
+- High availability across zones.
+- Separate public traffic from private traffic.
 
-### 6.7. Why use an Elastic Load Balancer (ELB)?
+#### 6.5.2. Why use an Elastic Load Balancer (ELB)?
 
-- An ELB (Elastic Load Balancer) is a managed load balancer
-  - AWS guarantees that it will be working
-  - AWS takes care of upgrades, maintenance, high availability
-  - AWS provides only a few configuration knobs
-- It costs less to setup your own load balancer but it will be a lot more
-  effort on your end (maintenance, integrations)
+- An ELB (Elastic Load Balancer) is a **managed load balancer**:
+  - AWS guarantees that it will be working.
+  - AWS takes care of upgrades, maintenance, high availability.
+  - AWS provides only a few configuration knobs.
+- It costs less to setup your own load balancer but it will be a lot more effort on your end (maintenance, integrations).
+- It is integrated with many AWS offerings / services:
+  - EC2, EC2 Auto Scaling Groups, Amazon ECS.
+  - AWS Certificate Manager (ACM), CloudWatch.
+  - Route 53, AWS WAF, AWS Global Accelerator.
 - 3 kinds of load balancers offered by AWS:
-  - Application Load Balancer (HTTP / HTTPS only) - Layer 7
-  - Network Load Balancer (ultra-high performance, allows for TCP) - Layer 4
-  - Classic Load Balancer (slowly retiring) - Layer 4 & 7
+  - Application Load Balancer (HTTP / HTTPS only) - Layer 7.
+  - Network Load Balancer (ultra-high performance, allows for TCP) - Layer 4.
+  - Classic Load Balancer (slowly retiring) - Layer 4 & 7.
 
-### 6.8. What's an Auto Scaling Group?
+### 6.6. What's an Auto Scaling Group?
 
 - **Auto Scaling in EC2 allows you to have the right number of instances to handle the application load. Auto Scaling in DynamoDB automatically adjusts read and write throughput capacity, in response to dynamically changing request volumes, with zero downtime. These are both examples of horizontal scaling.**
 - In real-life, the load on your websites and application can change
@@ -1355,7 +1415,7 @@
   - Replace unhealthy instances
 - Cost Savings: only run at an optimal capacity (principle of the cloud)
 
-### 6.9. Auto Scaling Groups - Scaling Strategies
+### 6.7. Auto Scaling Groups - Scaling Strategies
 
 - Manual Scaling: Update the size of an ASG manually
 - Dynamic Scaling: Respond to changing demand
@@ -1372,7 +1432,7 @@
   - Automatically provisions the right number of EC2 instances in advance.
   - Useful when your load has predictable time-based patterns.
 
-### 6.10. ELB & ASG - Summary
+### 6.8. ELB & ASG - Summary
 
 - High Availability vs Scalability (vertical and horizontal) vs Elasticity vs Agility in the Cloud.
 - Elastic Load Balancers (ELB):
