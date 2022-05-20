@@ -58,18 +58,20 @@
   - [4.9. Security Groups Good to know](#49-security-groups-good-to-know)
   - [4.10. Classic Ports to know](#410-classic-ports-to-know)
   - [4.11. How to SSH into your EC2 Instance](#411-how-to-ssh-into-your-ec2-instance)
+  - [4.12. Elastic IP](#412-elastic-ip)
   - [4.12. EC2 Instance Connect](#412-ec2-instance-connect)
-  - [4.13. EC2 Instances Purchasing Options](#413-ec2-instances-purchasing-options)
-    - [4.13.1. EC2 On Demand](#4131-ec2-on-demand)
-    - [4.13.2. EC2 Reserved Instances](#4132-ec2-reserved-instances)
+  - [4.14. EC2 Instances Purchasing Options](#414-ec2-instances-purchasing-options)
+    - [4.14.1. EC2 On Demand](#4141-ec2-on-demand)
+    - [4.14.2. EC2 Reserved Instances](#4142-ec2-reserved-instances)
     - [4.13.3. EC2 Savings Plans](#4133-ec2-savings-plans)
-    - [4.13.4. EC2 Spot Instances](#4134-ec2-spot-instances)
+    - [4.14.3. EC2 Spot Instances](#4143-ec2-spot-instances)
     - [4.13.5. EC2 Dedicated Hosts](#4135-ec2-dedicated-hosts)
     - [4.13.6. EC2 Dedicated Instances](#4136-ec2-dedicated-instances)
     - [4.13.7. EC2 Capacity Reservations](#4137-ec2-capacity-reservations)
   - [4.14. Which purchasing option is right for me? (correlation with Hotel)](#414-which-purchasing-option-is-right-for-me-correlation-with-hotel)
-  - [4.15. Shared Responsibility Model for EC2](#415-shared-responsibility-model-for-ec2)
-  - [4.16. EC2 - Summary](#416-ec2---summary)
+  - [4.16. AWS License Manager](#416-aws-license-manager)
+  - [4.17. Shared Responsibility Model for EC2](#417-shared-responsibility-model-for-ec2)
+  - [4.18. EC2 - Summary](#418-ec2---summary)
 - [5. EC2 Instance Storage](#5-ec2-instance-storage)
   - [5.1. What's an EBS Volume?](#51-whats-an-ebs-volume)
   - [5.2. EBS Volume](#52-ebs-volume)
@@ -90,12 +92,12 @@
     - [5.11.1. EFS – Performance & Storage Classes](#5111-efs--performance--storage-classes)
     - [5.11.2. EBS vs EFS – Elastic Block Storage](#5112-ebs-vs-efs--elastic-block-storage)
     - [5.11.3. EBS vs EFS – Elastic File System](#5113-ebs-vs-efs--elastic-file-system)
-    - [5.11.4. EFS Infrequent Access (EFS-IA)](#5114-efs-infrequent-access-efs-ia)
-  - [5.12. Shared Responsibility Model for EC2 Storage](#512-shared-responsibility-model-for-ec2-storage)
-  - [5.13. Amazon FSx - Overview](#513-amazon-fsx---overview)
-    - [5.13.1. Amazon FSx for Windows File Server](#5131-amazon-fsx-for-windows-file-server)
-    - [5.13.2. Amazon FSx for Lustre](#5132-amazon-fsx-for-lustre)
-  - [5.14. EC2 Instance Storage Summary](#514-ec2-instance-storage-summary)
+  - [5.9. EFS Infrequent Access (EFS-IA)](#59-efs-infrequent-access-efs-ia)
+  - [5.10. Shared Responsibility Model for EC2 Storage](#510-shared-responsibility-model-for-ec2-storage)
+  - [5.11. Amazon FSx - Overview](#511-amazon-fsx---overview)
+    - [5.11.1. Amazon FSx for Windows File Server](#5111-amazon-fsx-for-windows-file-server)
+    - [5.11.2. Amazon FSx for Lustre](#5112-amazon-fsx-for-lustre)
+  - [5.12. EC2 Instance Storage Summary](#512-ec2-instance-storage-summary)
 - [6. Elastic Load Balancing & Auto Scaling Groups](#6-elastic-load-balancing--auto-scaling-groups)
   - [6.1. Scalability & High Availability](#61-scalability--high-availability)
     - [6.1.1. Vertical Scalability](#611-vertical-scalability)
@@ -106,9 +108,9 @@
   - [6.5. What is load balancing?](#65-what-is-load-balancing)
     - [6.5.1. Why use a load balancer?](#651-why-use-a-load-balancer)
     - [6.5.2. Why use an Elastic Load Balancer (ELB)?](#652-why-use-an-elastic-load-balancer-elb)
-  - [6.6. What's an Auto Scaling Group?](#66-whats-an-auto-scaling-group)
-  - [6.7. Auto Scaling Groups - Scaling Strategies](#67-auto-scaling-groups---scaling-strategies)
-  - [6.8. ELB & ASG - Summary](#68-elb--asg---summary)
+  - [6.8. What's an Auto Scaling Group?](#68-whats-an-auto-scaling-group)
+  - [6.9. Auto Scaling Groups - Scaling Strategies](#69-auto-scaling-groups---scaling-strategies)
+  - [6.10. ELB & ASG - Summary](#610-elb--asg---summary)
 - [7. Amazon S3](#7-amazon-s3)
   - [7.1. Introduction](#71-introduction)
   - [7.2. S3 Use cases](#72-s3-use-cases)
@@ -210,7 +212,8 @@
     - [10.13.1. How Systems Manager works?](#10131-how-systems-manager-works)
     - [10.13.2. Systems Manager - SSM Session Manager](#10132-systems-manager---ssm-session-manager)
   - [10.14. AWS OpsWorks](#1014-aws-opsworks)
-  - [10.15. Deployment - Summary](#1015-deployment---summary)
+  - [10.15. AWS Amplify](#1015-aws-amplify)
+  - [10.16. Deployment - Summary](#1016-deployment---summary)
 - [11. Global Infrastructure](#11-global-infrastructure)
   - [11.1. Why make a global application?](#111-why-make-a-global-application)
   - [11.2. Global AWS Infrastructure](#112-global-aws-infrastructure)
@@ -365,6 +368,8 @@
   - [19.11. AWS Step Functions](#1911-aws-step-functions)
   - [19.12. Amazon AppFlow](#1912-amazon-appflow)
   - [19.13. AWS CloudSearch](#1913-aws-cloudsearch)
+  - [19.14. Aws Service Catalog](#1914-aws-service-catalog)
+  - [19.15. Amazon SES - Simple Email Service](#1915-amazon-ses---simple-email-service)
 - [20. AWS Architecting & Ecosystem](#20-aws-architecting--ecosystem)
   - [20.1. Well Architected Framework General - Guiding Principles](#201-well-architected-framework-general---guiding-principles)
   - [20.2. AWS Cloud Best Practices - Design Principles](#202-aws-cloud-best-practices---design-principles)
@@ -924,6 +929,11 @@
   - Command
     - ssh -i D:\MY_PENFILE.pem ec2-user@PUBLIC_IP.
 
+### 4.12. Elastic IP
+
+- An Elastic IP address is a reserved public IP address that you can assign to any EC2 instance in a particular region, until you choose to release it.
+- To allocate an Elastic IP address to your account in a particular region, see Allocate an Elastic IP address.
+
 ### 4.12. EC2 Instance Connect
 
 - Connect to your EC2 instance within your browser.
@@ -932,7 +942,7 @@
 - **Works only out-of-the-box with Amazon Linux 2.**
 - Need to make sure the port 22 is still opened!
 
-### 4.13. EC2 Instances Purchasing Options
+### 4.14. EC2 Instances Purchasing Options
 
 - On-Demand Instances: short workload, predictable pricing.
 - Reserved: (MINIMUM 1 year)
@@ -945,7 +955,7 @@
 - Dedicated Instances: no other customers will share your hardware.
 - Capacity Reservations: reserve capacity in a specific AZ for any duration.
 
-#### 4.13.1. EC2 On Demand
+#### 4.14.1. EC2 On Demand
 
 - Pay for what you use:
   - Linux or Windows - billing per second, after the first minute.
@@ -954,7 +964,7 @@
 - No long-term commitment.
 - Recommended for **short-term** and **un-interrupted workloads**, where you can't predict how the application will behave.
 
-#### 4.13.2. EC2 Reserved Instances
+#### 4.14.2. EC2 Reserved Instances
 
 - Up to 72% discount compared to On-demand
 - Reservation period: 1 year = + discount | 3 years = +++ discount
@@ -980,7 +990,7 @@
   - OS (e.g., Linux, Windows).
   - Tenancy (Host, Dedicated, Default).
 
-#### 4.13.4. EC2 Spot Instances
+#### 4.14.3. EC2 Spot Instances
 
 - Can get a discount of up to 90% compared to On-demand.
 - Instances that you can "lose" at any point of time if your max price is less than the current spot price.
@@ -992,7 +1002,6 @@
   - Any distributed workloads.
   - Workloads with a flexible start and end time.
 - Not suitable for critical jobs or databases.
-
 #### 4.13.5. EC2 Dedicated Hosts
 
 - **An Amazon EC2 Dedicated Host is a physical server with EC2 instance capacity fully dedicated to your use. Dedicated Hosts can help you address compliance requirements and reduce costs by allowing you to use your existing server-bound software licenses.**
@@ -1029,7 +1038,16 @@
 - **Dedicated Hosts:** We book an entire building of the resort.
 - **Capacity Reservations:** you book a room for a period with full price even you don't stay in it.
 
-### 4.15. Shared Responsibility Model for EC2
+### 4.16. AWS License Manager
+
+- AWS License Manager makes it easier to manage your software licenses from vendors such as Microsoft, SAP, Oracle, and IBM across AWS and on-premises environments.
+- AWS License Manager lets administrators create customized licensing rules that mirror the terms of their licensing agreements.
+- Administrators can use these rules to help prevent licensing violations, such as using more licenses than an agreement stipulates.
+- Rules in AWS License Manager help prevent a licensing breach by stopping the instance from launching or by notifying administrators about the infringement.
+- Administrators gain control and visibility of all their licenses with the AWS License Manager dashboard and reduce the risk of non-compliance, misreporting, and additional costs due to licensing overages.
+- Independent software vendors (ISVs) can also use AWS License Manager to easily distribute and track licenses.
+
+### 4.17. Shared Responsibility Model for EC2
 
 - AWS:
   - Infrastructure (global network security)
@@ -1043,7 +1061,7 @@
   - IAM Roles assigned to EC2ASDASD\_\_& IAM user access management
   - Data security on your instance
 
-### 4.16. EC2 - Summary
+### 4.18. EC2 - Summary
 
 - EC2 Instance: AMI (OS) + Instance Size (CPU + RAM) + Storage + security groups + EC2 User Data.
 - Security Groups: Firewall attached to the EC2 instance.
@@ -1088,7 +1106,8 @@
 - Make a backup (snapshot) of your EBS volume at a point in time.
 - Not necessary to detach volume to do snapshot, **but recommended**.
 - Can copy snapshots across AZ or Region.
-
+- Quotas:
+  - Manual DB instance snapshots -> Each supported Region: 100
 #### 5.4.1. EBS Snapshots Features
 
 - **EBS Snapshot Archive:**
@@ -1256,7 +1275,7 @@
 - Can leverage EFS-IA for cost savings.
 - Remember: EFS vs EBS vs Instance Store.
 
-#### 5.11.4. EFS Infrequent Access (EFS-IA)
+### 5.9. EFS Infrequent Access (EFS-IA)
 
 - **Storage class** that is cost-optimized for files not accessed every day.
 - Up to 92% lower cost compared to EFS Standard.
@@ -1265,7 +1284,7 @@
 - Example: move files that are not accessed for 60 days to EFS-IA.
 - Transparent to the applications accessing EFS.
 
-### 5.12. Shared Responsibility Model for EC2 Storage
+### 5.10. Shared Responsibility Model for EC2 Storage
 
 - AWS:
   - Infrastructure.
@@ -1278,7 +1297,7 @@
   - Responsibility of any data on the drives.
   - Understanding the risk of using EC2 Instance Store.
 
-### 5.13. Amazon FSx - Overview
+### 5.11. Amazon FSx - Overview
 
 - Launch 3rd party high-performance file systems on AWS.
 - Fully managed service.
@@ -1287,7 +1306,7 @@
   - FSx for Windows File Server.
   - FSx for NetApp ONTAP.
 
-#### 5.13.1. Amazon FSx for Windows File Server
+#### 5.11.1. Amazon FSx for Windows File Server
 
 - A fully managed, highly reliable, and scalable Windows native shared file system.
 - Built on Windows File Server.
@@ -1295,14 +1314,14 @@
 - Integrated with Microsoft Active Directory.
 - Can be accessed from AWS or your on-premise infrastructure.
 
-#### 5.13.2. Amazon FSx for Lustre
+#### 5.11.2. Amazon FSx for Lustre
 
 - A fully managed, high-performance, scalable file storage for **High Performance Computing (HPC)**.
 - The name Lustre is derived from "Linux" and "cluster".
 - Machine Learning, Analytics, Video Processing, Financial Modeling, ...
 - Scales up to 100s GB/s, millions of IOPS, sub-ms latencies.
 
-### 5.14. EC2 Instance Storage Summary
+### 5.12. EC2 Instance Storage Summary
 
 - EBS volumes:
   - Network drives attached to one EC2 instance at a time.
@@ -1402,7 +1421,7 @@
   - Network Load Balancer (ultra-high performance, allows for TCP) - Layer 4.
   - Classic Load Balancer (slowly retiring) - Layer 4 & 7.
 
-### 6.6. What's an Auto Scaling Group?
+### 6.8. What's an Auto Scaling Group?
 
 - **Auto Scaling in EC2 allows you to have the right number of instances to handle the application load. Auto Scaling in DynamoDB automatically adjusts read and write throughput capacity, in response to dynamically changing request volumes, with zero downtime. These are both examples of horizontal scaling.**
 - In real-life, the load on your websites and application can change
@@ -1415,7 +1434,7 @@
   - Replace unhealthy instances
 - Cost Savings: only run at an optimal capacity (principle of the cloud)
 
-### 6.7. Auto Scaling Groups - Scaling Strategies
+### 6.9. Auto Scaling Groups - Scaling Strategies
 
 - Manual Scaling: Update the size of an ASG manually
 - Dynamic Scaling: Respond to changing demand
@@ -1432,7 +1451,7 @@
   - Automatically provisions the right number of EC2 instances in advance.
   - Useful when your load has predictable time-based patterns.
 
-### 6.8. ELB & ASG - Summary
+### 6.10. ELB & ASG - Summary
 
 - High Availability vs Scalability (vertical and horizontal) vs Elasticity vs Agility in the Cloud.
 - Elastic Load Balancers (ELB):
@@ -1452,7 +1471,6 @@
 - It's advertised as "infinitely scaling" storage
 - Many websites use Amazon S3 as a backbone
 - Many AWS services use Amazon S3 as an integration as well
-- We'll have a step-by-step approach to S3
 
 ### 7.2. S3 Use cases
 
@@ -1628,8 +1646,7 @@
 
 - 99.9% Availability
 - Same low latency and high throughput performance of S3 Standard
-- Cost-optimized by automatically moving objects between two access
-  tiers based on changing access patterns:
+- Cost-optimized by automatically moving objects between two access tiers based on changing access patterns:
   - Frequent access
   - Infrequent access
 - Resilient against events that impact an entire Availability Zone
@@ -1978,7 +1995,8 @@
 
 #### 8.9.4. Resume
 
-- **RDS Multi-AZ deployments main purpose is high availability, and RDS Read replicas main purpose is scalability. Moreover, Multi-Region deployments' main purpose is disaster recovery and local performance.**
+- **RDS Multi-AZ deployments main purpose is high availability, and RDS Read replicas main purpose is scalability.**
+- **Moreover, Multi-Region deployments main purpose is disaster recovery and local performance.**
 
 ### 8.10. Amazon ElastiCache Overview
 
@@ -2030,7 +2048,7 @@
 ### 8.13. Amazon EMR
 
 - EMR stands for "Elastic MapReduce"
-- **Amazon EMR is a web service that enables businesses, researchers, data analysts, and developers to easily and cost-effectively process vast amounts of data. EMR helps creating Hadoop clusters (Big Data) to analyze and process vast amount of data.**
+- **Amazon EMR is a web service that enables businesses, researchers, data analysts, and developers to easily and cost-effectively process vast amounts of data. EMR helps creating Apache Hadoop clusters (Big Data) to analyze and process vast amount of data.**
 - The clusters can be made of hundreds of EC2 instances
 - Also supports Apache Spark, HBase, Presto, Flink...
 - EMR takes care of all the provisioning and configuration
@@ -2131,7 +2149,7 @@
 - In-memory Database: ElastiCache.
 - Key/Value Database: DynamoDB (serverless) & DAX (cache for DynamoDB).
 - Warehouse - OLAP: Redshift (SQL).
-- Hadoop Cluster: EMR.
+- Apache Hadoop Cluster: EMR.
 - Athena: query data on Amazon S3 (serverless & SQL).
 - QuickSight: dashboards on your data (serverless).
 - DocumentDB: "Aurora for MongoDB" (JSON - NoSQL database).
@@ -2360,12 +2378,13 @@
 
 ### 10.4. AWS Elastic Beanstalk Overview
 
-- **Elastic Beanstalk is a Platform as a Service (PaaS). You only manage data and applications. AWS Elastic Beanstalk makes it even easier for developers to quickly deploy and manage applications in the AWS Cloud.**
+- **Elastic Beanstalk is a Platform as a Service (PaaS).**
+- **You only manage data and applications.**
+- **AWS Elastic Beanstalk makes it even easier for developers to quickly deploy and manage applications in the AWS Cloud.**
 - Elastic Beanstalk is a developer centric view of deploying an application on AWS.
 - It uses all the component's we've seen before: EC2, ASG, ELB, RDS, etc...
 - But it's all in one view that's easy to make sense of!
 - We still have full control over the configuration.
-- Beanstalk = Platform as a Service (PaaS).
 - **Elastic Beanstalk are free of use, but you do pay for the resources created..**
 
 ### 10.5. Elastic Beanstalk
@@ -2504,7 +2523,13 @@
   - EC2 Instances, Databases, Load Balancers, EBS volumes...
 - Tip: Chef or Puppet needed => AWS OpsWorks.
 
-### 10.15. Deployment - Summary
+### 10.15. AWS Amplify
+
+- AWS Amplify is a set of purpose-built tools and features that lets frontend web and mobile developers quickly and easily build full-stack applications on AWS, with the flexibility to leverage the breadth of AWS services as your use cases evolve.
+- With Amplify, you can configure a web or mobile app backend, connect your app in minutes, visually build a web frontend UI, and easily manage app content outside the AWS console.
+- Ship faster and scale effortlessly—with no cloud expertise needed.
+
+### 10.16. Deployment - Summary
 
 - CloudFormation: (AWS only):
   - Infrastructure as Code, works with almost all of AWS resources.
@@ -2841,6 +2866,9 @@
 
 ### 13.6. Amazon EventBridge
 
+- Is a serverless event bus that makes it easier to build event-driven applications at scale using events generated from your applications, integrated Software-as-a-Service (SaaS) applications, and AWS services.
+- Delivers a stream of real-time data from event sources such as Zendesk or Shopify to targets like AWS Lambda and other SaaS applications.
+- You can set up routing rules to determine where to send your data to build application architectures that react in real-time to your data sources with event publisher and consumer completely decoupled.
 - EventBridge is the next evolution of CloudWatch Events.
 - **Default event bus**: generated by AWS services (CloudWatch Events).
 - **Partner event bus**: receive events from SaaS service or applications (Zendesk, DataDog, Segment, Auth0...).
@@ -3295,7 +3323,8 @@
 
 ### 15.14. Amazon Inspector
 
-- **Amazon Inspector is an automated security assessment service that helps improve the security and compliance of applications deployed on AWS. It helps you test the network accessibility of your Amazon EC2 instances and the security state of your applications running on the instances.**
+- **Amazon Inspector is an automated security assessment service that helps improve the security and compliance of applications deployed on AWS.**
+- **It helps you test the network accessibility of your Amazon EC2 instances and the security state of your applications running on the instances.**
 - **Automated Security Assessments**.
 - **For EC2 instances:**
   - Leveraging the AWS System Manager (SSM) agent.
@@ -3793,7 +3822,8 @@
 
 ### 17.9. AWS Budgets
 
-- **AWS Budgets gives you the ability to set custom budgets that alert you when your costs or usage exceed (or are forecasted to exceed) your budgeted amount. Difference with CloudWatch Billing Alarms: CloudWatch Billing Alarms only send alerts when your costs and usage are exceeding your budget, not when it is forecasted to exceed your budget, while AWS Budgets does both.**
+- **AWS Budgets gives you the ability to set custom budgets that alert you when your costs or usage exceed (or are forecasted to exceed) your budgeted amount.**
+- **Difference with CloudWatch Billing Alarms: CloudWatch Billing Alarms only send alerts when your costs and usage are exceeding your budget, not when it is forecasted to exceed your budget, while AWS Budgets does both.**
 - Create budget and **send alarms when costs exceeds the budget**.
 - 3 types of budgets: Usage, Cost, Reservation.
 - For Reserved Instances (RI):
@@ -4033,7 +4063,8 @@
 
 ### 19.7. AWS Backup
 
-- **AWS Backup is a centralized backup service that makes it easy and cost-effective for you to backup your application data across AWS services in the AWS Cloud. CloudEndure Disaster Recovery minimizes downtime and data loss by providing fast, reliable recovery into AWS of your physical, virtual, and cloud-based servers.**
+- **AWS Backup is a centralized backup service that makes it easy and cost-effective for you to backup your application data across AWS services in the AWS Cloud**
+- **CloudEndure Disaster Recovery minimizes downtime and data loss by providing fast, reliable recovery into AWS of your physical, virtual, and cloud-based servers.**
 - Fully-managed service to centrally manage and automate backups across AWS services.
 - On-demand and scheduled backups.
 - Supports PITR (Point-in-time Recovery).
@@ -4092,8 +4123,8 @@
 - AppFlow automatically encrypts data in motion, and allows users to restrict data from flowing over the public Internet for SaaS applications that are integrated with AWS PrivateLink, reducing exposure to security threats.
 - Benefits:
   - Integrate with a few clicks
-    - Anyone can use AppFlow to integrate applications in a few minutes - no more waiting days or weeks to code custom connectors.
-    - Features like data pagination, error logging, and network connection retries are included by default so there's no coding or management.
+    - Anyone can use AppFlow to integrate applications in a few minutes – no more waiting days or weeks to code custom connectors.
+    - Features like data pagination, error logging, and network connection retries are included by default so there’s no coding or management.
     - With Appflow, data flow quality is built in, and you can enrich the flow of data through mapping, merging, masking, filtering, and validation as part of the flow itself.
   - Transfer data at massive scale
     - AppFlow easily scales up without the need to plan or provision resources, so you can move large volumes of data without breaking it down into multiple batches.
@@ -4107,6 +4138,21 @@
 
 - Amazon CloudSearch is a managed service in the AWS Cloud that makes it simple and cost-effective to set up, manage, and scale a search solution for your website or application.
 - Amazon CloudSearch supports 34 languages and popular search features such as highlighting, autocomplete, and geospatial search.
+
+### 19.14. Aws Service Catalog
+
+- AWS Service Catalog allows organizations to create and manage catalogs of IT services that are approved for use on AWS.
+- These IT services can include everything from virtual machine images, servers, software, and databases to complete multi-tier application architectures.
+- AWS Service Catalog allows you to centrally manage deployed IT services and your applications, resources, and metadata.
+- This helps you achieve consistent governance and meet your compliance requirements, while enabling users to quickly deploy only the approved IT services they need. With AWS Service Catalog AppRegistry, organizations can understand the application context of their AWS resources.
+- You can define and manage your applications and their metadata, to keep track of cost, performance, security, compliance and operational status at the application level.
+
+### 19.15. Amazon SES - Simple Email Service
+
+- Amazon Simple Email Service (SES) is a cost-effective, flexible, and scalable email service that enables developers to send mail from within any application.
+- You can configure Amazon SES quickly to support several email use cases, including transactional, marketing, or mass email communications.
+- Amazon SES's flexible IP deployment and email authentication options help drive higher deliverability and protect sender reputation, while sending analytics measure the impact of each email.
+- With Amazon SES, you can send email securely, globally, and at scale.
 
 ## 20. AWS Architecting & Ecosystem
 
