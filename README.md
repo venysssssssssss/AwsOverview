@@ -59,16 +59,16 @@
   - [4.10. Classic Ports to know](#410-classic-ports-to-know)
   - [4.11. How to SSH into your EC2 Instance](#411-how-to-ssh-into-your-ec2-instance)
   - [4.12. Elastic IP](#412-elastic-ip)
-  - [4.12. EC2 Instance Connect](#412-ec2-instance-connect)
+  - [4.13. EC2 Instance Connect](#413-ec2-instance-connect)
   - [4.14. EC2 Instances Purchasing Options](#414-ec2-instances-purchasing-options)
     - [4.14.1. EC2 On Demand](#4141-ec2-on-demand)
     - [4.14.2. EC2 Reserved Instances](#4142-ec2-reserved-instances)
-    - [4.13.3. EC2 Savings Plans](#4133-ec2-savings-plans)
-    - [4.14.3. EC2 Spot Instances](#4143-ec2-spot-instances)
-    - [4.13.5. EC2 Dedicated Hosts](#4135-ec2-dedicated-hosts)
-    - [4.13.6. EC2 Dedicated Instances](#4136-ec2-dedicated-instances)
-    - [4.13.7. EC2 Capacity Reservations](#4137-ec2-capacity-reservations)
-  - [4.14. Which purchasing option is right for me? (correlation with Hotel)](#414-which-purchasing-option-is-right-for-me-correlation-with-hotel)
+    - [4.14.3. EC2 Savings Plans](#4143-ec2-savings-plans)
+    - [4.14.4. EC2 Spot Instances](#4144-ec2-spot-instances)
+    - [4.14.5. EC2 Dedicated Hosts](#4145-ec2-dedicated-hosts)
+    - [4.14.6. EC2 Dedicated Instances](#4146-ec2-dedicated-instances)
+    - [4.14.7. EC2 Capacity Reservations](#4147-ec2-capacity-reservations)
+  - [4.15. Which purchasing option is right for me? (correlation with Hotel)](#415-which-purchasing-option-is-right-for-me-correlation-with-hotel)
   - [4.16. AWS License Manager](#416-aws-license-manager)
   - [4.17. Shared Responsibility Model for EC2](#417-shared-responsibility-model-for-ec2)
   - [4.18. EC2 - Summary](#418-ec2---summary)
@@ -92,12 +92,12 @@
     - [5.11.1. EFS – Performance & Storage Classes](#5111-efs--performance--storage-classes)
     - [5.11.2. EBS vs EFS – Elastic Block Storage](#5112-ebs-vs-efs--elastic-block-storage)
     - [5.11.3. EBS vs EFS – Elastic File System](#5113-ebs-vs-efs--elastic-file-system)
-  - [5.9. EFS Infrequent Access (EFS-IA)](#59-efs-infrequent-access-efs-ia)
-  - [5.10. Shared Responsibility Model for EC2 Storage](#510-shared-responsibility-model-for-ec2-storage)
-  - [5.11. Amazon FSx - Overview](#511-amazon-fsx---overview)
-    - [5.11.1. Amazon FSx for Windows File Server](#5111-amazon-fsx-for-windows-file-server)
-    - [5.11.2. Amazon FSx for Lustre](#5112-amazon-fsx-for-lustre)
-  - [5.12. EC2 Instance Storage Summary](#512-ec2-instance-storage-summary)
+  - [5.12. EFS Infrequent Access (EFS-IA)](#512-efs-infrequent-access-efs-ia)
+  - [5.13. Shared Responsibility Model for EC2 Storage](#513-shared-responsibility-model-for-ec2-storage)
+  - [5.14. Amazon FSx - Overview](#514-amazon-fsx---overview)
+    - [5.14.1. Amazon FSx for Windows File Server](#5141-amazon-fsx-for-windows-file-server)
+    - [5.14.2. Amazon FSx for Lustre](#5142-amazon-fsx-for-lustre)
+  - [5.15. EC2 Instance Storage Summary](#515-ec2-instance-storage-summary)
 - [6. Elastic Load Balancing & Auto Scaling Groups](#6-elastic-load-balancing--auto-scaling-groups)
   - [6.1. Scalability & High Availability](#61-scalability--high-availability)
     - [6.1.1. Vertical Scalability](#611-vertical-scalability)
@@ -108,9 +108,9 @@
   - [6.5. What is load balancing?](#65-what-is-load-balancing)
     - [6.5.1. Why use a load balancer?](#651-why-use-a-load-balancer)
     - [6.5.2. Why use an Elastic Load Balancer (ELB)?](#652-why-use-an-elastic-load-balancer-elb)
-  - [6.8. What's an Auto Scaling Group?](#68-whats-an-auto-scaling-group)
-  - [6.9. Auto Scaling Groups - Scaling Strategies](#69-auto-scaling-groups---scaling-strategies)
-  - [6.10. ELB & ASG - Summary](#610-elb--asg---summary)
+  - [6.6. What's an Auto Scaling Group?](#66-whats-an-auto-scaling-group)
+  - [6.7. Auto Scaling Groups - Scaling Strategies](#67-auto-scaling-groups---scaling-strategies)
+  - [6.8. ELB & ASG - Summary](#68-elb--asg---summary)
 - [7. Amazon S3](#7-amazon-s3)
   - [7.1. Introduction](#71-introduction)
   - [7.2. S3 Use cases](#72-s3-use-cases)
@@ -806,7 +806,7 @@
 - How much random-access memory (RAM).
 - How much storage space:
   - Network-attached (EBS & EFS).
-  - hardware (EC2 Instance Store).
+  - Hardware (EC2 Instance Store).
 - Network card: speed of the card, Public IP address.
 - Firewall rules: security group.
 - Bootstrap script (configure at first launch): EC2 User Data.
@@ -934,7 +934,7 @@
 - An Elastic IP address is a reserved public IP address that you can assign to any EC2 instance in a particular region, until you choose to release it.
 - To allocate an Elastic IP address to your account in a particular region, see Allocate an Elastic IP address.
 
-### 4.12. EC2 Instance Connect
+### 4.13. EC2 Instance Connect
 
 - Connect to your EC2 instance within your browser.
 - No need to use your key file that was downloaded.
@@ -967,19 +967,21 @@
 #### 4.14.2. EC2 Reserved Instances
 
 - Up to 72% discount compared to On-demand
+- Your reserve a specific instance attributes (Instance, type, region, tenancy, OS)
 - Reservation period: 1 year = + discount | 3 years = +++ discount
-- Purchasing options: no upfront | partial upfront = + | All upfront = ++ discount
-- Reserve a specific instance type
+- Payment options: No Upfront = + | partial upfront = ++ | All upfront = +++ discount
+- Reserved Instance's Scope – Regional or Zonal (reserve capacity in an AZ)
 - Recommended for steady-state usage applications (think database)
+- You can buy and sell in the Reserved Instance Marketplace
 - Convertible Reserved Instance
-  - Can change the EC2 instance type
-  - Up to 45% discount
+  - Can change the EC2 instance type, instance family, OS, scope and tenancy
+  - Up to 66% discount
 - Scheduled Reserved Instances
   - Launch within time window you reserve
   - When you require a fraction of day / week / month
   - Commitment for 1 year only
 
-#### 4.13.3. EC2 Savings Plans
+#### 4.14.3. EC2 Savings Plans
 
 - Get a discount based on long-term usage (up to 72% - same as RIs).
 - Commit to a certain type of usage ($10/hour for 1 or 3 years).
@@ -990,7 +992,7 @@
   - OS (e.g., Linux, Windows).
   - Tenancy (Host, Dedicated, Default).
 
-#### 4.14.3. EC2 Spot Instances
+#### 4.14.4. EC2 Spot Instances
 
 - Can get a discount of up to 90% compared to On-demand.
 - Instances that you can "lose" at any point of time if your max price is less than the current spot price.
@@ -1002,7 +1004,8 @@
   - Any distributed workloads.
   - Workloads with a flexible start and end time.
 - Not suitable for critical jobs or databases.
-#### 4.13.5. EC2 Dedicated Hosts
+
+#### 4.14.5. EC2 Dedicated Hosts
 
 - **An Amazon EC2 Dedicated Host is a physical server with EC2 instance capacity fully dedicated to your use. Dedicated Hosts can help you address compliance requirements and reduce costs by allowing you to use your existing server-bound software licenses.**
 - A physical server with EC2 instance capacity fully dedicated to your use.
@@ -1014,13 +1017,13 @@
 - Useful for software that have complicated licensing model (BYOL - Bring Your Own License).
 - Or for companies that have strong regulatory or compliance needs.
 
-#### 4.13.6. EC2 Dedicated Instances
+#### 4.14.6. EC2 Dedicated Instances
 
 - Instances running on hardware that's dedicated to you.
 - May share hardware with other instances in same account.
 - No control over instance placement (can move hardware after Stop / Start).
 
-#### 4.13.7. EC2 Capacity Reservations
+#### 4.14.7. EC2 Capacity Reservations
 
 - Reserve On-Demand instances capacity in a specific AZ for any duration.
 - You always have access to EC2 capacity when you need it.
@@ -1029,7 +1032,7 @@
 - You're charged at On-Demand rate whether you run instances or not.
 - Suitable for short-term, uninterrupted workloads that needs to be in a specific AZ.
 
-### 4.14. Which purchasing option is right for me? (correlation with Hotel)
+### 4.15. Which purchasing option is right for me? (correlation with Hotel)
 
 - **On demand:** coming and staying in resort whenever we like, we pay the full price.
 - **Reserved:** like planning ahead and if we plan to stay for a long time, we may get a good discount.
@@ -1108,6 +1111,7 @@
 - Can copy snapshots across AZ or Region.
 - Quotas:
   - Manual DB instance snapshots -> Each supported Region: 100
+
 #### 5.4.1. EBS Snapshots Features
 
 - **EBS Snapshot Archive:**
@@ -1263,7 +1267,7 @@
 - To migrate an EBS volume across AZ:
   - Take a snapshot.
   - Restore the snapshot to another AZ.
-  - EBS backups use IO and you shouldn’t run them while your application is handling a lot of traffic.
+  - EBS backups use IO and you shouldn't run them while your application is handling a lot of traffic.
 - Root EBS Volumes of instances get terminated by default if the EC2 instance gets terminated (you can disable that).
 
 #### 5.11.3. EBS vs EFS – Elastic File System
@@ -1275,7 +1279,7 @@
 - Can leverage EFS-IA for cost savings.
 - Remember: EFS vs EBS vs Instance Store.
 
-### 5.9. EFS Infrequent Access (EFS-IA)
+### 5.12. EFS Infrequent Access (EFS-IA)
 
 - **Storage class** that is cost-optimized for files not accessed every day.
 - Up to 92% lower cost compared to EFS Standard.
@@ -1284,7 +1288,7 @@
 - Example: move files that are not accessed for 60 days to EFS-IA.
 - Transparent to the applications accessing EFS.
 
-### 5.10. Shared Responsibility Model for EC2 Storage
+### 5.13. Shared Responsibility Model for EC2 Storage
 
 - AWS:
   - Infrastructure.
@@ -1297,7 +1301,7 @@
   - Responsibility of any data on the drives.
   - Understanding the risk of using EC2 Instance Store.
 
-### 5.11. Amazon FSx - Overview
+### 5.14. Amazon FSx - Overview
 
 - Launch 3rd party high-performance file systems on AWS.
 - Fully managed service.
@@ -1306,7 +1310,7 @@
   - FSx for Windows File Server.
   - FSx for NetApp ONTAP.
 
-#### 5.11.1. Amazon FSx for Windows File Server
+#### 5.14.1. Amazon FSx for Windows File Server
 
 - A fully managed, highly reliable, and scalable Windows native shared file system.
 - Built on Windows File Server.
@@ -1314,14 +1318,14 @@
 - Integrated with Microsoft Active Directory.
 - Can be accessed from AWS or your on-premise infrastructure.
 
-#### 5.11.2. Amazon FSx for Lustre
+#### 5.14.2. Amazon FSx for Lustre
 
 - A fully managed, high-performance, scalable file storage for **High Performance Computing (HPC)**.
 - The name Lustre is derived from "Linux" and "cluster".
 - Machine Learning, Analytics, Video Processing, Financial Modeling, ...
 - Scales up to 100s GB/s, millions of IOPS, sub-ms latencies.
 
-### 5.12. EC2 Instance Storage Summary
+### 5.15. EC2 Instance Storage Summary
 
 - EBS volumes:
   - Network drives attached to one EC2 instance at a time.
@@ -1421,7 +1425,7 @@
   - Network Load Balancer (ultra-high performance, allows for TCP) - Layer 4.
   - Classic Load Balancer (slowly retiring) - Layer 4 & 7.
 
-### 6.8. What's an Auto Scaling Group?
+### 6.6. What's an Auto Scaling Group?
 
 - **Auto Scaling in EC2 allows you to have the right number of instances to handle the application load. Auto Scaling in DynamoDB automatically adjusts read and write throughput capacity, in response to dynamically changing request volumes, with zero downtime. These are both examples of horizontal scaling.**
 - In real-life, the load on your websites and application can change
@@ -1434,7 +1438,7 @@
   - Replace unhealthy instances
 - Cost Savings: only run at an optimal capacity (principle of the cloud)
 
-### 6.9. Auto Scaling Groups - Scaling Strategies
+### 6.7. Auto Scaling Groups - Scaling Strategies
 
 - Manual Scaling: Update the size of an ASG manually
 - Dynamic Scaling: Respond to changing demand
@@ -1451,7 +1455,7 @@
   - Automatically provisions the right number of EC2 instances in advance.
   - Useful when your load has predictable time-based patterns.
 
-### 6.10. ELB & ASG - Summary
+### 6.8. ELB & ASG - Summary
 
 - High Availability vs Scalability (vertical and horizontal) vs Elasticity vs Agility in the Cloud.
 - Elastic Load Balancers (ELB):
@@ -4124,7 +4128,7 @@
 - Benefits:
   - Integrate with a few clicks
     - Anyone can use AppFlow to integrate applications in a few minutes – no more waiting days or weeks to code custom connectors.
-    - Features like data pagination, error logging, and network connection retries are included by default so there’s no coding or management.
+    - Features like data pagination, error logging, and network connection retries are included by default so there's no coding or management.
     - With Appflow, data flow quality is built in, and you can enrich the flow of data through mapping, merging, masking, filtering, and validation as part of the flow itself.
   - Transfer data at massive scale
     - AppFlow easily scales up without the need to plan or provision resources, so you can move large volumes of data without breaking it down into multiple batches.
