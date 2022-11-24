@@ -27,24 +27,10 @@
   - [2.14. Tour of the AWS Console](#214-tour-of-the-aws-console)
   - [2.15. Shared Responsibility Model diagram](#215-shared-responsibility-model-diagram)
   - [2.16. AWS Acceptable Use Policy](#216-aws-acceptable-use-policy)
-- [3. IAM - Identity and Access Management](#3-iam---identity-and-access-management)
-  - [3.1. IAM: Users & Groups](#31-iam-users--groups)
-  - [3.2. IAM: Permissions](#32-iam-permissions)
-  - [3.3. IAM: Policies Structure](#33-iam-policies-structure)
-  - [3.4. IAM - Password Policy](#34-iam---password-policy)
-  - [3.5. Multi Factor Authentication - MFA](#35-multi-factor-authentication---mfa)
-  - [3.6. MFA devices options in AWS](#36-mfa-devices-options-in-aws)
-  - [3.7. How can users access AWS ?](#37-how-can-users-access-aws-)
-  - [3.8. What's the AWS CLI?](#38-whats-the-aws-cli)
-  - [3.9. What's the AWS SDK?](#39-whats-the-aws-sdk)
-  - [3.10. IAM Roles for Services](#310-iam-roles-for-services)
-  - [3.11. IAM Security Tools](#311-iam-security-tools)
-  - [3.12. IAM Guidelines & Best Practices](#312-iam-guidelines--best-practices)
-  - [3.13. Shared Responsibility Model for IAM](#313-shared-responsibility-model-for-iam)
-  - [3.14. IAM - Summary](#314-iam---summary)
+- [3. IAM - Identity and Access Management and AWS CLI](#3-iam---identity-and-access-management-and-aws-cli)
 - [4. EC2 - Elastic Compute Cloud](#4-ec2---elastic-compute-cloud)
   - [4.1. Amazon EC2](#41-amazon-ec2)
-  - [4.2. EC2 sizing & configuration options](#42-ec2-sizing--configuration-options)
+  - [4.2. EC2 sizing \& configuration options](#42-ec2-sizing--configuration-options)
   - [4.3. EC2 User Data](#43-ec2-user-data)
   - [4.4. EC2 Instance Types - Overview](#44-ec2-instance-types---overview)
   - [4.5. EC2 Instance Types](#45-ec2-instance-types)
@@ -89,7 +75,7 @@
     - [5.9.3. Hard Disk Drives (HDD)](#593-hard-disk-drives-hdd)
   - [5.10. EBS Multi-Attach - io1/io2 family](#510-ebs-multi-attach---io1io2-family)
   - [5.11. EFS - Elastic File System](#511-efs---elastic-file-system)
-    - [5.11.1. EFS - Performance & Storage Classes](#5111-efs---performance--storage-classes)
+    - [5.11.1. EFS - Performance \& Storage Classes](#5111-efs---performance--storage-classes)
     - [5.11.2. EBS vs EFS - Elastic Block Storage](#5112-ebs-vs-efs---elastic-block-storage)
     - [5.11.3. EBS vs EFS - Elastic File System](#5113-ebs-vs-efs---elastic-file-system)
   - [5.12. EFS Infrequent Access (EFS-IA)](#512-efs-infrequent-access-efs-ia)
@@ -98,12 +84,12 @@
     - [5.14.1. Amazon FSx for Windows File Server](#5141-amazon-fsx-for-windows-file-server)
     - [5.14.2. Amazon FSx for Lustre](#5142-amazon-fsx-for-lustre)
   - [5.15. EC2 Instance Storage Summary](#515-ec2-instance-storage-summary)
-- [6. Elastic Load Balancing & Auto Scaling Groups](#6-elastic-load-balancing--auto-scaling-groups)
-  - [6.1. Scalability & High Availability](#61-scalability--high-availability)
+- [6. Elastic Load Balancing \& Auto Scaling Groups](#6-elastic-load-balancing--auto-scaling-groups)
+  - [6.1. Scalability \& High Availability](#61-scalability--high-availability)
     - [6.1.1. Vertical Scalability](#611-vertical-scalability)
     - [6.1.2. Horizontal Scalability](#612-horizontal-scalability)
   - [6.2. High Availability](#62-high-availability)
-  - [6.3. High Availability & Scalability For EC2](#63-high-availability--scalability-for-ec2)
+  - [6.3. High Availability \& Scalability For EC2](#63-high-availability--scalability-for-ec2)
   - [6.4. Scalability vs Elasticity (vs Agility)](#64-scalability-vs-elasticity-vs-agility)
   - [6.5. What is load balancing?](#65-what-is-load-balancing)
     - [6.5.1. Why use a load balancer?](#651-why-use-a-load-balancer)
@@ -126,13 +112,13 @@
   - [6.13. Connection Draining](#613-connection-draining)
   - [6.14. What's an Auto Scaling Group?](#614-whats-an-auto-scaling-group)
   - [6.15. Auto Scaling Group Attributes](#615-auto-scaling-group-attributes)
-  - [6.16. Auto Scaling - CloudWatch Alarms & Scaling](#616-auto-scaling---cloudwatch-alarms--scaling)
+  - [6.16. Auto Scaling - CloudWatch Alarms \& Scaling](#616-auto-scaling---cloudwatch-alarms--scaling)
   - [6.17. Auto Scaling Groups - Dynamic Scaling Policies](#617-auto-scaling-groups---dynamic-scaling-policies)
   - [6.18. Auto Scaling Groups - Predictive Scaling](#618-auto-scaling-groups---predictive-scaling)
   - [6.19. Good metrics to scale on](#619-good-metrics-to-scale-on)
   - [6.20. Auto Scaling Groups - Scaling Cooldowns](#620-auto-scaling-groups---scaling-cooldowns)
   - [6.21. Auto Scaling Groups - Scaling Strategies (Resume)](#621-auto-scaling-groups---scaling-strategies-resume)
-  - [6.22. ELB & ASG - Summary](#622-elb--asg---summary)
+  - [6.22. ELB \& ASG - Summary](#622-elb--asg---summary)
 - [7. Amazon S3](#7-amazon-s3)
   - [7.1. Introduction](#71-introduction)
   - [7.2. S3 Use cases](#72-s3-use-cases)
@@ -145,17 +131,17 @@
   - [7.5. S3 Websites](#75-s3-websites)
   - [7.6. Amazon S3 - Versioning](#76-amazon-s3---versioning)
   - [7.7. S3 Access Logs](#77-s3-access-logs)
-  - [7.8. S3 Replication (CRR & SRR)](#78-s3-replication-crr--srr)
+  - [7.8. S3 Replication (CRR \& SRR)](#78-s3-replication-crr--srr)
   - [7.9. S3 Storage Classes](#79-s3-storage-classes)
   - [7.10. S3 Durability and Availability](#710-s3-durability-and-availability)
   - [7.11. S3 Standard - General Purposes](#711-s3-standard---general-purposes)
   - [7.12. S3 Standard - Infrequent Access (IA)](#712-s3-standard---infrequent-access-ia)
   - [7.13. S3 Intelligent-Tiering](#713-s3-intelligent-tiering)
   - [7.14. S3 One Zone - Infrequent Access (IA)](#714-s3-one-zone---infrequent-access-ia)
-  - [7.15. Amazon Glacier & Glacier Deep Archive](#715-amazon-glacier--glacier-deep-archive)
+  - [7.15. Amazon Glacier \& Glacier Deep Archive](#715-amazon-glacier--glacier-deep-archive)
   - [7.16. S3 Storage Classes Comparison](#716-s3-storage-classes-comparison)
   - [7.17. Moving between storage classes](#717-moving-between-storage-classes)
-  - [7.18. S3 Object Lock & Glacier Vault Lock](#718-s3-object-lock--glacier-vault-lock)
+  - [7.18. S3 Object Lock \& Glacier Vault Lock](#718-s3-object-lock--glacier-vault-lock)
   - [7.19. S3 Encryption](#719-s3-encryption)
   - [7.20. Shared Responsibility Model for S3](#720-shared-responsibility-model-for-s3)
   - [7.21. AWS Snow Family](#721-aws-snow-family)
@@ -175,7 +161,7 @@
   - [8.2. Relational Databases](#82-relational-databases)
   - [8.3. NoSQL Databases](#83-nosql-databases)
   - [8.4. NoSQL data example: JSON](#84-nosql-data-example-json)
-  - [8.5. Databases & Shared Responsibility on AWS](#85-databases--shared-responsibility-on-aws)
+  - [8.5. Databases \& Shared Responsibility on AWS](#85-databases--shared-responsibility-on-aws)
   - [8.6. AWS RDS Overview](#86-aws-rds-overview)
   - [8.7. Advantage over using RDS versus deploying DB on EC2](#87-advantage-over-using-rds-versus-deploying-db-on-ec2)
   - [8.8. RDS Backups](#88-rds-backups)
@@ -192,7 +178,7 @@
     - [8.11.4. RDS – From Single-AZ to Multi-AZ](#8114-rds--from-single-az-to-multi-az)
   - [8.12. RDS Security - Encryption](#812-rds-security---encryption)
   - [8.13. RDS - Encryption Operations](#813-rds---encryption-operations)
-  - [8.14. RDS Security – Network & IAM](#814-rds-security--network--iam)
+  - [8.14. RDS Security – Network \& IAM](#814-rds-security--network--iam)
   - [8.15. RDS - IAM Authentication](#815-rds---iam-authentication)
   - [8.16. RDS Security – Summary](#816-rds-security--summary)
   - [8.17. Amazon Aurora](#817-amazon-aurora)
@@ -225,7 +211,7 @@
   - [8.40. Amazon Managed Blockchain](#840-amazon-managed-blockchain)
   - [8.41. AWS Glue](#841-aws-glue)
   - [8.42. DMS - Database Migration Service](#842-dms---database-migration-service)
-  - [8.43. Databases & Analytics Summary in AWS](#843-databases--analytics-summary-in-aws)
+  - [8.43. Databases \& Analytics Summary in AWS](#843-databases--analytics-summary-in-aws)
 - [9. Other Compute Services: ECS, Lambda, Batch, Lightsail](#9-other-compute-services-ecs-lambda-batch-lightsail)
   - [9.1. ECS](#91-ecs)
   - [9.2. Fargate](#92-fargate)
@@ -312,18 +298,18 @@
   - [14.14. Monitoring Summary](#1414-monitoring-summary)
 - [15. VPC](#15-vpc)
   - [15.1. VPC - Crash Course](#151-vpc---crash-course)
-  - [15.2. VPC & Subnets Primer](#152-vpc--subnets-primer)
-  - [15.3. Internet Gateway & NAT Gateways](#153-internet-gateway--nat-gateways)
-  - [15.4. Network ACL & Security Groups](#154-network-acl--security-groups)
+  - [15.2. VPC \& Subnets Primer](#152-vpc--subnets-primer)
+  - [15.3. Internet Gateway \& NAT Gateways](#153-internet-gateway--nat-gateways)
+  - [15.4. Network ACL \& Security Groups](#154-network-acl--security-groups)
   - [15.5. Network ACLs vs Security Groups](#155-network-acls-vs-security-groups)
   - [15.6. VPC Flow Logs](#156-vpc-flow-logs)
   - [15.7. VPC Peering](#157-vpc-peering)
   - [15.8. VPC Endpoints](#158-vpc-endpoints)
-  - [15.9. Site to Site VPN & Direct Connect](#159-site-to-site-vpn--direct-connect)
+  - [15.9. Site to Site VPN \& Direct Connect](#159-site-to-site-vpn--direct-connect)
   - [15.10. Site-to-Site VPN](#1510-site-to-site-vpn)
   - [15.11. Transit Gateway](#1511-transit-gateway)
   - [15.12. VPC Closing Comments](#1512-vpc-closing-comments)
-- [16. Security & Compliance](#16-security--compliance)
+- [16. Security \& Compliance](#16-security--compliance)
   - [16.1. AWS Shared Responsibility Model](#161-aws-shared-responsibility-model)
     - [16.1.1. Example, for RDS](#1611-example-for-rds)
     - [16.1.2. Example, for S3](#1612-example-for-s3)
@@ -347,29 +333,29 @@
   - [16.18. Amazon Detective](#1618-amazon-detective)
   - [16.19. AWS Abuse](#1619-aws-abuse)
   - [16.20. Root user privileges](#1620-root-user-privileges)
-  - [16.21. Summary: Security & Compliance](#1621-summary-security--compliance)
+  - [16.21. Summary: Security \& Compliance](#1621-summary-security--compliance)
 - [17. Machine Learning](#17-machine-learning)
   - [17.1. Amazon Rekognition](#171-amazon-rekognition)
   - [17.2. Amazon Transcribe](#172-amazon-transcribe)
   - [17.3. Amazon Polly](#173-amazon-polly)
   - [17.4. Amazon Translate](#174-amazon-translate)
-  - [17.5. Amazon Lex & Connect](#175-amazon-lex--connect)
+  - [17.5. Amazon Lex \& Connect](#175-amazon-lex--connect)
   - [17.6. Amazon Comprehend](#176-amazon-comprehend)
   - [17.7. Amazon SageMaker](#177-amazon-sagemaker)
   - [17.8. Amazon Forecast](#178-amazon-forecast)
   - [17.9. Amazon Kendra](#179-amazon-kendra)
   - [17.10. Amazon Personalize](#1710-amazon-personalize)
   - [17.11. AWS Machine Learning - Summary](#1711-aws-machine-learning---summary)
-- [18. Account Management, Billing & Support](#18-account-management-billing--support)
+- [18. Account Management, Billing \& Support](#18-account-management-billing--support)
   - [18.1. AWS Organizations](#181-aws-organizations)
     - [18.1.1. Multi Account Strategies](#1811-multi-account-strategies)
     - [18.1.2. Service Control Policies (SCP)](#1812-service-control-policies-scp)
     - [18.1.3. AWS Organization - Consolidated Billing](#1813-aws-organization---consolidated-billing)
   - [18.2. AWS Control Tower](#182-aws-control-tower)
   - [18.3. Pricing Models in AWS](#183-pricing-models-in-aws)
-    - [18.3.1. Free services & free tier in AWS](#1831-free-services--free-tier-in-aws)
+    - [18.3.1. Free services \& free tier in AWS](#1831-free-services--free-tier-in-aws)
     - [18.3.2. Compute Pricing - EC2](#1832-compute-pricing---ec2)
-    - [18.3.3. Compute Pricing - Lambda & ECS](#1833-compute-pricing---lambda--ecs)
+    - [18.3.3. Compute Pricing - Lambda \& ECS](#1833-compute-pricing---lambda--ecs)
     - [18.3.4. Storage Pricing - S3](#1834-storage-pricing---s3)
     - [18.3.5. Storage Pricing - EBS](#1835-storage-pricing---ebs)
     - [18.3.6. Database Pricing - RDS](#1836-database-pricing---rds)
@@ -422,7 +408,7 @@
   - [20.13. AWS CloudSearch](#2013-aws-cloudsearch)
   - [20.14. Aws Service Catalog](#2014-aws-service-catalog)
   - [20.15. Amazon SES - Simple Email Service](#2015-amazon-ses---simple-email-service)
-- [21. AWS Architecting & Ecosystem](#21-aws-architecting--ecosystem)
+- [21. AWS Architecting \& Ecosystem](#21-aws-architecting--ecosystem)
   - [21.1. Well Architected Framework General - Guiding Principles](#211-well-architected-framework-general---guiding-principles)
   - [21.2. AWS Cloud Best Practices - Design Principles](#212-aws-cloud-best-practices---design-principles)
   - [21.3. Well Architected Framework 6 Pillars](#213-well-architected-framework-6-pillars)
@@ -443,9 +429,9 @@
   - [21.6. AWS Ecosystem - Free resources](#216-aws-ecosystem---free-resources)
   - [21.7. AWS Marketplace](#217-aws-marketplace)
   - [21.8. AWS Training](#218-aws-training)
-  - [21.9. AWS Professional Services & Partner Network](#219-aws-professional-services--partner-network)
+  - [21.9. AWS Professional Services \& Partner Network](#219-aws-professional-services--partner-network)
   - [21.10. AWS Knowledge Center](#2110-aws-knowledge-center)
-- [22. AWS related Abbreviations & Acronyms](#22-aws-related-abbreviations--acronyms)
+- [22. AWS related Abbreviations \& Acronyms](#22-aws-related-abbreviations--acronyms)
   - [22.1. A](#221-a)
   - [22.2. B](#222-b)
   - [22.3. C](#223-c)
@@ -682,161 +668,9 @@
 - No Network Abuse
 - No E-Mail or Other Message Abuse
 
-## 3. IAM - Identity and Access Management
+## 3. IAM - Identity and Access Management and AWS CLI
 
-### 3.1. IAM: Users & Groups
-
-- IAM = Identity and Access Management, **Global service**.
-- **Root account** created by default, shouldn't be used or shared.
-- **Users** are people within your organization, and can be grouped.
-- **Groups** only contain users, not other groups.
-- Users don't have to belong to a group, and user can belong to multiple groups.
-
-### 3.2. IAM: Permissions
-
-- **Users or Groups** can be assigned JSON documents called policies.
-- These policies define the **permissions** of the users.
-- In AWS you apply the **least privilege** principle: don't give more permissions than a user needs.
-
-### 3.3. IAM: Policies Structure
-
-- Consists of:
-  - **Version**: policy language version, always include "YYYY-MM-DD".
-  - **Id**: an identifier for the policy (optional).
-  - **Statement**: one or more individual statements (required).
-- Statements consists of:
-  - **Sid**: an identifier for the statement (optional).
-  - **Effect**: whether the statement allows or denies access (Allow, Deny).
-  - **Principal**: account/user/role to which this policy applied to.
-  - **Action**: list of actions this policy allows or denies.
-  - **Resource**: list of resources to which the actions applied to.
-  - **Condition**: conditions for when this policy is in effect (optional).
-
-### 3.4. IAM - Password Policy
-
-- Strong passwords = higher security for your account.
-- In AWS, you can setup a password policy:
-  - Set a minimum password length.
-  - Require specific character types:
-    - Including uppercase letters.
-    - Lowercase letters.
-    - Numbers.
-    - Non-alphanumeric characters.
-- Allow all IAM users to change their own passwords.
-- Require users to change their password after some time (password expiration).
-- Prevent password re-use.
-
-### 3.5. Multi Factor Authentication - MFA
-
-- Users have access to your account and can possibly change configurations or delete resources in your AWS account.
-- **You want to protect your Root Accounts and IAM users.**
-- MFA = password you know + security device you own.
-- Main benefit of MFA:
-  - If a password is stolen or hacked, the account is not compromised.
-
-### 3.6. MFA devices options in AWS
-
-- Virtual MFA device:
-  - Google AuthenLcator (phone only).
-  - Authy (multi-device).
-  - Support for multiple tokens on a single device.
-- Universal 2nd Factor (U2F) Security Key:
-  - YubiKey by Yubico (3rd party):
-    - Support for multiple tokens on a single device. Support for multiple root and IAM users using a single security key.
-- Hardware Key Fob MFA Device:
-  - Provided by Gemalto (3rd party).
-- Hardware Key Fob MFA Device for AWS GovCloud (US):
-  - Provided by SurePassID (3rd party).
-
-### 3.7. How can users access AWS ?
-
-- To access AWS, you have three options:
-  - **AWS Management Console** (protected by password + MFA).
-  - **AWS Command Line Interface (CLI):** protected by access keys.
-  - **AWS Software Developer Kit (SDK)** - for code: protected by access keys.
-- Access Keys are generated through the AWS Console.
-- Users manage their own access keys.
-- **Access Keys are secret, just like a password. Don't share them.**
-- Access Key ID ~= username.
-- Secret Access Key ~= password.
-- Example (Fake) Access Keys.
-  - Access key ID: AKIASK4E37PV4983d6C.
-  - Secret Access Key: AZPN3zojWozWCndIjhB0Unh8239a1bzbzO5fqqkZq.
-  - **Remember: don't share your access keys.**
-
-### 3.8. What's the AWS CLI?
-
-- A tool that enables you to interact with AWS services using commands in your command-line shell.
-- Direct access to the public APIs of AWS services.
-- You can develop scripts to manage your resources.
-- It's open-source https://github.com/aws/aws-cli.
-- Alternative to using AWS Management Console.
-
-### 3.9. What's the AWS SDK?
-
-- AWS Software Development Kit (AWS SDK).
-- Language-specific APIs (set of libraries).
-- Enables you to access and manage AWS services programmatically.
-- Embedded within your application.
-- Supports:
-  - SDKs (JavaScript, Python, PHP, .NET, Ruby, Java, Go, Node.js, C++, C#).
-  - Mobile SDKs (Android, iOS, ...).
-  - IoT Device SDKs (Embedded C, Arduino, ...).
-- Example: AWS CLI is built on AWS SDK for Python.
-
-### 3.10. IAM Roles for Services
-
-- Some AWS service will need to perform actions on your behalf.
-- To do so, we will assign permissions to AWS services with IAM Roles.
-- Common roles:
-  - EC2 Instance Roles.
-  - Lambda Function Roles.
-  - Roles for CloudFormation.
-
-### 3.11. IAM Security Tools
-
-- **IAM Credentials Report (account-level):**
-  - A report that lists all your account's users and the status of their various credentials.
-- **IAM Access Advisor (user-level):**
-  - Access advisor shows the service permissions granted to a user and when those services were last accessed.
-  - You can use this information to revise your policies.
-
-### 3.12. IAM Guidelines & Best Practices
-
-- Don't use the root account except for AWS account setup.
-- One physical user = One AWS user.
-- **Assign users to groups** and assign permissions to groups.
-- Create a **strong password policy**.
-- Use and enforce the use of **Multi Factor Authentication (MFA)**.
-- Create and use **Roles** for giving permissions to AWS services.
-- Use Access Keys for Programmatic Access (CLI / SDK).
-- Audit permissions of your account with the IAM Credentials Report.
-- **Never share IAM users & Access Keys.**
-
-### 3.13. Shared Responsibility Model for IAM
-
-- AWS:
-  - Infrastructure (global network security).
-  - Configuration and vulnerability analysis.
-  - Compliance validation.
-- You (Customer):
-  - Users, Groups, Roles, Policies management and monitoring.
-  - Enable MFA on all accounts.
-  - Rotate all your keys often.
-  - Use IAM tools to apply appropriate permissions.
-  - Analyze access patterns & review permissions.
-
-### 3.14. IAM - Summary
-
-- **Users**: mapped to a physical user, has a password for AWS Console
-- **Groups**: contains users only
-- **Policies**: JSON document that outlines permissions for users or groups
-- **Roles**: for EC2 instances or AWS services
-- **Security**: MFA + Password Policy
-- **AWS CLI**: manage your AWS services using the command-line
-- **AWS SDK**: manage your AWS services using a programming language
-- **Access Keys**: access AWS using the CLI or SDK
-- **Audit**: IAM Credential Reports & IAM Access Advisor
+[IAM - Identity and Access Management and AWS CLI](/IAM%20-%20Identity%20and%20Access%20Management.md)
 
 ## 4. EC2 - Elastic Compute Cloud
 
