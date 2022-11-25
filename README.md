@@ -2651,6 +2651,8 @@
 - Supports RESTful APIs and WebSocket APIs.
 - Support for security, user authentication, API throttling, API keys, monitoring...
 
+[AWS API Gateway](/AWS%20API%20Gateway.md)
+
 ### 9.7. AWS Batch
 
 - **Fully managed** batch processing at **any scale**.
