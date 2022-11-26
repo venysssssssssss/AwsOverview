@@ -17,7 +17,7 @@
   - [10.1. Mapping Example: JSON to XML with SOAP](#101-mapping-example-json-to-xml-with-soap)
   - [10.2. Mapping Example: Query String parameters](#102-mapping-example-query-string-parameters)
 - [11. AWS API Gateway Swagger / Open API spec](#11-aws-api-gateway-swagger--open-api-spec)
-- [Caching API responses](#caching-api-responses)
+- [12. Caching API responses](#12-caching-api-responses)
   - [12.1. API Gateway Cache Invalidation](#121-api-gateway-cache-invalidation)
 - [13. API Gateway – Usage Plans \& API Keys](#13-api-gateway--usage-plans--api-keys)
   - [13.1. API Gateway – Correct Order for API keys](#131-api-gateway--correct-order-for-api-keys)
@@ -25,6 +25,7 @@
   - [14.1. API Gateway – CloudWatch Metrics](#141-api-gateway--cloudwatch-metrics)
 - [15. API Gateway Throttling](#15-api-gateway-throttling)
 - [16. API Gateway - Errors](#16-api-gateway---errors)
+- [17. CORS](#17-cors)
 
 # 1. Introduction
 
@@ -166,7 +167,7 @@
 - Swagger can be written in YAML or JSON.
 - Using Swagger we can generate SDK for our applications.
 
-# Caching API responses
+# 12. Caching API responses
 
 - Caching reduces the number of calls made to the backend.
 - Default TTL (time to live) is 300 seconds (min: 0s, max: 3600s).
@@ -247,3 +248,12 @@
   - 502: Bad Gateway Exception, usually for an incompatible output returned from a Lambda proxy integration backend and occasionally for out-of-order invocations due to heavy loads.
   - 503: Service Unavailable Exception.
   - 504: Integration Failure – ex Endpoint Request Timed-out Exception API Gateway requests time out after 29 second maximum.
+
+# 17. CORS
+
+- CORS must be enabled when you receive API calls from another domain.
+- The OPTIONS pre-flight request must contain the following headers:
+  - Access-Control-Allow-Methods
+  - Access-Control-Allow-Headers
+  - Access-Control-Allow-Origin
+- CORS can be enabled through the console.
