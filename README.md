@@ -281,21 +281,20 @@
     - [14.1.1. Important Metrics](#1411-important-metrics)
   - [14.2. Amazon CloudWatch Alarms](#142-amazon-cloudwatch-alarms)
   - [14.3. Amazon CloudWatch Logs](#143-amazon-cloudwatch-logs)
-  - [14.4. CloudWatch Logs for EC2](#144-cloudwatch-logs-for-ec2)
-  - [14.5. Amazon CloudWatch Events](#145-amazon-cloudwatch-events)
-  - [14.6. Amazon EventBridge](#146-amazon-eventbridge)
-  - [14.7. AWS CloudTrail](#147-aws-cloudtrail)
-  - [14.8. CloudTrail Events](#148-cloudtrail-events)
-    - [14.8.1. CloudTrail Insights Events](#1481-cloudtrail-insights-events)
-    - [14.8.2. CloudTrail Events Retention](#1482-cloudtrail-events-retention)
-  - [14.9. AWS X-Ray](#149-aws-x-ray)
-    - [14.9.1. AWS X-Ray advantages](#1491-aws-x-ray-advantages)
-  - [14.10. Amazon CodeGuru](#1410-amazon-codeguru)
-  - [14.11. Amazon CodeGuru Reviewer](#1411-amazon-codeguru-reviewer)
-    - [14.11.1. Amazon CodeGuru Profiler](#14111-amazon-codeguru-profiler)
-  - [14.12. AWS Status - Service Health Dashboard](#1412-aws-status---service-health-dashboard)
-  - [14.13. AWS Personal Health Dashboard](#1413-aws-personal-health-dashboard)
-  - [14.14. Monitoring Summary](#1414-monitoring-summary)
+  - [14.4. Amazon CloudWatch Events](#144-amazon-cloudwatch-events)
+  - [14.5. Amazon EventBridge](#145-amazon-eventbridge)
+  - [14.6. AWS CloudTrail](#146-aws-cloudtrail)
+  - [14.7. CloudTrail Events](#147-cloudtrail-events)
+    - [14.7.1. CloudTrail Insights Events](#1471-cloudtrail-insights-events)
+    - [14.7.2. CloudTrail Events Retention](#1472-cloudtrail-events-retention)
+  - [14.8. AWS X-Ray](#148-aws-x-ray)
+    - [14.8.1. AWS X-Ray advantages](#1481-aws-x-ray-advantages)
+  - [14.9. Amazon CodeGuru](#149-amazon-codeguru)
+  - [14.10. Amazon CodeGuru Reviewer](#1410-amazon-codeguru-reviewer)
+    - [14.10.1. Amazon CodeGuru Profiler](#14101-amazon-codeguru-profiler)
+  - [14.11. AWS Status - Service Health Dashboard](#1411-aws-status---service-health-dashboard)
+  - [14.12. AWS Personal Health Dashboard](#1412-aws-personal-health-dashboard)
+  - [14.13. Monitoring Summary](#1413-monitoring-summary)
 - [15. VPC](#15-vpc)
   - [15.1. VPC - Crash Course](#151-vpc---crash-course)
   - [15.2. VPC \& Subnets Primer](#152-vpc--subnets-primer)
@@ -3229,11 +3228,7 @@
 
 ### 14.1. Amazon CloudWatch Metrics
 
-- **Amazon CloudWatch is a monitoring service for AWS cloud resources and the applications you run on AWS. You can use Amazon CloudWatch to collect and track metrics, collect and monitor log files, and set alarms.**
-- CloudWatch provides metrics for every services in AWS.
-- **Metric** is a variable to monitor (CPUUtilization, NetworkIn...).
-- Metrics have **timestamps**.
-- Can create **CloudWatch dashboards** of metrics.
+[AWS Monitoring, Troubleshooting and Audit](/AWS%20Monitoring%2C%20Troubleshooting%20and%20Audit.md)
 
 #### 14.1.1. Important Metrics
 
@@ -3271,20 +3266,13 @@
 - Enables real-time monitoring of logs.
 - Adjustable CloudWatch Logs retention.
 
-### 14.4. CloudWatch Logs for EC2
-
-- By default, no logs from your EC2 instance will go to CloudWatch.
-- You need to run a **CloudWatch agent** on EC2 to push the log files you want.
-- Make sure IAM permissions are correct.
-- **The CloudWatch log agent can be setup on-premises too**.
-
-### 14.5. Amazon CloudWatch Events
+### 14.4. Amazon CloudWatch Events
 
 - Schedule: Cron jobs (scheduled scripts).
 - Event Pattern: Event rules to react to a service doing something.
 - Trigger Lambda functions, send SQS/SNS messages...
 
-### 14.6. Amazon EventBridge
+### 14.5. Amazon EventBridge
 
 - Is a serverless event bus that makes it easier to build event-driven applications at scale using events generated from your applications, integrated Software-as-a-Service (SaaS) applications, and AWS services.
 - Delivers a stream of real-time data from event sources such as Zendesk or Shopify to targets like AWS Lambda and other SaaS applications.
@@ -3297,7 +3285,7 @@
 - EventBridge has a different name to mark the new capabilities.
 - The CloudWatch Events name will be replaced with EventBridge.
 
-### 14.7. AWS CloudTrail
+### 14.6. AWS CloudTrail
 
 - **Is a web service that records activity made on your account and delivers log files to your Amazon S3 bucket. AWS CloudTrail is a service that enables governance, compliance, operational auditing, and risk auditing of your AWS account.**
 - **Can record the history of events/API calls made within you AWS account, which will help determine who or what deleted the resource. You should investigate it first.**
@@ -3312,7 +3300,7 @@
 - A trail can be applied to All Regions (default) or a single Region.
 - If a resource is deleted in AWS, investigate CloudTrail first!
 
-### 14.8. CloudTrail Events
+### 14.7. CloudTrail Events
 
 - Management Events:
   - Operations that are performed on resources in your AWS account
@@ -3327,7 +3315,7 @@
   - Amazon S3 object-level activity (ex: GetObject, DeleteObject, PutObject): can separate Read and Write Events
   - AWS Lambda function execution activity (the Invoke API)
 
-#### 14.8.1. CloudTrail Insights Events
+#### 14.7.1. CloudTrail Insights Events
 
 - **AWS CloudTrail Insights helps AWS users identify and respond to unusual activity associated with write API calls by continuously analyzing CloudTrail management events.**
 - Enable **CloudTrail Insights to detect unusual activity** in your account:
@@ -3341,12 +3329,12 @@
   - Event is sent to Amazon S3.
   - An EventBridge event is generated (for automation needs).
 
-#### 14.8.2. CloudTrail Events Retention
+#### 14.7.2. CloudTrail Events Retention
 
 - Events are stored for 90 days in CloudTrail.
 - To keep events beyond this period, log them to S3 and use Athena.
 
-### 14.9. AWS X-Ray
+### 14.8. AWS X-Ray
 
 - **AWS X-Ray helps developers analyze and debug production, distributed applications, such as those built using a microservices architecture.**
 - Debugging in Production, the good old way:
@@ -3357,7 +3345,7 @@
 - Debugging: one big monolith "easy", distributed services "hard".
 - No common views of your entire architecture.
 
-#### 14.9.1. AWS X-Ray advantages
+#### 14.8.1. AWS X-Ray advantages
 
 - Troubleshooting performance (bottlenecks)
 - Understand dependencies in a microservice architecture
@@ -3368,7 +3356,7 @@
 - Where I am throttled?
 - Identify users that are impacted
 
-### 14.10. Amazon CodeGuru
+### 14.9. Amazon CodeGuru
 
 - **Amazon CodeGuru is a developer tool that provides intelligent recommendations to improve code quality and identify an application's most expensive lines of code.**
 - An ML-powered service for **automated code reviews** and **application performance recommendations**.
@@ -3376,7 +3364,7 @@
   - **CodeGuru Reviewer:** automated code reviews for static code analysis (development)
   - **CodeGuru Profiler:** visibility/recommendations about application performance during runtime (production)
 
-### 14.11. Amazon CodeGuru Reviewer
+### 14.10. Amazon CodeGuru Reviewer
 
 - Identify critical issues, security vulnerabilities, and hard-to-find bugs.
 - Example: common coding best practices, resource leaks, security detection, input validation.
@@ -3385,7 +3373,7 @@
 - Supports Java and Python.
 - Integrates with GitHub, Bitbucket, and AWS CodeCommit.
 
-#### 14.11.1. Amazon CodeGuru Profiler
+#### 14.10.1. Amazon CodeGuru Profiler
 
 - Helps understand the runtime behavior of your application.
 - Example: identify if your application is consuming excessive CPU capacity on a logging routine.
@@ -3398,14 +3386,14 @@
 - Support applications running on AWS or on-premise.
 - Minimal overhead on application.
 
-### 14.12. AWS Status - Service Health Dashboard
+### 14.11. AWS Status - Service Health Dashboard
 
 - Shows all regions, all services health
 - Shows historical information for each day
 - Has an RSS feed you can subscribe to
 - https://status.aws.amazon.com/
 
-### 14.13. AWS Personal Health Dashboard
+### 14.12. AWS Personal Health Dashboard
 
 - AWS Personal Health Dashboard provides **alerts and remediation guidance** when AWS is experiencing **events that may impact you**.
 - While the Service Health Dashboard displays the general status of AWS services, Personal Health Dashboard gives you a **personalized view into the performance and availability of the AWS services underlying your AWS resources**.
@@ -3414,7 +3402,7 @@
 - Shows how AWS outages directly impact you & your AWS resources.
 - Alert, remediation, proactive, scheduled activities.
 
-### 14.14. Monitoring Summary
+### 14.13. Monitoring Summary
 
 - CloudWatch:
   - Metrics: monitor the performance of AWS services and billing metrics.

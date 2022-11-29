@@ -4,14 +4,14 @@
 
 - [1. Introduction](#1-introduction)
 - [2. Integrations High Level](#2-integrations-high-level)
-- [3. API Gateway - Endpoint Types](#3-api-gateway---endpoint-types)
-- [4. API Gateway – Security](#4-api-gateway--security)
-- [5. API Gateway – Deployment Stages](#5-api-gateway--deployment-stages)
+- [3. Endpoint Types](#3-endpoint-types)
+- [4. General Security](#4-general-security)
+- [5. Deployment Stages](#5-deployment-stages)
   - [5.1. API Gateway Stages v1 and v2 API breaking change](#51-api-gateway-stages-v1-and-v2-api-breaking-change)
-- [6. API Gateway – Stage Variables](#6-api-gateway--stage-variables)
-  - [6.1. API Gateway Stage Variables \& Lambda Aliases](#61-api-gateway-stage-variables--lambda-aliases)
-- [7. API Gateway – Canary Deployment](#7-api-gateway--canary-deployment)
-- [8. API Gateway - Integration Types (Methods)](#8-api-gateway---integration-types-methods)
+- [6. Stage Variables](#6-stage-variables)
+  - [6.1. Stage Variables \& Lambda Aliases](#61-stage-variables--lambda-aliases)
+- [7. Canary Deployment](#7-canary-deployment)
+- [8. Integration Types (Methods)](#8-integration-types-methods)
   - [8.1. MOCK](#81-mock)
   - [8.2. HTTP / AWS (Lambda \& AWS Services):](#82-http--aws-lambda--aws-services)
   - [8.3. AWS\_PROXY (Lambda Proxy):](#83-aws_proxy-lambda-proxy)
@@ -19,14 +19,14 @@
 - [9. Mapping Templates (AWS \& HTTP Integration)](#9-mapping-templates-aws--http-integration)
   - [9.1. Mapping Example: JSON to XML with SOAP](#91-mapping-example-json-to-xml-with-soap)
   - [9.2. Mapping Example: Query String parameters](#92-mapping-example-query-string-parameters)
-- [10. AWS API Gateway Swagger / Open API spec](#10-aws-api-gateway-swagger--open-api-spec)
+- [10. Swagger / Open API spec](#10-swagger--open-api-spec)
 - [11. Caching API responses](#11-caching-api-responses)
-  - [11.1. API Gateway Cache Invalidation](#111-api-gateway-cache-invalidation)
-- [12. API Gateway – Usage Plans \& API Keys](#12-api-gateway--usage-plans--api-keys)
-  - [12.1. API Gateway – Correct Order for API keys](#121-api-gateway--correct-order-for-api-keys)
-- [13. API Gateway – Logging \& Tracing](#13-api-gateway--logging--tracing)
-  - [13.1. API Gateway – CloudWatch Metrics](#131-api-gateway--cloudwatch-metrics)
-- [14. API Gateway Throttling](#14-api-gateway-throttling)
+  - [11.1. Cache Invalidation](#111-cache-invalidation)
+- [12. Usage Plans \& API Keys](#12-usage-plans--api-keys)
+  - [12.1. Correct Order for API keys](#121-correct-order-for-api-keys)
+- [13. Logging \& Tracing](#13-logging--tracing)
+  - [13.1. CloudWatch Metrics](#131-cloudwatch-metrics)
+- [14. Throttling](#14-throttling)
 - [15. API Gateway - Errors](#15-api-gateway---errors)
 - [16. CORS](#16-cors)
 - [17. Security](#17-security)
@@ -36,7 +36,7 @@
   - [17.3. Lambda Authorizer (formerly Custom Authorizers)](#173-lambda-authorizer-formerly-custom-authorizers)
   - [17.4. Summary](#174-summary)
 - [18. HTTP API vs REST API](#18-http-api-vs-rest-api)
-- [19. WebSocket API – Overview](#19-websocket-api--overview)
+- [19. WebSocket API - Overview](#19-websocket-api---overview)
   - [19.1. Routing](#191-routing)
 - [20. Architecture](#20-architecture)
 
@@ -69,7 +69,7 @@
   - Example: start an AWS Step Function workflow, post a message to SQS.
   - Why? Add authentication, deploy publicly, rate control...
 
-# 3. API Gateway - Endpoint Types
+# 3. Endpoint Types
 
 - Edge-Optimized (default): For global clients
   - Requests are routed through the CloudFront Edge locations (improves latency).
@@ -81,18 +81,18 @@
   - Can only be accessed from your VPC using an interface VPC endpoint (ENI).
   - Use a resource policy to define access.
 
-# 4. API Gateway – Security
+# 4. General Security
 
 - **User Authentication through:**
   - IAM Roles (useful for internal applications).
-  - Cognito (identity for external users – example mobile users).
+  - Cognito (identity for external users - example mobile users).
   - Custom Authorizer (your own logic).
 - **Custom Domain Name HTTPS** security through integration with AWS Certificate Manager (ACM):
   - If using Edge-Optimized endpoint, then the certificate must be in us-east-1.
   - If using Regional endpoint, the certificate must be in the API Gateway region.
   - Must setup CNAME or A-alias record in Route 53.
 
-# 5. API Gateway – Deployment Stages
+# 5. Deployment Stages
 
 - Making changes in the API Gateway does not mean they're effective.
 - You need to make a "deployment" for them to be in effect.
@@ -106,7 +106,7 @@
 
 ![API Gateway - API breaking change](/Images/APIGatewayAPIBreakingChange.png)
 
-# 6. API Gateway – Stage Variables
+# 6. Stage Variables
 
 - Stage variables are like environment variables for API Gateway.
 - Use them to change often changing configuration values.
@@ -119,14 +119,14 @@
   - Pass configuration parameters to AWS Lambda through mapping templates.
 - Stage variables are passed to the "context" object in AWS Lambda.
 
-## 6.1. API Gateway Stage Variables & Lambda Aliases
+## 6.1. Stage Variables & Lambda Aliases
 
 - We create a stage variable to indicate the corresponding Lambda alias.
 - Our API gateway will automatically invoke the right Lambda function!
 
 ![API Gateway Stage Variables and Lambda Aliases](/Images/APIGatewayStageVariablesAndLambdaAliases.png)
 
-# 7. API Gateway – Canary Deployment
+# 7. Canary Deployment
 
 - Possibility to enable canary deployments for any stage (usually prod).
 - Choose the % of traffic the canary channel receives.
@@ -136,7 +136,7 @@
 
 ![API Gateway - Canary Deployment](/Images/APIGatewayCanaryDeployment.png)
 
-# 8. API Gateway - Integration Types (Methods)
+# 8. Integration Types (Methods)
 
 - Integration Type...
 
@@ -181,7 +181,7 @@
 
 ## 9.2. Mapping Example: Query String parameters
 
-# 10. AWS API Gateway Swagger / Open API spec
+# 10. Swagger / Open API spec
 
 - Common way of defining REST APIs, using API definition as code.
 - Import existing Swagger / OpenAPI 3.0 spec to API Gateway:
@@ -204,13 +204,13 @@
 - Cache capacity between 0.5GB to 237GB.
 - Cache is expensive, makes sense in production, may not make sense in dev / test.
 
-## 11.1. API Gateway Cache Invalidation
+## 11.1. Cache Invalidation
 
 - Able to flush the entire cache (invalidate it) immediately.
 - Clients can invalidate the cache with header: Cache-Control: max-age=0 (with proper IAM authorization).
 - If you don't impose an InvalidateCache policy (or choose the Require authorization check box in the console), any client can invalidate the API cache.
 
-# 12. API Gateway – Usage Plans & API Keys
+# 12. Usage Plans & API Keys
 
 - If you want to make an API available as an offering ($) to your customers.
 - Usage Plan:
@@ -225,7 +225,7 @@
   - Throttling limits are applied to the API keys
   - Quotas limits is the overall number of maximum requests
 
-## 12.1. API Gateway – Correct Order for API keys
+## 12.1. Correct Order for API keys
 
 - To configure a usage plan:
 
@@ -236,7 +236,7 @@
 
 - Callers of the API must supply an assigned API key in the x-api-key header in requests to the API.
 
-# 13. API Gateway – Logging & Tracing
+# 13. Logging & Tracing
 
 - CloudWatch Logs:
   - Enable CloudWatch logging at the Stage level (with Log Level).
@@ -246,7 +246,7 @@
   - Enable tracing to get extra information about requests in API Gateway.
   - X-Ray API Gateway + AWS Lambda gives you the full picture.
 
-## 13.1. API Gateway – CloudWatch Metrics
+## 13.1. CloudWatch Metrics
 
 - Metrics are by stage, Possibility to enable detailed metrics.
 - **CacheHitCount & CacheMissCount:** efficiency of the cache.
@@ -255,7 +255,7 @@
 - **Latency:** The time between when API Gateway receives a request from a client and when it returns a response to the client. The latency includes the integration latency and other API Gateway overhead.
 - **4XXError** (client-side) & **5XXError** (server-side).
 
-# 14. API Gateway Throttling
+# 14. Throttling
 
 - Account Limit:
   - API Gateway throttles requests at10000 rps across all API.
@@ -274,7 +274,7 @@
 - 5xx means Server errors:
   - 502: Bad Gateway Exception, usually for an incompatible output returned from a Lambda proxy integration backend and occasionally for out-of-order invocations due to heavy loads.
   - 503: Service Unavailable Exception.
-  - 504: Integration Failure – ex Endpoint Request Timed-out Exception API Gateway requests time out after 29 second maximum.
+  - 504: Integration Failure - ex Endpoint Request Timed-out Exception API Gateway requests time out after 29 second maximum.
 
 # 16. CORS
 
@@ -312,7 +312,7 @@
 
 ## 17.3. Lambda Authorizer (formerly Custom Authorizers)
 
-- Token-based authorizer (bearer token) – ex JWT (JSON Web Token) or Oauth.
+- Token-based authorizer (bearer token) - ex JWT (JSON Web Token) or Oauth.
 - A request parameter-based Lambda authorizer (headers, query string, stage var).
 - Lambda must return an IAM policy for the user, result policy is cached.
 - **Authentication = External** | _Authorization = Lambda function_.
@@ -344,7 +344,7 @@
 
 [Full list here](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html)
 
-# 19. WebSocket API – Overview
+# 19. WebSocket API - Overview
 
 - What's WebSocket?
   - Two-way interactive communication between a user's browser and a server.
