@@ -216,17 +216,13 @@
   - [9.1. ECS](#91-ecs)
   - [9.2. Fargate](#92-fargate)
   - [9.3. ECR](#93-ecr)
-  - [9.4. What's serverless?](#94-whats-serverless)
-  - [9.5. Why AWS Lambda?](#95-why-aws-lambda)
-    - [9.5.1. Benefits of AWS Lambda](#951-benefits-of-aws-lambda)
-    - [9.5.2. AWS Lambda language support](#952-aws-lambda-language-support)
-    - [9.5.3. AWS Lambda Pricing: example](#953-aws-lambda-pricing-example)
-  - [9.6. Amazon API Gateway](#96-amazon-api-gateway)
-  - [9.7. AWS Batch](#97-aws-batch)
-  - [9.8. Batch vs Lambda](#98-batch-vs-lambda)
-  - [9.9. Amazon Lightsail](#99-amazon-lightsail)
-  - [9.10. Other Compute - Summary](#910-other-compute---summary)
-  - [9.11. Lambda Summary](#911-lambda-summary)
+  - [9.4. Lambda](#94-lambda)
+  - [9.5. Amazon API Gateway](#95-amazon-api-gateway)
+  - [9.6. AWS Batch](#96-aws-batch)
+  - [9.7. Batch vs Lambda](#97-batch-vs-lambda)
+  - [9.8. Amazon Lightsail](#98-amazon-lightsail)
+  - [9.9. Other Compute - Summary](#99-other-compute---summary)
+  - [9.10. Lambda Summary](#910-lambda-summary)
 - [10. Deploying and Managing Infrastructure at Scale](#10-deploying-and-managing-infrastructure-at-scale)
   - [10.1. What is CloudFormation?](#101-what-is-cloudformation)
     - [10.1.1. Benefits of AWS CloudFormation](#1011-benefits-of-aws-cloudformation)
@@ -2577,72 +2573,11 @@
 - Private Docker Registry on AWS.
 - This is where you store your Docker images so they can be run by ECS or Fargate.
 
-### 9.4. What's serverless?
+### 9.4. Lambda
 
-- Serverless is a new paradigm in which the developers don't have to manage servers anymore.
-- They just deploy code / functions.
-- Initially... Serverless == FaaS (Function as a Service)
-- Serverless was pioneered by AWS Lambda but now also includes anything that's managed: "databases, messaging, storage, etc."
-- Serverless does not mean there are no servers... it means you just don't manage / provision / see them
-- Serverless:
-  - Amazon S3
-  - DynamoDB
-  - Fargate
-  - Lambda
+[Lambda](/AWS%20Lambda.md)
 
-### 9.5. Why AWS Lambda?
-
-- Amazon EC2:
-  - Virtual Servers in the Cloud.
-  - Limited by RAM and CPU.
-  - Continuously running.
-  - Scaling means intervention to add / remove servers.
-- Amazon Lambda:
-  - Virtual functions - no servers to manage!
-  - Limited by time - short executions.
-  - Run on-demand.
-  - Scaling is automated!
-
-#### 9.5.1. Benefits of AWS Lambda
-
-- Easy Pricing:
-  - Pay per request and compute time.
-  - Free tier of 1,000,000 AWS Lambda requests and 400,000 GBs of compute time.
-- Integrated with the whole AWS suite of services.
-- **Event-Driven**: functions get invoked by AWS when needed.
-- Integrated with many programming languages.
-- Easy monitoring through AWS CloudWatch.
-- Easy to get more resources per functions (up to 10GB of RAM!).
-- Increasing RAM will also improve CPU and network!
-
-#### 9.5.2. AWS Lambda language support
-
-- Node.js (JavaScript)
-- Python
-- Java (Java 8 compatible)
-- C# (.NET Core)
-- Golang
-- C# / Powershell
-- Ruby
-- Custom Runtime API (community supported, example Rust)
-- Lambda Container Image
-  - The container image must implement the Lambda Runtime API
-  - ECS / Fargate is preferred for running arbitrary Docker images
-
-#### 9.5.3. AWS Lambda Pricing: example
-
-- You can find overall pricing information here: https://aws.amazon.com/lambda/pricing/
-- Pay per **calls**:
-  - First 1,000,000 requests are free.
-  - $0.20 per 1 million requests thereafter ($0.0000002 per request).
-- Pay per **duration**: (in increment of 1 ms)
-  - 400,000 GB-seconds of compute time per month for FREE.
-  - == 400,000 seconds if function is 1GB RAM.
-  - == 3,200,000 seconds if function is 128 MB RAM.
-  - After that $1.00 for 600,000 GB-seconds.
-- It is usually **very cheap** to run AWS Lambda so it's **very popular**.
-
-### 9.6. Amazon API Gateway
+### 9.5. Amazon API Gateway
 
 - Example: building a serverless API.
 - Fully managed service for developers to easily create, publish, maintain, monitor, and secure APIs.
@@ -2652,7 +2587,7 @@
 
 [AWS API Gateway](/AWS%20API%20Gateway.md)
 
-### 9.7. AWS Batch
+### 9.6. AWS Batch
 
 - **Fully managed** batch processing at **any scale**.
 - Efficiently run 100,000s of computing batch jobs on AWS.
@@ -2663,7 +2598,7 @@
 - Batch jobs are defined as **Docker images** and **run on ECS**.
 - Helpful for cost optimizations and focusing less on the infrastructure.
 
-### 9.8. Batch vs Lambda
+### 9.7. Batch vs Lambda
 
 - Lambda:
   - Time limit.
@@ -2676,7 +2611,7 @@
   - Rely on EBS / instance store for disk space.
   - Relies on EC2 (can be managed by AWS).
 
-### 9.9. Amazon Lightsail
+### 9.8. Amazon Lightsail
 
 - **Amazon Lightsail is designed to be the easiest way to launch and manage a virtual private server with AWS. Lightsail plans include everything you need to jumpstart your project - a virtual machine, SSD- based storage, data transfer, DNS management, and a static IP address - for a low, predictable price. It can be used to create a simple web application, a website or a dev/test environment.**
 - Virtual servers, storage, databases, and networking.
@@ -2690,7 +2625,7 @@
   - Dev / Test environment.
 - Has high availability but no auto-scaling, limited AWS integrations.
 
-### 9.10. Other Compute - Summary
+### 9.9. Other Compute - Summary
 
 - Docker: container technology to run applications.
 - ECS: run Docker containers on EC2 instances.
@@ -2701,7 +2636,7 @@
 - Batch: run batch jobs on AWS across managed EC2 instances.
 - Lightsail: predictable & low pricing for simple application & DB stacks.
 
-### 9.11. Lambda Summary
+### 9.10. Lambda Summary
 
 - Lambda is Serverless, Function as a Service, seamless scaling, reactive.
 - Lambda Billing:
@@ -3228,7 +3163,7 @@
 
 ### 14.1. Amazon CloudWatch Metrics
 
-[AWS Monitoring, Troubleshooting and Audit](/AWS%20Monitoring%2C%20Troubleshooting%20and%20Audit.md)
+[AWS CloudWatch](/AWS%20CloudWatch.md)
 
 #### 14.1.1. Important Metrics
 

@@ -6,18 +6,25 @@
 - [2. Monitoring in AWS](#2-monitoring-in-aws)
 - [3. AWS CloudWatch Metrics](#3-aws-cloudwatch-metrics)
 - [4. EC2 Detailed monitoring](#4-ec2-detailed-monitoring)
-- [5. CloudWatch Custom Metrics](#5-cloudwatch-custom-metrics)
-- [6. CloudWatch Logs](#6-cloudwatch-logs)
+- [5. Custom Metrics](#5-custom-metrics)
+- [6. Logs](#6-logs)
   - [6.1. Sources](#61-sources)
-- [7. CloudWatch Logs Metric Filter and Insights](#7-cloudwatch-logs-metric-filter-and-insights)
-- [8. CloudWatch Logs - S3 Export](#8-cloudwatch-logs---s3-export)
-- [9. CloudWatch Logs for EC2](#9-cloudwatch-logs-for-ec2)
-- [10. CloudWatch Logs Agent \& Unified Agent](#10-cloudwatch-logs-agent--unified-agent)
-- [11. CloudWatch Unified Agent – Metrics](#11-cloudwatch-unified-agent--metrics)
-- [12. CloudWatch Logs Metric Filter](#12-cloudwatch-logs-metric-filter)
+- [7. Logs Metric Filter and Insights](#7-logs-metric-filter-and-insights)
+- [8. Logs - S3 Export](#8-logs---s3-export)
+- [9. Logs for EC2](#9-logs-for-ec2)
+- [10. Logs Agent \& Unified Agent](#10-logs-agent--unified-agent)
+- [11. Unified Agent – Metrics](#11-unified-agent--metrics)
+- [12. Logs Metric Filter](#12-logs-metric-filter)
 - [13. CloudWatch Alarms](#13-cloudwatch-alarms)
-- [14. CloudWatch Alarm Targets](#14-cloudwatch-alarm-targets)
-- [15. CloudWatch Alarms – Composite Alarms](#15-cloudwatch-alarms--composite-alarms)
+  - [13.1. Alarm Targets](#131-alarm-targets)
+  - [13.2. Composite Alarms](#132-composite-alarms)
+  - [13.3. EC2 Instance Recovery](#133-ec2-instance-recovery)
+  - [13.4. CloudWatch Alarm: good to know](#134-cloudwatch-alarm-good-to-know)
+- [14. CloudWatch Events](#14-cloudwatch-events)
+- [15. Amazon EventBridge](#15-amazon-eventbridge)
+  - [15.1. Schema Registry](#151-schema-registry)
+  - [15.2. Resource-based Policy](#152-resource-based-policy)
+- [16. Amazon EventBridge vs CloudWatch Events](#16-amazon-eventbridge-vs-cloudwatch-events)
 
 # 1. Why Monitoring is Important
 
@@ -70,7 +77,7 @@
 - The AWS Free Tier allows us to have 10 detailed monitoring metrics.
 - Note: EC2 Memory usage is by default not pushed (must be pushed from inside the instance as a custom metric).
 
-# 5. CloudWatch Custom Metrics
+# 5. Custom Metrics
 
 - Possibility to define and send your own custom metrics to CloudWatch.
 - Example: memory (RAM) usage, disk space, number of logged in users...
@@ -83,7 +90,7 @@
   - High Resolution: 1/5/10/30 second(s) - Higher cost.
 - Important: Accepts metric data points two weeks in the past and two hours in the future (make sure to configure your EC2 instance time correctly).
 
-# 6. CloudWatch Logs
+# 6. Logs
 
 - **Log groups:** arbitrary name, usually representing an application.
 - **Log stream:** instances within application / log files / containers.
@@ -106,7 +113,7 @@
 - CloudTrail based on filter.
 - Route53: Log DNS queries.
 
-# 7. CloudWatch Logs Metric Filter and Insights
+# 7. Logs Metric Filter and Insights
 
 - CloudWatch Logs can use filter expressions:
   - For example, find a specific IP inside of a log.
@@ -114,20 +121,20 @@
 - Metric filters can be used to trigger CloudWatch alarms.
 - CloudWatch Logs Insights can be used to query logs and add queries to CloudWatch Dashboards.
 
-# 8. CloudWatch Logs - S3 Export
+# 8. Logs - S3 Export
 
 - Log data can take up to 12 hours to become available for export.
 - The API call is CreateExportTask.
 - Not near-real time or real-time... use Logs Subscriptions instead.
 
-# 9. CloudWatch Logs for EC2
+# 9. Logs for EC2
 
 - By default, no logs from your EC2 machine will go to CloudWatch.
 - You need to run a CloudWatch agent on EC2 to push the log files you want.
 - Make sure IAM permissions are correct.
 - The CloudWatch log agent can be setup on-premises too.
 
-# 10. CloudWatch Logs Agent & Unified Agent
+# 10. Logs Agent & Unified Agent
 
 - For virtual servers (EC2 instances, on-premise servers...)
 - **CloudWatch Logs Agent:**
@@ -138,7 +145,7 @@
   - Collect logs to send to CloudWatch Logs.
   - Centralized configuration using SSM Parameter Store.
 
-# 11. CloudWatch Unified Agent – Metrics
+# 11. Unified Agent – Metrics
 
 - Collected directly on your Linux server / EC2 instance.
 - CPU (active, guest, idle, system, user, steal).
@@ -149,7 +156,7 @@
 - Swap Space (free, used, used %).
 - Reminder: out-of-the box metrics for EC2 – disk, CPU, network (high level).
 
-# 12. CloudWatch Logs Metric Filter
+# 12. Logs Metric Filter
 
 - CloudWatch Logs can use filter expressions.
   - For example, find a specific IP inside of a log.
@@ -169,15 +176,78 @@
   - Length of time in seconds to evaluate the metric.
   - High resolution custom metrics: 10 sec, 30 sec or multiples of 60 sec.
 
-# 14. CloudWatch Alarm Targets
+## 13.1. Alarm Targets
 
 - Stop, Terminate, Reboot, or Recover an EC2 Instance.
 - Trigger Auto Scaling Action.
 - Send notification to SNS (from which you can do pretty much anything).
 
-# 15. CloudWatch Alarms – Composite Alarms
+## 13.2. Composite Alarms
 
 - CloudWatch Alarms are on a single metric.
 - Composite Alarms are monitoring the states of multiple other alarms.
 - AND and OR conditions.
 - Helpful to reduce "alarm noise" by creating complex composite alarms.
+
+## 13.3. EC2 Instance Recovery
+
+- Status Check:
+- Instance status = check the EC2 VM
+- System status = check the underlying hardware
+- Recovery: Same Private, Public, Elastic IP, metadata, placement group
+
+## 13.4. CloudWatch Alarm: good to know
+
+- Alarms can be created based on CloudWatch Logs Metrics Filters
+- To test alarms and notifications, set the alarm state to Alarm using CLI
+  aws cloudwatch set-alarm-state --alarm-name "myalarm" --state-value
+  ALARM --state-reason "testing purposes"
+
+# 14. CloudWatch Events
+
+- Event Pattern: Intercept events from AWS services (Sources)
+- Example sources: EC2 Instance Start, CodeBuild Failure, S3, Trusted Advisor
+- Can intercept any API call with CloudTrail integration
+- Schedule or Cron (example: create an event every 4 hours)
+- A JSON payload is created from the event and passed to a target…
+- Compute: Lambda, Batch, ECS task
+- Integration: SQS, SNS, Kinesis Data Streams, Kinesis Data Firehose
+- Orchestration: Step Functions, CodePipeline, CodeBuild
+- Maintenance: SSM, EC2 Actions
+
+# 15. Amazon EventBridge
+
+- EventBridge is the next evolution of CloudWatch Events
+- Default Event Bus – generated by AWS services (CloudWatch Events)
+- Partner Event Bus – receive events from SaaS service or applications (Zendesk,
+  DataDog, Segment, Auth0…)
+- Custom Event Buses – for your own applications
+- Event buses can be accessed by other AWS accounts
+- You can archive events (all/filter) sent to an event bus (indefinitely or set period)
+- Ability to replay archived events
+- Rules: how to process the events (like CloudWatch Events)
+
+## 15.1. Schema Registry
+
+- EventBridge can analyze the events in
+  your bus and infer the schema
+- The Schema Registry allows you to
+  generate code for your application, that
+  will know in advance how data is
+  structured in the event bus
+- Schema can be versioned
+
+## 15.2. Resource-based Policy
+
+- Manage permissions for a specific Event Bus.
+- Example: allow/deny events from another AWS account or AWS region.
+- Use case: aggregate all events from your AWS Organization in a single AWS account or AWS region.
+
+# 16. Amazon EventBridge vs CloudWatch Events
+
+- Amazon EventBridge builds upon and extends CloudWatch Events.
+- It uses the same service API and endpoint, and the same underlying service infrastructure.
+- EventBridge allows extension to add event buses for your custom applications and your third-party SaaS apps.
+- Event Bridge has the Schema Registry capability.
+- EventBridge has a different name to mark the new capabilities.
+- Over time, the CloudWatch Events name will be replaced with EventBridge.

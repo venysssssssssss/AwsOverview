@@ -25,7 +25,7 @@
 
 # 2. Visual analysis of our applications
 
-- Image here...
+![AWS X-Ray Service Map](/Images/AWSXRayServiceMap.PNG)
 
 # 3. Advantages
 
