@@ -11,10 +11,17 @@
   - [6.1. Your code](#61-your-code)
 - [7. X-Ray magic](#7-x-ray-magic)
 - [8. Troubleshooting](#8-troubleshooting)
-- [9. X-Ray Instrumentation in your code](#9-x-ray-instrumentation-in-your-code)
+- [9. Instrumentation in your code](#9-instrumentation-in-your-code)
+- [10. X-Ray Concepts](#10-x-ray-concepts)
+- [11. Sampling Rules](#11-sampling-rules)
+- [12. Custom Sampling Rules](#12-custom-sampling-rules)
+- [13. X-Ray Write and Read APIs](#13-x-ray-write-and-read-apis)
+  - [13.1. Write APIs (used by the X-Ray daemon)](#131-write-apis-used-by-the-x-ray-daemon)
+  - [13.2. Read APIs](#132-read-apis)
 
 # 1. Introduction
 
+- **AWS X-Ray helps developers analyze and debug production, distributed applications, such as those built using a microservices architecture.**
 - Debugging in Production, the good old way:
   - Test locally.
   - Add log statements everywhere.
@@ -75,15 +82,15 @@
 
 2. Install the X-Ray daemon or enable X-Ray AWS Integration:
 
-- X-Ray daemon works as a low level UDP packet interceptor (Linux / Windows / Mac...)
-- AWS Lambda / other AWS services already run the X-Ray daemon for you
-- Each application must have the IAM rights to write data to X-Ray
+- X-Ray daemon works as a low level UDP packet interceptor (Linux / Windows / Mac...).
+- AWS Lambda / other AWS services already run the X-Ray daemon for you.
+- Each application must have the IAM rights to write data to X-Ray.
 
 # 7. X-Ray magic
 
-- X-Ray service collects data from all the different services
-- Service map is computed from all the segments and traces
-- X-Ray is graphical, so even non technical people can help troubleshoot
+- X-Ray service collects data from all the different services.
+- Service map is computed from all the segments and traces.
+- X-Ray is graphical, so even non technical people can help troubleshoot.
 
 # 8. Troubleshooting
 
@@ -94,9 +101,53 @@
   - Ensure it has an IAM execution role with proper policy (AWSX-RayWriteOnlyAccess).
   - Ensure that X-Ray is imported in the code.
 
-# 9. X-Ray Instrumentation in your code
+# 9. Instrumentation in your code
 
-- Instrumentation means the measure of product's performance, diagnose errors, and to write trace information.
-- To instrument your application code, you use the X-Ray SDK.
+- **Instrumentation** means the measure of product's performance, diagnose errors, and to write trace information.
+- To instrument your application code, you use the **X-Ray SDK**.
 - Many SDK require only configuration changes.
-- You can modify your application code to customize and annotation the data that the SDK sends to X- Ray, using interceptors, filters, handlers, middleware.
+- You can modify your application code to customize and annotation the data that the SDK sends to X- Ray, using **interceptors, filters, handlers, middleware...**
+
+# 10. X-Ray Concepts
+
+- **Segments:** each application / service will send them.
+- **Subsegments:** if you need more details in your segment.
+- **Trace:** segments collected together to form an end-to-end trace.
+- **Sampling:** decrease the amount of requests sent to X-Ray, reduce cost.
+- **Annotations:** Key Value pairs used to **index** traces and use with **filters**.
+- **Metadata:** Key Value pairs, **not indexed**, not used for searching.
+- The X-Ray daemon / agent has a config to send traces cross account:
+  - Make sure the IAM permissions are correct - the agent will assume the role
+  - This allows to have a central account for all your application tracing
+
+# 11. Sampling Rules
+
+- With sampling rules, you control the amount of data that you record.
+- You can modify sampling rules without changing your code.
+- By default, the X-Ray SDK records the **first request** each second, and _five percent_ of any additional requests.
+  - **One request per second is the reservoir**, which ensures that at least one trace is recorded each second as long the service is serving requests.
+  - _Five percent is the rate_ at which additional requests beyond the reservoir size are sampled.
+
+# 12. Custom Sampling Rules
+
+- You can create your own rules with the **reservoir** and _rate_.
+
+# 13. X-Ray Write and Read APIs
+
+## 13.1. Write APIs (used by the X-Ray daemon)
+
+- PutTraceSegments: Uploads segment documents to AWS X-Ray.
+- PutTelemetryRecords: Used by the AWS X-Ray daemon to upload telemetry
+  - SegmentsReceivedCount
+  - SegmentsRejectedCounts
+  - BackendConnectionErrors...
+- GetSamplingRules: Retrieve all sampling rules (to know what/when to send).
+- GetSamplingTargets & GetSamplingStatisticSummaries: advanced.
+- The X-Ray daemon needs to have an IAM policy authorizing the correct API calls to function correctly.
+
+## 13.2. Read APIs
+
+- GetServiceGraph: main graph.
+- BatchGetTraces: Retrieves a list of traces specified by ID. Each trace is a collection of segment documents that originates from a single request.
+- GetTraceSummaries: Retrieves IDs and annotations for traces available for a specified time frame using an optional filter. To get the full traces, pass the trace IDs to BatchGetTraces.
+- GetTraceGraph: Retrieves a service graph for one or more specific trace IDs.

@@ -284,7 +284,6 @@
     - [14.7.1. CloudTrail Insights Events](#1471-cloudtrail-insights-events)
     - [14.7.2. CloudTrail Events Retention](#1472-cloudtrail-events-retention)
   - [14.8. AWS X-Ray](#148-aws-x-ray)
-    - [14.8.1. AWS X-Ray advantages](#1481-aws-x-ray-advantages)
   - [14.9. Amazon CodeGuru](#149-amazon-codeguru)
   - [14.10. Amazon CodeGuru Reviewer](#1410-amazon-codeguru-reviewer)
     - [14.10.1. Amazon CodeGuru Profiler](#14101-amazon-codeguru-profiler)
@@ -3271,25 +3270,7 @@
 
 ### 14.8. AWS X-Ray
 
-- **AWS X-Ray helps developers analyze and debug production, distributed applications, such as those built using a microservices architecture.**
-- Debugging in Production, the good old way:
-  - Test locally.
-  - Add log statements everywhere.
-  - Re-deploy in production.
-- Log formats differ across applications and log analysis is hard.
-- Debugging: one big monolith "easy", distributed services "hard".
-- No common views of your entire architecture.
-
-#### 14.8.1. AWS X-Ray advantages
-
-- Troubleshooting performance (bottlenecks)
-- Understand dependencies in a microservice architecture
-- Pinpoint service issues
-- Review request behavior
-- Find errors and exceptions
-- Are we meeting time SLA?
-- Where I am throttled?
-- Identify users that are impacted
+[AWS X-Ray](/AWS%20X-Ray.md)
 
 ### 14.9. Amazon CodeGuru
 
@@ -4985,3 +4966,5 @@
   - aws ec2 describe-regions
 - Find AWS availability zones using AWS CLI
   - aws ec2 describe-availability-zones --region `region`
+- List all funcions
+  - aws lambda list-functions
