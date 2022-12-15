@@ -8,7 +8,6 @@
 - [4. Compatibility](#4-compatibility)
 - [5. Leverages Tracing](#5-leverages-tracing)
 - [6. How to enable it?](#6-how-to-enable-it)
-  - [6.1. Your code](#61-your-code)
 - [7. X-Ray magic](#7-x-ray-magic)
 - [8. Troubleshooting](#8-troubleshooting)
 - [9. Instrumentation in your code](#9-instrumentation-in-your-code)
@@ -18,6 +17,7 @@
 - [13. X-Ray Write and Read APIs](#13-x-ray-write-and-read-apis)
   - [13.1. Write APIs (used by the X-Ray daemon)](#131-write-apis-used-by-the-x-ray-daemon)
   - [13.2. Read APIs](#132-read-apis)
+- [X-Ray with Elastic Beanstalk](#x-ray-with-elastic-beanstalk)
 
 # 1. Introduction
 
@@ -69,8 +69,6 @@
 
 # 6. How to enable it?
 
-## 6.1. Your code
-
 1. Your code (Java, Python, Go, Node.js, .NET) must import the AWS X-Ray SDK:
 
 - Very little code modification needed.
@@ -117,8 +115,8 @@
 - **Annotations:** Key Value pairs used to **index** traces and use with **filters**.
 - **Metadata:** Key Value pairs, **not indexed**, not used for searching.
 - The X-Ray daemon / agent has a config to send traces cross account:
-  - Make sure the IAM permissions are correct - the agent will assume the role
-  - This allows to have a central account for all your application tracing
+  - Make sure the IAM permissions are correct - the agent will assume the role.
+  - This allows to have a central account for all your application tracing.
 
 # 11. Sampling Rules
 
@@ -136,18 +134,26 @@
 
 ## 13.1. Write APIs (used by the X-Ray daemon)
 
-- PutTraceSegments: Uploads segment documents to AWS X-Ray.
-- PutTelemetryRecords: Used by the AWS X-Ray daemon to upload telemetry
+- **PutTraceSegments:** Uploads segment documents to AWS X-Ray.
+- **PutTelemetryRecords:** Used by the AWS X-Ray daemon to upload telemetry
   - SegmentsReceivedCount
   - SegmentsRejectedCounts
   - BackendConnectionErrors...
-- GetSamplingRules: Retrieve all sampling rules (to know what/when to send).
-- GetSamplingTargets & GetSamplingStatisticSummaries: advanced.
+- **GetSamplingRules:** Retrieve all sampling rules (to know what/when to send).
+- **GetSamplingTargets & GetSamplingStatisticSummaries:** advanced.
 - The X-Ray daemon needs to have an IAM policy authorizing the correct API calls to function correctly.
 
 ## 13.2. Read APIs
 
-- GetServiceGraph: main graph.
-- BatchGetTraces: Retrieves a list of traces specified by ID. Each trace is a collection of segment documents that originates from a single request.
-- GetTraceSummaries: Retrieves IDs and annotations for traces available for a specified time frame using an optional filter. To get the full traces, pass the trace IDs to BatchGetTraces.
-- GetTraceGraph: Retrieves a service graph for one or more specific trace IDs.
+- **GetServiceGraph:** main graph.
+- **BatchGetTraces:** Retrieves a list of traces specified by ID. Each trace is a collection of segment documents that originates from a single request.
+- **GetTraceSummaries:** Retrieves IDs and annotations for traces available for a specified time frame using an optional filter. To get the full traces, pass the trace IDs to BatchGetTraces.
+- **GetTraceGraph:** Retrieves a service graph for one or more specific trace IDs.
+
+# X-Ray with Elastic Beanstalk
+
+- AWS Elastic Beanstalk platforms include the X-Ray daemon.
+- You can run the daemon by setting an option in the Elastic Beanstalk console or with a configuration file (in .ebextensions/xray-daemon.config).
+- Make sure to give your instance profile the correct IAM permissions so that the X-Ray daemon can function correctly.
+- Then make sure your application code is instrumented with the X-Ray SDK.
+- Note: The X-Ray daemon is not provided for Multicontainer Docker.
