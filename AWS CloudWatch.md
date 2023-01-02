@@ -13,14 +13,14 @@
 - [8. Logs - S3 Export](#8-logs---s3-export)
 - [9. Logs for EC2](#9-logs-for-ec2)
 - [10. Logs Agent \& Unified Agent](#10-logs-agent--unified-agent)
-- [11. Unified Agent – Metrics](#11-unified-agent--metrics)
+- [11. Unified Agent - Metrics](#11-unified-agent---metrics)
 - [12. Logs Metric Filter](#12-logs-metric-filter)
 - [13. CloudWatch Alarms](#13-cloudwatch-alarms)
   - [13.1. Alarm Targets](#131-alarm-targets)
   - [13.2. Composite Alarms](#132-composite-alarms)
   - [13.3. EC2 Instance Recovery](#133-ec2-instance-recovery)
   - [13.4. CloudWatch Alarm: good to know](#134-cloudwatch-alarm-good-to-know)
-- [14. CloudWatch Events](#14-cloudwatch-events)
+- [14. CloudWatch Events (Will be replaced with EventBridge)](#14-cloudwatch-events-will-be-replaced-with-eventbridge)
 - [15. Amazon EventBridge](#15-amazon-eventbridge)
   - [15.1. Schema Registry](#151-schema-registry)
   - [15.2. Resource-based Policy](#152-resource-based-policy)
@@ -72,8 +72,8 @@
 # 4. EC2 Detailed monitoring
 
 - EC2 instance metrics have metrics "every 5 minutes".
-- With detailed monitoring (for a cost), you get data "every 1 minute".
-- Use detailed monitoring if you want to scale faster for your ASG!
+- With **Detailed Monitoring** (for a cost), you get data "every 1 minute".
+- Use **Detailed Monitoring** if you want to scale faster for your ASG!
 - The AWS Free Tier allows us to have 10 detailed monitoring metrics.
 - Note: EC2 Memory usage is by default not pushed (must be pushed from inside the instance as a custom metric).
 
@@ -145,7 +145,7 @@
   - Collect logs to send to CloudWatch Logs.
   - Centralized configuration using SSM Parameter Store.
 
-# 11. Unified Agent – Metrics
+# 11. Unified Agent - Metrics
 
 - Collected directly on your Linux server / EC2 instance.
 - CPU (active, guest, idle, system, user, steal).
@@ -154,7 +154,7 @@
 - Netstat (number of TCP and UDP connections, net packets, bytes).
 - Processes (total, dead, bloqued, idle, running, sleep).
 - Swap Space (free, used, used %).
-- Reminder: out-of-the box metrics for EC2 – disk, CPU, network (high level).
+- Reminder: out-of-the box metrics for EC2 - disk, CPU, network (high level).
 
 # 12. Logs Metric Filter
 
@@ -174,7 +174,7 @@
   - ALARM
 - Period:
   - Length of time in seconds to evaluate the metric.
-  - High resolution custom metrics: 10 sec, 30 sec or multiples of 60 sec.
+  - **High-Resolution Custom Metrics:** 10 sec, 30 sec or multiples of 60 sec.
 
 ## 13.1. Alarm Targets
 
@@ -201,7 +201,7 @@
 - Alarms can be created based on CloudWatch Logs Metrics Filters.
 - To test alarms and notifications, set the alarm state to Alarm using CLI: `aws cloudwatch set-alarm-state --alarm-name "myalarm" --state-value ALARM --state-reason "testing purposes"`
 
-# 14. CloudWatch Events
+# 14. CloudWatch Events (Will be replaced with EventBridge)
 
 - Event Pattern: Intercept events from AWS services (Sources):
   - Example sources: EC2 Instance Start, CodeBuild Failure, S3, Trusted Advisor.
@@ -228,7 +228,6 @@
 - Ability to replay archived events.
 - Rules: how to process the events (like CloudWatch Events).
 - EventBridge has a different name to mark the new capabilities.
-- The CloudWatch Events name will be replaced with EventBridge.
 
 ## 15.1. Schema Registry
 

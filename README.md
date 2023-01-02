@@ -172,30 +172,30 @@
     - [8.10.3. Multi-Region](#8103-multi-region)
     - [8.10.4. Resume](#8104-resume)
   - [8.11. RDS - Read Replicas for read scalability](#811-rds---read-replicas-for-read-scalability)
-    - [8.11.1. RDS - Read Replicas – Use Cases](#8111-rds---read-replicas--use-cases)
-    - [8.11.2. RDS - Read Replicas – Network Cost](#8112-rds---read-replicas--network-cost)
+    - [8.11.1. RDS - Read Replicas - Use Cases](#8111-rds---read-replicas---use-cases)
+    - [8.11.2. RDS - Read Replicas - Network Cost](#8112-rds---read-replicas---network-cost)
     - [8.11.3. RDS - Multi AZ (Disaster Recovery)](#8113-rds---multi-az-disaster-recovery)
-    - [8.11.4. RDS – From Single-AZ to Multi-AZ](#8114-rds--from-single-az-to-multi-az)
+    - [8.11.4. RDS - From Single-AZ to Multi-AZ](#8114-rds---from-single-az-to-multi-az)
   - [8.12. RDS Security - Encryption](#812-rds-security---encryption)
   - [8.13. RDS - Encryption Operations](#813-rds---encryption-operations)
-  - [8.14. RDS Security – Network \& IAM](#814-rds-security--network--iam)
+  - [8.14. RDS Security - Network \& IAM](#814-rds-security---network--iam)
   - [8.15. RDS - IAM Authentication](#815-rds---iam-authentication)
-  - [8.16. RDS Security – Summary](#816-rds-security--summary)
+  - [8.16. RDS Security - Summary](#816-rds-security---summary)
   - [8.17. Amazon Aurora](#817-amazon-aurora)
   - [8.18. Aurora High Availability and Read Scaling](#818-aurora-high-availability-and-read-scaling)
   - [8.19. Features of Aurora](#819-features-of-aurora)
   - [8.20. Aurora Security](#820-aurora-security)
   - [8.21. Amazon ElastiCache Overview](#821-amazon-elasticache-overview)
   - [8.22. ElastiCache - Solution Architecture - DB Cache](#822-elasticache---solution-architecture---db-cache)
-  - [8.23. ElastiCache - Solution Architecture – User Session Store](#823-elasticache---solution-architecture--user-session-store)
-  - [8.24. ElastiCache – Redis vs Memcached](#824-elasticache--redis-vs-memcached)
-  - [8.25. ElastiCache – Cache Security](#825-elasticache--cache-security)
+  - [8.23. ElastiCache - Solution Architecture - User Session Store](#823-elasticache---solution-architecture---user-session-store)
+  - [8.24. ElastiCache - Redis vs Memcached](#824-elasticache---redis-vs-memcached)
+  - [8.25. ElastiCache - Cache Security](#825-elasticache---cache-security)
   - [8.26. ElastiCache Replication](#826-elasticache-replication)
     - [8.26.1. Cluster Mode Disabled](#8261-cluster-mode-disabled)
     - [8.26.2. Cluster Mode Disabled](#8262-cluster-mode-disabled)
   - [8.27. Caching Implementation Considerations](#827-caching-implementation-considerations)
   - [8.28. Lazy Loading / Cache-Aside / Lazy Population](#828-lazy-loading--cache-aside--lazy-population)
-  - [8.29. Write Through –Add or Update cache when database is updated](#829-write-through-add-or-update-cache-when-database-is-updated)
+  - [8.29. Write Through -Add or Update cache when database is updated](#829-write-through--add-or-update-cache-when-database-is-updated)
   - [8.30. Cache Evictions and Time-to-live (TTL)](#830-cache-evictions-and-time-to-live-ttl)
   - [8.31. Final words of wisdom](#831-final-words-of-wisdom)
   - [8.32. DynamoDB](#832-dynamodb)
@@ -2128,7 +2128,7 @@
 - Replicas can be promoted to their own DB.
 - Applications must update the connection string to leverage read replicas.
 
-#### 8.11.1. RDS - Read Replicas – Use Cases
+#### 8.11.1. RDS - Read Replicas - Use Cases
 
 - You have a production database that is taking on normal load.
 - You want to run a reporting application to run some analytics.
@@ -2136,7 +2136,7 @@
 - The production application is unaffected.
 - Read replicas are used for SELECT (=read) only kind of statements (not INSERT, UPDATE, DELETE).
 
-#### 8.11.2. RDS - Read Replicas – Network Cost
+#### 8.11.2. RDS - Read Replicas - Network Cost
 
 - In AWS there's a network cost when data goes from one AZ to another.
 - For RDS Read Replicas within the same region, you don't pay that fee.
@@ -2144,7 +2144,7 @@
 #### 8.11.3. RDS - Multi AZ (Disaster Recovery)
 
 - SYNC replication.
-- One DNS name – automatic app failover to standby.
+- One DNS name - automatic app failover to standby.
 - Increase availability.
 - Failover in case of loss of AZ, loss of network, instance or storage failure.
 - No manual intervention in apps.
@@ -2152,7 +2152,7 @@
 - Multi-AZ replication is free.
 - Note:The Read Replicas be setup as Multi-AZ for Disaster Recovery (DR).
 
-#### 8.11.4. RDS – From Single-AZ to Multi-AZ
+#### 8.11.4. RDS - From Single-AZ to Multi-AZ
 
 - Zero downtime operation (no need to stop the DB).
 - Just click on "modify" for the database.
@@ -2187,11 +2187,11 @@
   - Restore the database from the encrypted snapshot.
   - Migrate applications to the new database, and delete the old database.
 
-### 8.14. RDS Security – Network & IAM
+### 8.14. RDS Security - Network & IAM
 
 - Network Security:
   - RDS databases are usually deployed within a private subnet, not in a public one.
-  - RDS security works by leveraging security groups (the same concept as for EC2 instances) – it controls which IP / security group can communicate with RDS.
+  - RDS security works by leveraging security groups (the same concept as for EC2 instances) - it controls which IP / security group can communicate with RDS.
 - Access Management
   - IAM policies help control who can manage AWS RDS (through the RDS API).
   - Traditional Username and Password can be used to login into the database.
@@ -2207,7 +2207,7 @@
   - IAM to centrally manage users instead of DB.
   - Can leverage IAM Roles and EC2 Instance profiles for easy integration.
 
-### 8.16. RDS Security – Summary
+### 8.16. RDS Security - Summary
 
 - Encryption at rest:
   - Is done only when you first create the DB instance.
@@ -2286,14 +2286,14 @@
 - Helps relieve load in RDS
 - Cache must have an invalidation strategy to make sure only the most current data is used in there.
 
-### 8.23. ElastiCache - Solution Architecture – User Session Store
+### 8.23. ElastiCache - Solution Architecture - User Session Store
 
 - User logs into any of the application.
 - The application writes the session data into ElastiCache.
 - The user hits another instance of our application.
 - The instance retrieves the data and the user is already logged in.
 
-### 8.24. ElastiCache – Redis vs Memcached
+### 8.24. ElastiCache - Redis vs Memcached
 
 - REDIS:
   - Multi AZ with Auto-Failover.
@@ -2307,7 +2307,7 @@
   - No backup and restore.
   - Multi-threaded architecture.
 
-### 8.25. ElastiCache – Cache Security
+### 8.25. ElastiCache - Cache Security
 
 - All caches in ElastiCache:
   - Do not support IAM authentication.
@@ -2363,14 +2363,14 @@
   - Cache miss penalty that results in 3 round trips, noticeable delay for that request.
   - Stale data: data can be updated in the database and outdated in the cache.
 
-### 8.29. Write Through –Add or Update cache when database is updated
+### 8.29. Write Through -Add or Update cache when database is updated
 
 - Pros:
   - Data in cache is never stale, reads are quick.
   - Write penalty vs Read penalty (each write requires 2 calls).
 - Cons:
   - Missing Data until it is added / updated in the DB. Mitigation is to implement Lazy Loading strategy as well.
-  - Cache churn – a lot of the data will never be read.
+  - Cache churn - a lot of the data will never be read.
 
 ### 8.30. Cache Evictions and Time-to-live (TTL)
 

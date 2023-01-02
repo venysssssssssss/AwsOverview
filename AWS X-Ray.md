@@ -122,7 +122,7 @@
 
 - With sampling rules, you control the amount of data that you record.
 - You can modify sampling rules without changing your code.
-- By default, the X-Ray SDK records the **first request** each second, and _five percent_ of any additional requests.
+- By default, the **X-Ray SDK** records the **first request** each second, and _five percent_ of any additional requests.
   - **One request per second is the reservoir**, which ensures that at least one trace is recorded each second as long the service is serving requests.
   - _Five percent is the rate_ at which additional requests beyond the reservoir size are sampled.
 
