@@ -199,8 +199,6 @@
   - [8.30. Cache Evictions and Time-to-live (TTL)](#830-cache-evictions-and-time-to-live-ttl)
   - [8.31. Final words of wisdom](#831-final-words-of-wisdom)
   - [8.32. DynamoDB](#832-dynamodb)
-    - [8.32.1. DynamoDB Accelerator - DAX](#8321-dynamodb-accelerator---dax)
-    - [8.32.2. DynamoDB - Global Tables](#8322-dynamodb---global-tables)
   - [8.33. Redshift Overview](#833-redshift-overview)
   - [8.34. Amazon EMR](#834-amazon-emr)
   - [8.35. Amazon Athena](#835-amazon-athena)
@@ -398,7 +396,7 @@
   - [20.12. Amazon AppFlow](#2012-amazon-appflow)
   - [20.13. AWS CloudSearch](#2013-aws-cloudsearch)
   - [20.14. Aws Service Catalog](#2014-aws-service-catalog)
-  - [20.15. Amazon SES - Simple Email Service](#2015-amazon-ses---simple-email-service)
+  - [20.15. Amazon AWS SES - Simple Email Service](#2015-amazon-aws-ses---simple-email-service)
 - [21. AWS Architecting \& Ecosystem](#21-aws-architecting--ecosystem)
   - [21.1. Well Architected Framework General - Guiding Principles](#211-well-architected-framework-general---guiding-principles)
   - [21.2. AWS Cloud Best Practices - Design Principles](#212-aws-cloud-best-practices---design-principles)
@@ -422,29 +420,30 @@
   - [21.8. AWS Training](#218-aws-training)
   - [21.9. AWS Professional Services \& Partner Network](#219-aws-professional-services--partner-network)
   - [21.10. AWS Knowledge Center](#2110-aws-knowledge-center)
-- [22. AWS related Abbreviations \& Acronyms](#22-aws-related-abbreviations--acronyms)
-  - [22.1. A](#221-a)
-  - [22.2. B](#222-b)
-  - [22.3. C](#223-c)
-  - [22.4. D](#224-d)
-  - [22.5. E](#225-e)
-  - [22.6. F](#226-f)
-  - [22.7. H](#227-h)
-  - [22.8. I](#228-i)
-  - [22.9. J](#229-j)
-  - [22.10. K](#2210-k)
-  - [22.11. L](#2211-l)
-  - [22.12. M](#2212-m)
-  - [22.13. N](#2213-n)
-  - [22.14. O](#2214-o)
-  - [22.15. P](#2215-p)
-  - [22.16. Q](#2216-q)
-  - [22.17. R](#2217-r)
-  - [22.18. S](#2218-s)
-  - [22.19. T](#2219-t)
-  - [22.20. V](#2220-v)
-  - [22.21. W](#2221-w)
-- [23. Commands](#23-commands)
+- [22. AWS Cloud Map](#22-aws-cloud-map)
+- [23. AWS related Abbreviations \& Acronyms](#23-aws-related-abbreviations--acronyms)
+  - [23.1. A](#231-a)
+  - [23.2. B](#232-b)
+  - [23.3. C](#233-c)
+  - [23.4. D](#234-d)
+  - [23.5. E](#235-e)
+  - [23.6. F](#236-f)
+  - [23.7. H](#237-h)
+  - [23.8. I](#238-i)
+  - [23.9. J](#239-j)
+  - [23.10. K](#2310-k)
+  - [23.11. L](#2311-l)
+  - [23.12. M](#2312-m)
+  - [23.13. N](#2313-n)
+  - [23.14. O](#2314-o)
+  - [23.15. P](#2315-p)
+  - [23.16. Q](#2316-q)
+  - [23.17. R](#2317-r)
+  - [23.18. S](#2318-s)
+  - [23.19. T](#2319-t)
+  - [23.20. V](#2320-v)
+  - [23.21. W](#2321-w)
+- [24. Commands](#24-commands)
 
 ## 1. Traditionally, how to build infrastructure
 
@@ -2395,28 +2394,7 @@
 
 ### 8.32. DynamoDB
 
-- **DynamoDB is a fast and flexible non-relational database service for any scale. It can scale with no downtime, it can process millions of requests per second, and is fast and consistent in performance.**
-- Fully Managed Highly available with replication across 3 AZ.
-- **NoSQL database - not a relational database.**
-- Scales to massive workloads, distributed **"serverless**" database.
-- Millions of requests per seconds, trillions of row, 100s of TB of storage.
-- Fast and consistent in performance.
-- **Single-digit millisecond latency - low latency retrieval.**
-- Integrated with IAM for security, authorization and administration.
-- Low cost and auto scaling capabilities.
-
-#### 8.32.1. DynamoDB Accelerator - DAX
-
-- **Amazon DynamoDB Accelerator (DAX) is a fully managed, highly available, in-memory cache for Amazon DynamoDB that delivers up to a 10 times performance improvement—from milliseconds to microseconds—even at millions of requests per second.**
-- Fully Managed **in-memory** cache for DynamoDB.
-- **10x performance improvement** - single- digit millisecond latency to microseconds latency - when accessing your DynamoDB tables.
-- Secure, highly scalable & highly available.
-- Difference with ElastiCache at the CCP level: DAX is only used for and is integrated with DynamoDB, while ElastiCache can be used for other databases.
-
-#### 8.32.2. DynamoDB - Global Tables
-
-- Make a DynamoDB table accessible with low latency in multiple-regions.
-- Active-Active replication (read/write to any AWS Region).
+[AWS DynamoDB](AWS%20DynamoDB.md)
 
 ### 8.33. Redshift Overview
 
@@ -2531,7 +2509,7 @@
 
 ### 8.43. Databases & Analytics Summary in AWS
 
-- Relational Databases - OLTP: RDS & Aurora (SQL).
+- Relational Databases: OLTP, RDS and Aurora (SQL).
 - Differences between Multi-AZ, Read Replicas, Multi-Region.
 - In-memory Database: ElastiCache.
 - Key/Value Database: DynamoDB (serverless) & DAX (cache for DynamoDB).
@@ -2543,7 +2521,7 @@
 - Amazon QLDB: Financial Transactions Ledger (immutable journal, cryptographically verifiable).
 - Amazon Managed Blockchain: managed Hyperledger Fabric & Ethereum blockchains.
 - Glue: Managed ETL (Extract Transform Load) and Data Catalog service.
-- Database Migration: DMS.
+- Database Migration Service: DMS.
 - Neptune: Graph database.
 
 ## 9. Other Compute Services: ECS, Lambda, Batch, Lightsail
@@ -3545,6 +3523,7 @@
 ### 16.10. AWS Certificate Manager (ACM)
 
 - **AWS Certificate Manager is a service that lets you easily provision, manage, and deploy public and private Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificates for use with AWS services and your internal connected resources.**
+- Let's you easily provision, manage,and deploy SSL/TLS Certificates.
 - Used to provide in-flight encryption for websites (HTTPS).
 - Supports both public and private TLS certificates.
 - Free of charge for public TLS certificates.
@@ -3553,6 +3532,8 @@
   - Elastic Load Balancers.
   - CloudFront Distributions.
   - APIs on API Gateway Auto Scaling group.
+
+![AWS Certificate Manager](Images/AWSCertificateManager.png)
 
 ### 16.11. AWS Secrets Manager
 
@@ -4356,9 +4337,18 @@
 ### 20.9. AWS DataSync
 
 - Move large amount of data from on-premises to AWS.
-- Can synchronize to: Amazon S3 (any storage classes - including Glacier), Amazon EFS, Amazon FSx for Windows.
+  - On-premises / other cloud to AWS (NFS, SMB, HDFS, S3 API) - needs agent.
+  - AWS to AWS (different storage service) - no agent needed.
+- Can synchronize to:
+  - Amazon S3 (any storage classes - including Glacier).
+  - Amazon EFS.
+  - Amazon FSx for Windows.
 - Replication tasks can be scheduled hourly, daily, weekly.
-- The replication tasks are **incremental** after the first full load.
+  - The replication tasks are **incremental** after the first full load.
+- File permissions and metada are preserved (NFS POSIX, SMB).
+- One agent task can use 10 Gbps, can setup a bandwidth limit.
+
+![AWS DataSync](/Images/AwsDataSyncDiagram.png)
 
 ### 20.10. AWS Fault Injection Simulator (FIS)
 
@@ -4414,12 +4404,20 @@
 - This helps you achieve consistent governance and meet your compliance requirements, while enabling users to quickly deploy only the approved IT services they need. With AWS Service Catalog AppRegistry, organizations can understand the application context of their AWS resources.
 - You can define and manage your applications and their metadata, to keep track of cost, performance, security, compliance and operational status at the application level.
 
-### 20.15. Amazon SES - Simple Email Service
+### 20.15. Amazon AWS SES - Simple Email Service
 
 - Amazon Simple Email Service (SES) is a cost-effective, flexible, and scalable email service that enables developers to send mail from within any application.
 - You can configure Amazon SES quickly to support several email use cases, including transactional, marketing, or mass email communications.
 - Amazon SES's flexible IP deployment and email authentication options help drive higher deliverability and protect sender reputation, while sending analytics measure the impact of each email.
 - With Amazon SES, you can send email securely, globally, and at scale.
+- Send emails to peope using:
+  - SMTP interface.
+  - Or AWS SDK
+- Ability to receive email, integrates with:
+  - S2.
+  - SNS.
+  - Lambda.
+- Integrated with IAM for allowing to send email.
 
 ## 21. AWS Architecting & Ecosystem
 
@@ -4707,9 +4705,17 @@
 - Contains the most frequent & common questions and requests
   - https://aws.amazon.com/premiumsupport/knowledge-center/
 
-## 22. AWS related Abbreviations & Acronyms
+## 22. AWS Cloud Map
 
-### 22.1. A
+- A fully managed resource discovery service.
+- Creates a map of the backend services/resources that your applications depend on
+- You register your application components, their locations, attributes, and health status with AWS Cloud Map.
+- Integrated health checking (stop sending traffic to unhealthy endpoints).
+- Your applications can query AWS Cloud Map using AWS SDK, API, or DNS.
+
+## 23. AWS related Abbreviations & Acronyms
+
+### 23.1. A
 
 - AWS Amazon Web Services
 - Amazon ES Amazon Elasticsearch Service
@@ -4726,11 +4732,11 @@
 - ADFS Active Directory Federation Service
 - AVX Advanced Vector Extensions
 
-### 22.2. B
+### 23.2. B
 
 - BYOL Bring Your Own License
 
-### 22.3. C
+### 23.3. C
 
 - CDN Content Delivery Network
 - CRC Cyclic Redundancy Check
@@ -4740,7 +4746,7 @@
 - CRR Cross Region Replication
 - CI/CD Continuous Integration/Continuous Deployment
 
-### 22.4. D
+### 23.4. D
 
 - DMS Database Migration Service
 - DNS Domain Name System
@@ -4748,7 +4754,7 @@
 - DoS Denial of Service
 - DaaS Desktop as-a-Service
 
-### 22.5. E
+### 23.5. E
 
 - EC2 Elastic Compute Cloud
 - ECS EC2 Container Service
@@ -4766,12 +4772,12 @@
 - ENI Elastic Network Interface
 - ECU EC2 Compute Unit
 
-### 22.6. F
+### 23.6. F
 
 - FIFO First In First Out
 - FaaS Function as-a-Service
 
-### 22.7. H
+### 23.7. H
 
 - HPC High-Performance Compute
 - HVM Hardware Virtual Machine
@@ -4779,7 +4785,7 @@
 - HTTPS HTTP Secure
 - HDK Hardware Development Kit
 
-### 22.8. I
+### 23.8. I
 
 - IAM Identity & Access Management
 - iOT Internet Of Things
@@ -4792,21 +4798,21 @@
 - IPSec Internet Protocol Security
 - IaaS Infrastructure-as-a-Service
 
-### 22.9. J
+### 23.9. J
 
 - JSON JavaScript Object Notation
 
-### 22.10. K
+### 23.10. K
 
 - KMS Key Management Service
 - KVM Kernel-based Virtual Machine
 
-### 22.11. L
+### 23.11. L
 
 - LB Load Balancer
 - LCU Load Balancer Capacity Unit
 
-### 22.12. M
+### 23.12. M
 
 - MFA Multi-Factor Authentication
 - MSTSC Microsoft Terminal Service Client
@@ -4815,7 +4821,7 @@
 - ML Machine Learning
 - MPLS Multi Protocol Label Switching
 
-### 22.13. N
+### 23.13. N
 
 - NACL Network Access Control List
 - NLP Natural Language Processing
@@ -4824,24 +4830,24 @@
 - NAT Network Address Translation
 - NVMe Non-Volatile Memory Express
 
-### 22.14. O
+### 23.14. O
 
 - OLTP Online Transaction Processing
 - OLAP Online Analytics Processing
 - OCI Open Container Initiative
 
-### 22.15. P
+### 23.15. P
 
 - PCI DSS Payment Card Industry Data Security Standard
 - PVM Para Virtual Machine
 - PV ParaVirtual
 - PaaS Platform as a Service
 
-### 22.16. Q
+### 23.16. Q
 
 - QLDB Quantum Ledger Database
 
-### 22.17. R
+### 23.17. R
 
 - RAIDRedundant Array of Independent Disk
 - RDS Relational Database Service
@@ -4850,7 +4856,7 @@
 - RAM Random-access Memory
 - RIE Runtime Interface Emulator
 
-### 22.18. S
+### 23.18. S
 
 - SSEServer Side Encryption
 - S3 Simple Storage Service
@@ -4878,7 +4884,7 @@
 - STS Security Token Service
 - SNI Server Name Indication
 
-### 22.19. T
+### 23.19. T
 
 - TAM Technical Account Managers
 - TTL Time To Live
@@ -4889,7 +4895,7 @@
 - TPS Transaction Per Second
 - TCP Transmission Control Protocol
 
-### 22.20. V
+### 23.20. V
 
 - VPC Virtual Private Cloud
 - VM Virtual Machine
@@ -4899,11 +4905,11 @@
 - VDI Virtual Desktop Infrastructure
 - VPG Virtual Private Gateway
 
-### 22.21. W
+### 23.21. W
 
 - WAFWeb Application Firewall
 
-## 23. Commands
+## 24. Commands
 
 - List of AWS Regions
   - aws ec2 describe-regions
