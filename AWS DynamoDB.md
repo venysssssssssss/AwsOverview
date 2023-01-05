@@ -22,8 +22,16 @@
   - [7.4. Reading Data (Scan)](#74-reading-data-scan)
   - [7.5. Deleting Data](#75-deleting-data)
   - [7.6. Batch Operations](#76-batch-operations)
-- [8. Accelerator - DAX](#8-accelerator---dax)
-- [9. Global Tables](#9-global-tables)
+- [8. Indexes](#8-indexes)
+  - [8.1. Local Secondary Index (LSI)](#81-local-secondary-index-lsi)
+  - [8.2. Global Secondary Index (GSI)](#82-global-secondary-index-gsi)
+  - [8.3. Indexes and Throttling](#83-indexes-and-throttling)
+- [9. PartiQL](#9-partiql)
+- [10. DynamoDB - Optimistic Locking](#10-dynamodb---optimistic-locking)
+- [11. Accelerator - DAX](#11-accelerator---dax)
+- [12. DynamoDB Streams](#12-dynamodb-streams)
+  - [12.1. DynamoDB Streams and AWS Lambda](#121-dynamodb-streams-and-aws-lambda)
+- [13. Global Tables](#13-global-tables)
 
 # 1. Traditional Architecture
 
@@ -55,7 +63,7 @@
 - Integrated with IAM for security, authorization and administration.
 - Enables event driven programming with DynamoDB Streams.
 - Low cost and auto-scaling capabilities.
-- Standard & Infrequent Access (IA) Table Class.
+- Standard and Infrequent Access (IA) Table Class.
 
 # 4. DynamoDB - Basics
 
@@ -93,7 +101,7 @@
 - **Provisioned Mode (default):**
   - You specify the number of reads/writes per second.
   - You need to plan capacity beforehand.
-  - Pay for provisioned read & write capacity units.
+  - Pay for provisioned read and write capacity units.
 - **On-Demand Mode:**
   - Read/writes automatically scale up/down with your workloads.
   - No capacity planning needed.
@@ -153,7 +161,7 @@
 
 - Read/writes automatically scale up/down with your workloads.
 - No capacity planning needed (WCU / RCU).
-- Unlimited WCU & RCU, no throttle, more expensive.
+- Unlimited WCU and RCU, no throttle, more expensive.
 - You're charged for reads/writes that you use in terms of **RRU** and **WRU**.
 - **Read Request Units (RRU)** - throughput for reads (same as RCU).
 - **Write Request Units (WRU)** - throughput for writes (same as WCU).
@@ -209,7 +217,7 @@
   - Multiple workers scan multiple data segments at the same time.
   - Increases the throughput and RCU consumed.
   - Limit the impact of parallel scans just like you would for Scans.
-- Can use **ProjectionExpression & FilterExpression** (no changes to RCU).
+- Can use **ProjectionExpression and FilterExpression** (no changes to RCU).
 
 ## 7.5. Deleting Data
 
@@ -234,15 +242,97 @@
   - Up to 100 items, up to 16 MB of data.
   - Items are retrieved in parallel to minimize latency.
 
-# 8. Accelerator - DAX
+# 8. Indexes
 
-- **Amazon DynamoDB Accelerator (DAX) is a fully managed, highly available, in-memory cache for Amazon DynamoDB that delivers up to a 10 times performance improvement—from milliseconds to microseconds—even at millions of requests per second.**
-- Fully Managed **in-memory** cache for DynamoDB.
-- **10x performance improvement** - single- digit millisecond latency to microseconds latency - when accessing your DynamoDB tables.
-- Secure, highly scalable & highly available.
-- Difference with ElastiCache at the CCP level: DAX is only used for and is integrated with DynamoDB, while ElastiCache can be used for other databases.
+## 8.1. Local Secondary Index (LSI)
 
-# 9. Global Tables
+- **Alternative Sort Key** for your table (same **Partition Key** as that of base table).
+- The Sort Key consists of one scalar attribute (String, Number, or Binary).
+- Up to 5 Local Secondary Indexes per table.
+- **Must be defined at table creation time.**
+- **Attribute Projections** - can contain some or all the attributes of the base table **(KEYS_ONLY, INCLUDE, ALL)**.
+
+## 8.2. Global Secondary Index (GSI)
+
+- **Alternative Primary Key (HASH or HASH+RANGE)** from the base table.
+- Speed up queries on non-key attributes.
+- The Index Key consists of scalar attributes (String, Number, or Binary).
+- **Attribute Projections** - some or all the attributes of the base table **(KEYS_ONLY, INCLUDE, ALL)**.
+- Must provision RCUs and WCUs for the index.
+- **Can be added/modified after table creation.**
+
+## 8.3. Indexes and Throttling
+
+- Global Secondary Index (GSI):
+  - **If the writes are throttled on the GSI, then the main table will be throttled!**
+  - Even if the WCU on the main tables are fine.
+  - Choose your GSI partition key carefully!
+  - Assign your WCU capacity carefully!
+- Local Secondary Index (LSI):
+  - Uses the WCUs and RCUs of the main table.
+  - No special throttling considerations.
+
+# 9. PartiQL
+
+- Use a SQL-like syntax to manipulate DynamoDB tables.
+- Supports some (but not all) statements:
+  - INSERT
+  - UPDATE
+  - SELECT
+  - DELETE
+- It supports Batch operations.
+
+# 10. DynamoDB - Optimistic Locking
+
+- DynamoDB has a feature called "Conditional Writes".
+- A strategy to ensure an item hasn't changed before you update/delete it.
+- Each item has an attribute that acts as a version number.
+
+# 11. Accelerator - DAX
+
+- Fully-managed, highly available, seamless in-memory cache for DynamoDB.
+- Microseconds latency for cached reads and queries.
+- Doesn't require application logic modification (compatible with existing DynamoDB APIs).
+- Solves the "Hot Key" problem (too many reads).
+- 5 minutes TTL for cache (default).
+- Up to 10 nodes in the cluster.
+- Multi-AZ (3 nodes minimum recommended for production).
+- Secure (Encryption at rest with KMS, VPC, IAM, CloudTrail, ...)
+
+# 12. DynamoDB Streams
+
+- Ordered stream of item-level modifications (create/update/delete) in a table.
+- Stream records can be:
+  - Sent to **Kinesis Data Streams**.
+  - Read by **AWS Lambda**.
+  - Read by **Kinesis Client Library applications**.
+- Data Retention for up to 24 hours.
+- Use cases:
+
+  - react to changes in real-time (welcome email to users).
+  - Analytics.
+  - Insert into derivative tables.
+  - Insert into ElasticSearch.
+  - Implement cross-region replication.
+
+- Ability to choose the information that will be written to the stream:
+  - **KEYS_ONLY** - only the key attributes of the modified item.
+  - **NEW_IMAGE** - the entire item, as it appears after it was modified.
+  - **OLD_IMAGE** - the entire item, as it appeared before it was modified.
+  - **NEW_AND_OLD_IMAGES** - both the new and the old images of the item.
+- DynamoDB Streams are made of shards, just like Kinesis Data Streams.
+- You don't provision shards, this is automated by AWS.
+- **Records are not retroactively populated in a stream after enabling it.**
+
+## 12.1. DynamoDB Streams and AWS Lambda
+
+- You need to define an **Event Source Mapping** to read from a DynamoDB Streams.
+- You need to ensure the Lambda function has the appropriate permissions.
+- **Your Lambda function is invoked synchronously.**
+
+  [AWS Lambda](AWS%20Lambda.md)
+
+# 13. Global Tables
 
 - Make a DynamoDB table accessible with low latency in multiple-regions.
 - Active-Active replication (read/write to any AWS Region).
