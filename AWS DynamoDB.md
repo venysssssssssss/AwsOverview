@@ -31,7 +31,9 @@
 - [11. Accelerator - DAX](#11-accelerator---dax)
 - [12. DynamoDB Streams](#12-dynamodb-streams)
   - [12.1. DynamoDB Streams and AWS Lambda](#121-dynamodb-streams-and-aws-lambda)
-- [13. Global Tables](#13-global-tables)
+- [13. Time To Live (TTL)](#13-time-to-live-ttl)
+- [14. DynamoDB CLI – Good to Know](#14-dynamodb-cli--good-to-know)
+- [15. Global Tables](#15-global-tables)
 
 # 1. Traditional Architecture
 
@@ -332,7 +334,27 @@
 
   [AWS Lambda](AWS%20Lambda.md)
 
-# 13. Global Tables
+# 13. Time To Live (TTL)
+
+- Automatically delete items after an expiry timestamp.
+- Doesn't consume any WCUs (i.e., no extra cost).
+- The TTL attribute must be a "Number" data type with "Unix Epoch timestamp" value.
+- Expired items deleted within 48 hours of expiration.
+- Expired items, that haven't been deleted, appears in reads/queries/scans (if you don't want them, filter them out).
+- Expired items are deleted from both LSIs and GSIs.
+- A delete operation for each expired item enters the DynamoDB Streams (can help recover expired items).
+- Use cases: reduce stored data by keeping only current items, adhere to regulatory obligations, ...
+
+# 14. DynamoDB CLI – Good to Know
+
+- **--projection-expression:** one or more attributes to retrieve.
+- **--filter-expression:** filter items before returned to you.
+- General AWS CLI Pagination options (e.g., DynamoDB, S3, ...):
+  - **--page-size:** specify that AWS CLI retrieves the full list of items but with a larger number of API calls instead of one API call (default: 1000 items).
+  - **--max-items:** max. number of items to show in the CLI (returns NextToken).
+  - **--starting-token:** specify the last NextToken to retrieve the next set of items.
+
+# 15. Global Tables
 
 - Make a DynamoDB table accessible with low latency in multiple-regions.
 - Active-Active replication (read/write to any AWS Region).

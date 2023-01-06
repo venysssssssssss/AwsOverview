@@ -150,6 +150,7 @@
   - Amazon CloudFront (Lambda@Edge).
   - Amazon S3 Batch.
 - Service Invoked:
+  - DynamoDB > Streams [DynamoDB Streams and AWS Lambda](AWS%20DynamoDB.md)
   - Amazon Cognito.
   - AWS Step Functions.
 - Other Services:
