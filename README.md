@@ -4855,6 +4855,7 @@
 - RI Reserved Instance
 - RAM Random-access Memory
 - RIE Runtime Interface Emulator
+- RCU Read Capacity Units
 
 ### 23.18. S
 
@@ -4908,8 +4909,9 @@
 ### 23.21. W
 
 - WAFWeb Application Firewall
+- WCU Write Capacity Units
 
-## 24. Commands
+# 24. Commands
 
 - List of AWS Regions
   - aws ec2 describe-regions
@@ -4917,3 +4919,13 @@
   - aws ec2 describe-availability-zones --region `region`
 - List all funcions
   - aws lambda list-functions
+
+## DynamoDB
+
+- List all itens of table (Projection expression)
+  - aws dynamodb scan --table-name `<table_name>`
+  - aws dynamodb scan --table-name `<table_name>` --page-size 1
+  - aws dynamodb scan --table-name `<table_name>` --max-items 1
+  - aws dynamodb scan --table-name `<table_name>` --projection-expression "`<attribute_fields_or_columns>`" # Filter attributes
+- List all content of table (F ilter expression)
+  - aws dynamodb scan --table-name DemoTTL --filter-expression "`<attribute_fields_or_columns>` = :u" --expression-attribute-values '{":u": {"S":"`<content>`"}}'

@@ -27,13 +27,21 @@
   - [8.2. Global Secondary Index (GSI)](#82-global-secondary-index-gsi)
   - [8.3. Indexes and Throttling](#83-indexes-and-throttling)
 - [9. PartiQL](#9-partiql)
-- [10. DynamoDB - Optimistic Locking](#10-dynamodb---optimistic-locking)
+- [10. Optimistic Locking](#10-optimistic-locking)
 - [11. Accelerator - DAX](#11-accelerator---dax)
 - [12. DynamoDB Streams](#12-dynamodb-streams)
   - [12.1. DynamoDB Streams and AWS Lambda](#121-dynamodb-streams-and-aws-lambda)
 - [13. Time To Live (TTL)](#13-time-to-live-ttl)
-- [14. DynamoDB CLI – Good to Know](#14-dynamodb-cli--good-to-know)
-- [15. Global Tables](#15-global-tables)
+- [14. DynamoDB CLI - Good to Know](#14-dynamodb-cli---good-to-know)
+- [15. Transactions](#15-transactions)
+  - [15.1. Capacity Computations](#151-capacity-computations)
+- [16. Session State Cache](#16-session-state-cache)
+- [17. Write Sharding](#17-write-sharding)
+- [18. Write Types](#18-write-types)
+- [19. Operations](#19-operations)
+- [20. Security \& Other Features](#20-security--other-features)
+  - [20.1. Fine-Grained Access Control](#201-fine-grained-access-control)
+- [21. Global Tables](#21-global-tables)
 
 # 1. Traditional Architecture
 
@@ -284,7 +292,7 @@
   - DELETE
 - It supports Batch operations.
 
-# 10. DynamoDB - Optimistic Locking
+# 10. Optimistic Locking
 
 - DynamoDB has a feature called "Conditional Writes".
 - A strategy to ensure an item hasn't changed before you update/delete it.
@@ -292,6 +300,8 @@
 
 # 11. Accelerator - DAX
 
+- **DynamoDB that delivers up to 10x performance improvement.**
+- **It caches the most frequently used data, thus offloading the heavy reads on hot keys of your DynamoDB table, hence preventing the "ProvisionedThroughputExceededException" exception.**
 - Fully-managed, highly available, seamless in-memory cache for DynamoDB.
 - Microseconds latency for cached reads and queries.
 - Doesn't require application logic modification (compatible with existing DynamoDB APIs).
@@ -310,13 +320,11 @@
   - Read by **Kinesis Client Library applications**.
 - Data Retention for up to 24 hours.
 - Use cases:
-
-  - react to changes in real-time (welcome email to users).
+  - React to changes in real-time (welcome email to users).
   - Analytics.
   - Insert into derivative tables.
   - Insert into ElasticSearch.
   - Implement cross-region replication.
-
 - Ability to choose the information that will be written to the stream:
   - **KEYS_ONLY** - only the key attributes of the modified item.
   - **NEW_IMAGE** - the entire item, as it appears after it was modified.
@@ -328,6 +336,8 @@
 
 ## 12.1. DynamoDB Streams and AWS Lambda
 
+- **DynamoDB Streams allows you to capture a time-ordered sequence of item-level modifications in a DynamoDB table.**
+- **It's integrated with AWS Lambda so that you create triggers that automatically respond to events in real-time.**
 - You need to define an **Event Source Mapping** to read from a DynamoDB Streams.
 - You need to ensure the Lambda function has the appropriate permissions.
 - **Your Lambda function is invoked synchronously.**
@@ -345,16 +355,106 @@
 - A delete operation for each expired item enters the DynamoDB Streams (can help recover expired items).
 - Use cases: reduce stored data by keeping only current items, adhere to regulatory obligations, ...
 
-# 14. DynamoDB CLI – Good to Know
+# 14. DynamoDB CLI - Good to Know
 
 - **--projection-expression:** one or more attributes to retrieve.
 - **--filter-expression:** filter items before returned to you.
 - General AWS CLI Pagination options (e.g., DynamoDB, S3, ...):
+
   - **--page-size:** specify that AWS CLI retrieves the full list of items but with a larger number of API calls instead of one API call (default: 1000 items).
   - **--max-items:** max. number of items to show in the CLI (returns NextToken).
   - **--starting-token:** specify the last NextToken to retrieve the next set of items.
 
-# 15. Global Tables
+  [Commands section](README.md)
+
+# 15. Transactions
+
+- Coordinated, all-or-nothing operations (add/update/delete) to multiple items across one or more tables.
+- Provides Atomicity, Consistency, Isolation, and Durability (ACID).
+- **Read Modes** - Eventual Consistency, Strong Consistency, Transactional.
+- **Write Modes** - Standard, Transactional.
+- **Consumes 2x WCUs & RCUs.**
+  - DynamoDB performs 2 operations for every item (prepare & commit).
+- Two operations: (up to 25 unique items or up to 4 MB of data):
+  - **TransactGetItems** - one or more **GetItem** operations.
+  - **TransactWriteItems** - one or more **PutItem**, **UpdateItem**, and **DeleteItem** operations.
+- Use cases: financial transactions, managing orders, multiplayer games, ...
+
+## 15.1. Capacity Computations
+
+- **Example 1:** 3 Transactional writes per second, with item size 5 KB:
+  - We need 3 _ (5kb / 1kb) _ 2 (transactional cost) = 30 WCUs.
+- **Example 2:** 5 Transaction reads per second , with item size 5 KB:
+  - We need 5 _ (8gb / 4kb) _ 2 (transactional cost) = 20 RCUs.
+  - (5 gets rounded to the upper 4 KB).
+
+# 16. Session State Cache
+
+- It's common to use DynamoDB to store session states.
+- **vs. ElastiCache**
+  - ElastiCache is in-memory, but DynamoDB is serverless.
+  - Both are key/value stores.
+- **vs. EFS**
+  - EFS must be attached to EC2 instances as a network drive.
+- **vs. EBS & Instance Store**
+  - EBS & Instance Store can only be used for local caching, not shared caching.
+- **vs. S3**
+  - S3 is higher latency, and not meant for small objects.
+
+# 17. Write Sharding
+
+- Imagine we have a voting application with two candidates, **candidate A** and **candidate B**.
+- If **Partition Key** is **"Candidate_ID"**, this results into two partitions, which will generate issues (e.g., Hot Partition).
+- A strategy that allows better distribution of items evenly across partitions.
+- **Add a suffix to Partition Key value.**
+- Two methods:
+  - Sharding Using Random Suffix.
+  - Sharding Using Calculated Suffix.
+
+# 18. Write Types
+
+- Concurrent Writes
+- Atomic Writes
+- Conditional Writes
+- Batch Write
+
+# 19. Operations
+
+- **Table Cleanup:**
+  - **Option 1:** Scan + DeleteItem
+    - Very slow, consumes RCU & WCU, expensive
+  - **Option 2:** Drop Table + Recreate table
+    - Fast, efficient, cheap
+- **Copying a DynamoDB Table:**
+  - **Option 1:** Using AWS Data Pipeline
+  - **Option 2:** Backup and restore into a new table
+    - Takes some time
+  - **Option 3:** Scan + PutItem or BatchWriteItem
+    - Write your own code
+
+# 20. Security & Other Features
+
+- **Security:**
+  - VPC Endpoints available to access DynamoDB without using the Internet.
+  - Access fully controlled by IAM.
+  - Encryption at rest using AWS KMS and in-transit using SSL/TLS.
+- **Backup and Restore feature available:**
+  - Point-in-time Recovery (PITR) like RDS.
+  - No performance impact.
+- **Global Tables:**
+  - Multi-region, multi-active, fully replicated, high performance.
+- **DynamoDB Local:**
+  - Develop and test apps locally without accessing the DynamoDB web service (without Internet).
+- AWS Database Migration Service (AWS DMS) can be used to migrate to DynamoDB (from MongoDB, Oracle, MySQL, S3, ...).
+
+## 20.1. Fine-Grained Access Control
+
+- Using Web Identity Federation or Cognito Identity Pools, each user gets AWS credentials.
+- You can assign an IAM Role to these users with a Condition to limit their API access to DynamoDB.
+- LeadingKeys - limit row-level access for users on the Primary Key.
+- Attributes - limit specific attributes the user can see.
+
+# 21. Global Tables
 
 - Make a DynamoDB table accessible with low latency in multiple-regions.
 - Active-Active replication (read/write to any AWS Region).
