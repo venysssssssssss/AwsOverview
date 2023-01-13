@@ -2665,12 +2665,7 @@
 
 ### 10.2. AWS Cloud Development Kit (CDK)
 
-- **The AWS Cloud Development Kit (AWS CDK) is an open source software development framework to define your cloud application resources using familiar programming languages.**
-  - JavaScript/TypeScript, Python, Java, and .NET.
-- The code is "compiled" into a CloudFormation template (JSON/YAML).
-- You can therefore deploy infrastructure and application runtime code together.
-  - Great for Lambda functions.
-  - Great for Docker containers in ECS / EKS.
+[AWS Cloud Development Kit](AWS%20Cloud%20Development%20Kit.md)
 
 ### 10.3. Developer problems on AWS
 
