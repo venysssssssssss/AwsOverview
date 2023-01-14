@@ -132,6 +132,12 @@
 
 - One Write Capacity Unit (WCU) represents one write per second for an item up to 1 KB in size.
 - If the items are larger than 1 KB, more WCUs are consumed.
+- Example 1: we write 10 items per second, with item size 2 KB:
+  - We need 10 \* (2/1) = 20 WCUs.
+- Example 2: we write 6 items per second, with item size 4.5 KB
+  - We need 6 \* (5/1) = 30 WCUs (4.5 gets rounded to the upper KB).
+- Example 3: we write 120 items per minute, with item size 2 KB
+  - We need (120/60) \* (2/1) = 4 WCUs
 
 ### 6.1.2. Strongly Consistent Read vs. Eventually Consistent Read
 
@@ -294,8 +300,8 @@
 
 # 10. Optimistic Locking
 
-- DynamoDB has a feature called "Conditional Writes".
 - A strategy to ensure an item hasn't changed before you update/delete it.
+- DynamoDB has a feature called **"Conditional Writes"**.
 - Each item has an attribute that acts as a version number.
 
 # 11. Accelerator - DAX

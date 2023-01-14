@@ -286,18 +286,6 @@
   - [14.11. AWS Personal Health Dashboard](#1411-aws-personal-health-dashboard)
   - [14.12. Monitoring Summary](#1412-monitoring-summary)
 - [15. VPC](#15-vpc)
-  - [15.1. VPC - Crash Course](#151-vpc---crash-course)
-  - [15.2. VPC \& Subnets Primer](#152-vpc--subnets-primer)
-  - [15.3. Internet Gateway \& NAT Gateways](#153-internet-gateway--nat-gateways)
-  - [15.4. Network ACL \& Security Groups](#154-network-acl--security-groups)
-  - [15.5. Network ACLs vs Security Groups](#155-network-acls-vs-security-groups)
-  - [15.6. VPC Flow Logs](#156-vpc-flow-logs)
-  - [15.7. VPC Peering](#157-vpc-peering)
-  - [15.8. VPC Endpoints](#158-vpc-endpoints)
-  - [15.9. Site to Site VPN \& Direct Connect](#159-site-to-site-vpn--direct-connect)
-  - [15.10. Site-to-Site VPN](#1510-site-to-site-vpn)
-  - [15.11. Transit Gateway](#1511-transit-gateway)
-  - [15.12. VPC Closing Comments](#1512-vpc-closing-comments)
 - [16. Security \& Compliance](#16-security--compliance)
   - [16.1. AWS Shared Responsibility Model](#161-aws-shared-responsibility-model)
     - [16.1.1. Example, for RDS](#1611-example-for-rds)
@@ -444,6 +432,7 @@
   - [23.20. V](#2320-v)
   - [23.21. W](#2321-w)
 - [24. Commands](#24-commands)
+  - [24.1. DynamoDB](#241-dynamodb)
 
 ## 1. Traditionally, how to build infrastructure
 
@@ -3250,125 +3239,7 @@
 
 ## 15. VPC
 
-### 15.1. VPC - Crash Course
-
-- At the AWS Certified Cloud Practitioner Level, you should know about:
-  - VPC, Subnets, Internet Gateways & NAT Gateways.
-  - Security Groups, Network ACL (NACL), VPC Flow Logs.
-  - VPC Peering, VPC Endpoints.
-  - Site to Site VPN & Direct Connect.
-  - Transit Gateway.
-- We'll have a look at the "default VPC" (created by default by AWS for you).
-
-### 15.2. VPC & Subnets Primer
-
-- **A virtual private cloud (VPC) is a virtual network dedicated to your AWS account. It is logically isolated from other virtual networks in the AWS Cloud. You can launch your AWS resources, such as Amazon EC2 instances, into your VPC.**
-- **VPC - Virtual Private Cloud:** private network to deploy your resources (regional resource).
-- **Subnets** allow you to partition your network inside your VPC (Availability Zone resource).
-- A **public subnet** is a subnet that is accessible from the internet.
-- A **private subnet** is a subnet that is not accessible from the internet.
-- To define access to the internet and between subnets, we use Route Tables.
-
-### 15.3. Internet Gateway & NAT Gateways
-
-- **NAT Gateways allow your instances in your private subnets to access the Internet while remaining private, and are managed by AWS.**
-- **Internet Gateways** helps our VPC instances connect with the internet.
-- Public Subnets have a route to the internet gateway.
-- **NAT Gateways** (AWS-managed)
-- **NAT Instances** (self-managed) allow your instances in your **Private Subnets** to access the internet while remaining private.
-  - **NAT Instances allow your instances in your private subnets to access the Internet while remaining private, but are managed by you.**
-
-### 15.4. Network ACL & Security Groups
-
-- **A network access control list (NACL) is an optional layer of security for your VPC that acts as a firewall for controlling traffic in and out of one or more subnets. They have both ALLOW and DENY rules.**
-  - **NACL (Network ACL):**
-    - A firewall which controls traffic from and to subnet.
-    - Can have ALLOW and DENY rules.
-    - Are attached at the **Subnet** level.
-    - Rules only include IP addresses.
-- **Security Groups:**
-  - A firewall that controls traffic to and from **an ENI / an EC2 Instance**.
-  - Can have only ALLOW rules.
-  - Rules include IP addresses and other security groups.
-
-### 15.5. Network ACLs vs Security Groups
-
-| Security group                                                                                                                                               | Network ACL                                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Operates at the instance level                                                                                                                               | Operates at the subnet level                                                                                                                                                           |
-| Supports allow rules only                                                                                                                                    | Supports allow rules and deny rules                                                                                                                                                    |
-| Is stateful: Return traffic is automatically allowed, regardless of any rules                                                                                | Is stateless: Return traffic must be explicitly allowed by rules                                                                                                                       |
-| We evaluate all rules before deciding whether to allow traffic                                                                                               | We process rules in order, starting with the lowest numbered rule, when deciding whether to allow traffic                                                                              |
-| Applies to an instance only if someone specifies the security group when launching the instance, or associates the security group with the instance later on | Automatically applies to all instances in the subnets that it's associated with (therefore, it provides an additional layer of defense if the security group rules are too permissive) |
-
-- https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Security.html
-
-### 15.6. VPC Flow Logs
-
-- Capture information about IP traffic going into your interfaces:
-  - **VPC Flow** Logs.
-  - **Subnet** Flow Logs.
-  - **Elastic Network Interface** Flow Logs.
-- Helps to monitor & troubleshoot connectivity issues. Example:
-  - Subnets to internet.
-  - Subnets to subnets.
-  - Internet to subnets.
-- Captures network information from AWS managed interfaces too: Elastic Load Balancers, ElastiCache, RDS, Aurora, etc...
-- VPC Flow logs data can go to S3 / CloudWatch Logs.
-
-### 15.7. VPC Peering
-
-- Connect two VPC, privately using AWS' network.
-- Make them behave as if they were in the same network.
-- Must not have overlapping CIDR (IP address range).
-- VPC Peering connection is not transitive (must be established for each VPC that need to communicate with one another).
-
-### 15.8. VPC Endpoints
-
-- Endpoints allow you to connect to AWS Services **using a private network** instead of the public www network.
-- This gives you enhanced security and lower latency to access AWS services.
-- VPC Endpoint **Gateway**: S3 & DynamoDB.
-- VPC Endpoint **Interface**: the rest.
-
-### 15.9. Site to Site VPN & Direct Connect
-
-- **Site to Site VPN:**
-  - Connect an on-premises VPN to AWS.
-  - The connection is automatically encrypted.
-  - Goes over the public internet.
-- **AWS Direct Connect is a cloud service solution that makes it easy to establish a dedicated private network connection from your premises to AWS.**
-  - **Direct Connect (DX):**
-    - Establish a physical connection between on-premises and AWS.
-    - The connection is private, secure and fast.
-    - Goes over a private network.
-    - Takes at least a month to establish.
-
-### 15.10. Site-to-Site VPN
-
-- On-premises: must use a **Customer Gateway** (CGW)
-- AWS: must use a **Virtual Private Gateway** (VGW)
-
-### 15.11. Transit Gateway
-
-- **Transit Gateway connects thousands of VPC and on-premises networks together in a single gateway.**
-- For having transitive peering between thousands of VPC and on-premises, hub-and-spoke (star) connection.
-- One single Gateway to provide this functionality.
-- Works with Direct Connect Gateway, VPN connections.
-
-### 15.12. VPC Closing Comments
-
-- VPC: Virtual Private Cloud.
-- Subnets:Tied to an AZ, network partition of the VPC.
-- Internet Gateway: at the VPC level, provide Internet Access.
-- NAT Gateway / Instances: give internet access to private subnets.
-- NACL: Stateless, subnet rules for inbound and outbound.
-- Security Groups: Stateful, operate at the EC2 instance level or ENI.
-- VPC Peering: Connect two VPC with non overlapping IP ranges, nontransitive.
-- VPC Endpoints: Provide private access to AWS Services within VPC.
-- VPC Flow Logs: network traffic logs.
-- Site to Site VPN: VPN over public internet between on-premises DC and AWS.
-- Direct Connect: direct private connection to AWS.
-- Transit Gateway: Connect thousands of VPC and on-premises networks together.
+![AWS VPC](AWS%20VPC.md)
 
 ## 16. Security & Compliance
 
@@ -4906,7 +4777,7 @@
 - WAFWeb Application Firewall
 - WCU Write Capacity Units
 
-# 24. Commands
+## 24. Commands
 
 - List of AWS Regions
   - aws ec2 describe-regions
@@ -4915,7 +4786,7 @@
 - List all funcions
   - aws lambda list-functions
 
-## DynamoDB
+### 24.1. DynamoDB
 
 - List all itens of table (Projection expression)
   - aws dynamodb scan --table-name `<table_name>`
