@@ -15,7 +15,6 @@
 - [9. IAM Security Tools](#9-iam-security-tools)
 - [10. IAM Guidelines \& Best Practices](#10-iam-guidelines--best-practices)
 - [11. Shared Responsibility Model for IAM](#11-shared-responsibility-model-for-iam)
-- [12. IAM - Summary](#12-iam---summary)
 
 # 1. IAM: Users & Groups
 
@@ -164,15 +163,3 @@
   - Rotate all your keys often.
   - Use IAM tools to apply appropriate permissions.
   - Analyze access patterns & review permissions.
-
-# 12. IAM - Summary
-
-- **Users**: mapped to a physical user, has a password for AWS Console.
-- **Groups**: contains users only.
-- **Policies**: JSON document that outlines permissions for users or groups.
-- **Roles**: for EC2 instances or AWS services.
-- **Security**: MFA + Password Policy.
-- **AWS CLI**: manage your AWS services using the command-line.
-- **AWS SDK**: manage your AWS services using a programming language.
-- **Access Keys**: access AWS using the CLI or SDK.
-- **Audit**: IAM Credential Reports & IAM Access Advisor.
