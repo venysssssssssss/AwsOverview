@@ -22,8 +22,20 @@
   - [10.5. S3 Intelligent-Tiering](#105-s3-intelligent-tiering)
   - [10.6. S3 Storage Classes Comparison](#106-s3-storage-classes-comparison)
 - [11. Princing](#11-princing)
-- [12. Encryption](#12-encryption)
-- [13. Shared Responsibility Model for S3](#13-shared-responsibility-model-for-s3)
+- [12. Moving between Storage Classes](#12-moving-between-storage-classes)
+- [13. Amazon S3 - Lifecycle Rules](#13-amazon-s3---lifecycle-rules)
+  - [13.1. Scenario 1](#131-scenario-1)
+  - [13.2. Scenario 2](#132-scenario-2)
+- [14. Amazon S3 Analytics - Storage Class Analysis](#14-amazon-s3-analytics---storage-class-analysis)
+- [15. Event Notifications](#15-event-notifications)
+  - [15.1. S3 Event Notifications](#151-s3-event-notifications)
+- [16. Baseline Performance](#16-baseline-performance)
+  - [16.1. Multi-Part upload:](#161-multi-part-upload)
+  - [16.2. S3 Transfer Acceleration](#162-s3-transfer-acceleration)
+- [17. Byte-Range Fetches](#17-byte-range-fetches)
+- [18. S3 Select \& Glacier Select](#18-s3-select--glacier-select)
+- [19. Encryption](#19-encryption)
+- [20. Shared Responsibility Model for S3](#20-shared-responsibility-model-for-s3)
 
 # 1. Introduction
 
@@ -259,14 +271,104 @@
 
 [S3 Pricing](https://aws.amazon.com/s3/pricing/)
 
-# 12. Encryption
+# 12. Moving between Storage Classes
+
+- You can transition objects between storage classes.
+- For infrequently accessed object, move them to **Standard IA**.
+- For archive objects that you don't need fast access to, move them to **Glacier or Glacier Deep Archive**.
+- Moving objects can be automated using a **Lifecycle Rules**.
+
+# 13. Amazon S3 - Lifecycle Rules
+
+- **Transition Actions:** Configure objects to transition to another storage class.
+  - Move objects to Standard IA class 60 days after creation.
+  - Move to Glacier for archiving after 6 months.
+- **Expiration actions:** Configure objects to expire (delete) after some time.
+  - Access log files can be set to delete after a 365 days.
+  - **Can be used to delete old versions of files (if versioning is enabled)**.
+  - Can be used to delete incomplete Multi-Part uploads.
+- Rules can be created for a certain prefix (example: s3://mybucket/mp3/\*).
+- Rules can be created for certain objects Tags (example: Department: Finance).
+
+## 13.1. Scenario 1
+
+- **Your application on EC2 creates images thumbnails after profile photos are uploaded to Amazon S3. These thumbnails can be easily recreated, and only need to be kept for 60 days. The source images should be able to be immediately retrieved for these 60 days, and afterwards, the user can wait up to 6 hours. How would you design this?**
+  - S3 source images can be on **Standard**, with a lifecycle configuration to transition them to **Glacier** after 60 days.
+  - S3 thumbnails can be on **One-Zone IA**, with a lifecycle configuration to expire them (delete them) after 60 days.
+
+## 13.2. Scenario 2
+
+- **A rule in your company states that you should be able to recover your deleted S3 objects immediately for 30 days, although this may happen rarely. After this time, and for up to 365 days, deleted objects should be recoverable within 48 hours.**
+  - **Enable S3 Versioning** in order to have object versions, so that "deleted objects" are in fact hidden by a "delete marker" and can be recovered.
+  - Transition the "noncurrent versions" of the object to **Standard IA**.
+  - Transition afterwards the "noncurrent versions" to **Glacier Deep Archive**.
+
+# 14. Amazon S3 Analytics - Storage Class Analysis
+
+- Help you decide when to transition objects to the right storage class.
+- Recommendations for **Standard** and **Standard IA**:
+  - Does NOT work for One-Zone IA or Glacier.
+- Report is updated daily.
+- 24 to 48 hours to start seeing data analysis.
+- Good first step to put together Lifecycle Rules (or improve them)!
+
+# 15. Event Notifications
+
+- S3:ObjectCreated, S3:ObjectRemoved, S3:ObjectRestore, S3:Replication...
+- Object name filtering possible (\*.jpg).
+- Use case: generate thumbnails of images uploaded to S3.
+- Can create as many "S3 events" as desired.
+- S3 event notifications typically deliver events in seconds but can sometimes take a minute or longer.
+
+## 15.1. S3 Event Notifications
+
+- **Advanced filtering** options with JSON rules (metadata, object size, name...).
+- **Multiple Destinations:** Ex Step Functions, Kinesis Streams / Firehose...
+- **EventBridge Capabilities:** Archive, Replay Events, Reliable delivery.
+
+# 16. Baseline Performance
+
+- Amazon S3 automatically scales to high request rates, latency 100-200 ms.
+- Your application can achieve at least 3,500 PUT/COPY/POST/DELETE and 5,500 GET/HEAD requests per second per prefix in a bucket.
+- There are no limits to the number of prefixes in a bucket.
+- Example (object path => prefix):
+  - bucket/folder1/sub1/file => /folder1/sub1/
+  - bucket/folder1/sub2/file => /folder1/sub2/
+  - bucket/1/file => /1/
+  - bucket/2/file => /2/
+- If you spread reads across all four prefixes evenly, you can achieve 22,000 requests per second for GET and HEAD.
+
+## 16.1. Multi-Part upload:
+
+- Recommended for files > 100MB, must use for files > 5GB.
+- Can help parallelize uploads (speed up transfers).
+
+## 16.2. S3 Transfer Acceleration
+
+- Increase transfer speed by transferring file to an AWS edge location which will forward the data to the S3 bucket in the target region.
+- Compatible with multi-part upload.
+
+# 17. Byte-Range Fetches
+
+- Parallelize GETs by requesting specific byte ranges.
+- Better resilience in case of failures.
+- Can be used to speed up downloads.
+- Can be used to retrieve only partial data (for example the head of a file).
+
+# 18. S3 Select & Glacier Select
+
+- Retrieve less data using SQL by performing server-side filtering.
+- Can filter by rows & columns (simple SQL statements).
+- Less network transfer, less CPU cost client-side.
+
+# 19. Encryption
 
 - Types:
   - No Encryption
   - Server-Side Encryption
   - Client-Side Encryption
 
-# 13. Shared Responsibility Model for S3
+# 20. Shared Responsibility Model for S3
 
 - Aws:
   - Infrastructure (global security, durability, availability, sustain concurrent loss of data in two facilities)
