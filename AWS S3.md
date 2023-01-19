@@ -34,8 +34,23 @@
   - [16.2. S3 Transfer Acceleration](#162-s3-transfer-acceleration)
 - [17. Byte-Range Fetches](#17-byte-range-fetches)
 - [18. S3 Select \& Glacier Select](#18-s3-select--glacier-select)
-- [19. Encryption](#19-encryption)
-- [20. Shared Responsibility Model for S3](#20-shared-responsibility-model-for-s3)
+- [19. Object Encryption](#19-object-encryption)
+  - [19.1. SSE-S3](#191-sse-s3)
+  - [19.2. SSE-KMS](#192-sse-kms)
+    - [19.2.1. SSE-KMS Limitation](#1921-sse-kms-limitation)
+  - [19.3. SSE-C](#193-sse-c)
+  - [19.4. Client-Side Encryption](#194-client-side-encryption)
+  - [19.5. Encryption in transit (SSL/TLS)](#195-encryption-in-transit-ssltls)
+  - [19.6. Default Encryption vs Bucket Policies](#196-default-encryption-vs-bucket-policies)
+- [20. What is CORS?](#20-what-is-cors)
+  - [20.1. Amazon S3 - CORS](#201-amazon-s3---cors)
+- [21. MFA Delete](#21-mfa-delete)
+- [22. Access Logs](#22-access-logs)
+  - [22.1. Access Logs WARNING](#221-access-logs-warning)
+- [23. Pre-Signed URLs](#23-pre-signed-urls)
+- [24. S3 - Access Points](#24-s3---access-points)
+- [25. S3 Object Lambda](#25-s3-object-lambda)
+- [26. Shared Responsibility Model for S3](#26-shared-responsibility-model-for-s3)
 
 # 1. Introduction
 
@@ -361,14 +376,141 @@
 - Can filter by rows & columns (simple SQL statements).
 - Less network transfer, less CPU cost client-side.
 
-# 19. Encryption
+# 19. Object Encryption
 
-- Types:
-  - No Encryption
-  - Server-Side Encryption
-  - Client-Side Encryption
+- You can encrypt objects in S3 buckets using one of 4 methods:
+  - **Server-Side Encryption (SSE):**
+    - **Server-Side Encryption with Amazon S3-Managed Keys (SSE-S3):**
+      - Encrypts S3 objects using keys handled, managed, and owned by AWS.
+    - **Server-Side Encryption with KMS Keys stored in AWS KMS (SSE-KMS):**
+      - Leverage AWS Key Management Service (AWS KMS) to manage encryption keys.
+    - **Server-Side Encryption with Customer-Provided Keys (SSE-C):**
+      - When you want to manage your own encryption keys.
+- **Client-Side Encryption.**
 
-# 20. Shared Responsibility Model for S3
+## 19.1. SSE-S3
+
+- Encryption using keys handled, managed, and owned by AWS.
+- Object is encrypted server-side.
+- Encryption type is **AES-256**.
+- Must set header **"x-amz-server-side-encryption": "AES256"**.
+
+## 19.2. SSE-KMS
+
+- Encryption using keys handled and managed by AWS KMS (Key Management Service).
+- KMS advantages: user control + audit key usage using CloudTrail.
+- Object is encrypted server side.
+- Must set header **"x-amz-server-side-encryption": "aws:kms"**.
+
+### 19.2.1. SSE-KMS Limitation
+
+- If you use SSE-KMS, you may be impacted by the KMS limits.
+- When you upload, it calls the **GenerateDataKey** KMS API.
+- When you download, it calls the **Decrypt** KMS API.
+- Count towards the KMS quota per second (5500, 10000, 30000 req/s based on region).
+- You can request a quota increase using the Service Quotas Console.
+
+## 19.3. SSE-C
+
+- Server-Side Encryption using keys fully managed by the customer outside of AWS.
+- Amazon S3 does **NOT** store the encryption key you provide.
+- **HTTPS must be used.**
+- Encryption key must provided in HTTP headers, for every HTTP request made.
+
+## 19.4. Client-Side Encryption
+
+- Use client libraries such as **Amazon S3 Client-Side Encryption Library**.
+- Clients must encrypt data themselves before sending to Amazon S3.
+- Clients must decrypt data themselves when retrieving from Amazon S3.
+- Customer fully manages the keys and encryption cycle.
+
+## 19.5. Encryption in transit (SSL/TLS)
+
+- Encryption in flight is also called SSL/TLS.
+- Amazon S3 exposes two endpoints:
+  - HTTP Endpoint - non encrypted.
+  - HTTPS Endpoint - encryption in flight.
+- **HTTPS is recommended.**
+- **HTTPS is mandatory for SSE-C.**
+- Most clients would use the HTTPS endpoint by default.
+
+## 19.6. Default Encryption vs Bucket Policies
+
+- One way to "force encryption" is to use a bucket policy and refuse any API call to PUT an S3 object without encryption headers.
+- Another way is to use the "default encryption" option in S3.
+- **Note: Bucket Policies are evaluated before "default encryption".**
+
+# 20. What is CORS?
+
+- **Cross-Origin Resource Sharing (CORS).**
+- **Origin = scheme (protocol) + host (domain) + port.**
+- example: https://www.example.com (implied port is 443 for HTTPS, 80 for HTTP).
+- **Web Browser** based mechanism to allow requests to other origins while visiting the main origin.
+- Same origin: http://example.com/app1 & http://example.com/app2.
+- Different origins: http://www.example.com & http://other.example.com.
+- The requests won't be fulfilled unless the other origin allows for the requests, using **CORS Headers** (example: **Access-Control-Allow-Origin**).
+
+![CORS Diagram](Images/APIGatewayCORS.png)
+
+## 20.1. Amazon S3 - CORS
+
+- If a client makes a cross-origin request on our S3 bucket, we need to enable the correct CORS headers.
+- It's a popular exam question.
+- You can allow for a specific origin or for \* (all origins).
+
+# 21. MFA Delete
+
+- **MFA (Multi-Factor Authentication)** - force users to generate a code on a device (usually a mobile phone or hardware) before doing important operations on S3.
+- MFA will be required to:
+  - Permanently delete an object version.
+  - Suspend Versioning on the bucket.
+- MFA won't be required to:
+  - Enable Versioning.
+  - List deleted versions.
+- To use MFA Delete, **Versioning must be enabled** on the bucket.
+- **Only the bucket owner (root account) can enable/disable MFA Delete.**
+
+# 22. Access Logs
+
+- For audit purpose, you may want to log all access to S3 buckets.
+- Any request made to S3, from any account, authorized or denied, will be logged into another S3 bucket.
+- That data can be analyzed using data analysis tools...
+- The target logging bucket must be in the same AWS region.
+- The log format is at: https://docs.aws.amazon.com/AmazonS3/latest/dev/LogFormat.html
+
+## 22.1. Access Logs WARNING
+
+- Do not set your logging bucket to be the monitored bucket.
+- It will create a logging loop, and **your bucket will grow exponentially**.
+
+# 23. Pre-Signed URLs
+
+- Generate pre-signed URLs using the **S3 Console, AWS CLI or SDK**.
+- **URL Expiration:**
+  - **S3 Console:** 1 min up to 720 mins (12 hours)
+  - **AWS CLI:** configure expiration with --expires-in parameter in seconds (default 3600 secs, max. 604800 secs ~ 168 hours).
+- Users given a pre-signed URL inherit the permissions of the user that generated the URL for GET / PUT.
+- Examples:
+  - Allow only logged-in users to download a premium video from your S3 bucket.
+  - Allow an ever-changing list of users to download files by generating URLs dynamically.
+  - Allow temporarily a user to upload a file to a precise location in your S3 bucket.
+
+# 24. S3 - Access Points
+
+- Each Access Point gets its own DNS and policy to limit who can access it:
+  - A specific IAM user / group.
+  - One policy per Access Point => **Easier to manage than complex bucket policies**.
+
+# 25. S3 Object Lambda
+
+- Use AWS Lambda Functions to change the object before it is retrieved by the caller application.
+- Only one S3 bucket is needed, on top of which we create **S3 Access Point and S3 Object Lambda Access Points**.
+- **Use Cases:**
+  - Redacting personally identifiable information for analytics or non- production environments.
+  - Converting across data formats, such as converting XML to JSON.
+  - Resizing and watermarking images on the fly using caller-specific details, such as the user who requested the object.
+
+# 26. Shared Responsibility Model for S3
 
 - Aws:
   - Infrastructure (global security, durability, availability, sustain concurrent loss of data in two facilities)
