@@ -31,32 +31,8 @@
   - [3.1. IAM - Summary](#31-iam---summary)
 - [4. EC2 - Elastic Compute Cloud](#4-ec2---elastic-compute-cloud)
   - [4.1. EC2 - Summary](#41-ec2---summary)
-- [5. EC2 Instance Storage](#5-ec2-instance-storage)
-  - [5.1. What's an EBS Volume?](#51-whats-an-ebs-volume)
-  - [5.2. EBS Volume](#52-ebs-volume)
-  - [5.3. EBS - Delete on Termination attribute](#53-ebs---delete-on-termination-attribute)
-  - [5.4. EBS Snapshots](#54-ebs-snapshots)
-    - [5.4.1. EBS Snapshots Features](#541-ebs-snapshots-features)
-  - [5.5. AMI Overview](#55-ami-overview)
-    - [5.5.1. AMI Process (from an EC2 instance)](#551-ami-process-from-an-ec2-instance)
-  - [5.6. EC2 Image Builder](#56-ec2-image-builder)
-  - [5.7. EC2 Instance Store](#57-ec2-instance-store)
-  - [5.8. EBS Volume Types](#58-ebs-volume-types)
-  - [5.9. EBS Volume Types Use cases](#59-ebs-volume-types-use-cases)
-    - [5.9.1. General Purpose SSD](#591-general-purpose-ssd)
-    - [5.9.2. Provisioned IOPS (PIOPS) SSD](#592-provisioned-iops-piops-ssd)
-    - [5.9.3. Hard Disk Drives (HDD)](#593-hard-disk-drives-hdd)
-  - [5.10. EBS Multi-Attach - io1/io2 family](#510-ebs-multi-attach---io1io2-family)
-  - [5.11. EFS - Elastic File System](#511-efs---elastic-file-system)
-    - [5.11.1. EFS - Performance \& Storage Classes](#5111-efs---performance--storage-classes)
-    - [5.11.2. EBS vs EFS - Elastic Block Storage](#5112-ebs-vs-efs---elastic-block-storage)
-    - [5.11.3. EBS vs EFS - Elastic File System](#5113-ebs-vs-efs---elastic-file-system)
-  - [5.12. EFS Infrequent Access (EFS-IA)](#512-efs-infrequent-access-efs-ia)
-  - [5.13. Shared Responsibility Model for EC2 Storage](#513-shared-responsibility-model-for-ec2-storage)
-  - [5.14. Amazon FSx - Overview](#514-amazon-fsx---overview)
-    - [5.14.1. Amazon FSx for Windows File Server](#5141-amazon-fsx-for-windows-file-server)
-    - [5.14.2. Amazon FSx for Lustre](#5142-amazon-fsx-for-lustre)
-  - [5.15. EC2 Instance Storage Summary](#515-ec2-instance-storage-summary)
+- [5. AWS EC2 EBS Elastic Block Storage](#5-aws-ec2-ebs-elastic-block-storage)
+  - [5.1. EC2 EBS Summary](#51-ec2-ebs-summary)
 - [6. Elastic Load Balancing \& Auto Scaling Groups](#6-elastic-load-balancing--auto-scaling-groups)
   - [6.1. Scalability \& High Availability](#61-scalability--high-availability)
     - [6.1.1. Vertical Scalability](#611-vertical-scalability)
@@ -93,18 +69,18 @@
   - [6.21. Auto Scaling Groups - Scaling Strategies (Resume)](#621-auto-scaling-groups---scaling-strategies-resume)
   - [6.22. ELB \& ASG - Summary](#622-elb--asg---summary)
 - [7. Amazon S3](#7-amazon-s3)
-  - [7.21. AWS Snow Family](#721-aws-snow-family)
-  - [7.22. Data Migrations with AWS Snow Family](#722-data-migrations-with-aws-snow-family)
-    - [7.22.1. AWS Snowcone](#7221-aws-snowcone)
-    - [7.22.2. Snowball Edge (for data transfers)](#7222-snowball-edge-for-data-transfers)
-    - [7.22.3. AWS Snowmobile](#7223-aws-snowmobile)
-  - [7.23. Snow Family - Usage Process](#723-snow-family---usage-process)
-  - [7.24. What is Edge Computing?](#724-what-is-edge-computing)
-  - [7.25. Snow Family - Edge Computing](#725-snow-family---edge-computing)
-  - [7.26. AWS OpsHub](#726-aws-opshub)
-  - [7.27. Hybrid Cloud for Storage](#727-hybrid-cloud-for-storage)
-  - [7.28. AWS Storage Gateway](#728-aws-storage-gateway)
-  - [7.29. Amazon S3 - Summary](#729-amazon-s3---summary)
+  - [7.1. AWS Snow Family](#71-aws-snow-family)
+  - [7.2. Data Migrations with AWS Snow Family](#72-data-migrations-with-aws-snow-family)
+    - [7.2.1. AWS Snowcone](#721-aws-snowcone)
+    - [7.2.2. Snowball Edge (for data transfers)](#722-snowball-edge-for-data-transfers)
+    - [7.2.3. AWS Snowmobile](#723-aws-snowmobile)
+  - [7.3. Snow Family - Usage Process](#73-snow-family---usage-process)
+  - [7.4. What is Edge Computing?](#74-what-is-edge-computing)
+  - [7.5. Snow Family - Edge Computing](#75-snow-family---edge-computing)
+  - [7.6. AWS OpsHub](#76-aws-opshub)
+  - [7.7. Hybrid Cloud for Storage](#77-hybrid-cloud-for-storage)
+  - [7.8. AWS Storage Gateway](#78-aws-storage-gateway)
+  - [7.9. Amazon S3 - Summary](#79-amazon-s3---summary)
 - [8. Databases](#8-databases)
   - [8.1. Introduction](#81-introduction)
   - [8.2. Relational Databases](#82-relational-databases)
@@ -625,259 +601,11 @@
 - EC2 Instance Role: link to IAM roles.
 - Purchasing Options: On-Demand, Spot, Reserved (Standard + Convertible + Scheduled), Dedicated Host, Dedicated Instance.
 
-## 5. EC2 Instance Storage
+## 5. AWS EC2 EBS Elastic Block Storage
 
-### 5.1. What's an EBS Volume?
+[text](AWS%20EC2%20EBS.md)
 
-- An **EBS (Elastic Block Store) Volume** is a **network drive** you can attach to your instances while they run.
-- It allows your instances to persist data, even after their termination.
-- **They can only be mounted to one instance at a time (at the CCP level).**
-- They are bound to a specific **availability zone (AZ)**.
-- Analogy: Think of them as a "network USB stick".
-- Free tier: 30 GB of free EBS storage of type General Purpose (SSD) or Magnetic per month.
-
-### 5.2. EBS Volume
-
-- It's a network drive (i.e. not a physical drive).
-  - It uses the network to communicate the instance, which means there might be a bit of latency.
-  - It can be detached from an EC2 instance and attached to another one quickly.
-- It's locked to an Availability Zone (AZ).
-  - An EBS Volume in us-east-1a cannot be attached to us-east-1b.
-  - To move a volume across, you first need to **snapshot** it.
-- Have a provisioned capacity (size in GBs, and IOPS).
-  - You get billed for all the provisioned capacity.
-  - You can increase the capacity of the drive over time.
-
-### 5.3. EBS - Delete on Termination attribute
-
-- Controls the EBS behaviour when an EC2 instance terminates.
-  - By default, the root EBS volume is deleted (attribute enabled).
-  - By default, any other attached EBS volume is not deleted (attribute disabled).
-- This can be controlled by the AWS console / AWS CLI.
-- **Use case: preserve root volume when instance is terminated.**
-
-### 5.4. EBS Snapshots
-
-- Make a backup (snapshot) of your EBS volume at a point in time.
-- Not necessary to detach volume to do snapshot, **but recommended**.
-- Can copy snapshots across AZ or Region.
-- Quotas:
-  - Manual DB instance snapshots -> Each supported Region: 100
-
-#### 5.4.1. EBS Snapshots Features
-
-- **EBS Snapshot Archive:**
-  - Move a Snapshot to an "archive tier" that is 75% cheaper.
-  - Takes within 24 to 72 hours for restoring the archive.
-- **Recycle Bin for EBS Snapshots:**
-  - Setup rules to retain deleted snapshots so you can recover them after an accidental deletion.
-  - Specify retention (from 1 day to 1 year).
-
-### 5.5. AMI Overview
-
-- AMI = Amazon Machine Image.
-- AMI are a **customization** of an EC2 instance.
-  - You add your own software, configuration, operating system, monitoring...
-  - Faster boot / configuration time because all your software is pre-packaged.
-- AMI are built for a **specific region** (and can be copied across regions).
-- You can launch EC2 instances from:
-  - **A Public AMI:** AWS provided.
-  - **Your own AMI:** you make and maintain them yourself.
-  - **An AWS Marketplace AMI:** an AMI someone else made (and potentially sells).
-
-#### 5.5.1. AMI Process (from an EC2 instance)
-
-- Start an EC2 instance and customize it.
-- Stop the instance (for data integrity).
-- Build an AMI - this will also create EBS snapshots.
-- Launch instances from other AMIs.
-
-### 5.6. EC2 Image Builder
-
-- Used to automate the creation of Virtual Machines or container images.
-- Automate the creation, maintain, validate and test **EC2 AMIs**.
-- Can be run on a schedule (weekly, whenever packages are updated, etc...).
-- Free service (only pay for the underlying resources).
-- Steps:
-  1. EC2 Image Builder
-     1. Create
-  2. Builder EC2 Instance
-     1. Create
-  3. New AMI
-  4. Test EC2 Instance
-
-### 5.7. EC2 Instance Store
-
-- EBS volumes are **network drives** with good but "limited" performance.
-- **If you need a high-performance hardware disk, use EC2 Instance Store**.
-- Better I/O performance.
-- EC2 Instance Store lose their storage if they're stopped (ephemeral).
-- Good for buffer / cache / scratch data / temporary content.
-- Risk of data loss if hardware fails.
-- Backups and Replication are your responsibility.
-
-### 5.8. EBS Volume Types
-
-- EBS Volumes come in 6 types:
-  - gp2 / gp3 (SSD): General purpose SSD volume that balances price and performance for a wide variety of workloads.
-  - io1 / io2 (SSD): Highest-performance SSD volume for mission-critical low-latency or high-throughput workloads.
-  - st1 (HDD): Low cost HDD volume designed for frequently accessed, throughput-intensive workloads.
-  - sc1 (HDD): Lowest cost HDD volume designed for less frequently accessed workloads.
-- EBS Volumes are characterized in Size | Throughput | IOPS (I/O Ops Per Sec).
-- When in doubt always consult the AWS documentation - it's good!
-- **Only gp2/gp3 and io1/io2 can be used as boot volumes.**
-
-### 5.9. EBS Volume Types Use cases
-
-#### 5.9.1. General Purpose SSD
-
-- Cost effective storage, low-latency.
-- System boot volumes, Virtual desktops, Development and test environments.
-- 1 GiB - 16 TiB.
-- gp3:
-  - Baseline of 3,000 IOPS and throughput of 125 MiB/s.
-  - Can increase IOPS up to 16,000 and throughput up to 1000 MiB/s independently.
-- gp2:
-  - Small gp2 volumes can burst IOPS to 3,000.
-  - Size of the volume and IOPS are linked, max IOPS is 16,000.
-  - 3 IOPS per GB, means at 5,334 GB we are at the max IOPS.
-
-#### 5.9.2. Provisioned IOPS (PIOPS) SSD
-
-- Critical business applications with sustained IOPS performance.
-- Or applications that need more than 16,000 IOPS.
-- Great for databases workloads (sensitive to storage perf and consistency).
-- io1/io2 (4 GiB - 16 TiB):
-  - Max PIOPS: 64,000 for Nitro EC2 instances & 32,000 for other.
-  - Can increase PIOPS independently from storage size.
-  - io2 have more durability and more IOPS per GiB (at the same price as io1).
-- io2 Block Express (4 GiB - 64 TiB):
-  - Sub-millisecond latency.
-  - Max PIOPS: 256,000 with an IOPS:GiB ratio of 1,000:1.
-- Supports EBS Multi-attach.
-
-#### 5.9.3. Hard Disk Drives (HDD)
-
-- Cannot be a boot volume.
-- 25 GiB to 16 TiB.
-- Throughput Optimized HDD (st1):
-  - Big Data, Data Warehouses, Log Processing.
-  - **Max throughput** 500 MiB/s - max IOPS 500.
-- Cold HDD (sc1):
-  - For data that is infrequently accessed.
-  - Scenarios where lowest cost is important.
-  - **Max throughput** 250 MiB/s - max IOPS 250.
-
-### 5.10. EBS Multi-Attach - io1/io2 family
-
-- Attach the same EBS volume to multiple EC2 instances in the same AZ.
-- Each instance has full read & write permissions to the volume.
-- Use case:
-  - Achieve higher application availability in clustered Linux applications (ex: Teradata).
-  - Applications must manage concurrent write operations.
-- Must use a file system that's cluster-aware (not XFS, EX4, etc...).
-
-### 5.11. EFS - Elastic File System
-
-- Managed NFS (network file system) that **can be mounted on 100s of EC2**.
-- EFS works with **Linux** EC2 instances in **multi-AZ**.
-- Highly available, scalable, expensive (3x gp2), pay per use, no capacity planning.
-- Use cases: content management, web serving, data sharing, Wordpress.
-- Uses NFSv4.1 protocol.
-- Uses security group to control access to EFS.
-- **Compatible with Linux based AMI (not Windows).**
-- Encryption at rest using KMS.
-- POSIX file system (~Linux) that has a standard file API.
-- File system scales automatically, pay-per-use, no capacity planning!
-
-#### 5.11.1. EFS - Performance & Storage Classes
-
-- **EFS Scale:**
-  - 1000s of concurrent NFS clients, 10 GB+ /s throughput.
-  - Grow to Petabyte-scale network file system, automatically.
-- **Performance mode (set at EFS creation time):**
-  - General purpose (default): latency-sensitive use cases (web server, CMS, etc...).
-  - Max I/O - higher latency, throughput, highly parallel (big data, media processing).
-- **Throughput mode:**
-  - Bursting (1 TB = 50MiB/s + burst of up to 100MiB/s).
-  - Provisioned: set your throughput regardless of storage size, ex: 1 GiB/s for 1 TB storage.
-- **Storage Tiers (lifecycle management feature - move file after N days):**
-  - Standard: for frequently accessed files.
-  - Infrequent access (EFS-IA): cost to retrieve files, lower price to store. Enable EFS-IA with a Lifecycle Policy.
-- **Availability and durability:**
-  - Regional: Multi-AZ, great for prod.
-  - One Zone: One AZ, great for dev, backup enabled by default, compatible with IA (EFS One Zone-IA).
-- Over 90% in cost savings.
-
-#### 5.11.2. EBS vs EFS - Elastic Block Storage
-
-- EBS volumes:
-  - Can be attached to only one instance at a time.
-  - Are locked at the Availability Zone (AZ) level.
-  - gp2: IO increases if the disk size increases.
-  - io1: can increase IO independently.
-- To migrate an EBS volume across AZ:
-  - Take a snapshot.
-  - Restore the snapshot to another AZ.
-  - EBS backups use IO and you shouldn't run them while your application is handling a lot of traffic.
-- Root EBS Volumes of instances get terminated by default if the EC2 instance gets terminated (you can disable that).
-
-#### 5.11.3. EBS vs EFS - Elastic File System
-
-- Mounting 100s of instances across AZ.
-- EFS share website files (WordPress).
-- Only for Linux Instances (POSIX).
-- EFS has a higher price point than EBS.
-- Can leverage EFS-IA for cost savings.
-- Remember: EFS vs EBS vs Instance Store.
-
-### 5.12. EFS Infrequent Access (EFS-IA)
-
-- **Storage class** that is cost-optimized for files not accessed every day.
-- Up to 92% lower cost compared to EFS Standard.
-- EFS will automatically move your files to EFS-IA based on the last time they were accessed.
-- Enable EFS-IA with a Lifecycle Policy.
-- Example: move files that are not accessed for 60 days to EFS-IA.
-- Transparent to the applications accessing EFS.
-
-### 5.13. Shared Responsibility Model for EC2 Storage
-
-- AWS:
-  - Infrastructure.
-  - Replication for data for EBS volumes & EFS drives.
-  - Replacing faulty hardware.
-  - Ensuring their employees cannot access your data.
-- You:
-  - Setting up backup / snapshot procedures.
-  - Setting up data encryption.
-  - Responsibility of any data on the drives.
-  - Understanding the risk of using EC2 Instance Store.
-
-### 5.14. Amazon FSx - Overview
-
-- Launch 3rd party high-performance file systems on AWS.
-- Fully managed service.
-- Products:
-  - FSx for Lustre.
-  - FSx for Windows File Server.
-  - FSx for NetApp ONTAP.
-
-#### 5.14.1. Amazon FSx for Windows File Server
-
-- A fully managed, highly reliable, and scalable Windows native shared file system.
-- Built on Windows File Server.
-- Supports SMB protocol & Windows NTFS.
-- Integrated with Microsoft Active Directory.
-- Can be accessed from AWS or your on-premise infrastructure.
-
-#### 5.14.2. Amazon FSx for Lustre
-
-- A fully managed, high-performance, scalable file storage for **High Performance Computing (HPC)**.
-- The name Lustre is derived from "Linux" and "cluster".
-- Machine Learning, Analytics, Video Processing, Financial Modeling, ...
-- Scales up to 100s GB/s, millions of IOPS, sub-ms latencies.
-
-### 5.15. EC2 Instance Storage Summary
+### 5.1. EC2 EBS Summary
 
 - EBS volumes:
   - Network drives attached to one EC2 instance at a time.
@@ -1249,7 +977,7 @@
 
 [AWS S3](AWS%20S3.md)
 
-### 7.21. AWS Snow Family
+### 7.1. AWS Snow Family
 
 - Highly-secure, portable devices to collect and process data at the edge, and migrate data into and out of AWS
   - Data migration:
@@ -1260,7 +988,7 @@
     - Snowcone
     - Snowball Edge
 
-### 7.22. Data Migrations with AWS Snow Family
+### 7.2. Data Migrations with AWS Snow Family
 
 - Challenges:
 
@@ -1282,7 +1010,7 @@
 
   - If it takes more than a week to transfer over the network, use Snowball devices!
 
-#### 7.22.1. AWS Snowcone
+#### 7.2.1. AWS Snowcone
 
 - Small, portable computing, anywhere, rugged & secure, withstands harsh environments
 - Light (4.5 pounds, 2.1 kg)
@@ -1292,7 +1020,7 @@
 - Must provide your own battery / cables
 - Can be sent back to AWS offline, or connect it to internet and use AWS DataSync to send data
 
-#### 7.22.2. Snowball Edge (for data transfers)
+#### 7.2.2. Snowball Edge (for data transfers)
 
 - Physical data transport solution: move TBs or PBs of data in or out of AWS
 - Alternative to moving data over the network (and paying network fees)
@@ -1305,14 +1033,14 @@
 - Use cases: large data cloud migrations, DC decommission, disaster recovery
 - **Snowball Edge is best-suited to move petabytes of data and offers computing capabilities. Be careful, it's recommended to use a fleet of Snowballs to move less than 10PBs of data. Over this quantity, it's better-suited to use Snowmobile.**
 
-#### 7.22.3. AWS Snowmobile
+#### 7.2.3. AWS Snowmobile
 
 - Transfer exabytes of data (1 EB = 1,000 PB = 1,000,000 TBs)
 - Each Snowmobile has 100 PB of capacity (use multiple in parallel)
 - High security: temperature controlled, GPS, 24/7 video surveillance
 - Better than Snowball if you transfer more than 10 PB
 
-### 7.23. Snow Family - Usage Process
+### 7.3. Snow Family - Usage Process
 
 1. Request Snowball devices from the AWS console for delivery
 2. Install the snowball client / AWS OpsHub on your servers
@@ -1321,7 +1049,7 @@
 5. Data will be loaded into an S3 bucket
 6. Snowball is completely wiped
 
-### 7.24. What is Edge Computing?
+### 7.4. What is Edge Computing?
 
 - Process data while it's being created on an edge location
   - A truck on the road, a ship on the sea, a mining station underground...
@@ -1335,7 +1063,7 @@
   - Transcoding media streams
 - Eventually (if need be) we can ship back the device to AWS (for transferring data for example)
 
-### 7.25. Snow Family - Edge Computing
+### 7.5. Snow Family - Edge Computing
 
 - Snowcone (smaller)
   - 2 CPUs, 4 GB of memory, wired or wireless access
@@ -1350,7 +1078,7 @@
 - All: Can run EC2 Instances & AWS Lambda functions (using AWS IoT Greengrass)
 - Long-term deployment options: 1 and 3 years discounted pricing
 
-### 7.26. AWS OpsHub
+### 7.6. AWS OpsHub
 
 - Historically, to use Snow Family devices, you needed a CLI (Command Line Interface tool)
 - Today, you can use AWS OpsHub (a software you install on your computer / laptop) to manage your Snow Family Device
@@ -1360,7 +1088,7 @@
 - Monitor device metrics (storage capacity, active instances on your device)
 - Launch compatible AWS services on your devices (ex: Amazon EC2 instances, AWS DataSync, Network File System (NFS))
 
-### 7.27. Hybrid Cloud for Storage
+### 7.7. Hybrid Cloud for Storage
 
 - AWS is pushing for "hybrid cloud"
   - Part of your infrastructure is on-premises
@@ -1373,7 +1101,7 @@
 - S3 is a proprietary storage technology (unlike EFS / NFS), so how do you expose the S3 data on-premise?
 - AWS Storage Gateway!
 
-### 7.28. AWS Storage Gateway
+### 7.8. AWS Storage Gateway
 
 - Bridge between on-premise data and cloud data in S3
 - Hybrid storage service to allow on- premises to seamlessly use the AWS Cloud
@@ -1383,7 +1111,7 @@
   - Volume Gateway
   - Tape Gateway
 
-### 7.29. Amazon S3 - Summary
+### 7.9. Amazon S3 - Summary
 
 - Buckets vs Objects: global unique name, tied to a region.
 - S3 security: IAM policy, S3 Bucket Policy (public access), S3 Encryption.

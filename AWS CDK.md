@@ -1,4 +1,4 @@
-# AWS Cloud Development Kit<!-- omit in toc -->
+# AWS CDK - Cloud Development Kit<!-- omit in toc -->
 
 ## Contents <!-- omit in toc -->
 

@@ -1,4 +1,4 @@
-# AWS VPC<!-- omit in toc -->
+# AWS VPC - Virtual Private Cloud<!-- omit in toc -->
 
 ## Contents <!-- omit in toc -->
 
