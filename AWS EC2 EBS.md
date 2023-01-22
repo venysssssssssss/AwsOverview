@@ -6,22 +6,21 @@
 - [2. EBS Volume](#2-ebs-volume)
 - [3. EBS - Delete on Termination attribute](#3-ebs---delete-on-termination-attribute)
 - [4. EBS Snapshots](#4-ebs-snapshots)
-  - [4.1. EBS Snapshots Features](#41-ebs-snapshots-features)
+  - [4.1. Features](#41-features)
 - [5. AMI Overview](#5-ami-overview)
   - [5.1. AMI Process (from an EC2 instance)](#51-ami-process-from-an-ec2-instance)
-- [6. EC2 Image Builder](#6-ec2-image-builder)
-- [7. EC2 Instance Store](#7-ec2-instance-store)
-- [8. EBS Volume Types](#8-ebs-volume-types)
-  - [8.1. EBS Volume Types Use cases](#81-ebs-volume-types-use-cases)
-    - [8.1.1. General Purpose SSD](#811-general-purpose-ssd)
-    - [8.1.2. Provisioned IOPS (PIOPS) SSD](#812-provisioned-iops-piops-ssd)
-    - [8.1.3. Hard Disk Drives (HDD)](#813-hard-disk-drives-hdd)
-    - [8.1.4. EBS Multi-Attach - io1/io2 family](#814-ebs-multi-attach---io1io2-family)
-  - [8.2. EFS - Elastic File System](#82-efs---elastic-file-system)
-  - [8.3. EFS - Performance \& Storage Classes](#83-efs---performance--storage-classes)
-  - [8.4. EBS vs EFS - Elastic Block Storage](#84-ebs-vs-efs---elastic-block-storage)
-  - [8.5. EBS vs EFS - Elastic File System](#85-ebs-vs-efs---elastic-file-system)
-  - [8.6. EFS Infrequent Access (EFS-IA)](#86-efs-infrequent-access-efs-ia)
+  - [5.2. EC2 Image Builder](#52-ec2-image-builder)
+- [6. EC2 Instance Store](#6-ec2-instance-store)
+- [7. EBS Volume Types](#7-ebs-volume-types)
+  - [7.1. EBS Volume Types Use cases](#71-ebs-volume-types-use-cases)
+    - [7.1.1. General Purpose SSD](#711-general-purpose-ssd)
+    - [7.1.2. Provisioned IOPS (PIOPS) SSD](#712-provisioned-iops-piops-ssd)
+    - [7.1.3. Hard Disk Drives (HDD)](#713-hard-disk-drives-hdd)
+    - [7.1.4. EBS Multi-Attach - io1/io2 family](#714-ebs-multi-attach---io1io2-family)
+- [8. EFS - Elastic File System](#8-efs---elastic-file-system)
+  - [8.1. EFS - Performance and Storage Classes](#81-efs---performance-and-storage-classes)
+  - [8.2. EBS vs EFS - Elastic Block Storage](#82-ebs-vs-efs---elastic-block-storage)
+  - [8.3. EBS vs EFS - Elastic File System](#83-ebs-vs-efs---elastic-file-system)
 - [9. Shared Responsibility Model for EC2 Storage](#9-shared-responsibility-model-for-ec2-storage)
 - [10. Amazon FSx - Overview](#10-amazon-fsx---overview)
 - [11. Amazon FSx for Windows File Server](#11-amazon-fsx-for-windows-file-server)
@@ -48,6 +47,8 @@
   - You get billed for all the provisioned capacity.
   - You can increase the capacity of the drive over time.
 
+![EBS Volume diagram](images/EBSVolumeDiagram.png)
+
 # 3. EBS - Delete on Termination attribute
 
 - Controls the EBS behaviour when an EC2 instance terminates.
@@ -61,10 +62,10 @@
 - Make a backup (snapshot) of your EBS volume at a point in time.
 - Not necessary to detach volume to do snapshot, **but recommended**.
 - Can copy snapshots across AZ or Region.
-- Quotas:
-  - Manual DB instance snapshots -> Each supported Region: 100
 
-## 4.1. EBS Snapshots Features
+![EBS Snapshot diagram](Images/EBSSnapshotDiagram.png)
+
+## 4.1. Features
 
 - **EBS Snapshot Archive:**
   - Move a Snapshot to an "archive tier" that is 75% cheaper.
@@ -72,6 +73,8 @@
 - **Recycle Bin for EBS Snapshots:**
   - Setup rules to retain deleted snapshots so you can recover them after an accidental deletion.
   - Specify retention (from 1 day to 1 year).
+- **Fast Snapshot Restore (FSR)**
+  - Force full initialization of snapshot to have no latency on the first use ($$$).
 
 # 5. AMI Overview
 
@@ -92,7 +95,7 @@
 - Build an AMI - this will also create EBS snapshots.
 - Launch instances from other AMIs.
 
-# 6. EC2 Image Builder
+## 5.2. EC2 Image Builder
 
 - Used to automate the creation of Virtual Machines or container images.
 - Automate the creation, maintain, validate and test **EC2 AMIs**.
@@ -106,7 +109,7 @@
   3. New AMI
   4. Test EC2 Instance
 
-# 7. EC2 Instance Store
+# 6. EC2 Instance Store
 
 - EBS volumes are **network drives** with good but "limited" performance.
 - **If you need a high-performance hardware disk, use EC2 Instance Store**.
@@ -116,20 +119,20 @@
 - Risk of data loss if hardware fails.
 - Backups and Replication are your responsibility.
 
-# 8. EBS Volume Types
+# 7. EBS Volume Types
 
-- EBS Volumes come in 6 types:
-  - gp2 / gp3 (SSD): General purpose SSD volume that balances price and performance for a wide variety of workloads.
-  - io1 / io2 (SSD): Highest-performance SSD volume for mission-critical low-latency or high-throughput workloads.
-  - st1 (HDD): Low cost HDD volume designed for frequently accessed, throughput-intensive workloads.
-  - sc1 (HDD): Lowest cost HDD volume designed for less frequently accessed workloads.
+- **EBS Volumes come in 6 types:**
+  - **gp2 / gp3 (SSD)**: General purpose SSD volume that balances price and performance for a wide variety of workloads.
+  - **io1 / io2 (SSD)**: Highest-performance SSD volume for mission-critical low-latency or high-throughput workloads.
+  - **st1 (HDD):** Low cost HDD volume designed for frequently accessed, throughput-intensive workloads.
+  - **sc1 (HDD):** Lowest cost HDD volume designed for less frequently accessed workloads.
 - EBS Volumes are characterized in Size | Throughput | IOPS (I/O Ops Per Sec).
 - When in doubt always consult the AWS documentation - it's good!
 - **Only gp2/gp3 and io1/io2 can be used as boot volumes.**
 
-## 8.1. EBS Volume Types Use cases
+## 7.1. EBS Volume Types Use cases
 
-### 8.1.1. General Purpose SSD
+### 7.1.1. General Purpose SSD
 
 - Cost effective storage, low-latency.
 - System boot volumes, Virtual desktops, Development and test environments.
@@ -142,11 +145,11 @@
   - Size of the volume and IOPS are linked, max IOPS is 16,000.
   - 3 IOPS per GB, means at 5,334 GB we are at the max IOPS.
 
-### 8.1.2. Provisioned IOPS (PIOPS) SSD
+### 7.1.2. Provisioned IOPS (PIOPS) SSD
 
 - Critical business applications with sustained IOPS performance.
 - Or applications that need more than 16,000 IOPS.
-- Great for databases workloads (sensitive to storage perf and consistency).
+- Great for **databases workloads** (sensitive to storage perf and consistency).
 - io1/io2 (4 GiB - 16 TiB):
   - Max PIOPS: 64,000 for Nitro EC2 instances & 32,000 for other.
   - Can increase PIOPS independently from storage size.
@@ -156,10 +159,10 @@
   - Max PIOPS: 256,000 with an IOPS:GiB ratio of 1,000:1.
 - Supports EBS Multi-attach.
 
-### 8.1.3. Hard Disk Drives (HDD)
+### 7.1.3. Hard Disk Drives (HDD)
 
 - Cannot be a boot volume.
-- 25 GiB to 16 TiB.
+- 125 GiB to 16 TiB.
 - Throughput Optimized HDD (st1):
   - Big Data, Data Warehouses, Log Processing.
   - **Max throughput** 500 MiB/s - max IOPS 500.
@@ -168,19 +171,20 @@
   - Scenarios where lowest cost is important.
   - **Max throughput** 250 MiB/s - max IOPS 250.
 
-### 8.1.4. EBS Multi-Attach - io1/io2 family
+### 7.1.4. EBS Multi-Attach - io1/io2 family
 
 - Attach the same EBS volume to multiple EC2 instances in the same AZ.
 - Each instance has full read & write permissions to the volume.
 - Use case:
-  - Achieve higher application availability in clustered Linux applications (ex: Teradata).
+  - Achieve **higher application availability** in clustered Linux applications (ex: Teradata).
   - Applications must manage concurrent write operations.
+- **Up to 16 EC2 Instances at a time.**
 - Must use a file system that's cluster-aware (not XFS, EX4, etc...).
 
-## 8.2. EFS - Elastic File System
+# 8. EFS - Elastic File System
 
-- Managed NFS (network file system) that **can be mounted on 100s of EC2**.
-- EFS works with **Linux** EC2 instances in **multi-AZ**.
+- Managed NFS (network file system) that **can be mounted on many EC2**.
+- EFS works with EC2 instances in **multi-AZ**.
 - Highly available, scalable, expensive (3x gp2), pay per use, no capacity planning.
 - Use cases: content management, web serving, data sharing, Wordpress.
 - Uses NFSv4.1 protocol.
@@ -190,7 +194,9 @@
 - POSIX file system (~Linux) that has a standard file API.
 - File system scales automatically, pay-per-use, no capacity planning!
 
-## 8.3. EFS - Performance & Storage Classes
+![EFS diagram](Images/EFSDiagram.png)
+
+## 8.1. EFS - Performance and Storage Classes
 
 - **EFS Scale:**
   - 1000s of concurrent NFS clients, 10 GB+ /s throughput.
@@ -209,20 +215,20 @@
   - One Zone: One AZ, great for dev, backup enabled by default, compatible with IA (EFS One Zone-IA).
 - Over 90% in cost savings.
 
-## 8.4. EBS vs EFS - Elastic Block Storage
+## 8.2. EBS vs EFS - Elastic Block Storage
 
-- EBS volumes:
+- **EBS volumes:**
   - Can be attached to only one instance at a time.
   - Are locked at the Availability Zone (AZ) level.
   - gp2: IO increases if the disk size increases.
   - io1: can increase IO independently.
-- To migrate an EBS volume across AZ:
+- **To migrate an EBS volume across AZ:**
   - Take a snapshot.
   - Restore the snapshot to another AZ.
   - EBS backups use IO and you shouldn't run them while your application is handling a lot of traffic.
 - Root EBS Volumes of instances get terminated by default if the EC2 instance gets terminated (you can disable that).
 
-## 8.5. EBS vs EFS - Elastic File System
+## 8.3. EBS vs EFS - Elastic File System
 
 - Mounting 100s of instances across AZ.
 - EFS share website files (WordPress).
@@ -230,15 +236,6 @@
 - EFS has a higher price point than EBS.
 - Can leverage EFS-IA for cost savings.
 - Remember: EFS vs EBS vs Instance Store.
-
-## 8.6. EFS Infrequent Access (EFS-IA)
-
-- **Storage class** that is cost-optimized for files not accessed every day.
-- Up to 92% lower cost compared to EFS Standard.
-- EFS will automatically move your files to EFS-IA based on the last time they were accessed.
-- Enable EFS-IA with a Lifecycle Policy.
-- Example: move files that are not accessed for 60 days to EFS-IA.
-- Transparent to the applications accessing EFS.
 
 # 9. Shared Responsibility Model for EC2 Storage
 
