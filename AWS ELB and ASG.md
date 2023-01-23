@@ -2,37 +2,41 @@
 
 ## Contents <!-- omit in toc -->
 
-- [1. Scalability and High Availability](#1-scalability-and-high-availability) - [1.1. Vertical Scalability](#11-vertical-scalability) - [1.2. Horizontal Scalability](#12-horizontal-scalability)
-  - [2. High Availability](#2-high-availability)
-  - [3. High Availability \& Scalability For EC2](#3-high-availability--scalability-for-ec2)
-  - [4. Scalability vs Elasticity (vs Agility)](#4-scalability-vs-elasticity-vs-agility)
-  - [5. What is load balancing?](#5-what-is-load-balancing)
-    - [5.1. Why use a load balancer?](#51-why-use-a-load-balancer)
-    - [5.2. Why use an Elastic Load Balancer (ELB)?](#52-why-use-an-elastic-load-balancer-elb)
-  - [6. Health Checks](#6-health-checks)
-  - [7. Types of load balancer on AWS](#7-types-of-load-balancer-on-aws)
-    - [7.1. Classic Load Balancers (v1)](#71-classic-load-balancers-v1)
-    - [7.2. Application Load Balancer (v2)](#72-application-load-balancer-v2)
-    - [7.3. Network Load Balancer (v2)](#73-network-load-balancer-v2)
-    - [7.4. Network Load Balancer - Target Groups](#74-network-load-balancer---target-groups)
-    - [7.5. Gateway Load Balancer](#75-gateway-load-balancer)
-    - [7.6. Gateway Load Balancer -Target Groups](#76-gateway-load-balancer--target-groups)
-  - [8. Sticky Sessions (Session Affinity)](#8-sticky-sessions-session-affinity)
-    - [8.1. Sticky Sessions - Cookie Names](#81-sticky-sessions---cookie-names)
-  - [9. Cross-Zone Load Balancing](#9-cross-zone-load-balancing)
-  - [10. SSL/TLS - Basics](#10-ssltls---basics)
-    - [10.1. Load Balancer - SSL Certificates](#101-load-balancer---ssl-certificates)
-  - [11. SSL - Server Name Indication (SNI)](#11-ssl---server-name-indication-sni)
-  - [12. Elastic Load Balancers - SSL Certificates](#12-elastic-load-balancers---ssl-certificates)
-  - [13. Connection Draining](#13-connection-draining)
-  - [14. What's an Auto Scaling Group?](#14-whats-an-auto-scaling-group)
-  - [15. Auto Scaling Group Attributes](#15-auto-scaling-group-attributes)
-  - [16. Auto Scaling - CloudWatch Alarms \& Scaling](#16-auto-scaling---cloudwatch-alarms--scaling)
-  - [17. Auto Scaling Groups - Dynamic Scaling Policies](#17-auto-scaling-groups---dynamic-scaling-policies)
-  - [18. Auto Scaling Groups - Predictive Scaling](#18-auto-scaling-groups---predictive-scaling)
-  - [19. Good metrics to scale on](#19-good-metrics-to-scale-on)
-  - [20. Auto Scaling Groups - Scaling Cooldowns](#20-auto-scaling-groups---scaling-cooldowns)
-  - [21. Auto Scaling Groups - Scaling Strategies (Resume)](#21-auto-scaling-groups---scaling-strategies-resume)
+- [1. Scalability and High Availability](#1-scalability-and-high-availability)
+  - [1.1. Vertical Scalability](#11-vertical-scalability)
+  - [1.2. Horizontal Scalability](#12-horizontal-scalability)
+  - [1.3. High Availability](#13-high-availability)
+  - [1.4. High Availability and Scalability for EC2](#14-high-availability-and-scalability-for-ec2)
+  - [1.5. Scalability vs Elasticity (vs Agility)](#15-scalability-vs-elasticity-vs-agility)
+- [2. What is Load Balancing?](#2-what-is-load-balancing)
+  - [2.1. Why use a load balancer?](#21-why-use-a-load-balancer)
+- [3. Why use an Elastic Load Balancer (ELB)?](#3-why-use-an-elastic-load-balancer-elb)
+- [4. Health Checks](#4-health-checks)
+- [5. Types of load balancer on AWS](#5-types-of-load-balancer-on-aws)
+  - [5.1. Classic Load Balancers (v1)](#51-classic-load-balancers-v1)
+  - [5.2. Application Load Balancer (v2)](#52-application-load-balancer-v2)
+    - [5.2.1. Target Groups](#521-target-groups)
+    - [5.2.2. Good to Know](#522-good-to-know)
+  - [5.3. Network Load Balancer (v2)](#53-network-load-balancer-v2)
+    - [5.3.1. Target Groups](#531-target-groups)
+  - [5.4. Gateway Load Balancer](#54-gateway-load-balancer)
+    - [5.4.1. Target Groups](#541-target-groups)
+- [6. Sticky Sessions (Session Affinity)](#6-sticky-sessions-session-affinity)
+  - [6.1. Sticky Sessions - Cookie Names](#61-sticky-sessions---cookie-names)
+- [7. Cross-Zone Load Balancing](#7-cross-zone-load-balancing)
+- [8. SSL/TLS - Basics](#8-ssltls---basics)
+  - [8.1. Load Balancer - SSL Certificates](#81-load-balancer---ssl-certificates)
+  - [8.2. SSL - Server Name Indication (SNI)](#82-ssl---server-name-indication-sni)
+  - [8.3. Elastic Load Balancers - SSL Certificates](#83-elastic-load-balancers---ssl-certificates)
+- [9. Connection Draining](#9-connection-draining)
+- [10. What's an Auto Scaling Group?](#10-whats-an-auto-scaling-group)
+  - [10.1. Auto Scaling Group Attributes](#101-auto-scaling-group-attributes)
+  - [10.2. CloudWatch Alarms \& Scaling](#102-cloudwatch-alarms--scaling)
+  - [10.3. Dynamic Scaling Policies](#103-dynamic-scaling-policies)
+  - [10.4. Predictive Scaling](#104-predictive-scaling)
+  - [10.5. Good metrics to scale on](#105-good-metrics-to-scale-on)
+  - [10.6. Scaling Cooldowns](#106-scaling-cooldowns)
+  - [10.7. Scaling Strategies (Resume)](#107-scaling-strategies-resume)
 
 # 1. Scalability and High Availability
 
@@ -91,7 +95,7 @@
 
 ![Load Balance](Images/LoadBalanceDiagram.png)
 
-# 3. Why use a load balancer?
+## 2.1. Why use a load balancer?
 
 - Spread load across multiple downstream instances.
 - Expose a single point of access (DNS) to your application.
@@ -102,7 +106,7 @@
 - High availability across zones.
 - Separate public traffic from private traffic.
 
-## 3.1. Why use an Elastic Load Balancer (ELB)?
+# 3. Why use an Elastic Load Balancer (ELB)?
 
 - An ELB (Elastic Load Balancer) is a **managed load balancer**:
   - AWS guarantees that it will be working.
@@ -113,95 +117,103 @@
   - EC2, EC2 Auto Scaling Groups, Amazon ECS.
   - AWS Certificate Manager (ACM), CloudWatch.
   - Route 53, AWS WAF, AWS Global Accelerator.
-- 3 kinds of load balancers offered by AWS:
-  - Application Load Balancer (HTTP / HTTPS only) - Layer 7.
-  - Network Load Balancer (ultra-high performance, allows for TCP) - Layer 4.
-  - Classic Load Balancer (slowly retiring) - Layer 4 & 7.
 
-### 3.1.1. Health Checks
+# 4. Health Checks
 
 - Health Checks are crucial for Load Balancers.
 - They enable the load balancer to know if instances it forwards traffic to are available to reply to requests.
 - The health check is done on a port and a route (/health is common).
 - If the response is not 200 (OK), then the instance is unhealthy.
 
-### 3.1.2. Types of load balancer on AWS
+# 5. Types of load balancer on AWS
 
 - AWS has **4 kinds of managed Load Balancers**.
-- Classic Load Balancer (v1 - old generation) - 2009 - CLB.
+- **Classic Load Balancer** (v1 - old generation) - 2009 - CLB.
   - HTTP, HTTPS, TCP, SSL (secure TCP).
-- Application Load Balancer (v2 - new generation) - 2016 - ALB.
+  - Layer 4 & 7
+- **Application Load Balancer** (v2 - new generation) - 2016 - ALB.
   - HTTP, HTTPS, WebSocket.
-- Network Load Balancer (v2 - new generation) - 2017 - NLB.
+  - Layer 7
+- **Network Load Balancer** (v2 - new generation) - 2017 - NLB.
   - TCP, TLS (secure TCP), UDP.
-- Gateway Load Balancer - 2020 - GWLB.
+  - Layer 4
+- **Gateway Load Balancer** - 2020 - GWLB.
   - Operates at layer 3 (Network layer) - IP Protocol.
 - Overall, it is recommended to use the newer generation load balancers as they provide more features.
-- Some load balancers can be setup as internal (private) or external (public) ELBs.
+- Some load balancers can be setup as **internal** (private) or **external** (public) ELBs.
 
-#### 3.1.2.1. Classic Load Balancers (v1)
+## 5.1. Classic Load Balancers (v1)
 
 - Supports TCP (Layer 4), HTTP & HTTPS (Layer 7).
 - Health checks are TCP or HTTP based.
 - Fixed hostname XXX.region.elb.amazonaws.com.
 
-#### 3.1.2.2. Application Load Balancer (v2)
+## 5.2. Application Load Balancer (v2)
 
+- **Application Load Balancer provides a static DNS name but it does NOT provide a static IP.**
+- **The reason being that AWS wants your Elastic Load Balancer to be accessible using a static endpoint, even if the underlying infrastructure that AWS manages changes.**
 - Application load balancers is Layer 7 (HTTP).
 - Load balancing to multiple HTTP applications across machines (target groups).
 - Load balancing to multiple applications on the same machine (ex: containers).
 - Support for HTTP/2 and WebSocket.
 - Support redirects (from HTTP to HTTPS for example).
 - Routing tables to different target groups:
-  - Routing based on path in URL (example.com/users & example.com/posts)
-  - Routing based on hostname in URL (one.example.com & other.example.com)
-  - Routing based on Query String, Headers (example.com/users?id=123&order=false)
-- ALB are a great fit for micro services & container-based application (example: Docker & Amazon ECS)
-- Has a port mapping feature to redirect to a dynamic port in ECS
-- In comparison, we'd need multiple Classic Load Balancer per application
+  - Routing based on path in URL (example.com/users and example.com/posts).
+  - Routing based on hostname in URL (one.example.com and other.example.com).
+  - Routing based on URL Path, Query String, Headers (example.com/users?id=123&order=false).
+- ALB are a great fit for micro services & container-based application (example: Docker & Amazon ECS).
+- Has a port mapping feature to redirect to a dynamic port in ECS.
+- In comparison, we'd need multiple Classic Load Balancer per application.
+
+### 5.2.1. Target Groups
+
 - EC2 instances (can be managed by an Auto Scaling Group) - HTTP.
 - ECS tasks (managed by ECS itself) - HTTP.
 - Lambda functions - HTTP request is translated into a JSON event.
 - IP Addresses - must be private IPs.
 - ALB can route to multiple target groups.
 - Health checks are at the target group level.
+
+### 5.2.2. Good to Know
+
 - Fixed hostname (XXX.region.elb.amazonaws.com).
 - The application servers don't see the IP of the client directly.
   - The true IP of the client is inserted in the header X-Forwarded-For.
   - We can also get Port (X-Forwarded-Port) and proto (X-Forwarded-Proto).
 
-#### 3.1.2.3. Network Load Balancer (v2)
+## 5.3. Network Load Balancer (v2)
 
 - Network load balancers (Layer 4) allow to:
-  - Forward TCP & UDP traffic to your instances.
+  - **Forward TCP & UDP traffic to your instances.**
   - Handle millions of request per seconds.
   - Less latency ~100 ms (vs 400 ms for ALB).
-- NLB has one static IP per AZ, and supports assigning Elastic IP (helpful for whitelisting specific IP).
+- **NLB has one static IP per AZ, and supports assigning Elastic IP** (helpful for whitelisting specific IP).
 - NLB are used for extreme performance, TCP or UDP traffic.
 - Not included in the AWS free tier.
 
-#### 3.1.2.4. Network Load Balancer - Target Groups
+### 5.3.1. Target Groups
 
 - EC2 instances.
 - IP Addresses - must be private IPs.
 - Application Load Balancer.
+- Health Checks support the **TCP, HTTP and HTTPS Protocols**.
 
-#### 3.1.2.5. Gateway Load Balancer
+## 5.4. Gateway Load Balancer
 
 - Deploy, scale, and manage a fleet of 3rd party network virtual appliances in AWS.
 - Example: Firewalls, Intrusion Detection and Prevention Systems, Deep Packet Inspection Systems, payload manipulation, ...
 - Operates at Layer 3 (Network Layer) - IP Packets.
 - Combines the following functions:.
-  - **Transparent Network Gateway** - single entry/exit for all traffic.
-  - **Load Balancer** - distributes traffic to your virtual appliances.
-- Uses the GENEVE protocol on port 6081.
+  - **Transparent Network Gateway:** Single entry/exit for all traffic.
+  - **Load Balancer:** Distributes traffic to your virtual appliances.
+- Uses the **GENEVE** protocol on port **6081**.
 
-#### 3.1.2.6. Gateway Load Balancer -Target Groups
+### 5.4.1. Target Groups
 
-- EC2 instances
-- IP Addresses - must be private IPs
+- EC2 instances.
+- IP Addresses - must be private IPs.
 
-### 3.1.3. Sticky Sessions (Session Affinity)
+# 6. Sticky Sessions (Session Affinity)
 
 - It is possible to implement stickiness so that the same client is always redirected to the same instance behind a load balancer.
 - This works for Classic Load Balancers & Application Load Balancers.
@@ -209,34 +221,34 @@
 - Use case: make sure the user doesn't lose his session data.
 - Enabling stickiness may bring imbalance to the load over the backend EC2 instances.
 
-#### 3.1.3.1. Sticky Sessions - Cookie Names
+## 6.1. Sticky Sessions - Cookie Names
 
-- Application-based Cookies:
-  - Custom cookie:
+- **Application-based Cookies:**
+  - **Custom cookie:**
     - Generated by the target.
     - Can include any custom attributes required by the application.
     - Cookie name must be specified individually for each target group.
-    - Don't use AWSALB, AWSALBAPP, or AWSALBTG (reserved for use by the ELB).
-  - Application cookie:
+    - Don't use **AWSALB, AWSALBAPP, or AWSALBTG** (reserved for use by the ELB).
+  - **Application cookie:**
     - Generated by the load balancer.
     - Cookie name is AWSALBAPP.
-- Duration-based Cookies:
+- **Duration-based Cookies:**
   - Cookie generated by the load balancer.
-  - Cookie name is AWSALB for ALB, AWSELB for CLB.
+  - Cookie name is **AWSALB** for ALB, **AWSELB** for CLB.
 
-### 3.1.4. Cross-Zone Load Balancing
+# 7. Cross-Zone Load Balancing
 
-- Application Load Balancer:
+- **Application Load Balancer:**
   - Always on (can't be disabled).
   - No charges for inter AZ data.
-- Network Load Balancer:
+- **Network Load Balancer:**
   - Disabled by default.
   - You pay charges ($) for inter AZ data if enabled.
-- Classic Load Balancer:
+- **Classic Load Balancer:**
   - Disabled by default.
   - No charges for inter AZ data if enabled.
 
-### 3.1.5. SSL/TLS - Basics
+# 8. SSL/TLS - Basics
 
 - An SSL Certificate allows traffic between your clients and your load balancer to be encrypted in transit (in-flight encryption).
 - **SSL** refers to Secure Sockets Layer, used to encrypt connections.
@@ -246,7 +258,7 @@
 - Comodo, Symantec, GoDaddy, GlobalSign, Digicert, Letsencrypt, etc...
 - SSL certificates have an expiration date (you set) and must be renewed.
 
-#### 3.1.5.1. Load Balancer - SSL Certificates
+## 8.1. Load Balancer - SSL Certificates
 
 - The load balancer uses an X.509 certificate (SSL/TLS server certificate).
 - You can manage certificates using ACM (AWS Certificate Manager).
@@ -254,34 +266,34 @@
 - HTTPS listener:
   - You must specify a default certificate.
   - You can add an optional list of certs to support multiple domains.
-  - Clients can use SNI (Server Name Indication) to specify the hostname they reach.
+  - **Clients can use SNI (Server Name Indication) to specify the hostname they reach.**
   - Ability to specify a security policy to support older versions of SSL / TLS (legacy clients).
 
-### 3.1.6. SSL - Server Name Indication (SNI)
+## 8.2. SSL - Server Name Indication (SNI)
 
-- SNI solves the problem of loading multiple SSL certificates onto one web server (to serve multiple websites).
-- It's a "newer" protocol, and requires the client to indicate the hostname of the target server in the initial SSL handshake.
+- **Server Name Indication (SNI) allows you to expose multiple HTTPS applications each with its own SSL certificate on the same listener. Read more here: https://aws.amazon.com/blogs/aws/new-application-load-balancer-sni/**
+- SNI solves the problem of loading **multiple SSL certificates onto one web server** (to serve multiple websites).
+- It's a "newer" protocol, and requires the client to **indicate** the hostname of the target server in the initial SSL handshake.
 - The server will then find the correct certificate, or return the default one.
-
 - Note:
   - Only works for ALB & NLB (newer generation), CloudFront.
   - Does not work for CLB (older gen).
 
-### 3.1.7. Elastic Load Balancers - SSL Certificates
+## 8.3. Elastic Load Balancers - SSL Certificates
 
-- Classic Load Balancer (v1):
+- **Classic Load Balancer (v1):**
   - Support only one SSL certificate.
   - Must use multiple CLB for multiple hostname with multiple SSL certificates.
-- Application Load Balancer (v2):
+- **Application Load Balancer (v2):**
   - Supports multiple listeners with multiple SSL certificates.
   - Uses Server Name Indication (SNI) to make it work.
-- Network Load Balancer (v2):
+- **Network Load Balancer (v2):**
   - Supports multiple listeners with multiple SSL certificates.
   - Uses Server Name Indication (SNI) to make it work.
 
-### 3.1.8. Connection Draining
+# 9. Connection Draining
 
-- Feature naming:
+- **Feature naming:**
   - Connection Draining - for CLB.
   - Deregistration Delay - for ALB & NLB.
 - Time to complete "in-flight requests" while the instance is de-registering or unhealthy.
@@ -290,7 +302,7 @@
 - Can be disabled (set value to 0).
 - Set to a low value if your requests are short.
 
-### 3.1.9. What's an Auto Scaling Group?
+# 10. What's an Auto Scaling Group?
 
 - **Auto Scaling in EC2 allows you to have the right number of instances to handle the application load. Auto Scaling in DynamoDB automatically adjusts read and write throughput capacity, in response to dynamically changing request volumes, with zero downtime. These are both examples of horizontal scaling.**
 - **For each Auto Scaling Group, there's a Cooldown Period after each scaling activity. In this period, the ASG doesn't launch or terminate EC2 instances. This gives time to metrics to stabilize. The default value for the Cooldown Period is 300 seconds (5 minutes).**
@@ -305,9 +317,9 @@
 - Cost Savings: only run at an optimal capacity (principle of the cloud).
 - ASG are free (you only pay for the underlying EC2 instances).
 
-### 3.1.10. Auto Scaling Group Attributes
+## 10.1. Auto Scaling Group Attributes
 
-- A Launch Template (older "Launch Configurations" are deprecated):
+- A **Launch Template** (older "Launch Configurations" are deprecated):
   - AMI + Instance Type.
   - EC2 User Data.
   - EBS Volumes.
@@ -319,45 +331,45 @@
 - Min Size / Max Size / Initial Capacity.
 - Scaling Policies.
 
-### 3.1.11. Auto Scaling - CloudWatch Alarms & Scaling
+## 10.2. CloudWatch Alarms & Scaling
 
 - It is possible to scale an ASG based on CloudWatch alarms.
-- An alarm monitors a metric (such as Average CPU, or a custom metric).
+- An alarm monitors a metric (such as **Average CPU**, or a **custom metric**).
 - Metrics such as Average CPU are computed for the overall ASG instances.
 - Based on the alarm:
   - We can create scale-out policies (increase the number of instances).
   - We can create scale-in policies (decrease the number of instances).
 
-### 3.1.12. Auto Scaling Groups - Dynamic Scaling Policies
+## 10.3. Dynamic Scaling Policies
 
-- Target Tracking Scaling:
+- **Target Tracking Scaling:**
   - Most simple and easy to set-up.
   - Example: I want the average ASG CPU to stay at around 40%.
-- Simple / Step Scaling:
+- **Simple / Step Scaling:**
   - When a CloudWatch alarm is triggered (example CPU > 70%), then add 2 units.
   - When a CloudWatch alarm is triggered (example CPU < 30%), then remove 1.
-- Scheduled Actions:
+- **Scheduled Actions:**
   - Anticipate a scaling based on known usage patterns.
   - Example: increase the min capacity to 10 at 5 pm on Fridays.
 
-### 3.1.13. Auto Scaling Groups - Predictive Scaling
+## 10.4. Predictive Scaling
 
-- Predictive scaling: continuously forecast load and schedule scaling ahead.
+- **Predictive scaling:** continuously forecast load and schedule scaling ahead.
 
-### 3.1.14. Good metrics to scale on
+## 10.5. Good metrics to scale on
 
-- CPUUtilization: Average CPU utilization across your instances.
-- RequestCountPerTarget: to make sure the number of requests per EC2 instances is stable.
-- Average Network In / Out (if you're application is network bound).
-- Any custom metric (that you push using CloudWatch).
+- **CPUUtilization:** Average CPU utilization across your instances.
+- **RequestCountPerTarget:** to make sure the number of requests per EC2 instances is stable.
+- **Average Network In / Out** (if you're application is network bound).
+- **Any custom metric** (that you push using CloudWatch).
 
-### 3.1.15. Auto Scaling Groups - Scaling Cooldowns
+## 10.6. Scaling Cooldowns
 
-- After a scaling activity happens, you are in the cooldown period (default 300 seconds).
+- After a scaling activity happens, you are in the **cooldown period (default 300 seconds)**.
 - During the cooldown period, the ASG will not launch or terminate additional instances (to allow for metrics to stabilize).
 - Advice: Use a ready-to-use AMI to reduce configuration time in order to be serving request fasters and reduce the cooldown period.
 
-### 3.1.16. Auto Scaling Groups - Scaling Strategies (Resume)
+## 10.7. Scaling Strategies (Resume)
 
 - Manual Scaling: Update the size of an ASG manually
 - Dynamic Scaling: Respond to changing demand

@@ -34,74 +34,30 @@
 - [5. AWS EC2 EBS Elastic Block Storage](#5-aws-ec2-ebs-elastic-block-storage)
   - [5.1. EC2 EBS Summary](#51-ec2-ebs-summary)
 - [6. AWS ELB - Elastic Load Balancing and AWS ASG - Auto Scaling Groups](#6-aws-elb---elastic-load-balancing-and-aws-asg---auto-scaling-groups)
-  - [6.22. ELB \& ASG - Summary](#622-elb--asg---summary)
+  - [6.1. ELB and ASG - Summary](#61-elb-and-asg---summary)
 - [7. Amazon S3](#7-amazon-s3)
   - [7.1. AWS Snow Family](#71-aws-snow-family)
-  - [7.2. Data Migrations with AWS Snow Family](#72-data-migrations-with-aws-snow-family)
-    - [7.2.1. AWS Snowcone](#721-aws-snowcone)
-    - [7.2.2. Snowball Edge (for data transfers)](#722-snowball-edge-for-data-transfers)
-    - [7.2.3. AWS Snowmobile](#723-aws-snowmobile)
-  - [7.3. Snow Family - Usage Process](#73-snow-family---usage-process)
-  - [7.4. What is Edge Computing?](#74-what-is-edge-computing)
-  - [7.5. Snow Family - Edge Computing](#75-snow-family---edge-computing)
-  - [7.6. AWS OpsHub](#76-aws-opshub)
-  - [7.7. Hybrid Cloud for Storage](#77-hybrid-cloud-for-storage)
-  - [7.8. AWS Storage Gateway](#78-aws-storage-gateway)
-  - [7.9. Amazon S3 - Summary](#79-amazon-s3---summary)
+  - [7.2. AWS Storage Gateway](#72-aws-storage-gateway)
+  - [7.3. Amazon S3 - Summary](#73-amazon-s3---summary)
 - [8. Databases](#8-databases)
   - [8.1. Introduction](#81-introduction)
   - [8.2. Relational Databases](#82-relational-databases)
   - [8.3. NoSQL Databases](#83-nosql-databases)
-  - [8.4. NoSQL data example: JSON](#84-nosql-data-example-json)
-  - [8.5. Databases \& Shared Responsibility on AWS](#85-databases--shared-responsibility-on-aws)
-  - [8.6. AWS RDS Overview](#86-aws-rds-overview)
-  - [8.7. Advantage over using RDS versus deploying DB on EC2](#87-advantage-over-using-rds-versus-deploying-db-on-ec2)
-  - [8.8. RDS Backups](#88-rds-backups)
-  - [8.9. RDS - Storage Auto Scaling](#89-rds---storage-auto-scaling)
-  - [8.10. RDS Deployments: Read Replicas, Multi-AZ, Multi-Region](#810-rds-deployments-read-replicas-multi-az-multi-region)
-    - [8.10.1. Read Replicas](#8101-read-replicas)
-    - [8.10.2. Multi-AZ](#8102-multi-az)
-    - [8.10.3. Multi-Region](#8103-multi-region)
-    - [8.10.4. Resume](#8104-resume)
-  - [8.11. RDS - Read Replicas for read scalability](#811-rds---read-replicas-for-read-scalability)
-    - [8.11.1. RDS - Read Replicas - Use Cases](#8111-rds---read-replicas---use-cases)
-    - [8.11.2. RDS - Read Replicas - Network Cost](#8112-rds---read-replicas---network-cost)
-    - [8.11.3. RDS - Multi AZ (Disaster Recovery)](#8113-rds---multi-az-disaster-recovery)
-    - [8.11.4. RDS - From Single-AZ to Multi-AZ](#8114-rds---from-single-az-to-multi-az)
-  - [8.12. RDS Security - Encryption](#812-rds-security---encryption)
-  - [8.13. RDS - Encryption Operations](#813-rds---encryption-operations)
-  - [8.14. RDS Security - Network \& IAM](#814-rds-security---network--iam)
-  - [8.15. RDS - IAM Authentication](#815-rds---iam-authentication)
-  - [8.16. RDS Security - Summary](#816-rds-security---summary)
-  - [8.17. Amazon Aurora](#817-amazon-aurora)
-  - [8.18. Aurora High Availability and Read Scaling](#818-aurora-high-availability-and-read-scaling)
-  - [8.19. Features of Aurora](#819-features-of-aurora)
-  - [8.20. Aurora Security](#820-aurora-security)
-  - [8.21. Amazon ElastiCache Overview](#821-amazon-elasticache-overview)
-  - [8.22. ElastiCache - Solution Architecture - DB Cache](#822-elasticache---solution-architecture---db-cache)
-  - [8.23. ElastiCache - Solution Architecture - User Session Store](#823-elasticache---solution-architecture---user-session-store)
-  - [8.24. ElastiCache - Redis vs Memcached](#824-elasticache---redis-vs-memcached)
-  - [8.25. ElastiCache - Cache Security](#825-elasticache---cache-security)
-  - [8.26. ElastiCache Replication](#826-elasticache-replication)
-    - [8.26.1. Cluster Mode Disabled](#8261-cluster-mode-disabled)
-    - [8.26.2. Cluster Mode Disabled](#8262-cluster-mode-disabled)
-  - [8.27. Caching Implementation Considerations](#827-caching-implementation-considerations)
-  - [8.28. Lazy Loading / Cache-Aside / Lazy Population](#828-lazy-loading--cache-aside--lazy-population)
-  - [8.29. Write Through -Add or Update cache when database is updated](#829-write-through--add-or-update-cache-when-database-is-updated)
-  - [8.30. Cache Evictions and Time-to-live (TTL)](#830-cache-evictions-and-time-to-live-ttl)
-  - [8.31. Final words of wisdom](#831-final-words-of-wisdom)
-  - [8.32. DynamoDB](#832-dynamodb)
-  - [8.33. Redshift Overview](#833-redshift-overview)
-  - [8.34. Amazon EMR](#834-amazon-emr)
-  - [8.35. Amazon Athena](#835-amazon-athena)
-  - [8.36. Amazon QuickSight](#836-amazon-quicksight)
-  - [8.37. DocumentDB](#837-documentdb)
-  - [8.38. Amazon Neptune](#838-amazon-neptune)
-  - [8.39. Amazon QLDB](#839-amazon-qldb)
-  - [8.40. Amazon Managed Blockchain](#840-amazon-managed-blockchain)
-  - [8.41. AWS Glue](#841-aws-glue)
-  - [8.42. DMS - Database Migration Service](#842-dms---database-migration-service)
-  - [8.43. Databases \& Analytics Summary in AWS](#843-databases--analytics-summary-in-aws)
+    - [8.3.1. NoSQL data example: JSON](#831-nosql-data-example-json)
+  - [8.4. Databases and Shared Responsibility on AWS](#84-databases-and-shared-responsibility-on-aws)
+  - [8.5. RDS](#85-rds)
+  - [8.6. DynamoDB](#86-dynamodb)
+  - [8.7. Redshift Overview](#87-redshift-overview)
+  - [8.8. Amazon EMR](#88-amazon-emr)
+  - [8.9. Amazon Athena](#89-amazon-athena)
+  - [8.10. Amazon QuickSight](#810-amazon-quicksight)
+  - [8.11. DocumentDB](#811-documentdb)
+  - [8.12. Amazon Neptune](#812-amazon-neptune)
+  - [8.13. Amazon QLDB](#813-amazon-qldb)
+  - [8.14. Amazon Managed Blockchain](#814-amazon-managed-blockchain)
+  - [8.15. AWS Glue](#815-aws-glue)
+  - [8.16. DMS - Database Migration Service](#816-dms---database-migration-service)
+  - [8.17. Databases \& Analytics Summary in AWS](#817-databases--analytics-summary-in-aws)
 - [9. Other Compute Services: ECS, Lambda, Batch, Lightsail](#9-other-compute-services-ecs-lambda-batch-lightsail)
   - [9.1. ECS](#91-ecs)
   - [9.2. Fargate](#92-fargate)
@@ -592,7 +548,7 @@
 
 [AWS ELB and ASG](AWS%20ELB%20and%20ASG.md)
 
-### 6.22. ELB & ASG - Summary
+### 6.1. ELB and ASG - Summary
 
 - High Availability vs Scalability (vertical and horizontal) vs Elasticity vs Agility in the Cloud.
 - Elastic Load Balancers (ELB):
@@ -610,129 +566,9 @@
 
 ### 7.1. AWS Snow Family
 
-- Highly-secure, portable devices to collect and process data at the edge, and migrate data into and out of AWS
-  - Data migration:
-    - Snowcon
-    - Snowball Edge
-    - Snowmobile
-  - Edge computing:
-    - Snowcone
-    - Snowball Edge
+[AWS Snow Family](AWS%20Snow%20Family.md)
 
-### 7.2. Data Migrations with AWS Snow Family
-
-- Challenges:
-
-  - Limited connectivity
-  - Limited bandwidth
-  - High network cost
-  - Shared bandwidth (can't maximize the line)
-  - Connection stability
-
-- Time to Transfer:
-
-|        | 100 Mbps | 1Gbps    | 10Gbps   |
-| ------ | -------- | -------- | -------- |
-| 10 TB  | 12 days  | 30 hours | 3 hours  |
-| 100 TB | 124 days | 12 days  | 30 hours |
-| 1 PB   | 3 years  | 124 days | 12 days  |
-
-- AWS Snow Family: offline devices to perform data migrations
-
-  - If it takes more than a week to transfer over the network, use Snowball devices!
-
-#### 7.2.1. AWS Snowcone
-
-- Small, portable computing, anywhere, rugged & secure, withstands harsh environments
-- Light (4.5 pounds, 2.1 kg)
-- Device used for edge computing, storage, and data transfer
-- 8 TBs of usable storage
-- Use Snowcone where Snowball does not fit (space-constrained environment)
-- Must provide your own battery / cables
-- Can be sent back to AWS offline, or connect it to internet and use AWS DataSync to send data
-
-#### 7.2.2. Snowball Edge (for data transfers)
-
-- Physical data transport solution: move TBs or PBs of data in or out of AWS
-- Alternative to moving data over the network (and paying network fees)
-- Pay per data transfer job
-- Provide block storage and Amazon S3-compatible object storage
-- Snowball Edge Storage Optimized
-  - 80 TB of HDD capacity for block volume and S3 compatible object storage
-- Snowball Edge Compute Optimized
-  - 42 TB of HDD capacity for block volume and S3 compatible object storage
-- Use cases: large data cloud migrations, DC decommission, disaster recovery
-- **Snowball Edge is best-suited to move petabytes of data and offers computing capabilities. Be careful, it's recommended to use a fleet of Snowballs to move less than 10PBs of data. Over this quantity, it's better-suited to use Snowmobile.**
-
-#### 7.2.3. AWS Snowmobile
-
-- Transfer exabytes of data (1 EB = 1,000 PB = 1,000,000 TBs)
-- Each Snowmobile has 100 PB of capacity (use multiple in parallel)
-- High security: temperature controlled, GPS, 24/7 video surveillance
-- Better than Snowball if you transfer more than 10 PB
-
-### 7.3. Snow Family - Usage Process
-
-1. Request Snowball devices from the AWS console for delivery
-2. Install the snowball client / AWS OpsHub on your servers
-3. Connect the snowball to your servers and copy files using the client
-4. Ship back the device when you're done (goes to the right AWS facility)
-5. Data will be loaded into an S3 bucket
-6. Snowball is completely wiped
-
-### 7.4. What is Edge Computing?
-
-- Process data while it's being created on an edge location
-  - A truck on the road, a ship on the sea, a mining station underground...
-- These locations may have
-  - Limited / no internet access
-  - Limited / no easy access to computing power
-- We setup a Snowball Edge / Snowcone device to do edge computing
-- Use cases of Edge Computing:
-  - Preprocess data
-  - Machine learning at the edge
-  - Transcoding media streams
-- Eventually (if need be) we can ship back the device to AWS (for transferring data for example)
-
-### 7.5. Snow Family - Edge Computing
-
-- Snowcone (smaller)
-  - 2 CPUs, 4 GB of memory, wired or wireless access
-  - USB-C power using a cord or the optional battery
-- Snowball Edge - Compute Optimized
-  - 52 vCPUs, 208 GiB of RAM
-  - Optional GPU (useful for video processing or machine learning)
-  - 42 TB usable storage
-- Snowball Edge - Storage Optimized
-  - Up to 40 vCPUs, 80 GiB of RAM
-  - Object storage clustering available
-- All: Can run EC2 Instances & AWS Lambda functions (using AWS IoT Greengrass)
-- Long-term deployment options: 1 and 3 years discounted pricing
-
-### 7.6. AWS OpsHub
-
-- Historically, to use Snow Family devices, you needed a CLI (Command Line Interface tool)
-- Today, you can use AWS OpsHub (a software you install on your computer / laptop) to manage your Snow Family Device
-  - Unlocking and configuring single or clustered devices
-  - Transferring files
-  - Launching and managing instances running on Snow Family Devices
-- Monitor device metrics (storage capacity, active instances on your device)
-- Launch compatible AWS services on your devices (ex: Amazon EC2 instances, AWS DataSync, Network File System (NFS))
-
-### 7.7. Hybrid Cloud for Storage
-
-- AWS is pushing for "hybrid cloud"
-  - Part of your infrastructure is on-premises
-  - Part of your infrastructure is on the cloud
-- This can be due to
-  - Long cloud migrations
-  - Security requirements
-  - Compliance requirements
-  - IT strategy
-- S3 is a proprietary storage technology (unlike EFS / NFS), so how do you expose the S3 data on-premise?
-- AWS Storage Gateway!
-
-### 7.8. AWS Storage Gateway
+### 7.2. AWS Storage Gateway
 
 - Bridge between on-premise data and cloud data in S3
 - Hybrid storage service to allow on- premises to seamlessly use the AWS Cloud
@@ -742,7 +578,7 @@
   - Volume Gateway
   - Tape Gateway
 
-### 7.9. Amazon S3 - Summary
+### 7.3. Amazon S3 - Summary
 
 - Buckets vs Objects: global unique name, tied to a region.
 - S3 security: IAM policy, S3 Bucket Policy (public access), S3 Encryption.
@@ -784,7 +620,7 @@
   - Highly functional: types optimized for the data model.
 - Examples: Key-value, document, graph, in-memory, search databases.
 
-### 8.4. NoSQL data example: JSON
+#### 8.3.1. NoSQL data example: JSON
 
 - JSON = JavaScript Object Notation.
 - JSON is a common form of data that fits into a NoSQL model.
@@ -809,7 +645,7 @@
 }
 ```
 
-### 8.5. Databases & Shared Responsibility on AWS
+### 8.4. Databases and Shared Responsibility on AWS
 
 - AWS offers use to **manage** different databases.
 - **Databases** & Shared Responsibility on AWS include:
@@ -819,361 +655,16 @@
   - Monitoring, alerting.
 - Note: many databases technologies could be run on EC2, but you must handle yourself the resiliency, backup, patching, high availability, fault tolerance, scaling...
 
-### 8.6. AWS RDS Overview
 
-- **Amazon Relational Database Service (Amazon RDS) is a SQL managed service that makes it easy to set up, operate, and scale a relational database in the cloud. It is suited for OLTP workloads.**
-- RDS stands for Relational Database Service.
-- It's a managed DB service for DB use SQL as a query language.
-- It allows you to create databases in the cloud that are managed by AWS:
-  - Postgres
-  - MySQL
-  - MariaDB
-  - Oracle
-  - Microsoft SQL Server
-  - Aurora (AWS Proprietary database)
+### 8.5. RDS
 
-### 8.7. Advantage over using RDS versus deploying DB on EC2
+[AWS RDS](AWS%20RDS.md)
 
-- RDS is a managed service:
-  - Automated provisioning, OS patching.
-  - Continuous backups and restore to specific timestamp (Point in Time Restore)!
-  - Monitoring dashboards.
-  - Read replicas for improved read performance.
-  - Multi AZ setup for DR (Disaster Recovery).
-  - Maintenance windows for upgrades.
-  - Scaling capability (vertical and horizontal).
-  - Storage backed by EBS (gp2 or io1).
-- BUT you can't SSH into your instances.
-
-### 8.8. RDS Backups
-
-- Backups are automatically enabled in RDS.
-- Automated backups:
-  - Daily full backup of the database (during the maintenance window).
-  - Transaction logs are backed-up by RDS every 5 minutes.
-  - => ability to restore to any point in time (from oldest backup to 5 minutes ago).
-  - 7 days retention (can be increased to 35 days).
-- DB Snapshots:
-  - Manually triggered by the user.
-  - Retention of backup for as long as you want.
-
-### 8.9. RDS - Storage Auto Scaling
-
-- Helps you increase storage on your RDS DB instance dynamically.
-- When RDS detects you are running out of free database storage, it scales automatically.
-- Avoid manually scaling your database storage.
-- You have to set Maximum Storage Threshold (maximum limit for DB storage).
-- Automatically modify storage if:
-  - Free storage is less than 10% of allocated storage.
-  - Low-storage lasts at least 5 minutes.
-  - 6 hours have passed since last modification.
-- Useful for applications with unpredictable workloads.
-- Supports all RDS database engines (MariaDB, MySQL, PostgreSQL, SQL Server, Oracle).
-
-### 8.10. RDS Deployments: Read Replicas, Multi-AZ, Multi-Region
-
-#### 8.10.1. Read Replicas
-
-- Scale the read workload of your DB
-- Can create up to 5 Read Replicas
-- Data is only written to the main DB
-
-#### 8.10.2. Multi-AZ
-
-- Failover in case of AZ outage (high availability)
-- Data is only read/written to the main database
-- Can only have 1 other AZ as failover
-
-#### 8.10.3. Multi-Region
-
-- Multi-Region (Read Replicas)
-- Disaster recovery in case of region issue
-- Local performance for global reads
-- Replication cost
-
-#### 8.10.4. Resume
-
-- **RDS Multi-AZ deployments main purpose is high availability, and RDS Read replicas main purpose is scalability.**
-- **Moreover, Multi-Region deployments main purpose is disaster recovery and local performance.**
-
-### 8.11. RDS - Read Replicas for read scalability
-
-- Up to 5 Read Replicas.
-- Within AZ, Cross AZ or Cross Region.
-- Replication is ASYNC, so reads are eventually consistent.
-- Replicas can be promoted to their own DB.
-- Applications must update the connection string to leverage read replicas.
-
-#### 8.11.1. RDS - Read Replicas - Use Cases
-
-- You have a production database that is taking on normal load.
-- You want to run a reporting application to run some analytics.
-- You create a Read Replica to run the new workload there.
-- The production application is unaffected.
-- Read replicas are used for SELECT (=read) only kind of statements (not INSERT, UPDATE, DELETE).
-
-#### 8.11.2. RDS - Read Replicas - Network Cost
-
-- In AWS there's a network cost when data goes from one AZ to another.
-- For RDS Read Replicas within the same region, you don't pay that fee.
-
-#### 8.11.3. RDS - Multi AZ (Disaster Recovery)
-
-- SYNC replication.
-- One DNS name - automatic app failover to standby.
-- Increase availability.
-- Failover in case of loss of AZ, loss of network, instance or storage failure.
-- No manual intervention in apps.
-- Not used for scaling.
-- Multi-AZ replication is free.
-- Note:The Read Replicas be setup as Multi-AZ for Disaster Recovery (DR).
-
-#### 8.11.4. RDS - From Single-AZ to Multi-AZ
-
-- Zero downtime operation (no need to stop the DB).
-- Just click on "modify" for the database.
-- The following happens internally:
-  - A snapshot is taken
-  - A new DB is restored from the snapshot in a new AZ
-  - Synchronization is established between the two databases
-
-### 8.12. RDS Security - Encryption
-
-- At rest encryption:
-  - Possibility to encrypt the master & read replicas with AWS KMS - AES-256 encryption.
-  - Encryption has to be defined at launch time.
-  - If the master is not encrypted, the read replicas cannot be encrypted.
-  - Transparent Data Encryption (TDE) available for Oracle and SQL Server.
-- In-flight encryption:
-  - SSL certificates to encrypt data to RDS in flight.
-  - Provide SSL options with trust certificate when connecting to database.
-  - To enforce SSL:
-    - PostgreSQL: rds.force_ssl=1 in the AWS RDS Console (Parameter Groups).
-    - MySQL: Within the DB: `GRANT USAGE ON *.* TO 'mysqluser'@'%' REQUIRE SSL;`
-
-### 8.13. RDS - Encryption Operations
-
-- Encrypting RDS backups:
-  - Snapshots of un-encrypted RDS databases are un-encrypted.
-  - Snapshots of encrypted RDS databases are encrypted.
-  - Can copy a snapshot into an encrypted one.
-- To encrypt an un-encrypted RDS database:
-  - Create a snapshot of the un-encrypted database.
-  - Copy the snapshot and enable encryption for the snapshot.
-  - Restore the database from the encrypted snapshot.
-  - Migrate applications to the new database, and delete the old database.
-
-### 8.14. RDS Security - Network & IAM
-
-- Network Security:
-  - RDS databases are usually deployed within a private subnet, not in a public one.
-  - RDS security works by leveraging security groups (the same concept as for EC2 instances) - it controls which IP / security group can communicate with RDS.
-- Access Management
-  - IAM policies help control who can manage AWS RDS (through the RDS API).
-  - Traditional Username and Password can be used to login into the database.
-  - IAM-based authentication can be used to login into RDS MySQL & PostgreSQL.
-
-### 8.15. RDS - IAM Authentication
-
-- IAM database authentication works with MySQL and PostgreSQL.
-- You don't need a password, just an authentication token obtained through IAM & RDS API calls.
-- Auth token has a lifetime of 15 minutes.
-- Benefits:
-  - Network in/out must be encrypted using SSL.
-  - IAM to centrally manage users instead of DB.
-  - Can leverage IAM Roles and EC2 Instance profiles for easy integration.
-
-### 8.16. RDS Security - Summary
-
-- Encryption at rest:
-  - Is done only when you first create the DB instance.
-  - Or: unencrypted DB => snapshot => copy snapshot as encrypted => create DB from snapshot.
-- Your responsibility:
-  - Check the ports / IP / security group inbound rules in DB's SG.
-  - In-database user creation and permissions or manage through IAM.
-  - Creating a database with or without public access.
-  - Ensure parameter groups or DB is configured to only allow SSL connections.
-- AWS responsibility:
-  - No SSH access.
-  - No manual DB patching.
-  - No manual OS patching.
-  - No way to audit the underlying instance.
-
-### 8.17. Amazon Aurora
-
-- **Amazon Aurora is a MySQL and PostgreSQL-compatible relational database built for the cloud, that combines the performance and availability of traditional enterprise databases with the simplicity and cost-effectiveness of open source databases. It is a proprietary technology from AWS.**
-- Aurora is a proprietary technology from AWS (not open sourced).
-- **PostgreSQL and MySQL** are both supported as Aurora DB (that means your drivers will work as if Aurora was a Postgres or MySQL database).
-- Aurora is "AWS cloud optimized" and claims 5x performance improvement over MySQL on RDS, over 3x the performance of Postgres on RDS.
-- Aurora storage automatically grows in increments of 10GB, up to 128 TB.
-- Aurora can have 15 replicas while MySQL has 5, and the replication process is faster (sub 10 ms replica lag).
-- Failover in Aurora is instantaneous. It's HA (High Availability) native.
-- Aurora costs more than RDS (20% more) - but is more efficient.
-- Not in the free tier.
-
-### 8.18. Aurora High Availability and Read Scaling
-
-- 6 copies of your data across 3 AZ:
-  - 4 copies out of 6 needed for writes.
-  - 3 copies out of 6 need for reads.
-  - Self healing with peer-to-peer replication.
-  - Storage is striped across 100s of volumes.
-- One Aurora Instance takes writes (master).
-- Automated failover for master in less than 30 seconds.
-- Master + up to 15 Aurora Read Replicas serve reads.
-- Support for Cross Region Replication.
-
-### 8.19. Features of Aurora
-
-- Automatic fail-over.
-- Backup and Recovery.
-- Isolation and security.
-- Industry compliance.
-- Push-button scaling.
-- Automated Patching with Zero Downtime.
-- Advanced Monitoring.
-- Routine Maintenance.
-- Backtrack: restore data at any point of time without using backups.
-
-### 8.20. Aurora Security
-
-- Similar to RDS because uses the same engines.
-- Encryption at rest using KMS.
-- Automated backups, snapshots and replicas are also encrypted.
-- Encryption in flight using SSL (same process as MySQL or Postgres).
-- Possibility to authenticate using IAM token (same method as RDS).
-- You are responsible for protecting the instance with security groups.
-- You can't SSH.
-
-### 8.21. Amazon ElastiCache Overview
-
-- **Amazon ElastiCache is a web service that makes it easy to deploy and run Memcached or Redis protocol-compliant server nodes in the cloud. ElastiCache caches are in-memory databases with high performance, low latency. They help reduce load off databases for read intensive workloads.**
-- The same way RDS is to get managed Relational Databases...
-- ElastiCache is to get managed Redis or Memcached.
-- Caches are in-memory databases with really high performance, low latency.
-- Helps make your application stateless.
-- Helps **reduce load off databases for read intensive workloads**.
-- AWS takes care of OS maintenance / patching, optimizations, setup, configuration, monitoring, failure recovery and backups.
-- Using ElastiCache involves heavy application code changes.
-
-### 8.22. ElastiCache - Solution Architecture - DB Cache
-
-- Applications queries ElastiCache, if not available, get from RDS and store in ElastiCache.
-- Helps relieve load in RDS
-- Cache must have an invalidation strategy to make sure only the most current data is used in there.
-
-### 8.23. ElastiCache - Solution Architecture - User Session Store
-
-- User logs into any of the application.
-- The application writes the session data into ElastiCache.
-- The user hits another instance of our application.
-- The instance retrieves the data and the user is already logged in.
-
-### 8.24. ElastiCache - Redis vs Memcached
-
-- REDIS:
-  - Multi AZ with Auto-Failover.
-  - Read Replicas to scale reads and have high availability.
-  - Data Durability using AOF persistence.
-  - Backup and restore features.
-- MEMCACHED:
-  - Multi-node for partitioning of data (sharding).
-  - No high availability (replication).
-  - Non persistent.
-  - No backup and restore.
-  - Multi-threaded architecture.
-
-### 8.25. ElastiCache - Cache Security
-
-- All caches in ElastiCache:
-  - Do not support IAM authentication.
-  - IAM policies on ElastiCache are only used for AWS API-level security.
-- Redis AUTH:
-  - You can set a "password/token" when you create a Redis cluster.
-  - This is an extra level of security for your cache (on top of security groups).
-  - Support SSL in flight encryption.
-- Memcached:
-  - Supports SASL-based authentication (advanced).
-
-### 8.26. ElastiCache Replication
-
-#### 8.26.1. Cluster Mode Disabled
-
-- One primary node, up to 5 replicas.
-- Asynchronous Replication.
-- The primary node is used for read/write.
-- The other nodes are read-only.
-- One shard, all nodes have all the data.
-- Guard against data loss if node failure.
-- Multi-AZ enabled by default for failover.
-- Helpful to scale read performance.
-
-#### 8.26.2. Cluster Mode Disabled
-
-- Data is partitioned across shards (helpful to scale writes).
-- Each shard has a primary and up to 5 replica nodes (same concept as before).
-- Multi-AZ capability.
-- Up to 500 nodes per cluster:
-  - 500 shards with single master.
-  - 250 shards with 1 master and 1 replica.
-  - ...
-  - 83 shards with one master and 5 replicas.
-
-### 8.27. Caching Implementation Considerations
-
-- Read more at: https://aws.amazon.com/caching/implementation-considerations/
-- **Is it safe to cache data?** Data may be out of date, eventually consistent.
-- Is caching effective for that data?
-  - Pattern: data changing slowly, few keys are frequently needed.
-  - Anti patterns: data changing rapidly, all large key space frequently needed.
-- Is data structured well for caching?
-  - Example: key value caching, or caching of aggregations results.
-- Which caching design pattern is the most appropriate?
-
-### 8.28. Lazy Loading / Cache-Aside / Lazy Population
-
-- Pros:
-  - Only requested data is cached (the cache isn't filled up with unused data).
-  - Node failures are not fatal (just increased latency to warm the cache).
-- Cons
-  - Cache miss penalty that results in 3 round trips, noticeable delay for that request.
-  - Stale data: data can be updated in the database and outdated in the cache.
-
-### 8.29. Write Through -Add or Update cache when database is updated
-
-- Pros:
-  - Data in cache is never stale, reads are quick.
-  - Write penalty vs Read penalty (each write requires 2 calls).
-- Cons:
-  - Missing Data until it is added / updated in the DB. Mitigation is to implement Lazy Loading strategy as well.
-  - Cache churn - a lot of the data will never be read.
-
-### 8.30. Cache Evictions and Time-to-live (TTL)
-
-- Cache eviction can occur in three ways:
-  - You delete the item explicitly in the cache.
-  - Item is evicted because the memory is full and it's not recently used (LRU).
-  - You set an item time-to-live (or TTL).
-- TTL are helpful for any kind of data:
-  - Leaderboards.
-  - Comments.
-  - Activity streams.
-- TTL can range from few seconds to hours or days.
-- If too many evictions happen due to memory, you should scale up or out.
-
-### 8.31. Final words of wisdom
-
-- Lazy Loading / Cache aside is easy to implement and works for many situations as a foundation, especially on the read side.
-- Write-through is usually combined with Lazy Loading as targeted for the queries or workloads that benefit from this optimization.
-- Setting a TTL is usually not a bad idea, except when you're using Write- through. Set it to a sensible value for your application.
-- Only cache the data that makes sense (user profiles, blogs, etc...).
-- Quote: There are only two hard things in Computer Science: cache invalidation and naming things.
-
-### 8.32. DynamoDB
+### 8.6. DynamoDB
 
 [AWS DynamoDB](AWS%20DynamoDB.md)
 
-### 8.33. Redshift Overview
+### 8.7. Redshift Overview
 
 - **Amazon Redshift is a fully managed, petabyte-scale data warehouse service in the cloud.**
 - Redshift is based on PostgreSQL, but it's not used for OLTP.
@@ -1187,7 +678,7 @@
 - BI tools such as AWS Quicksight or Tableau integrate with it.
 - **Manage their data warehouse.**
 
-### 8.34. Amazon EMR
+### 8.8. Amazon EMR
 
 - EMR stands for "Elastic MapReduce"
 - **Amazon EMR is a web service that enables businesses, researchers, data analysts, and developers to easily and cost-effectively process vast amounts of data. EMR helps creating Apache Hadoop clusters (Big Data) to analyze and process vast amount of data.**
@@ -1197,7 +688,7 @@
 - Auto-scaling and integrated with Spot instances
 - Use cases: data processing, machine learning, web indexing, big data...
 
-### 8.35. Amazon Athena
+### 8.9. Amazon Athena
 
 - **Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL. Athena is serverless, so there is no infrastructure to manage, and you pay only for the queries that you run.**
 - Serverless query service to analyze data stored in Amazon S3.
@@ -1208,7 +699,7 @@
 - Use cases: Business intelligence / analytics / reporting, analyze & query VPC Flow Logs, ELB Logs, CloudTrail trails, etc...
 - Tip: analyze data in S3 using serverless SQL, use Athena.
 
-### 8.36. Amazon QuickSight
+### 8.10. Amazon QuickSight
 
 - **Amazon QuickSight is a fast, cloud-powered business intelligence (BI) service that makes it easy for you to deliver insights to everyone in your organization. You can create and publish interactive dashboards.**
 - Serverless machine learning-powered business intelligence service to create interactive dashboards.
@@ -1220,7 +711,7 @@
   - Get business insights using data
 - Integrated with RDS, Aurora, Athena, Redshift, S3...
 
-### 8.37. DocumentDB
+### 8.11. DocumentDB
 
 - **Amazon DocumentDB (with MongoDB compatibility) is a fast, calable, highly available, and fully managed document database service that supports MongoDB workloads.**
 - Aurora is an "AWS-implementation" of PostgreSQL / MySQL...
@@ -1231,7 +722,7 @@
 - Aurora storage automatically grows in increments of 10GB, up to 64 TB.
 - Automatically scales to workloads with millions of requests per seconds.
 
-### 8.38. Amazon Neptune
+### 8.12. Amazon Neptune
 
 - **Amazon Neptune is a fast, reliable, fully-managed graph database service that makes it easy to build and run applications that work with highly connected datasets. It can be used for knowledge graphs, fraud detection, recommendations engines, social networking, etc.**
 - Fully managed graph database.
@@ -1245,7 +736,7 @@
 - Can store up to billions of relations and query the graph with milliseconds latency.
 - Highly available with replications across multiple AZs.
 
-### 8.39. Amazon QLDB
+### 8.13. Amazon QLDB
 
 - QLDB stands for "Quantum Ledger Database".
 - **Amazon QLDB is a fully managed ledger database that provides a transparent, immutable, and cryptographically verifiable transaction log owned by a central trusted authority. Amazon QLDB tracks each and every application data change and maintains a complete and verifiable history of changes over time.**
@@ -1256,7 +747,7 @@
 - 2-3x better performance than common ledger blockchain frameworks, manipulate data using SQL.
 - Difference with Amazon Managed Blockchain: no decentralization component, in accordance with financial regulation rules.
 
-### 8.40. Amazon Managed Blockchain
+### 8.14. Amazon Managed Blockchain
 
 - **Amazon Managed Blockchain is a fully managed service that makes it easy to create and manage scalable blockchain networks using the popular open source frameworks Hyperledger Fabric and Ethereum. It allows multiple parties to execute transactions without the need of a trusted, central authority.**
 - Blockchain makes it possible to build applications where multiple parties can execute transactions without the need for a trusted, central authority.
@@ -1265,7 +756,7 @@
   - Or create your own scalable private network
 - Compatible with the frameworks Hyperledger Fabric & Ethereum
 
-### 8.41. AWS Glue
+### 8.15. AWS Glue
 
 - **AWS Glue is a fully managed extract, transform, and load (ETL) service that makes it easy for customers to prepare and load their data for analytics.**
 - Managed extract, transform, and load (ETL) service.
@@ -1275,7 +766,7 @@
   - **The AWS Glue Data Catalog is a central repository to store structural and operational metadata for all your data assets. For a given data set, you can store its table definition, physical location, add business relevant attributes, as well as track how this data has changed over time.**
   - Can be used by Athena, Redshift, EMR.
 
-### 8.42. DMS - Database Migration Service
+### 8.16. DMS - Database Migration Service
 
 - **AWS Database Migration Service helps you migrate databases to AWS quickly and securely. The source database remains fully operational during the migration, minimizing downtime to applications that rely on the database.**
 - Quickly and securely migrate databases to AWS, resilient, self healing
@@ -1284,7 +775,7 @@
   - Homogeneous migrations: ex Oracle to Oracle
   - Heterogeneous migrations: ex Microsoft SQL Server to Aurora
 
-### 8.43. Databases & Analytics Summary in AWS
+### 8.17. Databases & Analytics Summary in AWS
 
 - Relational Databases: OLTP, RDS and Aurora (SQL).
 - Differences between Multi-AZ, Read Replicas, Multi-Region.
